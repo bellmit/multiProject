@@ -1,0 +1,10 @@
+rootProject.name = 'proftaak'
+
+includeBuild '../login'
+includeBuild '../order'
+includeBuild '../reserve'
+includeBuild '../deliver'
+includeBuild '../payment'
+includeBuild '../promotion'
+includeBuild '../logging'
+includeBuild '../monitoring'

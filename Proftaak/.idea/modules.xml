@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-59897133/com.proftaak.deliver.iml" filepath="$PROJECT_DIR$/.idea/modules/-59897133/com.proftaak.deliver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-59897133/com.proftaak.deliver.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-59897133/com.proftaak.deliver.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-59897133/com.proftaak.deliver.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-59897133/com.proftaak.deliver.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1268200179/com.proftaak.logging.iml" filepath="$PROJECT_DIR$/.idea/modules/-1268200179/com.proftaak.logging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1268200179/com.proftaak.logging.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1268200179/com.proftaak.logging.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1268200179/com.proftaak.logging.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1268200179/com.proftaak.logging.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-260537193/com.proftaak.login.iml" filepath="$PROJECT_DIR$/.idea/modules/-260537193/com.proftaak.login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-260537193/com.proftaak.login.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-260537193/com.proftaak.login.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-260537193/com.proftaak.login.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-260537193/com.proftaak.login.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1209656358/com.proftaak.monitoring.iml" filepath="$PROJECT_DIR$/.idea/modules/-1209656358/com.proftaak.monitoring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1209656358/com.proftaak.monitoring.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1209656358/com.proftaak.monitoring.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1209656358/com.proftaak.monitoring.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-1209656358/com.proftaak.monitoring.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-257680260/com.proftaak.order.iml" filepath="$PROJECT_DIR$/.idea/modules/-257680260/com.proftaak.order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-257680260/com.proftaak.order.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-257680260/com.proftaak.order.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-257680260/com.proftaak.order.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-257680260/com.proftaak.order.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1897804724/com.proftaak.payment.iml" filepath="$PROJECT_DIR$/.idea/modules/1897804724/com.proftaak.payment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1897804724/com.proftaak.payment.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1897804724/com.proftaak.payment.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1897804724/com.proftaak.payment.test.iml" filepath="$PROJECT_DIR$/.idea/modules/1897804724/com.proftaak.payment.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2011515601/com.proftaak.promotion.iml" filepath="$PROJECT_DIR$/.idea/modules/2011515601/com.proftaak.promotion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2011515601/com.proftaak.promotion.main.iml" filepath="$PROJECT_DIR$/.idea/modules/2011515601/com.proftaak.promotion.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2011515601/com.proftaak.promotion.test.iml" filepath="$PROJECT_DIR$/.idea/modules/2011515601/com.proftaak.promotion.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-513405334/com.proftaak.reserve.iml" filepath="$PROJECT_DIR$/.idea/modules/-513405334/com.proftaak.reserve.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-513405334/com.proftaak.reserve.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-513405334/com.proftaak.reserve.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-513405334/com.proftaak.reserve.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-513405334/com.proftaak.reserve.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/proftaak.iml" filepath="$PROJECT_DIR$/.idea/modules/proftaak.iml" />
+    </modules>
+  </component>
+</project>
