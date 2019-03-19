@@ -40,4 +40,9 @@ public class ReservationDAOJPA implements ReservationDAO{
         Query q = em.createQuery("SELECT r from Reservation r");
         return  new ArrayList<>(q.getResultList());
     }
+
+    @Override
+    public void editReservations(Reservation r){
+        em.merge(r);
+    }
 }

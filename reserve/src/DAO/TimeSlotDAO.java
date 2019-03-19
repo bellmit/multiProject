@@ -14,4 +14,6 @@ public interface TimeSlotDAO {
     TimeSlot findById(UUID id);
 
     ArrayList<TimeSlot> getTimeSlots();
+
+    void editTimeSlots(TimeSlot ts);
 }

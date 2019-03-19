@@ -14,4 +14,7 @@ public interface ReservationDAO {
     Reservation findById(UUID id);
 
     ArrayList<Reservation> getReservations();
+
+    void editReservations(Reservation reservation);
+
 }

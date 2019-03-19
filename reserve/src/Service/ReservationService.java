@@ -32,6 +32,9 @@ public class ReservationService {
         return reservationDAO.findById(id);
     }
 
+    public void editReservation(Reservation reservation){
+        reservationDAO.editReservations(reservation);
+    }
     public ReservationService() {
     }
 }

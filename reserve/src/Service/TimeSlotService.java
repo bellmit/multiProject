@@ -32,4 +32,8 @@ public class TimeSlotService {
     public TimeSlot findById(UUID id) {
         return tsDAO.findById(id);
     }
+
+    public void edit(TimeSlot ts){
+        tsDAO.editTimeSlots(ts);
+    }
 }

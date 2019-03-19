@@ -10,8 +10,9 @@ import javax.enterprise.inject.Default;
 
 
 @Stateless @Default
-public class ReservationDAOColl implements ReservationDAO {
+public class ReservationDAOColl {//implements ReservationDAO {
 
+/*
     CopyOnWriteArrayList<Reservation> reservations = new CopyOnWriteArrayList<>();
 
 
@@ -40,4 +41,11 @@ public class ReservationDAOColl implements ReservationDAO {
     public ArrayList<Reservation> getReservations() {
         return new ArrayList<Reservation>(reservations);
     }
+
+    @Override
+    public void editReservations(Reservation reservation){
+
+    }
+    */
+
 }

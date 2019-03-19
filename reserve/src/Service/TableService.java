@@ -32,6 +32,9 @@ public class TableService {
         return tableDAO.findById(id);
     }
 
+    public void edit(Table table){
+        tableDAO.editTables(table);
+    }
     public TableService() {
     }
 }

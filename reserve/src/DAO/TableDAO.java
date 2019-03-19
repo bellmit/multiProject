@@ -15,4 +15,6 @@ public interface TableDAO {
     Table findById(UUID id);
 
     ArrayList<Table> getTables();
+
+    void editTables(Table table);
 }

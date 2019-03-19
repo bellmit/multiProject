@@ -10,7 +10,7 @@ import javax.enterprise.inject.Default;
 
 
 @Stateless @Default
-public class TimeSlotDAOColl implements TimeSlotDAO{
+public class TimeSlotDAOColl{ /*} implements TimeSlotDAO{
 
     CopyOnWriteArrayList<TimeSlot> timeSlots = new CopyOnWriteArrayList<>();
 
@@ -40,4 +40,5 @@ public class TimeSlotDAOColl implements TimeSlotDAO{
     public ArrayList<TimeSlot> getTimeSlots() {
         return new ArrayList<TimeSlot>(timeSlots);
     }
+    */
 }

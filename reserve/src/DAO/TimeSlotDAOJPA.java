@@ -40,4 +40,9 @@ public class TimeSlotDAOJPA implements TimeSlotDAO{
         Query q = em.createQuery("SELECT ts from TimeSlot ts");
         return  new ArrayList<>(q.getResultList());
     }
+
+    @Override
+    public void editTimeSlots(TimeSlot ts){
+        em.merge(ts);
+    }
 }

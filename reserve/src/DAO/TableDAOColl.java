@@ -10,8 +10,9 @@ import javax.enterprise.inject.Default;
 
 
 @Stateless @Default
-public class TableDAOColl implements TableDAO{
+public class TableDAOColl {//implements TableDAO{
 
+    /*
     CopyOnWriteArrayList<Table> tables = new CopyOnWriteArrayList<>();
 
 
@@ -40,4 +41,5 @@ public class TableDAOColl implements TableDAO{
     public ArrayList<Table> getTables() {
         return new ArrayList<Table>(tables);
     }
+    */
 }

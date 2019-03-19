@@ -41,4 +41,9 @@ public class TableDAOJPA implements TableDAO {
         Query q = em.createQuery("SELECT t from Table t");
         return  new ArrayList<>(q.getResultList());
     }
+
+    @Override
+    public void editTables(Table t){
+        em.merge(t);
+    }
 }
