@@ -19,7 +19,7 @@ public class CouponResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public Response newDeliveryOrder(Coupon coupon) {
+    public Response newCoupon(Coupon coupon) {
         try {
             cS.create(coupon);
             return Response.status(Response.Status.OK).entity("Success").build();
@@ -34,7 +34,7 @@ public class CouponResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public Response getDeliveryOrderById(@PathParam("id") UUID id) {
+    public Response getCouponById(@PathParam("id") UUID id) {
         try {
             Coupon c = cS.find(id);
             return Response.status(Response.Status.OK).entity(new GenericEntity<Coupon>(c) {}).build();
