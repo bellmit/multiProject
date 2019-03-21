@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98b8f948-51bb-4402-873c-694d32e56e36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../deliver/src/main/java/data/BaseDaoJPA.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/BaseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../deliver/src/main/java/resource/config/JAXRSConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../deliver/src/main/java/service/interfaces/DeliveryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/-59897133/com.proftaak.deliver.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/-59897133/com.proftaak.deliver.main.iml" afterDir="false" />
+    <list default="true" id="98b8f948-51bb-4402-873c-694d32e56e36" name="Default Changelist" comment="finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../deliver/src/main/java/service/interfaces/DeliveryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../deliver/src/main/java/service/interfaces/DeliveryService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -107,8 +101,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="645">
-                  <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+                <state relative-caret-position="377">
+                  <caret line="71" column="55" lean-forward="true" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#366#367#0" expanded="true" />
@@ -121,14 +115,20 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="11" selection-start-column="11" selection-end-column="11" />
+                <state relative-caret-position="360">
+                  <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="20" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#251#252#0" expanded="true" />
                     <element signature="e#297#298#0" expanded="true" />
                     <element signature="e#173#174#0" expanded="true" />
                     <element signature="e#200#201#0" expanded="true" />
+                    <element signature="e#550#551#0" expanded="true" />
+                    <element signature="e#577#578#0" expanded="true" />
+                    <element signature="e#532#533#0" expanded="true" />
+                    <element signature="e#559#560#0" expanded="true" />
+                    <element signature="e#632#633#0" expanded="true" />
+                    <element signature="e#659#660#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -160,8 +160,11 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/service/interfaces/DeliveryService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+                <state relative-caret-position="285">
+                  <caret line="19" column="69" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -215,9 +218,9 @@
         <option value="$PROJECT_DIR$/../deliver/src/main/java/resource/JAXRSConfig.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDAO.java" />
-        <option value="$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/BaseDao.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/data/BaseDaoJPA.java" />
+        <option value="$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/service/interfaces/DeliveryService.java" />
       </list>
@@ -366,7 +369,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553182926573" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553203080748" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -487,7 +490,7 @@
       <workItem from="1552499702318" duration="383000" />
       <workItem from="1552909002686" duration="609000" />
       <workItem from="1553085615255" duration="4157000" />
-      <workItem from="1553175768609" duration="6277000" />
+      <workItem from="1553175768609" duration="7939000" />
     </task>
     <task id="LOCAL-00001" summary="domain setup">
       <created>1553090173282</created>
@@ -496,11 +499,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553090173282</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="made basic layers, and adding to resource layer">
+      <created>1553182953665</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1553182953666</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14668000" />
+    <option name="totallyTimeSpent" value="16330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1058" extended-state="6" />
@@ -551,7 +561,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="domain setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="domain setup" />
+    <MESSAGE value="made basic layers, and adding to resource layer" />
+    <option name="LAST_COMMIT_MESSAGE" value="made basic layers, and adding to resource layer" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../login/settings.gradle">
@@ -595,39 +606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#142#143#0" expanded="true" />
-            <element signature="e#169#170#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#251#252#0" expanded="true" />
-            <element signature="e#297#298#0" expanded="true" />
-            <element signature="e#173#174#0" expanded="true" />
-            <element signature="e#200#201#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/BaseDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -666,17 +644,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#142#143#0" expanded="true" />
+            <element signature="e#169#170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#297#298#0" expanded="true" />
+            <element signature="e#173#174#0" expanded="true" />
+            <element signature="e#200#201#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#532#533#0" expanded="true" />
+            <element signature="e#559#560#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+            <element signature="e#659#660#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/service/interfaces/DeliveryService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        <state relative-caret-position="285">
+          <caret line="19" column="69" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+        <state relative-caret-position="377">
+          <caret line="71" column="55" lean-forward="true" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#366#367#0" expanded="true" />
