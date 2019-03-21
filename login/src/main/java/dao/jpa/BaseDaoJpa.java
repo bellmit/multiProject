@@ -16,6 +16,7 @@ public abstract class BaseDaoJpa<T> implements BaseDao<T> {
 
     @Override
     public void create(T object) {
+        System.out.println(object.toString());
         getEntityManager().persist(object);
     }
 

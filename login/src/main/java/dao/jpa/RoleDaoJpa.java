@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class RoleDaoJpa extends BaseDaoJpa<Role> implements RoleDao {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "nldPU")
     private EntityManager em;
 
     public RoleDaoJpa() {

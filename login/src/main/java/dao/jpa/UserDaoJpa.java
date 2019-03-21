@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class UserDaoJpa extends BaseDaoJpa<User> implements UserDao {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "nldPU")
     private EntityManager em;
 
     public UserDaoJpa() {

@@ -1,6 +1,7 @@
 package rest;
 
 import domain.User;
+import io.swagger.annotations.Api;
 import service.UserService;
 
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+@Api("User")
 @Path("user")
 public class UserResource {
 

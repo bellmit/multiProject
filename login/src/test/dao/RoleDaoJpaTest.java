@@ -2,6 +2,9 @@ package dao;
 
 import dao.interfaces.RoleDao;
 import dao.jpa.RoleDaoJpa;
+import domain.Role;
+import domain.User;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import util.DatabaseCleaner;
@@ -16,7 +19,7 @@ import java.util.logging.Logger;
 
 public class RoleDaoJpaTest {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("testPU");
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("nldTestPU");
     private EntityManager em;
     private EntityTransaction tx;
     private RoleDaoJpa roleDao;
@@ -36,6 +39,41 @@ public class RoleDaoJpaTest {
     }
 
     @Test
-    public void exampleTest() {
+    public void createAndFindUser() {
+        tx.begin();
+        Role role = new Role();
+        roleDao.create(role);
+        tx.commit();
+        Assert.assertNotNull(roleDao.find(role.getId()));
+    }
+
+    @Test
+    public void editUser() {
+        tx.begin();
+        Role role = new Role();
+        roleDao.create(role);
+        tx.commit();
+
+        tx.begin();
+        String name = "testRole";
+        role.setName(name);
+        roleDao.edit(role);
+        tx.commit();
+
+        Assert.assertEquals(roleDao.find(role.getId()).getName(), name);
+    }
+
+    @Test
+    public void deleteUser() {
+        tx.begin();
+        Role role = new Role();
+        roleDao.create(role);
+        tx.commit();
+
+        tx.begin();
+        roleDao.delete(role);
+        tx.commit();
+
+        Assert.assertNull(roleDao.find(role.getId()));
     }
 }

@@ -1,6 +1,7 @@
 package rest;
 
 import domain.Role;
+import io.swagger.annotations.Api;
 import service.RoleService;
 
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+@Api("Role")
 @Path("role")
 public class RoleResource {
 
