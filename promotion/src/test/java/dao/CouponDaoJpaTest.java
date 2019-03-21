@@ -14,6 +14,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 public class CouponDaoJpaTest {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("couponTestPU");
@@ -37,7 +40,12 @@ public class CouponDaoJpaTest {
 
     @Test
     public void create(){
-        
+
+        Coupon coupon = new Coupon();
+        tx.begin();
+        cdj.create(coupon);
+        tx.commit();
+        assertThat(coupon.getId(),is(cdj.find(coupon.getId())));
     }
 
     @Test

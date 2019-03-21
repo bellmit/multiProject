@@ -6,7 +6,7 @@
     <persistence-unit name="couponTestPU" transaction-type="RESOURCE_LOCAL">
     <class>domain.Coupon</class>
         <class>util.LocalDateTimeConverter</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/coupon"/>
             <property name="javax.persistence.jdbc.password" value="admin"/>

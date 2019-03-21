@@ -24,6 +24,7 @@ public class Coupon implements Serializable {
     private int maxUses;
 
     public Coupon() {
+        this.id = UUID.randomUUID().toString();
     }
 
     public Coupon(String userId, double flatRate, CouponType type, String code, LocalDateTime expDate, int maxUses) {
