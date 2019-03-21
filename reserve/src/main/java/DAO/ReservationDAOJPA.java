@@ -1,6 +1,7 @@
-package DAO;
+package main.java.DAO;
 
-import Domain.Reservation;
+
+import main.java.Domain.Reservation;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,7 +13,7 @@ import java.util.UUID;
 
 @Stateless
 @JPA
-public class ReservationDAOJPA implements ReservationDAO{
+public class ReservationDAOJPA implements ReservationDAO {
 
     @PersistenceContext(unitName = "reservationPU")
     private EntityManager em;

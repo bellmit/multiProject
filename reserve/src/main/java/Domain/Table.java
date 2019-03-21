@@ -1,4 +1,4 @@
-package Domain;
+package main.java.Domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,6 +21,9 @@ public class Table implements Serializable {
         this.id = UUID.randomUUID();
         this.tableNumber = tableNumber;
         this.nrofSeats = nrofSeats;
+    }
+
+    public Table() {
     }
 
     public UUID getId() {

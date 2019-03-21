@@ -1,38 +1,41 @@
-package Rest;
+package main.java.Rest;
 
-import Domain.Table;
-import Service.TableService;
+
+import main.java.Domain.Reservation;
+import main.java.Service.ReservationService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.UUID;
 
-@Path("table")
-public class TableResource {
+@Path("reservation")
+public class ReservationResource {
+
     @Inject
-    private TableService ts;
+    private ReservationService rs;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void addReservation(Table t) {
-        ts.addTable(t);
+    public void addReservation(Reservation r) {
+        rs.addReservation(r);
     }
 
     @GET
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("uuid") UUID uuid) {
-        return Response.ok(ts.findById(uuid)).build();
+        return Response.ok(rs.findById(uuid)).build();
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response edit(Table table) {
-        ts.edit(table);
+    public Response edit(Reservation reservation) {
+        rs.editReservation(reservation);
         return Response.ok().build();
     }
 
@@ -40,8 +43,10 @@ public class TableResource {
     @Path("remove/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("uuid") UUID uuid) {
-        Table t = ts.findById(uuid);
-        ts.removeTable(t);
+        Reservation r = rs.findById(uuid);
+        rs.removeReservation(r);
         return Response.ok().build();
     }
+
 }
+

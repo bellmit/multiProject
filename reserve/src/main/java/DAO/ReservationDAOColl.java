@@ -1,6 +1,4 @@
-package DAO;
-
-import Domain.Reservation;
+package main.java.DAO;
 
 import javax.ejb.Stateless;
 import java.util.ArrayList;

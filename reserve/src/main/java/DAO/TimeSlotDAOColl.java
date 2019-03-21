@@ -1,6 +1,5 @@
-package DAO;
+package main.java.DAO;
 
-import Domain.TimeSlot;
 
 import javax.ejb.Stateless;
 import java.util.ArrayList;

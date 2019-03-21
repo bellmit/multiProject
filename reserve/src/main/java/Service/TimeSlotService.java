@@ -1,8 +1,9 @@
-package Service;
+package main.java.Service;
 
-import DAO.JPA;
-import DAO.TimeSlotDAO;
-import Domain.TimeSlot;
+
+import main.java.DAO.JPA;
+import main.java.DAO.TimeSlotDAO;
+import main.java.Domain.TimeSlot;
 
 import javax.ejb.Stateless;
 import javax.ejb.Stateless;

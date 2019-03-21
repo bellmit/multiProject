@@ -1,8 +1,9 @@
-package Service;
+package main.java.Service;
 
-import DAO.JPA;
-import DAO.TableDAO;
-import Domain.Table;
+
+import main.java.DAO.JPA;
+import main.java.DAO.TableDAO;
+import main.java.Domain.Table;
 
 import javax.ejb.Stateless;
 import java.util.ArrayList;

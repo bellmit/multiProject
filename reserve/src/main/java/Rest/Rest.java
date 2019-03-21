@@ -1,4 +1,5 @@
-package Rest;
+package main.java.Rest;
+
 
 import io.swagger.jaxrs.config.BeanConfig;
 

@@ -1,4 +1,4 @@
-package Domain;
+package main.java.Domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -21,7 +21,6 @@ public class Reservation implements Serializable {
 
     private Date date;
 
-    @OneToOne
     private DinnerType type;
 
     @OneToMany

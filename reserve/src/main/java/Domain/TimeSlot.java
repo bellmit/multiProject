@@ -1,4 +1,4 @@
-package Domain;
+package main.java.Domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -28,6 +28,9 @@ public class TimeSlot implements Serializable {
         this.name = name;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    public TimeSlot() {
     }
 
     public UUID getId() {

@@ -1,7 +1,6 @@
-package DAO;
+package main.java.DAO;
 
-import Domain.Table;
-import javafx.scene.control.Tab;
+import main.java.Domain.Table;
 
 import java.util.ArrayList;
 import java.util.UUID;

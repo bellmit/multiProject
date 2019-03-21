@@ -1,38 +1,41 @@
-package Rest;
+package main.java.Rest;
 
-import Domain.TimeSlot;
-import Service.TimeSlotService;
+
+
+import main.java.Domain.Table;
+import main.java.Service.TableService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.UUID;
 
-@Path("timeslot")
-public class TimeSlotResource {
+@Path("table")
+public class TableResource {
     @Inject
-    private TimeSlotService tss;
+    private TableService ts;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void addReservation(TimeSlot ts) {
-        tss.addTimeSlot(ts);
+    public void addReservation(Table t) {
+        ts.addTable(t);
     }
 
     @GET
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("uuid") UUID uuid) {
-        return Response.ok(tss.findById(uuid)).build();
+        return Response.ok(ts.findById(uuid)).build();
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response edit(TimeSlot ts) {
-        tss.edit(ts);
+    public Response edit(Table table) {
+        ts.edit(table);
         return Response.ok().build();
     }
 
@@ -40,8 +43,8 @@ public class TimeSlotResource {
     @Path("remove/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("uuid") UUID uuid) {
-        TimeSlot ts = tss.findById(uuid);
-        tss.removeTimeSlot(ts);
+        Table t = ts.findById(uuid);
+        ts.removeTable(t);
         return Response.ok().build();
     }
 }

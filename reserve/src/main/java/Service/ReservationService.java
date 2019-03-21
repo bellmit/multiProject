@@ -1,8 +1,10 @@
-package Service;
+package main.java.Service;
 
-import DAO.JPA;
-import DAO.ReservationDAO;
-import Domain.Reservation;
+
+
+import main.java.DAO.JPA;
+import main.java.DAO.ReservationDAO;
+import main.java.Domain.Reservation;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

@@ -1,7 +1,8 @@
-package DAO;
+package main.java.DAO;
 
 
-import Domain.Table;
+
+import main.java.Domain.Table;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

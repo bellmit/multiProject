@@ -1,4 +1,4 @@
-package DAO;
+package main.java.DAO;
 
 
 import static java.lang.annotation.ElementType.TYPE;
