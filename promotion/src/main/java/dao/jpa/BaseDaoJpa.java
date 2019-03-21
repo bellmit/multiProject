@@ -22,7 +22,7 @@ public abstract class BaseDaoJpa<T> implements BaseDao<T> {
     }
 
     @Override
-    public T find(UUID id) {
+    public T find(String id) {
         try {
             return em.find(type, id);
         } catch (Exception ex) {

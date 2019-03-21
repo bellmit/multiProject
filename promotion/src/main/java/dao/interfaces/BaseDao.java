@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public interface BaseDao<T> {
     void create(T Object);
-    T find(UUID id);
+    T find(String id);
     void edit(T Object);
     void delete(T Object);
 }

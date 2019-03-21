@@ -16,7 +16,7 @@ public class CouponService {
         cd.create(coupon);
     }
 
-    public Coupon find(UUID id){
+    public Coupon find(String id){
         return cd.find(id);
     }
 

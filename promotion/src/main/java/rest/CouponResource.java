@@ -34,7 +34,7 @@ public class CouponResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public Response getCouponById(@PathParam("id") UUID id) {
+    public Response getCouponById(@PathParam("id") String id) {
         try {
             Coupon c = cS.find(id);
             return Response.status(Response.Status.OK).entity(new GenericEntity<Coupon>(c) {}).build();

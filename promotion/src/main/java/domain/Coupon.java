@@ -14,8 +14,8 @@ import java.util.UUID;
 public class Coupon implements Serializable {
 
     @Id
-    private UUID id;
-    private UUID userId;
+    private String id;
+    private String userId;
     private double flatRate;
     private CouponType type;
     private String code;
@@ -26,8 +26,8 @@ public class Coupon implements Serializable {
     public Coupon() {
     }
 
-    public Coupon(UUID userId, double flatRate, CouponType type, String code, LocalDateTime expDate, int maxUses) {
-        this.id = UUID.randomUUID();
+    public Coupon(String userId, double flatRate, CouponType type, String code, LocalDateTime expDate, int maxUses) {
+        this.id = UUID.randomUUID().toString();
         this.userId = userId;
         this.flatRate = flatRate;
         this.type = type;
@@ -36,19 +36,19 @@ public class Coupon implements Serializable {
         this.maxUses = maxUses;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public UUID getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(UUID userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
