@@ -39,7 +39,7 @@ public class RoleDaoJpaTest {
     }
 
     @Test
-    public void createAndFindUser() {
+    public void createAndFindRole() {
         tx.begin();
         Role role = new Role();
         roleDao.create(role);
@@ -48,7 +48,7 @@ public class RoleDaoJpaTest {
     }
 
     @Test
-    public void editUser() {
+    public void editRole() {
         tx.begin();
         Role role = new Role();
         roleDao.create(role);
@@ -64,7 +64,7 @@ public class RoleDaoJpaTest {
     }
 
     @Test
-    public void deleteUser() {
+    public void deleteRole() {
         tx.begin();
         Role role = new Role();
         roleDao.create(role);
