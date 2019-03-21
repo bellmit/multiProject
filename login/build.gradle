@@ -2,6 +2,10 @@ plugins {
     id 'war'
 }
 
+war {
+    archiveName 'login.war'
+}
+
 group 'com.proftaak'
 version '1.0-SNAPSHOT'
 
@@ -14,8 +18,9 @@ repositories {
 dependencies {
     compile 'javax:javaee-api:8.0.1-b5'
     compile 'org.robolectric:junit:4.3-alpha-1'
-    compile 'org.eclipse.persistence:org.eclipse.persistence.jpa.modelgen.processor:2.7.4'
-    compile 'org.eclipse.persistence:org.eclipse.persistence.extension:2.7.4'
+    compile 'org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final'
+    compile 'org.hibernate:hibernate-core:5.4.1.Final'
+    compile 'org.hibernate:hibernate-entitymanager:5.4.1.Final'
     compile 'mysql:mysql-connector-java:8.0.15'
     compile 'io.swagger:swagger-jaxrs:1.5.22'
     compile 'io.swagger.core.v3:swagger-annotations:2.0.7'
