@@ -14,7 +14,12 @@ public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime,
 
     @Override
     public LocalDateTime convertToEntityAttribute(String y) {
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-        return LocalDateTime.parse(y, formatter);
+        if(y.isEmpty()) {
+            return null;
+        }
+        else {
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+            return LocalDateTime.parse(y, formatter);
+        }
     }
 }
