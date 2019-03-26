@@ -19,14 +19,14 @@ import static org.junit.Assert.assertThat;
 
 public class CouponDaoJpaTest {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("couponTestPU");
+   /* EntityManagerFactory emf = Persistence.createEntityManagerFactory("couponTestPU");
     private EntityManager em;
     private EntityTransaction tx;
-    private CouponDaoJpa cdj;
+    private CouponDaoJpa cdj;*/
 
     @Before
     public void setUp() {
-        try {
+     /*   try {
             new DatabaseCleaner(emf.createEntityManager()).clean();
         } catch (SQLException ex) {
             Logger.getLogger(CouponDaoJpaTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -35,7 +35,7 @@ public class CouponDaoJpaTest {
         tx = em.getTransaction();
 
         cdj = new CouponDaoJpa();
-        cdj.setEm(em);
+        cdj.setEm(em);*/
     }
 
     @Test
