@@ -1,5 +1,7 @@
 package resource;
 
+import domain.Location;
+import domain.Route;
 import service.interfaces.DeliveryService;
 
 import javax.inject.Inject;
@@ -30,11 +32,21 @@ public class DeliveryResource {
     }
 
     @GET
-    @Path("/employee/{id}")
+    @Path("/employees/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByEmployee(@PathParam("id") String employeeId){
         try{
             return Response.ok(deliveryService.getByEmployeeId(employeeId)).build();
+        } catch (Exception e){
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+    @GET
+    @Path("{id}/routes")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRoutes(@PathParam("id") String deliveryId){
+        try{
+            return Response.ok(deliveryService.getRoutes(deliveryId)).build();
         } catch (Exception e){
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -52,10 +64,10 @@ public class DeliveryResource {
     }
 
     @PUT
-    @Path("/assign")
+    @Path("{id}/assign")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response assignEmployee(@HeaderParam("deliveryId") String deliveryId,
-                        @HeaderParam("employeeId") String employeeId){
+    public Response assignEmployee(@PathParam("id") String deliveryId,
+                                   @HeaderParam("employeeId") String employeeId){
         try{
             return Response.ok(deliveryService.assignEmployee(deliveryId, employeeId)).build();
         } catch (Exception e){
@@ -64,12 +76,28 @@ public class DeliveryResource {
     }
 
     @PUT
-    @Path("/edit")
+    @Path("{id}/edit")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response editDelivery(@HeaderParam("deliveryId") String deliveryId,
-                        @HeaderParam("orderList") List<String> orderList){
+    public Response editDelivery(@PathParam("id") String deliveryId,
+                                 @HeaderParam("orderList") List<String> orderList){
         try{
             return Response.ok(deliveryService.editDelivery(deliveryId, orderList)).build();
+        } catch (Exception e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @PUT
+    @Path("{deliveryId}/routes")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addRoute(@PathParam("deliveryId") String deliveryId,
+                             @HeaderParam("startLocLat") double startLocLat,
+                             @HeaderParam("startLocLong") double startLocLong,
+                             @HeaderParam("endLocLat") double endLocLat,
+                             @HeaderParam("endLocLong") double endLocLong){
+        Route route = new Route(new Location(startLocLat, startLocLong), new Location(endLocLat, endLocLong));
+        try{
+            return Response.ok(deliveryService.addRoute(deliveryId, route)).build();
         } catch (Exception e){
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
@@ -87,7 +115,7 @@ public class DeliveryResource {
     }
 
     @DELETE
-    @Path("/employee/{id}")
+    @Path("/employees/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteByEmployee(@PathParam("id") String employeeId){
         try{
