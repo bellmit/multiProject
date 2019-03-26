@@ -7,3 +7,7 @@ plugins{
 task run {
     dependsOn gradle.includedBuild('login').task('run')
 }
+
+task buildAll {
+    dependsOn gradle.includedBuilds*.task(':buildAll')
+}
