@@ -1,8 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98b8f948-51bb-4402-873c-694d32e56e36" name="Default Changelist" comment="">
+    <list default="true" id="98b8f948-51bb-4402-873c-694d32e56e36" name="Default Changelist" comment="Merge branch 'master' into delivery&#10;&#10;# Conflicts:&#10;#&#9;Proftaak/.gradle/4.10/fileHashes/fileHashes.bin&#10;#&#9;Proftaak/.gradle/4.10/fileHashes/fileHashes.lock&#10;#&#9;Proftaak/.gradle/4.10/taskHistory/taskHistory.bin&#10;#&#9;Proftaak/.gradle/4.10/taskHistory/taskHistory.lock&#10;#&#9;Proftaak/.gradle/buildOutputCleanup/buildOutputCleanup.lock&#10;#&#9;Proftaak/.gradle/buildOutputCleanup/outputFiles.bin&#10;#&#9;Proftaak/.idea/workspace.xml&#10;#&#9;deliver/.gradle/4.10/fileHashes/fileHashes.bin&#10;#&#9;deliver/.gradle/4.10/fileHashes/fileHashes.lock&#10;#&#9;deliver/.gradle/4.10/taskHistory/taskHistory.bin&#10;#&#9;deliver/.gradle/4.10/taskHistory/taskHistory.lock&#10;#&#9;deliver/.gradle/buildOutputCleanup/buildOutputCleanup.lock&#10;#&#9;deliver/.gradle/buildOutputCleanup/outputFiles.bin&#10;#&#9;deliver/build.gradle&#10;&#10;also finished service methods">
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../login/src/main/java/exceptions/RoleNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../login/src/main/java/exceptions/UserNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../login/src/main/webapp/WEB-INF/beans.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/.idea/modules/com.proftaak.promotion.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/.idea/modules/com.proftaak.promotion.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/java/dao/interfaces/BaseDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/java/dao/interfaces/CouponDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/java/dao/jpa/BaseDaoJpa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/java/dao/jpa/CouponDaoJpa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/java/domain/Coupon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/java/rest/CouponResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/java/service/CouponService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/java/util/CouponType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/java/util/LocalDateTimeConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/favicon-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/oauth2-redirect.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/swagger-ui-bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/swagger-ui-bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/swagger-ui-standalone-preset.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/swagger-ui-standalone-preset.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/swagger-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/swagger-ui.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/swagger-ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/main/webapp/swaggerui/swagger-ui.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/test/java/dao/CouponDaoJpaTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/test/java/util/DatabaseCleaner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../promotion/src/test/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/multiProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/multiProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../deliver/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../deliver/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDaoJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDaoJPA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../deliver/src/main/java/domain/Delivery.java" beforeDir="false" afterPath="$PROJECT_DIR$/../deliver/src/main/java/domain/Delivery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logging/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../logging/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logging/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../logging/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logging/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../logging/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logging/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../logging/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logging/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../logging/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logging/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../logging/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logging/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../logging/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../login/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../login/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../login/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../login/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../login/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../login/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../login/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/dao/interfaces/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/dao/interfaces/BaseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/dao/jpa/RoleDaoJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/dao/jpa/RoleDaoJpa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/dao/jpa/UserDaoJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/dao/jpa/UserDaoJpa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/domain/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/domain/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/rest/RoleResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/rest/RoleResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/rest/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/rest/UserResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/main/webapp/swaggerui/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/main/webapp/swaggerui/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/test/dao/RoleDaoJpaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/test/dao/RoleDaoJpaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../login/src/test/dao/UserDaoJpaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../login/src/test/dao/UserDaoJpaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../monitoring/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../monitoring/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../monitoring/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../monitoring/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../monitoring/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../monitoring/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../monitoring/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../monitoring/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../monitoring/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../monitoring/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../monitoring/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../monitoring/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../monitoring/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../monitoring/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../order/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../order/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../order/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../order/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../order/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../order/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../order/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../payment/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../payment/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../payment/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../payment/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../payment/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../payment/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../payment/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../promotion/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../promotion/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../promotion/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../promotion/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../promotion/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../promotion/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../promotion/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../promotion/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../promotion/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../promotion/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../promotion/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../promotion/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../promotion/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../promotion/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../promotion/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../promotion/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reserve/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../reserve/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reserve/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../reserve/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reserve/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../reserve/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reserve/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../reserve/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reserve/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../reserve/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reserve/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../reserve/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../reserve/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../reserve/build.gradle" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -94,8 +197,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDaoJPA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+            <state relative-caret-position="315">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -103,8 +206,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/domain/Delivery.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
+            <state relative-caret-position="285">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+              <folding>
+                <element signature="e#663#664#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,8 +218,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
+            <state relative-caret-position="1680">
+              <caret line="122" column="59" selection-start-line="122" selection-start-column="59" selection-end-line="122" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -121,8 +227,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="69" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="367">
+              <caret line="64" column="34" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1130#1131#0" expanded="true" />
@@ -153,8 +259,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="150">
+              <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -207,24 +313,25 @@
         <option value="$PROJECT_DIR$/../deliver/src/main/java/domain/Location.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/domain/Route.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/resource/JAXRSConfig.java" />
-        <option value="$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDAO.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/BaseDao.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/data/BaseDaoJPA.java" />
-        <option value="$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java" />
-        <option value="$PROJECT_DIR$/../deliver/src/main/java/domain/Delivery.java" />
-        <option value="$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDaoJPA.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/service/interfaces/DeliveryService.java" />
         <option value="$PROJECT_DIR$/Build.gradle" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/../deliver/src/main/java/domain/Delivery.java" />
         <option value="$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java" />
+        <option value="$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java" />
+        <option value="$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDaoJPA.java" />
+        <option value="$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-62" />
-    <option name="width" value="1900" />
-    <option name="height" value="1048" />
+    <option name="x" value="4" />
+    <option name="y" value="279" />
+    <option name="width" value="1272" />
+    <option name="height" value="702" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -531,12 +638,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22738000" />
+    <option name="totallyTimeSpent" value="24126000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="20" width="1920" height="1060" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2113127" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2113127" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -547,7 +654,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32941177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -557,8 +664,8 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Application Servers" order="13" weight="0.32941177" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32941177" />
+      <window_info anchor="bottom" id="Application Servers" order="13" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" />
       <window_info anchor="bottom" id="Messages" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -567,8 +674,8 @@
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Gradle" order="6" visible="true" weight="0.14034152" />
-      <window_info anchor="right" id="Database" order="7" weight="0.32978722" />
+      <window_info anchor="right" id="Gradle" order="6" weight="0.14034152" />
+      <window_info anchor="right" id="Database" order="7" weight="0.32977587" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="JSF" order="10" />
@@ -586,7 +693,8 @@
     <MESSAGE value="made some service methods" />
     <MESSAGE value="changed gradle things" />
     <MESSAGE value="commit this file for reasons" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit this file for reasons" />
+    <MESSAGE value="Merge branch 'master' into delivery&#10;&#10;# Conflicts:&#10;#&#9;Proftaak/.gradle/4.10/fileHashes/fileHashes.bin&#10;#&#9;Proftaak/.gradle/4.10/fileHashes/fileHashes.lock&#10;#&#9;Proftaak/.gradle/4.10/taskHistory/taskHistory.bin&#10;#&#9;Proftaak/.gradle/4.10/taskHistory/taskHistory.lock&#10;#&#9;Proftaak/.gradle/buildOutputCleanup/buildOutputCleanup.lock&#10;#&#9;Proftaak/.gradle/buildOutputCleanup/outputFiles.bin&#10;#&#9;Proftaak/.idea/workspace.xml&#10;#&#9;deliver/.gradle/4.10/fileHashes/fileHashes.bin&#10;#&#9;deliver/.gradle/4.10/fileHashes/fileHashes.lock&#10;#&#9;deliver/.gradle/4.10/taskHistory/taskHistory.bin&#10;#&#9;deliver/.gradle/4.10/taskHistory/taskHistory.lock&#10;#&#9;deliver/.gradle/buildOutputCleanup/buildOutputCleanup.lock&#10;#&#9;deliver/.gradle/buildOutputCleanup/outputFiles.bin&#10;#&#9;deliver/build.gradle&#10;&#10;also finished service methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' into delivery&#10;&#10;# Conflicts:&#10;#&#9;Proftaak/.gradle/4.10/fileHashes/fileHashes.bin&#10;#&#9;Proftaak/.gradle/4.10/fileHashes/fileHashes.lock&#10;#&#9;Proftaak/.gradle/4.10/taskHistory/taskHistory.bin&#10;#&#9;Proftaak/.gradle/4.10/taskHistory/taskHistory.lock&#10;#&#9;Proftaak/.gradle/buildOutputCleanup/buildOutputCleanup.lock&#10;#&#9;Proftaak/.gradle/buildOutputCleanup/outputFiles.bin&#10;#&#9;Proftaak/.idea/workspace.xml&#10;#&#9;deliver/.gradle/4.10/fileHashes/fileHashes.bin&#10;#&#9;deliver/.gradle/4.10/fileHashes/fileHashes.lock&#10;#&#9;deliver/.gradle/4.10/taskHistory/taskHistory.bin&#10;#&#9;deliver/.gradle/4.10/taskHistory/taskHistory.lock&#10;#&#9;deliver/.gradle/buildOutputCleanup/buildOutputCleanup.lock&#10;#&#9;deliver/.gradle/buildOutputCleanup/outputFiles.bin&#10;#&#9;deliver/build.gradle&#10;&#10;also finished service methods" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../login/settings.gradle">
@@ -626,27 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDaoJPA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/domain/Delivery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="60" column="34" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/service/interfaces/DeliveryService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -658,16 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -685,10 +762,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/interfaces/DeliveryDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/domain/Delivery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#663#664#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/data/DeliveryDaoJPA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/resource/DeliveryResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="122" column="59" selection-start-line="122" selection-start-column="59" selection-end-line="122" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../deliver/src/main/java/service/DeliveryService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="367">
+          <caret line="64" column="34" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1130#1131#0" expanded="true" />

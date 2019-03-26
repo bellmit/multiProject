@@ -67,6 +67,7 @@ public class DeliveryService implements service.interfaces.DeliveryService {
 
     @Override
     public Delivery addDelivery(List<String> orderList) {
-
+        Delivery delivery = new Delivery(orderList);
+        return deliveryDao.persist(delivery);
     }
 }

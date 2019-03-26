@@ -2,6 +2,7 @@ package service;
 
 import dao.interfaces.UserDao;
 import domain.User;
+import exceptions.UserNotFoundException;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -16,12 +17,20 @@ public class UserService {
         userDao.create(user);
     }
 
-    public void delete(String uuid) {
-        userDao.delete(userDao.find(uuid));
+    public void delete(String uuid) throws UserNotFoundException {
+        User user = userDao.find(uuid);
+        if (user == null) {
+            throw new UserNotFoundException("User not found");
+        }
+        userDao.delete(user);
     }
 
-    public User find(String uuid) {
-        return userDao.find(uuid);
+    public User find(String uuid) throws UserNotFoundException {
+        User user = userDao.find(uuid);
+        if (user == null) {
+            throw new UserNotFoundException("User not found");
+        }
+        return user;
     }
 
     public void edit(User user) {

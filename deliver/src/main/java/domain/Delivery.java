@@ -20,7 +20,9 @@ public class Delivery {
         this.employeeId = employeeId;
         this.orderIdList = orderIdList;
     }
-
+    public Delivery(List<String> orderIdList) {
+        this.orderIdList = orderIdList;
+    }
     public Delivery(){
 
     }

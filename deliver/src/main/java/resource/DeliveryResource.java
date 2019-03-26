@@ -108,7 +108,8 @@ public class DeliveryResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteSingle(@PathParam("id") String id){
         try{
-            return Response.ok(deliveryService.removeById(id)).build();
+            deliveryService.removeById(id);
+            return Response.ok().build();
         } catch (Exception e){
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -119,7 +120,8 @@ public class DeliveryResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteByEmployee(@PathParam("id") String employeeId){
         try{
-            return Response.ok(deliveryService.removeByEmployeeId(employeeId)).build();
+            deliveryService.removeByEmployeeId(employeeId);
+            return Response.ok().build();
         } catch (Exception e){
             return Response.status(Response.Status.NOT_FOUND).build();
         }

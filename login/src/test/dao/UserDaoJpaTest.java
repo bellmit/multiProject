@@ -1,7 +1,8 @@
 package dao;
 
-import dao.jpa.RoleDaoJpa;
 import dao.jpa.UserDaoJpa;
+import domain.User;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import util.DatabaseCleaner;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
 
 public class UserDaoJpaTest {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("testPU");
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("nldTestPU");
     private EntityManager em;
     private EntityTransaction tx;
     private UserDaoJpa userDao;
@@ -36,6 +37,41 @@ public class UserDaoJpaTest {
     }
 
     @Test
-    public void exampleTest() {
+    public void createAndFindUser() {
+        tx.begin();
+        User user = new User();
+        userDao.create(user);
+        tx.commit();
+        Assert.assertNotNull(userDao.find(user.getId()));
+    }
+
+    @Test
+    public void editUser() {
+        tx.begin();
+        User user = new User();
+        userDao.create(user);
+        tx.commit();
+
+        tx.begin();
+        String email = "test@test.test";
+        user.setEmail(email);
+        userDao.edit(user);
+        tx.commit();
+
+        Assert.assertEquals(userDao.find(user.getId()).getEmail(), email);
+    }
+
+    @Test
+    public void deleteUser() {
+        tx.begin();
+        User user = new User();
+        userDao.create(user);
+        tx.commit();
+
+        tx.begin();
+        userDao.delete(user);
+        tx.commit();
+
+        Assert.assertNull(userDao.find(user.getId()));
     }
 }
