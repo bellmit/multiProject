@@ -1,4 +1,4 @@
-package main.java.Domain;
+package Domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -21,12 +21,14 @@ public class Reservation implements Serializable {
 
     private Date date;
 
-    private DinnerType type;
+    private main.java.Domain.DinnerType type;
 
-    @OneToMany
-    private List<TimeSlot> timeSlots;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "reservation_id")
+    private List<main.java.Domain.TimeSlot> timeSlots;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "reservation_id")
     private List<Table> tables;
 
     public Reservation(int userID, int nrofPeople, Date date, DinnerType type, List<TimeSlot> timeSlots, List<Table> tables) {
