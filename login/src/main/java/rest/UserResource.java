@@ -1,6 +1,7 @@
 package rest;
 
 import domain.User;
+import exceptions.UserNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import service.UserService;
@@ -13,6 +14,7 @@ import java.net.URI;
 
 @Api("User")
 @Path("user")
+@Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 
     @Inject
@@ -20,15 +22,17 @@ public class UserResource {
 
     @GET
     @Path("{uuid}")
-    @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "Find a user by uuid")
     public Response find(@PathParam("uuid") String uuid) {
-        return Response.ok(userService.find(uuid)).build();
+        try {
+            return Response.ok(userService.find(uuid)).build();
+        } catch (UserNotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        }
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "Create a user")
     public Response add(User user) {
         userService.create(user);
@@ -37,7 +41,6 @@ public class UserResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "Edit a user")
     public Response edit(User user) {
         userService.edit(user);
@@ -46,11 +49,14 @@ public class UserResource {
 
     @DELETE
     @Path("{uuid}")
-    @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "Delete a user by uuid")
     public Response delete(@PathParam("uuid") String uuid) {
-        userService.delete(uuid);
-        return Response.ok().build();
+        try {
+            userService.delete(uuid);
+            return Response.ok().build();
+        } catch (UserNotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        }
     }
 
 }

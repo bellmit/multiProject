@@ -17,7 +17,7 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles = new ArrayList<>();
     private String firstName;
     private String lastName;
