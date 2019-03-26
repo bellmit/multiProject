@@ -11,6 +11,7 @@ public class DeliveryDaoJPA extends BaseDaoJPA<Delivery> implements data.interfa
         super(Delivery.class);
     }
 
+    @Override
     public List<Delivery> getAllDeliveries(){
         return getEm().createQuery("SELECT d FROM Delivery d", Delivery.class).getResultList();
     }

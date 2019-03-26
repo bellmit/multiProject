@@ -52,4 +52,12 @@ public class Delivery {
     public void setRoutes(List<Route> routes) {
         this.routes = routes;
     }
+
+    public void addRoute(Route route) {
+        this.routes.add(route);
+    }
+
+    public void removeRoute(Route route){
+        this.routes.remove(route);
+    }
 }
