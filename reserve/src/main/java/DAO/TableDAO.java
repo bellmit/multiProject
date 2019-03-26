@@ -1,6 +1,7 @@
-package main.java.DAO;
+package DAO;
 
-import main.java.Domain.Table;
+
+import Domain.Table;
 
 import java.util.ArrayList;
 import java.util.UUID;

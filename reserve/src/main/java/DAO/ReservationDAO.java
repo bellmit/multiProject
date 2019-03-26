@@ -1,6 +1,6 @@
-package main.java.DAO;
+package DAO;
 
-import main.java.Domain.Reservation;
+import Domain.Reservation;
 
 import java.util.ArrayList;
 import java.util.UUID;

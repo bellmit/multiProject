@@ -1,7 +1,7 @@
-package main.java.DAO;
+package DAO;
 
 
-import main.java.Domain.TimeSlot;
+import Domain.TimeSlot;
 
 import java.util.ArrayList;
 import java.util.UUID;

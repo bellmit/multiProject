@@ -5,9 +5,9 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "dinningtable")
+//@Table(name = "dinningtable")
 @NamedQueries({
-        @NamedQuery(name = "table.findById", query = "SELECT t FROM Table t where  t.id = :id")
+     //   @NamedQuery(name = "table.findById", query = "SELECT t FROM Table t where  t.id = :id")
 })
 public class Table implements Serializable {
 

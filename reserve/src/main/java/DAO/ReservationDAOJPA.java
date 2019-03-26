@@ -1,7 +1,7 @@
-package main.java.DAO;
+package DAO;
 
 
-import main.java.Domain.Reservation;
+import Domain.Reservation;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

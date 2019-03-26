@@ -1,7 +1,7 @@
-package main.java.DAO;
+package DAO;
 
 
-import main.java.Domain.TimeSlot;
+import Domain.TimeSlot;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
