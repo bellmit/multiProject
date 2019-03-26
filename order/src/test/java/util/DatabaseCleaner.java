@@ -9,7 +9,11 @@ import java.sql.SQLException;
 public class DatabaseCleaner {
 
     private static final Class<?>[] ENTITY_TYPES = {
-            Address.class
+            Address.class,
+            DeliveryOrder.class,
+            LocalOrder.class,
+            OrderStatus.class,
+            Product.class
     };
     private final EntityManager em;
 

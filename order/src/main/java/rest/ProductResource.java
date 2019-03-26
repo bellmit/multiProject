@@ -3,12 +3,13 @@ package rest;
 import domain.Product;
 import service.ProductService;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.UUID;
 
 @Path("product")
+@RequestScoped
 public class ProductResource {
     @Inject
     private ProductService as;
@@ -18,6 +19,7 @@ public class ProductResource {
     @Path("/new")
     public void newProduct(Product a) {
         as.create(a);
+        System.out.println("hoi");
     }
 
     @GET
