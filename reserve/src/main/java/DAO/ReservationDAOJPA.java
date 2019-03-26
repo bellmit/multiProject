@@ -46,4 +46,8 @@ public class ReservationDAOJPA implements ReservationDAO {
     public void editReservations(Reservation r){
         em.merge(r);
     }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
 }

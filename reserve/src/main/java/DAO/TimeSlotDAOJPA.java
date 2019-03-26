@@ -46,4 +46,8 @@ public class TimeSlotDAOJPA implements TimeSlotDAO{
     public void editTimeSlots(TimeSlot ts){
         em.merge(ts);
     }
+
+    public void setEm(EntityManager em){
+        this.em = em;
+    }
 }

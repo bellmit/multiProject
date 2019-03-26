@@ -46,4 +46,8 @@ public class TableDAOJPA implements TableDAO {
     public void editTables(Table t){
         em.merge(t);
     }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
 }
