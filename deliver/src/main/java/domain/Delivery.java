@@ -1,9 +1,7 @@
 package domain;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.List;
+import javax.persistence.*;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -11,16 +9,16 @@ public class Delivery {
     @Id
     private String deliveryId = UUID.randomUUID().toString();
     private String employeeId;
-    @ElementCollection
-    private List<String> orderIdList;
-    @ElementCollection
-    private List<Route> routes;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> orderIdList;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<Route> routes;
 
-    public Delivery(String employeeId, List<String> orderIdList) {
+    public Delivery(String employeeId, Set<String> orderIdList) {
         this.employeeId = employeeId;
         this.orderIdList = orderIdList;
     }
-    public Delivery(List<String> orderIdList) {
+    public Delivery(Set<String> orderIdList) {
         this.orderIdList = orderIdList;
     }
     public Delivery(){
@@ -39,19 +37,19 @@ public class Delivery {
         this.employeeId = employeeId;
     }
 
-    public List<String> getOrderIdList() {
+    public Set<String> getOrderIdList() {
         return orderIdList;
     }
 
-    public void setOrderIdList(List<String> orderIdList) {
+    public void setOrderIdList(Set<String> orderIdList) {
         this.orderIdList = orderIdList;
     }
 
-    public List<Route> getRoutes() {
+    public Set<Route> getRoutes() {
         return routes;
     }
 
-    public void setRoutes(List<Route> routes) {
+    public void setRoutes(Set<Route> routes) {
         this.routes = routes;
     }
 

@@ -3,8 +3,10 @@ package data;
 import data.interfaces.DeliveryDao;
 import domain.Delivery;
 
+import javax.ejb.Stateless;
 import java.util.List;
 
+@Stateless
 public class DeliveryDaoJPA extends BaseDaoJPA<Delivery> implements data.interfaces.DeliveryDao {
 
     public DeliveryDaoJPA() {

@@ -4,13 +4,14 @@ import domain.Delivery;
 import domain.Route;
 
 import java.util.List;
+import java.util.Set;
 
 public interface DeliveryService {
     Delivery getById(String id);
 
     List<Delivery> getByEmployeeId(String employeeId);
 
-    Delivery addDelivery(List<String> orderList);
+    Delivery addDelivery(Set<String> orderList);
 
     Delivery assignEmployee(String deliveryId, String employeeId);
 
@@ -18,9 +19,11 @@ public interface DeliveryService {
 
     void removeByEmployeeId(String employeeId);
 
-    Delivery editDelivery(String deliveryId, List<String> orderList);
+    Delivery editDelivery(String deliveryId, Set<String> orderList);
 
     Delivery addRoute(String deliveryId, Route route);
 
-    List<Route> getRoutes(String deliveryId);
+    Set<Route> getRoutes(String deliveryId);
+
+    List<Delivery> getAll();
 }

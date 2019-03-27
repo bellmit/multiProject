@@ -8,9 +8,9 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.util.Set;
 
-@Path("delivery")
+@Path("deliveries")
 public class DeliveryResource {
 
     private DeliveryService deliveryService;
@@ -18,6 +18,16 @@ public class DeliveryResource {
     @Inject
     public void setDeliveryService(DeliveryService deliveryService) {
         this.deliveryService = deliveryService;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAll(){
+        try{
+            return Response.ok(deliveryService.getAll()).build();
+        } catch (Exception e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @GET
@@ -55,7 +65,7 @@ public class DeliveryResource {
     @POST
     @Path("/add")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response post(@HeaderParam("orderList") List<String> orderList){
+    public Response post(@HeaderParam("orderList") Set<String> orderList){
         try{
             return Response.ok(deliveryService.addDelivery(orderList)).build();
         } catch (Exception e){
@@ -79,7 +89,7 @@ public class DeliveryResource {
     @Path("{id}/edit")
     @Produces(MediaType.APPLICATION_JSON)
     public Response editDelivery(@PathParam("id") String deliveryId,
-                                 @HeaderParam("orderList") List<String> orderList){
+                                 @HeaderParam("orderList") Set<String> orderList){
         try{
             return Response.ok(deliveryService.editDelivery(deliveryId, orderList)).build();
         } catch (Exception e){

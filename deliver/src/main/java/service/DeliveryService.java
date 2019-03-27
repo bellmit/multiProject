@@ -4,9 +4,12 @@ import data.interfaces.DeliveryDao;
 import domain.Delivery;
 import domain.Route;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Set;
 
+@Stateless
 public class DeliveryService implements service.interfaces.DeliveryService {
 
     private DeliveryDao deliveryDao;
@@ -29,7 +32,7 @@ public class DeliveryService implements service.interfaces.DeliveryService {
     }
 
     @Override
-    public List<Route> getRoutes(String deliveryId) {
+    public Set<Route> getRoutes(String deliveryId) {
         return deliveryDao.find(deliveryId).getRoutes();
     }
 
@@ -38,6 +41,11 @@ public class DeliveryService implements service.interfaces.DeliveryService {
         Delivery delivery = deliveryDao.find(deliveryId);
         delivery.setEmployeeId(employeeId);
         return deliveryDao.merge(delivery);
+    }
+
+    @Override
+    public List<Delivery> getAll() {
+        return deliveryDao.getAllDeliveries();
     }
 
     @Override
@@ -54,7 +62,7 @@ public class DeliveryService implements service.interfaces.DeliveryService {
     }
 
     @Override
-    public Delivery editDelivery(String deliveryId, List<String> orderList) {
+    public Delivery editDelivery(String deliveryId, Set<String> orderList) {
         Delivery delivery = deliveryDao.find(deliveryId);
         delivery.setOrderIdList(orderList);
         return deliveryDao.merge(delivery);
@@ -66,7 +74,7 @@ public class DeliveryService implements service.interfaces.DeliveryService {
     }
 
     @Override
-    public Delivery addDelivery(List<String> orderList) {
+    public Delivery addDelivery(Set<String> orderList) {
         Delivery delivery = new Delivery(orderList);
         return deliveryDao.persist(delivery);
     }
