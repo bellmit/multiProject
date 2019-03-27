@@ -1,10 +1,20 @@
 package domain;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
 @Embeddable
 public class Route {
+    @Column(name = "startLocation")
+    @AttributeOverrides({@AttributeOverride(name = "latitude", column = @Column(name = "latitude_start")),
+                         @AttributeOverride(name = "longitude", column = @Column(name = "longitude_start"))
+                        })
+    @Embedded
     private Location startLocation;
+    @Column(name = "endLocation")
+    @AttributeOverrides({@AttributeOverride(name = "latitude", column = @Column(name = "latitude_end")),
+                         @AttributeOverride(name = "longitude", column = @Column(name = "longitude_end"))
+                        })
+    @Embedded
     private Location endLocation;
 
     public Route(){}
