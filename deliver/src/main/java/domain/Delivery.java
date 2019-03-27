@@ -20,7 +20,9 @@ public class Delivery {
         this.employeeId = employeeId;
         this.orderIdList = orderIdList;
     }
-
+    public Delivery(List<String> orderIdList) {
+        this.orderIdList = orderIdList;
+    }
     public Delivery(){
 
     }
@@ -51,5 +53,13 @@ public class Delivery {
 
     public void setRoutes(List<Route> routes) {
         this.routes = routes;
+    }
+
+    public void addRoute(Route route) {
+        this.routes.add(route);
+    }
+
+    public void removeRoute(Route route){
+        this.routes.remove(route);
     }
 }

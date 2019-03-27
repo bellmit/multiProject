@@ -1,5 +1,5 @@
 plugins {
-    id 'war'
+    id 'java'
 }
 
 group 'com.proftaak'
@@ -12,10 +12,9 @@ repositories {
 }
 
 dependencies {
-    providedCompile 'javax:javaee-api:8.0.1-b5'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-war {
-    archiveName = 'delivery.war'
+task buildAll(type: GradleBuild) {
+    tasks = [ 'build' ]
 }
