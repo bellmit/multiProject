@@ -563,9 +563,7 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Gradle.BeforeRunTask" enabled="true" tasks="war" externalProjectPath="$PROJECT_DIR$/../deliver" vmOptions="" scriptParameters="" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="Gradle : com.proftaak : delivery.war" />
-        </option>
+        <option name="BuildArtifacts" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>

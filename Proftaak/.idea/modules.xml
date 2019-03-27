@@ -27,6 +27,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-513405334/com.proftaak.reserve.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-513405334/com.proftaak.reserve.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-513405334/com.proftaak.reserve.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-513405334/com.proftaak.reserve.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/proftaak.iml" filepath="$PROJECT_DIR$/.idea/modules/proftaak.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/proftaak.main.iml" filepath="$PROJECT_DIR$/.idea/modules/proftaak.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/proftaak.test.iml" filepath="$PROJECT_DIR$/.idea/modules/proftaak.test.iml" />
     </modules>
   </component>
 </project>
