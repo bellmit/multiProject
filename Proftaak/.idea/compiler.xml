@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="com.proftaak.deliver.main" target="1.8" />
+      <module name="com.proftaak.deliver.test" target="1.8" />
+      <module name="com.proftaak.logging.main" target="1.8" />
+      <module name="com.proftaak.logging.test" target="1.8" />
+      <module name="com.proftaak.login.main" target="1.8" />
+      <module name="com.proftaak.login.test" target="1.8" />
+      <module name="com.proftaak.monitoring.main" target="1.8" />
+      <module name="com.proftaak.monitoring.test" target="1.8" />
+      <module name="com.proftaak.order.main" target="1.8" />
+      <module name="com.proftaak.order.test" target="1.8" />
+      <module name="com.proftaak.payment.main" target="1.8" />
+      <module name="com.proftaak.payment.test" target="1.8" />
+      <module name="com.proftaak.promotion.main" target="1.8" />
+      <module name="com.proftaak.promotion.test" target="1.8" />
+      <module name="com.proftaak.reserve.main" target="1.8" />
+      <module name="com.proftaak.reserve.test" target="1.8" />
+      <module name="proftaak.main" target="1.8" />
+      <module name="proftaak.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
