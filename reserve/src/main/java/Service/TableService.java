@@ -1,9 +1,10 @@
-package main.java.Service;
+package Service;
 
 
-import main.java.DAO.JPA;
-import main.java.DAO.TableDAO;
-import main.java.Domain.Table;
+
+import DAO.JPA;
+import DAO.TableDAO;
+import Domain.Table;
 
 import javax.ejb.Stateless;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class TableService {
         return tableDAO.getTables();
     }
 
-    public Table findById(UUID id) {
+    public Table findById(String id) {
         return tableDAO.findById(id);
     }
 

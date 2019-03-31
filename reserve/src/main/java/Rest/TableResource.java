@@ -1,9 +1,8 @@
-package main.java.Rest;
+package Rest;
 
 
-
-import main.java.Domain.Table;
-import main.java.Service.TableService;
+import Domain.Table;
+import Service.TableService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -27,7 +26,7 @@ public class TableResource {
     @GET
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response find(@PathParam("uuid") UUID uuid) {
+    public Response find(@PathParam("uuid") String uuid) {
         return Response.ok(ts.findById(uuid)).build();
     }
 
@@ -42,7 +41,7 @@ public class TableResource {
     @DELETE
     @Path("remove/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@PathParam("uuid") UUID uuid) {
+    public Response delete(@PathParam("uuid") String uuid) {
         Table t = ts.findById(uuid);
         ts.removeTable(t);
         return Response.ok().build();

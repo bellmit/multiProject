@@ -1,6 +1,7 @@
 package DAO;
 
 
+import Domain.Reservation;
 import Domain.Table;
 
 import javax.ejb.Stateless;
@@ -9,13 +10,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Stateless
 @JPA
 public class TableDAOJPA implements TableDAO {
 
-    @PersistenceContext(unitName = "reservationPU")
+    @PersistenceContext(unitName = "nldPU")
     private EntityManager em;
 
     @Override
@@ -29,10 +31,9 @@ public class TableDAOJPA implements TableDAO {
     }
 
     @Override
-    public Table findById(UUID id) {
-        TypedQuery<Table> query = em.createNamedQuery("table.findById", Table.class);
-        query.setParameter("id",id);
-        return query.getSingleResult();
+    public Table findById(String id) {
+        Table t = em.find(Table.class,id);
+        return t;
 
     }
 
@@ -45,6 +46,25 @@ public class TableDAOJPA implements TableDAO {
     @Override
     public void editTables(Table t){
         em.merge(t);
+    }
+
+    public List<Table> getAllAvailable(){
+        List<Table> allTables = getTables();
+        ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
+        List<Reservation> reservations = reservationDAOJPA.getReservations();
+        List<Table> nonReservedTables = new ArrayList<>();
+        for (Table t : allTables) {
+            int count = 0;
+            for (Reservation r: reservations) {
+               if(!r.getTables().contains(t)){
+                   count++;
+               }
+            }
+            if(count==reservations.size()){
+                nonReservedTables.add(t);
+            }
+        }
+        return nonReservedTables;
     }
 
     public void setEm(EntityManager em) {

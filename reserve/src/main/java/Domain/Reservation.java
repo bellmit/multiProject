@@ -9,17 +9,18 @@ import java.util.UUID;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "reservation.findById", query = "SELECT r FROM Reservation r where  r.id = :id")
+        @NamedQuery(name = "reservation.findById", query = "SELECT r FROM Reservation r where  r.uuid = :id")
 })
 public class Reservation implements Serializable {
 
     @Id
-    private UUID id;
+    private String uuid;
 
     private int userID;
 
     private int nrofPeople;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
     private DinnerType type;
@@ -33,7 +34,7 @@ public class Reservation implements Serializable {
     private List<Table> tables;
 
     public Reservation(int userID, int nrofPeople, Date date, DinnerType type, List<TimeSlot> timeSlots, List<Table> tables) {
-        this.id = UUID.randomUUID();
+        this.uuid = UUID.randomUUID().toString();
         this.userID = userID;
         this.nrofPeople = nrofPeople;
         this.date = date;
@@ -45,13 +46,10 @@ public class Reservation implements Serializable {
     public Reservation() {
     }
 
-    public UUID getId() {
-        return id;
+    public String getId() {
+        return uuid;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public int getUserID() {
         return userID;
@@ -99,5 +97,19 @@ public class Reservation implements Serializable {
 
     public void setTables(List<Table> tables) {
         this.tables = tables;
+    }
+
+    public void Notify(Reservation r){
+        Date startTime = new Date();
+        if(r.getDate().getYear()==new Date().getYear()&&r.getDate().getMonth()==new Date().getMonth()&&
+                r.getDate().getDay()== new Date().getDay()){
+            for (TimeSlot ts: r.getTimeSlots()) {
+                long difference = ts.getStartTime().getHours() - new Date().getHours();
+                long diffHours = difference / (60 * 60 * 1000) % 24;
+                if(difference>=3){
+                    //Send notification
+                }
+            }
+        }
     }
 }

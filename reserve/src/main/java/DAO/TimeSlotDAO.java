@@ -12,7 +12,7 @@ public interface TimeSlotDAO {
 
     void removeTimeSlot(TimeSlot timeSlot);
 
-    TimeSlot findById(UUID id);
+    TimeSlot findById(String id);
 
     ArrayList<TimeSlot> getTimeSlots();
 

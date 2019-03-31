@@ -1,8 +1,7 @@
-package main.java.Rest;
+package Rest;
 
-
-import main.java.Domain.Reservation;
-import main.java.Service.ReservationService;
+import Domain.Reservation;
+import Service.ReservationService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -27,7 +26,7 @@ public class ReservationResource {
     @GET
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response find(@PathParam("uuid") UUID uuid) {
+    public Response find(@PathParam("uuid") String uuid) {
         return Response.ok(rs.findById(uuid)).build();
     }
 
@@ -42,7 +41,7 @@ public class ReservationResource {
     @DELETE
     @Path("remove/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@PathParam("uuid") UUID uuid) {
+    public Response delete(@PathParam("uuid") String uuid) {
         Reservation r = rs.findById(uuid);
         rs.removeReservation(r);
         return Response.ok().build();

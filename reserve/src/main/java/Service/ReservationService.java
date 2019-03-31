@@ -1,10 +1,8 @@
-package main.java.Service;
+package Service;
 
-
-
-import main.java.DAO.JPA;
-import main.java.DAO.ReservationDAO;
-import main.java.Domain.Reservation;
+import DAO.JPA;
+import DAO.ReservationDAO;
+import Domain.Reservation;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -30,7 +28,7 @@ public class ReservationService {
         return reservationDAO.getReservations();
     }
 
-    public Reservation findById(UUID id) {
+    public Reservation findById(String id) {
         return reservationDAO.findById(id);
     }
 

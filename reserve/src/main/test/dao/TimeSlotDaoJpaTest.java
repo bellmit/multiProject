@@ -45,7 +45,7 @@ public class TimeSlotDaoJpaTest {
         Assert.assertEquals("newname",dbtimeslot.getName());
 
     }
-
+    /*
     @Test
     public void removeTest(){
         TimeSlot ts = new TimeSlot("test2",new Date(),new Date());
@@ -54,5 +54,5 @@ public class TimeSlotDaoJpaTest {
             timeSlotDAOJPA.removeTimeSlot(t);
         }
         Assert.assertEquals(timeSlotDAOJPA.getTimeSlots().size(),0);
-    }
+    }*/
 }

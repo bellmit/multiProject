@@ -1,7 +1,9 @@
-package main.java.Rest;
+package Rest;
 
-import main.java.Domain.TimeSlot;
-import main.java.Service.TimeSlotService;
+
+
+import Domain.TimeSlot;
+import Service.TimeSlotService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -25,7 +27,7 @@ public class TimeSlotResource {
     @GET
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response find(@PathParam("uuid") UUID uuid) {
+    public Response find(@PathParam("uuid") String uuid) {
         return Response.ok(tss.findById(uuid)).build();
     }
 
@@ -40,7 +42,7 @@ public class TimeSlotResource {
     @DELETE
     @Path("remove/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@PathParam("uuid") UUID uuid) {
+    public Response delete(@PathParam("uuid") String uuid) {
         TimeSlot ts = tss.findById(uuid);
         tss.removeTimeSlot(ts);
         return Response.ok().build();

@@ -11,7 +11,7 @@ public interface ReservationDAO {
 
     void removeReservation(Reservation reservation);
 
-    Reservation findById(UUID id);
+    Reservation findById(String id);
 
     ArrayList<Reservation> getReservations();
 

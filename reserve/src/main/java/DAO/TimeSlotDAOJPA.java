@@ -15,7 +15,7 @@ import java.util.UUID;
 @JPA
 public class TimeSlotDAOJPA implements TimeSlotDAO{
 
-    @PersistenceContext(unitName = "reservationPU")
+    @PersistenceContext(unitName = "nldPU")
     private EntityManager em;
 
     @Override
@@ -29,7 +29,7 @@ public class TimeSlotDAOJPA implements TimeSlotDAO{
     }
 
     @Override
-    public TimeSlot findById(UUID id) {
+    public TimeSlot findById(String id) {
         TypedQuery<TimeSlot> query = em.createNamedQuery("timeslot.findById", TimeSlot.class);
         query.setParameter("id",id);
         return query.getSingleResult();

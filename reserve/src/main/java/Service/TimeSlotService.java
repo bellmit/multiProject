@@ -1,9 +1,9 @@
-package main.java.Service;
+package Service;
 
+import DAO.JPA;
+import DAO.TimeSlotDAO;
+import Domain.TimeSlot;
 
-import main.java.DAO.JPA;
-import main.java.DAO.TimeSlotDAO;
-import main.java.Domain.TimeSlot;
 
 import javax.ejb.Stateless;
 import javax.ejb.Stateless;
@@ -30,7 +30,7 @@ public class TimeSlotService {
         return tsDAO.getTimeSlots();
     }
 
-    public TimeSlot findById(UUID id) {
+    public TimeSlot findById(String id) {
         return tsDAO.findById(id);
     }
 

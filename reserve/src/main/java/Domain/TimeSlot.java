@@ -1,9 +1,6 @@
 package Domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
@@ -15,16 +12,18 @@ import java.util.UUID;
 public class TimeSlot implements Serializable {
 
     @Id
-    private UUID id;
+    private String id;
 
     private String name;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
 
     public TimeSlot(String name, Date startTime, Date endTime) {
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -33,14 +32,10 @@ public class TimeSlot implements Serializable {
     public TimeSlot() {
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
+    
     public String getName() {
         return name;
     }

@@ -6,20 +6,20 @@ import java.util.UUID;
 
 @Entity
 @javax.persistence.Table(name = "dinningtable")
-@NamedQueries({
-        @NamedQuery(name = "table.findById", query = "SELECT t FROM Table t where  t.id = :id")
-})
+//@NamedQueries({
+//        @NamedQuery(name = "table.findById", query = "SELECT t FROM dinningtable t where  t.id = :id")
+//})
 public class Table implements Serializable {
 
     @Id
-    private UUID id;
+    private String id;
 
     private int tableNumber;
 
     private int nrofSeats;
 
     public Table(int tableNumber, int nrofSeats) {
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
         this.tableNumber = tableNumber;
         this.nrofSeats = nrofSeats;
     }
@@ -27,13 +27,10 @@ public class Table implements Serializable {
     public Table() {
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public int getTableNumber() {
         return tableNumber;

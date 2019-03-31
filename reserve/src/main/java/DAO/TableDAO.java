@@ -12,7 +12,7 @@ public interface TableDAO {
 
     void removeTable (Table table);
 
-    Table findById(UUID id);
+    Table findById(String id);
 
     ArrayList<Table> getTables();
 
