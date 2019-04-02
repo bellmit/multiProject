@@ -5,8 +5,7 @@ import domain.User;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.NotFoundException;
 
 @Stateless
 public class UserService {
@@ -21,7 +20,7 @@ public class UserService {
     public void delete(String uuid) {
         User user = userDao.find(uuid);
         if (user == null) {
-            throw new WebApplicationException("User not found", Response.Status.NOT_FOUND);
+            throw new NotFoundException("User not found");
         }
         userDao.delete(user);
     }
@@ -29,7 +28,7 @@ public class UserService {
     public User find(String uuid) {
         User user = userDao.find(uuid);
         if (user == null) {
-            throw new WebApplicationException("User not found", Response.Status.NOT_FOUND);
+            throw new NotFoundException("User not found");
         }
         return user;
     }
@@ -41,7 +40,7 @@ public class UserService {
     public User findByEmail(String email) {
         User user = userDao.findByEmail(email);
         if (user == null) {
-            throw new WebApplicationException("User not found", Response.Status.NOT_FOUND);
+            throw new NotFoundException("User not found");
         }
         return user;
     }

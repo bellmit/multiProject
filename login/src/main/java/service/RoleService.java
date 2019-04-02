@@ -5,8 +5,7 @@ import domain.Role;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.NotFoundException;
 
 @Stateless
 public class RoleService {
@@ -21,7 +20,7 @@ public class RoleService {
     public void delete(String uuid) {
         Role role = roleDao.find(uuid);
         if (role == null) {
-            throw new WebApplicationException("Role not found", Response.Status.NOT_FOUND);
+            throw new NotFoundException("User not found");
         }
         roleDao.delete(role);
     }
@@ -29,7 +28,7 @@ public class RoleService {
     public Role find(String uuid) {
         Role role = roleDao.find(uuid);
         if (role == null) {
-            throw new WebApplicationException("Role not found", Response.Status.NOT_FOUND);
+            throw new NotFoundException("User not found");
         }
         return role;
     }
