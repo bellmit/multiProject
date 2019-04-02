@@ -1,6 +1,7 @@
 package dao;
 
-import DAO.ReservationDAOJPA;
+import DAO.JPA.ReservationDAOJPA;
+import DAO.JPA.TimeSlotDAOJPA;
 import Domain.DinnerType;
 import Domain.DinningTable;
 import Domain.Reservation;
@@ -9,14 +10,18 @@ import Domain.TimeSlot;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import util.DatabaseCleaner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ReservationDaoJpaTest {
 
@@ -27,11 +32,11 @@ public class ReservationDaoJpaTest {
 
     @Before
     public void setUp() {
-        //try {
-        //    new DatabaseCleaner(emf.createEntityManager()).clean();
-        //} catch (SQLException ex) {
-        //    Logger.getLogger(TimeSlotDAOJPA.class.getName()).log(Level.SEVERE, null, ex);
-        //}
+        try {
+            new DatabaseCleaner(emf.createEntityManager()).clean();
+        } catch (SQLException ex) {
+            Logger.getLogger(TimeSlotDAOJPA.class.getName()).log(Level.SEVERE, null, ex);
+        }
         em = emf.createEntityManager();
         tx = em.getTransaction();
 
@@ -49,16 +54,16 @@ public class ReservationDaoJpaTest {
         timeSlots.add(ts);
         dinningTables.add(dinningTable);
         Reservation reservation = new Reservation(1,3,new Date(), DinnerType.Singlecourse,timeSlots, dinningTables);
-        reservationDAOJPA.addReservation(reservation);
+        reservationDAOJPA.create(reservation);
         tx.commit();
         Reservation dbReservation = null;
-        dbReservation = reservationDAOJPA.findById(reservation.getId());
+        dbReservation = reservationDAOJPA.find(reservation.getId());
         Assert.assertEquals(reservation,dbReservation);
         reservation.setNrofPeople(12);
         tx.begin();
-        reservationDAOJPA.editReservations(reservation);
+        reservationDAOJPA.edit(reservation);
         tx.commit();
-        dbReservation = reservationDAOJPA.findById(reservation.getId());
+        dbReservation = reservationDAOJPA.find(reservation.getId());
         Assert.assertEquals(12,dbReservation.getNrofPeople());
 
     }
@@ -73,11 +78,11 @@ public class ReservationDaoJpaTest {
         timeSlots2.add(ts2);
         tables2.add(dinningTable2);
         Reservation reservation2 = new Reservation(1,3,new Date(), DinnerType.Singlecourse,timeSlots2,tables2);
-        reservationDAOJPA.addReservation(reservation2);
+        reservationDAOJPA.create(reservation2);
         tx.commit();
         for (Reservation r: reservationDAOJPA.getReservations()) {
             tx.begin();
-            reservationDAOJPA.removeReservation(r);
+            reservationDAOJPA.delete(r);
             tx.commit();
         }
         Assert.assertEquals(reservationDAOJPA.getReservations().size(),0);

@@ -15,23 +15,40 @@ public class ReservationService {
     private ReservationDAO reservationDAO;
 
     public void addReservation(Reservation reservation) {
-        reservationDAO.addReservation(reservation);
+        if(reservation == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        reservationDAO.create(reservation);
     }
 
     public void removeReservation(Reservation reservation) {
-        reservationDAO.removeReservation(reservation);
+        if(reservation == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        reservationDAO.delete(reservation);
     }
 
     public ArrayList<Reservation> getReservations() {
-        return reservationDAO.getReservations();
+        ArrayList<Reservation> reservations = reservationDAO.getReservations();
+        if(reservations==null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        return reservations;
     }
 
     public Reservation findById(String id) {
-        return reservationDAO.findById(id);
+        Reservation r = reservationDAO.find(id);
+        if(r == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        return r;
     }
 
     public void editReservation(Reservation reservation){
-        reservationDAO.editReservations(reservation);
+        if(reservation == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        reservationDAO.edit(reservation);
     }
     public ReservationService() {
     }

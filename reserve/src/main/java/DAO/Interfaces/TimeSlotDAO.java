@@ -6,15 +6,9 @@ import Domain.TimeSlot;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public interface TimeSlotDAO {
+public interface TimeSlotDAO extends  BaseDAO<TimeSlot>{
 
-    void addTimeSlot(TimeSlot timeSlot);
-
-    void removeTimeSlot(TimeSlot timeSlot);
-
-    TimeSlot findById(String id);
 
     ArrayList<TimeSlot> getTimeSlots();
 
-    void editTimeSlots(TimeSlot ts);
 }

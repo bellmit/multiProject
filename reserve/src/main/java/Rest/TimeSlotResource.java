@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Path("timeslot")
@@ -21,9 +22,6 @@ public class TimeSlotResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
     public void addTimeSlot(TimeSlot ts) {
-        if(ts == null){
-            throw new javax.ws.rs.NotFoundException();
-        }
         tss.addTimeSlot(ts);
     }
 
@@ -32,19 +30,20 @@ public class TimeSlotResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("uuid") String uuid) {
         TimeSlot ts = tss.findById(uuid);
-        if (ts == null){
-            throw new javax.ws.rs.NotFoundException();
-        }
         return Response.ok(tss.findById(uuid)).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response find() {
+        ArrayList<TimeSlot> timeSlots = tss.getTimeSlots();
+        return Response.ok(timeSlots).build();
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response edit(TimeSlot ts) {
-        if(ts == null){
-            throw new javax.ws.rs.NotFoundException();
-        }
         tss.edit(ts);
         return Response.ok().build();
     }
@@ -54,9 +53,6 @@ public class TimeSlotResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("uuid") String uuid) {
         TimeSlot ts = tss.findById(uuid);
-        if(ts == null){
-            throw new javax.ws.rs.NotFoundException();
-        }
         tss.removeTimeSlot(ts);
         return Response.noContent().build();
     }

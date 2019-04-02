@@ -1,7 +1,7 @@
 package dao;
 
-import DAO.TableDAOJPA;
-import DAO.TimeSlotDAOJPA;
+import DAO.JPA.TableDAOJPA;
+import DAO.JPA.TimeSlotDAOJPA;
 import Domain.DinningTable;
 import org.junit.Assert;
 import org.junit.Before;
@@ -41,15 +41,15 @@ public class DinningTableDaoJpaTest {
     public void editandCreateTest(){
         tx.begin();
         DinningTable dinningTable = new DinningTable(1,6);
-        tableDAOJPA.addTable(dinningTable);
+        tableDAOJPA.create(dinningTable);
         tx.commit();
         tx.begin();
-        DinningTable dbDinningTable = tableDAOJPA.findById(dinningTable.getId());
+        DinningTable dbDinningTable = tableDAOJPA.find(dinningTable.getId());
         Assert.assertEquals(dinningTable, dbDinningTable);
         dinningTable.setNrofSeats(12);
-        tableDAOJPA.editTables(dinningTable);
+        tableDAOJPA.edit(dinningTable);
         tx.commit();
-        dbDinningTable = tableDAOJPA.findById(dinningTable.getId());
+        dbDinningTable = tableDAOJPA.find(dinningTable.getId());
         Assert.assertEquals(12, dbDinningTable.getNrofSeats());
 
     }
@@ -58,11 +58,11 @@ public class DinningTableDaoJpaTest {
     public void removeTest(){
         tx.begin();
         DinningTable dinningTable2 = new DinningTable(2,4);
-        tableDAOJPA.addTable(dinningTable2);
+        tableDAOJPA.create(dinningTable2);
         tx.commit();
         for (DinningTable t: tableDAOJPA.getTables()) {
             tx.begin();
-            tableDAOJPA.removeTable(t);
+            tableDAOJPA.delete(t);
             tx.commit();
         }
         Assert.assertEquals(tableDAOJPA.getTables().size(),0);

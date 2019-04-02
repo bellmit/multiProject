@@ -1,4 +1,4 @@
-package DAO;
+package DAO.JPA;
 
 
 import DAO.Interfaces.TimeSlotDAO;
@@ -12,27 +12,13 @@ import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 
 @Stateless
-public class TimeSlotDAOJPA implements TimeSlotDAO {
+public class TimeSlotDAOJPA extends BaseDAOJPA<TimeSlot> implements TimeSlotDAO {
 
     @PersistenceContext(unitName = "nldPU")
     private EntityManager em;
 
-    @Override
-    public void addTimeSlot(TimeSlot ts) {
-        em.persist(ts);
-    }
-
-    @Override
-    public void removeTimeSlot(TimeSlot ts) {
-        em.remove(ts);
-    }
-
-    @Override
-    public TimeSlot findById(String id) {
-        TypedQuery<TimeSlot> query = em.createNamedQuery("timeslot.findById", TimeSlot.class);
-        query.setParameter("id",id);
-        return query.getSingleResult();
-
+    public TimeSlotDAOJPA() {
+        super(TimeSlot.class);
     }
 
     @Override
@@ -41,12 +27,12 @@ public class TimeSlotDAOJPA implements TimeSlotDAO {
         return  new ArrayList<>(q.getResultList());
     }
 
-    @Override
-    public void editTimeSlots(TimeSlot ts){
-        em.merge(ts);
-    }
-
     public void setEm(EntityManager em){
         this.em = em;
+    }
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 }

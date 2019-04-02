@@ -2,19 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b95adc51-385c-4fdb-a003-f65b5f5fbad1" name="Default Changelist" comment="Added dependicies">
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/JPA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ReservationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/ReservationDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ReservationDAOColl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ReservationDAOJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/ReservationDAOJPA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TableDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/TableDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TableDAOColl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TableDAOJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TableDAOJPA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TimeSlotDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/TimeSlotDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TimeSlotDAOColl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TimeSlotDAOJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/TimeSlotDAOJPA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/BaseDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/JPA/BaseDAOJPA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/ReservationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/ReservationDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/TableDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/TableDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/TimeSlotDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Interfaces/TimeSlotDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/ReservationDAOJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/JPA/ReservationDAOJPA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TableDAOJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/JPA/TableDAOJPA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/TimeSlotDAOJPA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/JPA/TimeSlotDAOJPA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Rest/ReservationResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Rest/ReservationResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Rest/TableResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Rest/TableResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Rest/TimeSlotResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Rest/TimeSlotResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/ReservationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Service/TableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/TableService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Service/TimeSlotService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/TimeSlotService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Java/dao/DinningTableDaoJpaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Java/dao/DinningTableDaoJpaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Java/dao/ReservationDaoJpaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Java/dao/ReservationDaoJpaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Java/dao/TimeSlotDaoJpaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Java/dao/TimeSlotDaoJpaTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -94,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Service/ReservationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+            <state relative-caret-position="350">
+              <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,24 +109,44 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DAO/Interfaces/ReservationDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Rest/TableResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+            <state relative-caret-position="231">
+              <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#433#434#0" expanded="true" />
+                <element signature="e#463#464#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DAO/Interfaces/TableDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/DAO/JPA/ReservationDAOJPA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+            <state relative-caret-position="231">
+              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#629#630#0" expanded="true" />
+                <element signature="e#656#657#0" expanded="true" />
+                <element signature="e#2013#2014#0" expanded="true" />
+                <element signature="e#2040#2041#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Rest/TimeSlotResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#466#467#0" expanded="true" />
+                <element signature="e#501#502#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,8 +155,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Service/TableService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+            <state relative-caret-position="418">
+              <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -140,22 +165,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DAO/Interfaces/TimeSlotDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Service/TimeSlotService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+            <state relative-caret-position="190">
+              <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,10 +177,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DAO/ReservationDAOJPA.java">
+        <entry file="file://$PROJECT_DIR$/src/test/Java/dao/ReservationDaoJpaTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="411">
+              <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -176,28 +189,42 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DAO/TableDAOJPA.java">
+        <entry file="file://$PROJECT_DIR$/src/test/Java/dao/TimeSlotDaoJpaTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+            <state relative-caret-position="527">
+              <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#512#513#0" expanded="true" />
-                <element signature="e#545#546#0" expanded="true" />
-                <element signature="e#1716#1717#0" expanded="true" />
-                <element signature="e#1744#1745#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DAO/TimeSlotDAOJPA.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Rest/ReservationResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="367">
+              <caret line="39" column="5" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#484#485#0" expanded="true" />
+                <element signature="e#520#521#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/DAO/JPA/TimeSlotDAOJPA.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#507#508#0" expanded="true" />
+                <element signature="e#534#535#0" expanded="true" />
+                <element signature="e#1276#1277#0" expanded="true" />
+                <element signature="e#1303#1304#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -210,6 +237,7 @@
       <list>
         <option value="cdi.beans_1_1" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -247,19 +275,28 @@
         <option value="$PROJECT_DIR$/src/main/test/dao/ReservationDaoJpaTest.java" />
         <option value="$PROJECT_DIR$/src/main/test/dao/TimeSlotDaoJpaTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Domain/Reservation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Rest/ReservationResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Rest/TableResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Rest/TimeSlotResource.java" />
-        <option value="$PROJECT_DIR$/src/test/Java/dao/ReservationDaoJpaTest.java" />
         <option value="$PROJECT_DIR$/src/test/Java/dao/TableDaoJpaTest.java" />
-        <option value="$PROJECT_DIR$/src/test/Java/dao/TimeSlotDaoJpaTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAO/JPA.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAO/ReservationDAOJPA.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAO/TableDAOJPA.java" />
         <option value="$PROJECT_DIR$/src/main/java/DAO/TimeSlotDAOJPA.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DAO/Interfaces/BaseDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DAO/Interfaces/ReservationDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DAO/Interfaces/TableDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DAO/Interfaces/TimeSlotDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DAO/JPA/BaseDAOJPA.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DAO/JPA/TableDAOJPA.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DAO/JPA/ReservationDAOJPA.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DAO/JPA/TimeSlotDAOJPA.java" />
+        <option value="$PROJECT_DIR$/src/test/Java/dao/DinningTableDaoJpaTest.java" />
+        <option value="$PROJECT_DIR$/src/test/Java/dao/ReservationDaoJpaTest.java" />
+        <option value="$PROJECT_DIR$/src/test/Java/dao/TimeSlotDaoJpaTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Service/ReservationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/Service/TableService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Rest/ReservationResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Rest/TableResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/Service/TimeSlotService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Rest/TimeSlotResource.java" />
       </list>
     </option>
   </component>
@@ -307,23 +344,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="DAO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="reserve" type="b2602c69:ProjectViewProjectNode" />
-              <item name="reserve" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="DAO" type="462c0819:PsiDirectoryNode" />
-              <item name="Interfaces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="reserve" type="b2602c69:ProjectViewProjectNode" />
-              <item name="reserve" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="reserve" type="b2602c69:ProjectViewProjectNode" />
@@ -381,7 +401,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554197794769" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554207278045" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -543,7 +563,7 @@
       <workItem from="1552499235163" duration="3000" />
       <workItem from="1553158394141" duration="3365000" />
       <workItem from="1553592052342" duration="10874000" />
-      <workItem from="1554028421741" duration="11171000" />
+      <workItem from="1554028421741" duration="13705000" />
     </task>
     <task id="LOCAL-00001" summary="Added dependicies">
       <created>1553161218900</created>
@@ -588,7 +608,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25413000" />
+    <option name="totallyTimeSpent" value="27947000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -623,7 +643,7 @@
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Gradle" order="6" visible="true" weight="0.32995737" />
+      <window_info anchor="right" id="Gradle" order="6" weight="0.32995737" />
       <window_info anchor="right" id="Database" order="7" weight="0.32995737" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
@@ -739,30 +759,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Rest/ReservationResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="59" column="43" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Rest/Rest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/Java/dao/TimeSlotDaoJpaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -783,56 +783,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Domain/DinningTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="45" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/Java/dao/ReservationDaoJpaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Rest/TableResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/Java/dao/DinningTableDaoJpaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="62" column="48" lean-forward="true" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Rest/TimeSlotResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DAO/JPA.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -846,7 +796,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/DAO/Interfaces/TableDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <caret line="7" column="54" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -856,51 +806,128 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/DAO/Interfaces/TimeSlotDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DAO/ReservationDAOJPA.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/DAO/JPA/BaseDAOJPA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="231">
+          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#182#183#0" expanded="true" />
+            <element signature="e#221#222#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#379#380#0" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
+            <element signature="e#488#489#0" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#584#585#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
+            <element signature="e#683#684#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DAO/TableDAOJPA.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/DAO/Interfaces/BaseDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#512#513#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#1716#1717#0" expanded="true" />
-            <element signature="e#1744#1745#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DAO/TimeSlotDAOJPA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DAO/Interfaces/ReservationDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        <state relative-caret-position="153">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Domain/DinningTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DAO/JPA/TableDAOJPA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="33" column="68" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+            <element signature="e#547#548#0" expanded="true" />
+            <element signature="e#1716#1717#0" expanded="true" />
+            <element signature="e#1744#1745#0" expanded="true" />
+            <element signature="e#1973#1974#0" expanded="true" />
+            <element signature="e#2000#2001#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DAO/JPA/ReservationDAOJPA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#2013#2014#0" expanded="true" />
+            <element signature="e#2040#2041#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/DAO/JPA/TimeSlotDAOJPA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#1276#1277#0" expanded="true" />
+            <element signature="e#1303#1304#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Java/dao/DinningTableDaoJpaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Java/dao/ReservationDaoJpaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Java/dao/TimeSlotDaoJpaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -909,8 +936,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Service/ReservationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        <state relative-caret-position="350">
+          <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -919,20 +946,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Service/TableService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+        <state relative-caret-position="418">
+          <caret line="50" column="54" selection-start-line="50" selection-start-column="54" selection-end-line="50" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Service/TimeSlotService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Rest/ReservationResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        <state relative-caret-position="367">
+          <caret line="39" column="5" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#484#485#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Rest/TableResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#463#464#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Service/TimeSlotService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Rest/TimeSlotResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="39" column="36" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#466#467#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -17,23 +17,40 @@ public class TableService {
     private TableDAO tableDAO;
 
     public void addTable(DinningTable dinningTable) {
-        tableDAO.addTable(dinningTable);
+        if(dinningTable == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        tableDAO.create(dinningTable);
     }
 
     public void removeTable(DinningTable dinningTable) {
-        tableDAO.removeTable(dinningTable);
+        if(dinningTable == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        tableDAO.delete(dinningTable);
     }
 
     public ArrayList<DinningTable> getTables() {
-        return tableDAO.getTables();
+        ArrayList<DinningTable> dinningTables = tableDAO.getTables();
+        if(dinningTables == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        return dinningTables;
     }
 
     public DinningTable findById(String id) {
-        return tableDAO.findById(id);
+        DinningTable table = tableDAO.find(id);
+        if(table == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        return table;
     }
 
     public void edit(DinningTable dinningTable){
-        tableDAO.editTables(dinningTable);
+        if(dinningTable == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        tableDAO.edit(dinningTable);
     }
     public TableService() {
     }

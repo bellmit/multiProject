@@ -5,15 +5,8 @@ import Domain.DinningTable;
 
 import java.util.ArrayList;
 
-public interface TableDAO {
-
-    void addTable(DinningTable dinningTable);
-
-    void removeTable (DinningTable dinningTable);
-
-    DinningTable findById(String id);
+public interface TableDAO extends BaseDAO<DinningTable>  {
 
     ArrayList<DinningTable> getTables();
 
-    void editTables(DinningTable dinningTable);
 }

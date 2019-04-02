@@ -5,16 +5,8 @@ import Domain.Reservation;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public interface ReservationDAO {
-
-    void addReservation(Reservation reservation);
-
-    void removeReservation(Reservation reservation);
-
-    Reservation findById(String id);
+public interface ReservationDAO  extends  BaseDAO<Reservation>{
 
     ArrayList<Reservation> getReservations();
-
-    void editReservations(Reservation reservation);
 
 }

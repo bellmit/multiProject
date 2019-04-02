@@ -1,4 +1,4 @@
-package DAO;
+package DAO.JPA;
 
 
 import DAO.Interfaces.ReservationDAO;
@@ -16,38 +16,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-public class ReservationDAOJPA implements ReservationDAO {
+public class ReservationDAOJPA extends BaseDAOJPA<Reservation> implements ReservationDAO {
 
     @PersistenceContext(unitName = "nldPU")
     private EntityManager em;
 
-    @Override
-    public void addReservation(Reservation reservation) {
-        em.persist(reservation);
-    }
-
-    @Override
-    public void removeReservation(Reservation reservation) {
-        em.remove(reservation);
-    }
-
-    @Override
-    public Reservation findById(String id) {
-        TypedQuery<Reservation> query = em.createNamedQuery("reservation.findById", Reservation.class);
-        query.setParameter("id",id);
-        return query.getSingleResult();
-
+    public ReservationDAOJPA() {
+        super(Reservation.class);
     }
 
     @Override
     public ArrayList<Reservation> getReservations() {
         Query q = em.createQuery("SELECT r from Reservation r");
         return  new ArrayList<>(q.getResultList());
-    }
-
-    @Override
-    public void editReservations(Reservation r){
-        em.merge(r);
     }
 
     public Reservation addTable(Reservation r, DinningTable t){
@@ -87,7 +68,13 @@ public class ReservationDAOJPA implements ReservationDAO {
         em.persist(r);
         return r;
     }
+
     public void setEm(EntityManager em) {
         this.em = em;
+    }
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 }

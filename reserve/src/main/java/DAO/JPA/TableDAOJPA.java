@@ -1,4 +1,4 @@
-package DAO;
+package DAO.JPA;
 
 
 import DAO.Interfaces.TableDAO;
@@ -13,26 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-public class TableDAOJPA implements TableDAO {
+public class TableDAOJPA extends BaseDAOJPA<DinningTable> implements TableDAO {
 
     @PersistenceContext(unitName = "nldPU")
     private EntityManager em;
 
-    @Override
-    public void addTable(DinningTable dinningTable) {
-        em.persist(dinningTable);
-    }
-
-    @Override
-    public void removeTable(DinningTable dinningTable) {
-        em.remove(dinningTable);
-    }
-
-    @Override
-    public DinningTable findById(String id) {
-        DinningTable t = em.find(DinningTable.class,id);
-        return t;
-
+    public TableDAOJPA() {
+        super(DinningTable.class);
     }
 
     @Override
@@ -41,10 +28,6 @@ public class TableDAOJPA implements TableDAO {
         return  new ArrayList<>(q.getResultList());
     }
 
-    @Override
-    public void editTables(DinningTable t){
-        em.merge(t);
-    }
 
     public List<DinningTable> getAllAvailable(){
         List<DinningTable> allDinningTables = getTables();
@@ -67,5 +50,10 @@ public class TableDAOJPA implements TableDAO {
 
     public void setEm(EntityManager em) {
         this.em = em;
+    }
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 }

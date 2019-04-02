@@ -1,6 +1,6 @@
 package dao;
 
-import DAO.TimeSlotDAOJPA;
+import DAO.JPA.TimeSlotDAOJPA;
 import Domain.TimeSlot;
 import org.junit.Assert;
 import org.junit.Before;
@@ -37,15 +37,15 @@ public class TimeSlotDaoJpaTest {
     public void editandCreateTest(){
         tx.begin();
         TimeSlot ts = new TimeSlot("tets",new Date(),new Date());
-        timeSlotDAOJPA.addTimeSlot(ts);
+        timeSlotDAOJPA.create(ts);
         tx.commit();
-        TimeSlot dbtimeslot = timeSlotDAOJPA.findById(ts.getId());
+        TimeSlot dbtimeslot = timeSlotDAOJPA.find(ts.getId());
         Assert.assertEquals(dbtimeslot,ts);
         tx.begin();
         ts.setName("newname");
-        timeSlotDAOJPA.editTimeSlots(ts);
+        timeSlotDAOJPA.edit(ts);
         tx.commit();
-        dbtimeslot = timeSlotDAOJPA.findById(ts.getId());
+        dbtimeslot = timeSlotDAOJPA.find(ts.getId());
         Assert.assertEquals("newname",dbtimeslot.getName());
 
     }
@@ -54,11 +54,11 @@ public class TimeSlotDaoJpaTest {
     public void removeTest(){
         tx.begin();
         TimeSlot ts = new TimeSlot("test2",new Date(),new Date());
-        timeSlotDAOJPA.addTimeSlot(ts);
+        timeSlotDAOJPA.create(ts);
         tx.commit();
         for (TimeSlot t: timeSlotDAOJPA.getTimeSlots()) {
             tx.begin();
-            timeSlotDAOJPA.removeTimeSlot(t);
+            timeSlotDAOJPA.delete(t);
             tx.commit();
         }
         Assert.assertEquals(timeSlotDAOJPA.getTimeSlots().size(),0);
