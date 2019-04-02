@@ -1,7 +1,6 @@
 package rest;
 
 import domain.Role;
-import exceptions.RoleNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import service.RoleService;
@@ -24,11 +23,7 @@ public class RoleResource {
     @Path("{uuid}")
     @ApiOperation(value = "Find a role by uuid")
     public Response find(@PathParam("uuid") String uuid) {
-        try {
-            return Response.ok(roleService.find(uuid)).build();
-        } catch (RoleNotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
-        }
+        return Response.ok(roleService.find(uuid)).build();
     }
 
     @POST
@@ -51,11 +46,7 @@ public class RoleResource {
     @Path("{uuid}")
     @ApiOperation(value = "Delete a role by uuid")
     public Response delete(@PathParam("uuid") String uuid) {
-        try {
-            roleService.delete(uuid);
-            return Response.ok().build();
-        } catch (RoleNotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
-        }
+        roleService.delete(uuid);
+        return Response.ok().build();
     }
 }

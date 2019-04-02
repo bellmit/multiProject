@@ -1,7 +1,6 @@
 package rest;
 
 import domain.User;
-import exceptions.UserNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import service.UserService;
@@ -24,11 +23,14 @@ public class UserResource {
     @Path("{uuid}")
     @ApiOperation(value = "Find a user by uuid")
     public Response find(@PathParam("uuid") String uuid) {
-        try {
-            return Response.ok(userService.find(uuid)).build();
-        } catch (UserNotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
-        }
+        return Response.ok(userService.find(uuid)).build();
+    }
+
+    @GET
+    @Path("/email/{email}")
+    @ApiOperation(value = "Find a user by email")
+    public Response findByEmail(@PathParam("email") String email) {
+        return Response.ok(userService.findByEmail(email)).build();
     }
 
     @POST
@@ -51,12 +53,8 @@ public class UserResource {
     @Path("{uuid}")
     @ApiOperation(value = "Delete a user by uuid")
     public Response delete(@PathParam("uuid") String uuid) {
-        try {
-            userService.delete(uuid);
-            return Response.ok().build();
-        } catch (UserNotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
-        }
+        userService.delete(uuid);
+        return Response.ok().build();
     }
 
 }

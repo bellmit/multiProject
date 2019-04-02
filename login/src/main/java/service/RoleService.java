@@ -2,10 +2,11 @@ package service;
 
 import dao.interfaces.RoleDao;
 import domain.Role;
-import exceptions.RoleNotFoundException;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 
 @Stateless
 public class RoleService {
@@ -17,18 +18,18 @@ public class RoleService {
         roleDao.create(role);
     }
 
-    public void delete(String uuid) throws RoleNotFoundException {
+    public void delete(String uuid) {
         Role role = roleDao.find(uuid);
         if (role == null) {
-            throw new RoleNotFoundException("Role not found");
+            throw new WebApplicationException("Role not found", Response.Status.NOT_FOUND);
         }
         roleDao.delete(role);
     }
 
-    public Role find(String uuid) throws RoleNotFoundException {
+    public Role find(String uuid) {
         Role role = roleDao.find(uuid);
         if (role == null) {
-            throw new RoleNotFoundException("Role not found");
+            throw new WebApplicationException("Role not found", Response.Status.NOT_FOUND);
         }
         return role;
     }
