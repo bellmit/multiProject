@@ -1,6 +1,7 @@
 package DAO;
 
 
+import DAO.Interfaces.ReservationDAO;
 import Domain.DinnerType;
 import Domain.DinningTable;
 import Domain.Reservation;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-@JPA
 public class ReservationDAOJPA implements ReservationDAO {
 
     @PersistenceContext(unitName = "nldPU")

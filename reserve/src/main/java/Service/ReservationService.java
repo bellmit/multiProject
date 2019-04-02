@@ -1,19 +1,17 @@
 package Service;
 
-import DAO.JPA;
-import DAO.ReservationDAO;
+import DAO.Interfaces.ReservationDAO;
 import Domain.Reservation;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.ArrayList;
-import java.util.UUID;
 
 
 @Stateless
 public class ReservationService {
 
-    @Inject @JPA
+    @Inject
     private ReservationDAO reservationDAO;
 
     public void addReservation(Reservation reservation) {

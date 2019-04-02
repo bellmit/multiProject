@@ -1,6 +1,7 @@
 package DAO;
 
 
+import DAO.Interfaces.TableDAO;
 import Domain.DinningTable;
 import Domain.Reservation;
 
@@ -12,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-@JPA
 public class TableDAOJPA implements TableDAO {
 
     @PersistenceContext(unitName = "nldPU")

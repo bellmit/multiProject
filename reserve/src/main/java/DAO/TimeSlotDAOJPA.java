@@ -1,6 +1,7 @@
 package DAO;
 
 
+import DAO.Interfaces.TimeSlotDAO;
 import Domain.TimeSlot;
 
 import javax.ejb.Stateless;
@@ -9,11 +10,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
-import java.util.UUID;
 
 @Stateless
-@JPA
-public class TimeSlotDAOJPA implements TimeSlotDAO{
+public class TimeSlotDAOJPA implements TimeSlotDAO {
 
     @PersistenceContext(unitName = "nldPU")
     private EntityManager em;

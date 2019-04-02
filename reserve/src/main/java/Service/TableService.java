@@ -2,8 +2,7 @@ package Service;
 
 
 
-import DAO.JPA;
-import DAO.TableDAO;
+import DAO.Interfaces.TableDAO;
 import Domain.DinningTable;
 
 import javax.ejb.Stateless;
@@ -14,7 +13,7 @@ import javax.inject.Inject;
 @Stateless
 public class TableService {
 
-    @Inject @JPA
+    @Inject
     private TableDAO tableDAO;
 
     public void addTable(DinningTable dinningTable) {

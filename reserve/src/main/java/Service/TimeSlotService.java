@@ -1,21 +1,18 @@
 package Service;
 
-import DAO.JPA;
-import DAO.TimeSlotDAO;
+import DAO.Interfaces.TimeSlotDAO;
 import Domain.TimeSlot;
 
 
 import javax.ejb.Stateless;
-import javax.ejb.Stateless;
 import java.util.ArrayList;
-import java.util.UUID;
 import javax.inject.Inject;
 
 
 @Stateless
 public class TimeSlotService {
 
-    @Inject @JPA
+    @Inject 
     private TimeSlotDAO tsDAO;
 
     public void addTimeSlot(TimeSlot ts) {
