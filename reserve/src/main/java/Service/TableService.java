@@ -3,6 +3,7 @@ package Service;
 
 
 import DAO.Interfaces.TableDAO;
+import DAO.JPA.TableDAOJPA;
 import Domain.DinningTable;
 
 import javax.ejb.Stateless;
@@ -14,7 +15,7 @@ import javax.inject.Inject;
 public class TableService {
 
     @Inject
-    private TableDAO tableDAO;
+    private TableDAOJPA tableDAO;
 
     public void addTable(DinningTable dinningTable) {
         if(dinningTable == null){
@@ -53,5 +54,13 @@ public class TableService {
         tableDAO.edit(dinningTable);
     }
     public TableService() {
+    }
+
+    public ArrayList<DinningTable> getAvailableTables() {
+        ArrayList<DinningTable> availableDinningTables = tableDAO.getAllAvailable();
+        if(availableDinningTables == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        return availableDinningTables;
     }
 }

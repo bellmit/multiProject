@@ -31,6 +31,14 @@ public class TableResource {
     }
 
     @GET
+    @Path("get/available")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response findAvailable(){
+        ArrayList<DinningTable> availableDinningTables = ts.getAvailableTables();
+        return Response.ok(availableDinningTables).build();
+    }
+
+    @GET
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("uuid") String uuid) {

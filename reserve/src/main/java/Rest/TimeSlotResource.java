@@ -33,6 +33,7 @@ public class TimeSlotResource {
         return Response.ok(tss.findById(uuid)).build();
     }
 
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response find() {

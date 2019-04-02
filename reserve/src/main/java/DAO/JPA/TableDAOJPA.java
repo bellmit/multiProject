@@ -29,7 +29,7 @@ public class TableDAOJPA extends BaseDAOJPA<DinningTable> implements TableDAO {
     }
 
 
-    public List<DinningTable> getAllAvailable(){
+    public ArrayList<DinningTable> getAllAvailable(){
         List<DinningTable> allDinningTables = getTables();
         ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
         List<Reservation> reservations = reservationDAOJPA.getReservations();
@@ -56,4 +56,5 @@ public class TableDAOJPA extends BaseDAOJPA<DinningTable> implements TableDAO {
     protected EntityManager getEntityManager() {
         return em;
     }
+
 }
