@@ -1,20 +1,19 @@
 package DAO;
 
 
-import Domain.Table;
+import Domain.DinningTable;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public interface TableDAO {
 
-    void addTable(Table table);
+    void addTable(DinningTable dinningTable);
 
-    void removeTable (Table table);
+    void removeTable (DinningTable dinningTable);
 
-    Table findById(String id);
+    DinningTable findById(String id);
 
-    ArrayList<Table> getTables();
+    ArrayList<DinningTable> getTables();
 
-    void editTables(Table table);
+    void editTables(DinningTable dinningTable);
 }

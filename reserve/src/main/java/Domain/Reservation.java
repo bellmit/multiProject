@@ -31,16 +31,16 @@ public class Reservation implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "reservation_id")
-    private List<Table> tables;
+    private List<DinningTable> dinningTables;
 
-    public Reservation(int userID, int nrofPeople, Date date, DinnerType type, List<TimeSlot> timeSlots, List<Table> tables) {
+    public Reservation(int userID, int nrofPeople, Date date, DinnerType type, List<TimeSlot> timeSlots, List<DinningTable> dinningTables) {
         this.uuid = UUID.randomUUID().toString();
         this.userID = userID;
         this.nrofPeople = nrofPeople;
         this.date = date;
         this.type = type;
         this.timeSlots = timeSlots;
-        this.tables = tables;
+        this.dinningTables = dinningTables;
     }
 
     public Reservation() {
@@ -91,12 +91,12 @@ public class Reservation implements Serializable {
         this.timeSlots = timeSlots;
     }
 
-    public List<Table> getTables() {
-        return tables;
+    public List<DinningTable> getDinningTables() {
+        return dinningTables;
     }
 
-    public void setTables(List<Table> tables) {
-        this.tables = tables;
+    public void setDinningTables(List<DinningTable> dinningTables) {
+        this.dinningTables = dinningTables;
     }
 
     public void Notify(Reservation r){

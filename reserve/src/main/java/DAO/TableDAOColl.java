@@ -12,22 +12,22 @@ import javax.enterprise.inject.Default;
 public class TableDAOColl {//implements TableDAO{
 
     /*
-    CopyOnWriteArrayList<Table> tables = new CopyOnWriteArrayList<>();
+    CopyOnWriteArrayList<DinningTable> tables = new CopyOnWriteArrayList<>();
 
 
     @Override
-    public void addTable(Table table) {
+    public void addTable(DinningTable table) {
         tables.add(table);
     }
 
     @Override
-    public void removeTable(Table table) {
+    public void removeTable(DinningTable table) {
         tables.remove(table);
     }
 
     @Override
-    public Table findById(UUID id) {
-        for (Table table : tables)
+    public DinningTable findById(UUID id) {
+        for (DinningTable table : tables)
         {
             if(table.getId()==id){
                 return table;
@@ -37,8 +37,8 @@ public class TableDAOColl {//implements TableDAO{
     }
 
     @Override
-    public ArrayList<Table> getTables() {
-        return new ArrayList<Table>(tables);
+    public ArrayList<DinningTable> getDinningTables() {
+        return new ArrayList<DinningTable>(tables);
     }
     */
 }

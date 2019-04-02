@@ -2,8 +2,7 @@ package dao;
 
 import DAO.TableDAOJPA;
 import DAO.TimeSlotDAOJPA;
-import Domain.Table;
-import Domain.TimeSlot;
+import Domain.DinningTable;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,11 +13,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TableDaoJpaTest {
+public class DinningTableDaoJpaTest {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("nldTestPU");
     private EntityManager em;
@@ -41,23 +39,31 @@ public class TableDaoJpaTest {
 
     @Test
     public void editandCreateTest(){
-        Table table = new Table(1,6);
-        tableDAOJPA.addTable(table);
-        Table dbTable = tableDAOJPA.findById(table.getId());
-        Assert.assertEquals(table,dbTable);
-        table.setNrofSeats(12);
-        tableDAOJPA.editTables(table);
-        dbTable = tableDAOJPA.findById(table.getId());
-        Assert.assertEquals(12,dbTable.getNrofSeats());
+        tx.begin();
+        DinningTable dinningTable = new DinningTable(1,6);
+        tableDAOJPA.addTable(dinningTable);
+        tx.commit();
+        tx.begin();
+        DinningTable dbDinningTable = tableDAOJPA.findById(dinningTable.getId());
+        Assert.assertEquals(dinningTable, dbDinningTable);
+        dinningTable.setNrofSeats(12);
+        tableDAOJPA.editTables(dinningTable);
+        tx.commit();
+        dbDinningTable = tableDAOJPA.findById(dinningTable.getId());
+        Assert.assertEquals(12, dbDinningTable.getNrofSeats());
 
     }
 
     @Test
     public void removeTest(){
-        Table table2 = new Table(2,4);
-        tableDAOJPA.addTable(table2);
-        for (Table t: tableDAOJPA.getTables()) {
+        tx.begin();
+        DinningTable dinningTable2 = new DinningTable(2,4);
+        tableDAOJPA.addTable(dinningTable2);
+        tx.commit();
+        for (DinningTable t: tableDAOJPA.getTables()) {
+            tx.begin();
             tableDAOJPA.removeTable(t);
+            tx.commit();
         }
         Assert.assertEquals(tableDAOJPA.getTables().size(),0);
     }

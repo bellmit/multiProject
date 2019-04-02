@@ -4,11 +4,10 @@ package Service;
 
 import DAO.JPA;
 import DAO.TableDAO;
-import Domain.Table;
+import Domain.DinningTable;
 
 import javax.ejb.Stateless;
 import java.util.ArrayList;
-import java.util.UUID;
 import javax.inject.Inject;
 
 
@@ -18,24 +17,24 @@ public class TableService {
     @Inject @JPA
     private TableDAO tableDAO;
 
-    public void addTable(Table table) {
-        tableDAO.addTable(table);
+    public void addTable(DinningTable dinningTable) {
+        tableDAO.addTable(dinningTable);
     }
 
-    public void removeTable(Table table) {
-        tableDAO.removeTable(table);
+    public void removeTable(DinningTable dinningTable) {
+        tableDAO.removeTable(dinningTable);
     }
 
-    public ArrayList<Table> getTables() {
+    public ArrayList<DinningTable> getTables() {
         return tableDAO.getTables();
     }
 
-    public Table findById(String id) {
+    public DinningTable findById(String id) {
         return tableDAO.findById(id);
     }
 
-    public void edit(Table table){
-        tableDAO.editTables(table);
+    public void edit(DinningTable dinningTable){
+        tableDAO.editTables(dinningTable);
     }
     public TableService() {
     }

@@ -9,7 +9,7 @@ import java.util.UUID;
 //@NamedQueries({
 //        @NamedQuery(name = "table.findById", query = "SELECT t FROM dinningtable t where  t.id = :id")
 //})
-public class Table implements Serializable {
+public class DinningTable implements Serializable {
 
     @Id
     private String id;
@@ -18,13 +18,13 @@ public class Table implements Serializable {
 
     private int nrofSeats;
 
-    public Table(int tableNumber, int nrofSeats) {
+    public DinningTable(int tableNumber, int nrofSeats) {
         this.id = UUID.randomUUID().toString();
         this.tableNumber = tableNumber;
         this.nrofSeats = nrofSeats;
     }
 
-    public Table() {
+    public DinningTable() {
     }
 
     public String getId() {

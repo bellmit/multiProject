@@ -2,8 +2,8 @@ package DAO;
 
 
 import Domain.DinnerType;
+import Domain.DinningTable;
 import Domain.Reservation;
-import Domain.Table;
 import Domain.TimeSlot;
 
 import javax.ejb.Stateless;
@@ -13,7 +13,6 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Stateless
 @JPA
@@ -51,18 +50,18 @@ public class ReservationDAOJPA implements ReservationDAO {
         em.merge(r);
     }
 
-    public Reservation addTable(Reservation r, Table t){
-        List<Table> tables = r.getTables();
-        tables.add(t);
-        r.setTables(tables);
+    public Reservation addTable(Reservation r, DinningTable t){
+        List<DinningTable> dinningTables = r.getDinningTables();
+        dinningTables.add(t);
+        r.setDinningTables(dinningTables);
         em.persist(r);
         return r;
     }
 
-    public Reservation removeTable(Reservation r, Table t){
-        List<Table> tables = r.getTables();
-        tables.remove(t);
-        r.setTables(tables);
+    public Reservation removeTable(Reservation r, DinningTable t){
+        List<DinningTable> dinningTables = r.getDinningTables();
+        dinningTables.remove(t);
+        r.setDinningTables(dinningTables);
         em.persist(r);
         return r;
     }

@@ -20,6 +20,9 @@ public class ReservationResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
     public void addReservation(Reservation r) {
+        if(r == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
         rs.addReservation(r);
     }
 
@@ -27,13 +30,20 @@ public class ReservationResource {
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("uuid") String uuid) {
-        return Response.ok(rs.findById(uuid)).build();
+        Reservation r = rs.findById(uuid);
+        if(r == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
+        return Response.ok(r).build();
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response edit(Reservation reservation) {
+        if(reservation == null){
+            throw new javax.ws.rs.NotAcceptableException();
+        }
         rs.editReservation(reservation);
         return Response.ok().build();
     }
@@ -43,8 +53,11 @@ public class ReservationResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("uuid") String uuid) {
         Reservation r = rs.findById(uuid);
+        if(r == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
         rs.removeReservation(r);
-        return Response.ok().build();
+        return Response.noContent().build();
     }
 
 }

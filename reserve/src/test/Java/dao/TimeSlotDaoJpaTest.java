@@ -35,24 +35,32 @@ public class TimeSlotDaoJpaTest {
 
     @Test
     public void editandCreateTest(){
+        tx.begin();
         TimeSlot ts = new TimeSlot("tets",new Date(),new Date());
         timeSlotDAOJPA.addTimeSlot(ts);
+        tx.commit();
         TimeSlot dbtimeslot = timeSlotDAOJPA.findById(ts.getId());
         Assert.assertEquals(dbtimeslot,ts);
+        tx.begin();
         ts.setName("newname");
         timeSlotDAOJPA.editTimeSlots(ts);
+        tx.commit();
         dbtimeslot = timeSlotDAOJPA.findById(ts.getId());
         Assert.assertEquals("newname",dbtimeslot.getName());
 
     }
-    /*
+
     @Test
     public void removeTest(){
+        tx.begin();
         TimeSlot ts = new TimeSlot("test2",new Date(),new Date());
         timeSlotDAOJPA.addTimeSlot(ts);
+        tx.commit();
         for (TimeSlot t: timeSlotDAOJPA.getTimeSlots()) {
+            tx.begin();
             timeSlotDAOJPA.removeTimeSlot(t);
+            tx.commit();
         }
         Assert.assertEquals(timeSlotDAOJPA.getTimeSlots().size(),0);
-    }*/
+    }
 }

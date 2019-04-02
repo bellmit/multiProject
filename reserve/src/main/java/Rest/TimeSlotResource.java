@@ -20,7 +20,10 @@ public class TimeSlotResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void addReservation(TimeSlot ts) {
+    public void addTimeSlot(TimeSlot ts) {
+        if(ts == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
         tss.addTimeSlot(ts);
     }
 
@@ -28,6 +31,10 @@ public class TimeSlotResource {
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("uuid") String uuid) {
+        TimeSlot ts = tss.findById(uuid);
+        if (ts == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
         return Response.ok(tss.findById(uuid)).build();
     }
 
@@ -35,6 +42,9 @@ public class TimeSlotResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response edit(TimeSlot ts) {
+        if(ts == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
         tss.edit(ts);
         return Response.ok().build();
     }
@@ -44,7 +54,10 @@ public class TimeSlotResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("uuid") String uuid) {
         TimeSlot ts = tss.findById(uuid);
+        if(ts == null){
+            throw new javax.ws.rs.NotFoundException();
+        }
         tss.removeTimeSlot(ts);
-        return Response.ok().build();
+        return Response.noContent().build();
     }
 }
