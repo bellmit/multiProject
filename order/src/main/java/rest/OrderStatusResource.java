@@ -6,7 +6,6 @@ import service.OrderStatusService;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.UUID;
 
 @Path("orderstatus")
 public class OrderStatusResource {

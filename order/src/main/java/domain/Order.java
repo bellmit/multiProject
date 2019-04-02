@@ -7,6 +7,8 @@ import javax.persistence.Convert;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -14,11 +16,15 @@ import java.time.LocalDateTime;
 public abstract class Order implements Serializable {
     @Id
     private String id;
+    @NotNull
     private String userId;
     @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime date;
+    @NotNull
     private OrderType type;
+    @Positive
     private double totalPrice;
+    @Positive
     private double totalVat;
     private String paymentId;
     @ManyToOne

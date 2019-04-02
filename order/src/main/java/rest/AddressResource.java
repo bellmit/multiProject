@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("address")
+@Path("addresses")
 public class AddressResource {
     @Inject
     private AddressService as;

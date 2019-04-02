@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("deliveryorder")
+@Path("deliveryorders")
 public class DeliveryOrderResource {
     @Inject
     private DeliveryOrderService as;

@@ -6,9 +6,8 @@ import service.LocalOrderService;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.UUID;
 
-@Path("localorder")
+@Path("localorders")
 public class LocalOrderResource {
     @Inject
     private LocalOrderService as;

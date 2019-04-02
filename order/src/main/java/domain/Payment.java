@@ -1,5 +1,6 @@
 package domain;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -7,6 +8,7 @@ import java.util.UUID;
 
 public class Payment implements Serializable {
     private String id;
+    @NotNull
     private String paymentMethod;
     private boolean isPaid;
 

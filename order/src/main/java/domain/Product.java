@@ -6,6 +6,8 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,10 +17,13 @@ import java.util.UUID;
 public class Product implements Serializable {
     @Id
     private String id;
+    @NotEmpty
     private String name;
     @ElementCollection(fetch = FetchType.EAGER)
     private Collection<OrderType> type;
+    @Positive
     private double price;
+    @Positive
     private double vat;
 
     public Product() {

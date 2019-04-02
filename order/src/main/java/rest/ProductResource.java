@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("product")
+@Path("products")
 @RequestScoped
 public class ProductResource {
     @Inject
@@ -19,6 +19,7 @@ public class ProductResource {
     @Path("/new")
     public void newProduct(Product a) {
         as.create(a);
+        //todo remove
         System.out.println("hoi");
     }
 
