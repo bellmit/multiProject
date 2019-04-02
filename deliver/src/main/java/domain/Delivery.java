@@ -1,6 +1,7 @@
 package domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -20,9 +21,11 @@ public class Delivery {
     }
     public Delivery(Set<String> orderIdList) {
         this.orderIdList = orderIdList;
+        this.routes = new HashSet<>();
     }
     public Delivery(){
-
+        this.routes = new HashSet<>();
+        this.orderIdList = new HashSet<>();
     }
 
     public String getDeliveryId() {
