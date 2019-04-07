@@ -9,6 +9,9 @@ import java.time.format.DateTimeFormatter;
 public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime, String> {
     @Override
     public String convertToDatabaseColumn(LocalDateTime x) {
+        if(x==null) {
+            return null;
+        }
         return x.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
     }
 

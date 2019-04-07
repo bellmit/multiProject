@@ -5,7 +5,10 @@ import domain.Coupon;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.UUID;
+import javax.persistence.Query;
+import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class CouponService {
@@ -17,14 +20,27 @@ public class CouponService {
     }
 
     public Coupon find(String id){
-        return cd.find(id);
+        Coupon coupon = cd.find(id);
+        if (coupon == null) {
+            throw new NotFoundException("Coupon not found");
+        }
+        return coupon;
     }
 
     public void edit(Coupon coupon){
         cd.edit(coupon);
     }
 
-    public void delete(Coupon coupon){
+    public void delete(String id){
+        Coupon coupon = cd.find(id);
+        if (coupon == null) {
+            throw new NotFoundException("Coupon not found");
+        }
         cd.delete(coupon);
+    }
+
+    public ArrayList<Coupon> getAllCoupons()
+    {
+        return cd.getCoupons();
     }
 }
