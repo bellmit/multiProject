@@ -39,7 +39,7 @@ public class JWTHelper {
                 .compact();
     }
 
-    List<String> claimKey(String jwsString) {
+    public List<String> claimKey(String jwsString) {
         Jwt jwt = Jwts.parser().setSigningKey(signingKey).parse(jwsString);
         Claims claims = (Claims) jwt.getBody();
         return (List<String>) claims.get("roles");
