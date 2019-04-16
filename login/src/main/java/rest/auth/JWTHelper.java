@@ -26,12 +26,12 @@ public class JWTHelper {
     /***
      * generates a json web token with the parameters as payload.
      */
-    public String generatePrivateKey(String userName, List<String> roles) {
+    public String generatePrivateKey(String email, List<String> roles) {
         Map<String, Object> groups = new HashMap<>();
         groups.put("roles", roles);
         return Jwts
                 .builder()
-                .setSubject(userName)
+                .setSubject(email)
                 .addClaims(groups)
                 .setExpiration(calcExpirationDate())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
@@ -39,10 +39,13 @@ public class JWTHelper {
                 .compact();
     }
 
-    public List<String> claimKey(String jwsString) {
+    public Map claimKey(String jwsString) {
         Jwt jwt = Jwts.parser().setSigningKey(signingKey).parse(jwsString);
         Claims claims = (Claims) jwt.getBody();
-        return (List<String>) claims.get("roles");
+        Map hashMap = new HashMap();
+        hashMap.put("email", claims.getSubject());
+        hashMap.put("roles", claims.get("roles"));
+        return hashMap;
     }
 
     private Date calcExpirationDate() {

@@ -29,6 +29,6 @@ public class AuthService {
         for (Role role : foundUser.getRoles()) {
             userRoles.add(role.getName());
         }
-        return jwtHelper.generatePrivateKey(foundUser.getFirstName(), userRoles);
+        return jwtHelper.generatePrivateKey(foundUser.getEmail(), userRoles);
     }
 }

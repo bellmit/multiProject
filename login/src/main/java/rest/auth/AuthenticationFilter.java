@@ -9,12 +9,11 @@ import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
-import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 
 @Secured
 @Provider
@@ -45,31 +44,32 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
 
         try {
-            // Get the resource class which matches with the requested URL
-            // Extract the roles declared by it
-            Method resourceMethod = resourceInfo.getResourceMethod();
-            List<String> classRoles = extractRoles(resourceMethod);
+            HashMap hashMap = (HashMap) validateToken(token);
 
-            if (!validateToken(classRoles, token)) {
-                abortWithUnauthorized(requestContext);
-            }
+            final SecurityContext securityContext = requestContext.getSecurityContext();
+            requestContext.setSecurityContext(new SecurityContext() {
+                @Override
+                public Principal getUserPrincipal() {
+                    return () -> (String) hashMap.get("email");
+                }
+
+                @Override
+                public boolean isUserInRole(String role) {
+                    return false;
+                }
+
+                @Override
+                public boolean isSecure() {
+                    return securityContext.isSecure();
+                }
+
+                @Override
+                public String getAuthenticationScheme() {
+                    return securityContext.getAuthenticationScheme();
+                }
+            });
         } catch (Exception e) {
             abortWithUnauthorized(requestContext);
-        }
-    }
-
-    // Extract the roles from the annotated element
-    private List<String> extractRoles(AnnotatedElement annotatedElement) {
-        if (annotatedElement == null) {
-            return new ArrayList<>();
-        } else {
-            Secured secured = annotatedElement.getAnnotation(Secured.class);
-            if (secured == null) {
-                return new ArrayList<>();
-            } else {
-                String[] allowedRoles = secured.value();
-                return Arrays.asList(allowedRoles);
-            }
         }
     }
 
@@ -89,16 +89,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
                         + " realm=\"" + REALM + "\"").build());
     }
 
-    private boolean validateToken(List<String> neededRoles, String token) {
-        List<String> roles = jwtHelper.claimKey(token);
-        boolean hasRole = false;
-        if (!neededRoles.isEmpty()) {
-            for (String role : neededRoles) {
-                if (roles.contains(role))
-                    hasRole = true;
-            }
-            return hasRole;
-        }
-        return true;
+    private Map validateToken(String token) {
+        return jwtHelper.claimKey(token);
     }
 }
