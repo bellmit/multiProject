@@ -1,23 +1,10 @@
-package domain;
+package domain.dto;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import domain.User;
 
-@Entity
-@NamedQueries({
-        @NamedQuery(name = "user.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")})
-public class User {
-
-    @Id
+public class UserDTO {
     private String id;
-
-    @Column(unique = true)
     private String email;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Role> roles = new ArrayList<>();
     private String firstName;
     private String lastName;
     private String suffix;
@@ -27,8 +14,17 @@ public class User {
     private String zipcode;
     private String phoneNumber;
 
-    public User() {
-        this.id = UUID.randomUUID().toString();
+    public UserDTO(User user) {
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.suffix = user.getSuffix();
+        this.street = user.getStreet();
+        this.streetNumber = user.getStreetNumber();
+        this.city = user.getCity();
+        this.zipcode = user.getZipcode();
+        this.phoneNumber = user.getPhoneNumber();
     }
 
     public String getId() {
@@ -45,14 +41,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
     }
 
     public String getFirstName() {
@@ -117,22 +105,5 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", email='" + email + '\'' +
-                ", roles=" + roles +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", suffix='" + suffix + '\'' +
-                ", street='" + street + '\'' +
-                ", streetNumber='" + streetNumber + '\'' +
-                ", city='" + city + '\'' +
-                ", zipcode='" + zipcode + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
     }
 }

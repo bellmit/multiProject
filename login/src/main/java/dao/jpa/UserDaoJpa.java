@@ -38,4 +38,9 @@ public class UserDaoJpa extends BaseDaoJpa<User> implements UserDao {
         }
         return null;
     }
+
+    @Override
+    public List<User> getAll() {
+        return em.createQuery("SELECT u FROM User u").getResultList();
+    }
 }

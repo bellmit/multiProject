@@ -5,18 +5,43 @@
  */
 package rest.config;
 
-import java.io.IOException;
 import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
+import java.io.IOException;
 
 @Provider
-public class CORSFilter implements ContainerResponseFilter {
+public class CORSFilter implements ContainerRequestFilter, ContainerResponseFilter {
+
+    /**
+     * Method for ContainerRequestFilter.
+     */
+    @Override
+    public void filter(ContainerRequestContext request) throws IOException {
+
+        // If it's a preflight request, we abort the request with
+        // a 200 status, and the CORS headers are added in the
+        // response filter method below.
+        if (isPreflightRequest(request)) {
+            request.abortWith(Response.ok().build());
+            return;
+        }
+    }
+
+    /**
+     * A preflight request is an OPTIONS request with an Origin header.
+     */
+    private static boolean isPreflightRequest(ContainerRequestContext request) {
+        return request.getHeaderString("Origin") != null
+                && request.getMethod().equalsIgnoreCase("OPTIONS");
+    }
 
     @Override
     public void filter(final ContainerRequestContext requestContext,
-            final ContainerResponseContext cres) throws IOException {
+                       final ContainerResponseContext cres) throws IOException {
 
         cres.getHeaders().add(
                 "Access-Control-Allow-Origin", "*");
