@@ -33,7 +33,7 @@ public class TableDAOJPA extends BaseDAOJPA<DinningTable> implements TableDAO {
         List<DinningTable> allDinningTables = getTables();
         ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
         List<Reservation> reservations = reservationDAOJPA.getReservations();
-        List<DinningTable> nonReservedDinningTables = new ArrayList<>();
+        ArrayList<DinningTable> nonReservedDinningTables = new ArrayList<>();
         for (DinningTable t : allDinningTables) {
             int count = 0;
             for (Reservation r: reservations) {
