@@ -1,10 +1,16 @@
 package domain.dto;
 
+import domain.Role;
 import domain.User;
+import util.RoleConverter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDTO {
     private String id;
     private String email;
+    private List<String> roles;
     private String firstName;
     private String lastName;
     private String suffix;
@@ -17,6 +23,7 @@ public class UserDTO {
     public UserDTO(User user) {
         this.id = user.getId();
         this.email = user.getEmail();
+        this.roles = RoleConverter.roleArrayToStringArray(user.getRoles());
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.suffix = user.getSuffix();
@@ -41,6 +48,14 @@ public class UserDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     public String getFirstName() {

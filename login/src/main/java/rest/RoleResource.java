@@ -26,6 +26,13 @@ public class RoleResource {
         return Response.ok(roleService.find(uuid)).build();
     }
 
+    @GET
+    @Path("all")
+    @ApiOperation(value = "Find al roles")
+    public Response find() {
+        return Response.ok(roleService.getAll()).build();
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "Create a role")

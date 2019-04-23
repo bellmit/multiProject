@@ -4,6 +4,7 @@ import dao.interfaces.UserDao;
 import domain.Role;
 import domain.User;
 import rest.auth.JWTHelper;
+import util.RoleConverter;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -25,10 +26,7 @@ public class AuthService {
         if (foundUser == null) {
             throw new NotFoundException("User not found");
         }
-        List<String> userRoles = new ArrayList<>();
-        for (Role role : foundUser.getRoles()) {
-            userRoles.add(role.getName());
-        }
+        List<String> userRoles = RoleConverter.roleArrayToStringArray(foundUser.getRoles());
         return jwtHelper.generatePrivateKey(foundUser.getEmail(), userRoles);
     }
 }
