@@ -1,5 +1,6 @@
+
 plugins {
-    id 'java'
+    id 'war'
 }
 
 group 'com.proftaak'
@@ -12,9 +13,16 @@ repositories {
 }
 
 dependencies {
+    providedCompile 'javax:javaee-api:8.0.1-b5'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'org.hibernate:hibernate-core:5.4.2.Final'
+    testCompile "org.postgresql:postgresql:42.2.5"
+}
+
+war {
+    archiveName = 'delivery.war'
 }
 
 task buildAll(type: GradleBuild) {
-    tasks = [ 'build' ]
+    tasks = [ 'war' ]
 }
