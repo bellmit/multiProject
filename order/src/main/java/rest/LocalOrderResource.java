@@ -1,11 +1,13 @@
 package rest;
 
+import domain.DeliveryOrder;
 import domain.LocalOrder;
 import service.LocalOrderService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("localorders")
 public class LocalOrderResource {
@@ -40,10 +42,10 @@ public class LocalOrderResource {
         as.delete(a);
     }
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/all")
-//    public List<LocalOrder> getAll(){
-//        return as.getAll();
-//    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/all/{id}")
+    public List<LocalOrder> getAll(@PathParam("id") String userId){
+        return as.getAll(userId);
+    }
 }

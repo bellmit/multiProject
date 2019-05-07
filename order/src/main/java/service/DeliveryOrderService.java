@@ -5,7 +5,7 @@ import domain.DeliveryOrder;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.UUID;
+import java.util.List;
 
 @Stateless
 public class DeliveryOrderService {
@@ -26,5 +26,9 @@ public class DeliveryOrderService {
 
     public void delete(DeliveryOrder a){
         dd.delete(a);
+    }
+
+    public List<DeliveryOrder> getAll(String userId){
+        return dd.getAll(userId);
     }
 }

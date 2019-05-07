@@ -17,7 +17,7 @@ public abstract class BaseDaoJpa<T> implements BaseDao<T> {
     @PersistenceContext(unitName = props.livePU)
     private EntityManager em;
 
-    private EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return this.em;
     }
 

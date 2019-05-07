@@ -1,11 +1,12 @@
 package service;
 
 import dao.interfaces.LocalOrderDao;
+import domain.DeliveryOrder;
 import domain.LocalOrder;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.UUID;
+import java.util.List;
 
 @Stateless
 public class LocalOrderService {
@@ -26,5 +27,9 @@ public class LocalOrderService {
 
     public void delete(LocalOrder a){
         ld.delete(a);
+    }
+
+    public List<LocalOrder> getAll(String userId){
+        return ld.getAll(userId);
     }
 }

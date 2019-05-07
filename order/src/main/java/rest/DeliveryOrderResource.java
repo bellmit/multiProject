@@ -6,6 +6,7 @@ import service.DeliveryOrderService;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("deliveryorders")
 public class DeliveryOrderResource {
@@ -40,10 +41,10 @@ public class DeliveryOrderResource {
         as.delete(a);
     }
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/all")
-//    public List<DeliveryOrder> getAll(){
-//        return as.getAll();
-//    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/all/{id}")
+    public List<DeliveryOrder> getAll(@PathParam("id") String userId){
+        return as.getAll(userId);
+    }
 }

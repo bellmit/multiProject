@@ -46,21 +46,21 @@ public class AddressJpaTest {
         Assert.assertNotNull(ad.find(a.getId()));
     }
 
-//    @Test
-//    public void edit() {
-//        tx.begin();
-//        Address a = new Address();
-//        ad.create(a);
-//        tx.commit();
-//
-//        tx.begin();
-//        String id = "testId";
-//        a.setCity(id);
-//        ad.edit(a);
-//        tx.commit();
-//
-//        Assert.assertEquals(ad.find(a.getId()).getCity(), id);
-//    }
+    @Test
+    public void edit() {
+        tx.begin();
+        Address a = new Address();
+        ad.create(a);
+        tx.commit();
+
+        tx.begin();
+        String id = "testId";
+        a.setCity(id);
+        ad.edit(a);
+        tx.commit();
+
+        Assert.assertEquals(ad.find(a.getId()).getCity(), id);
+    }
 
     @Test
     public void delete() {
