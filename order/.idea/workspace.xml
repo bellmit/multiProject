@@ -6,25 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c77d7376-ee4b-46c6-a66a-1009b4c9d630" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/interfaces/DeliveryOrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/interfaces/DeliveryOrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/interfaces/LocalOrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/interfaces/LocalOrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/jpa/BaseDaoJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/jpa/BaseDaoJpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/jpa/DeliveryOrderDaoJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/jpa/DeliveryOrderDaoJpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/jpa/LocalOrderDaoJpa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/jpa/LocalOrderDaoJpa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rest/DeliveryOrderResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rest/DeliveryOrderResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rest/LocalOrderResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rest/LocalOrderResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/DeliveryOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/DeliveryOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/LocalOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/LocalOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/startup/InitData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/startup/InitData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/OrderType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/OrderType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dao/AddressJpaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/AddressJpaTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="c77d7376-ee4b-46c6-a66a-1009b4c9d630" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -69,7 +51,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/domain/Product.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="163">
@@ -120,10 +102,10 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/domain/Order.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
+                <state relative-caret-position="272">
                   <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -344,7 +326,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -696,7 +678,7 @@
       <workItem from="1555033356670" duration="627000" />
       <workItem from="1555400047006" duration="2137000" />
       <workItem from="1556003461137" duration="1939000" />
-      <workItem from="1557193926451" duration="6560000" />
+      <workItem from="1557193926451" duration="7225000" />
     </task>
     <servers />
   </component>
@@ -733,7 +715,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66307000" />
+    <option name="totallyTimeSpent" value="66972000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1103,11 +1085,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/interfaces/LocalOrderDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
+        <state relative-caret-position="119">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1144,30 +1123,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/DeliveryOrder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/LocalOrder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1196,16 +1155,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Product.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/util/OrderType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1227,6 +1176,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/DeliveryOrder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
