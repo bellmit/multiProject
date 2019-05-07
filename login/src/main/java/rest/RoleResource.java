@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 
 @Api("Role")
-@Path("role")
+@Path("roles")
 @Produces(MediaType.APPLICATION_JSON)
 public class RoleResource {
 

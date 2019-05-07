@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 
 @Api("User")
-@Path("user")
+@Path("users")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 
@@ -42,14 +42,6 @@ public class UserResource {
     @ApiOperation(value = "Find a user by email")
     public Response findByEmail(@PathParam("email") String email) {
         return Response.ok(userService.findByEmail(email)).build();
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @ApiOperation(value = "Create a user")
-    public Response add(User user) {
-        userService.create(user);
-        return Response.created(URI.create(user.getId())).build();
     }
 
     @PUT
