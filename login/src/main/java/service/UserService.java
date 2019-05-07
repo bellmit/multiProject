@@ -63,18 +63,38 @@ public class UserService {
     }
 
     public void assignRole(String uuid, String role) {
-        User foundUser = userDao.find(uuid);
-        if (foundUser == null) {
-            throw new NotFoundException("User not found");
-        }
-        Role foundRole = roleDao.findByName(role);
-        if (foundRole == null) {
-            throw new NotFoundException("Role not found");
-        }
+        User foundUser = findUser(uuid);
+        Role foundRole = findRole(role);
         if (foundUser.getRoles().contains(foundRole)) {
             throw new BadRequestException("User already has role");
         }
         foundUser.getRoles().add(foundRole);
         foundRole.getUsers().add(foundUser);
+    }
+
+    public void removeRole(String uuid, String role) {
+        User foundUser = findUser(uuid);
+        Role foundRole = findRole(role);
+        if (!foundUser.getRoles().contains(foundRole)) {
+            throw new BadRequestException("User does not have that role");
+        }
+        foundUser.getRoles().remove(foundRole);
+        foundRole.getUsers().remove(foundUser);
+    }
+
+    private Role findRole(String role) {
+        Role foundRole = roleDao.findByName(role);
+        if (foundRole == null) {
+            throw new NotFoundException("Role not found");
+        }
+        return foundRole;
+    }
+
+    private User findUser(String uuid) {
+        User foundUser = userDao.find(uuid);
+        if (foundUser == null) {
+            throw new NotFoundException("User not found");
+        }
+        return foundUser;
     }
 }

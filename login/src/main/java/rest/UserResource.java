@@ -69,6 +69,15 @@ public class UserResource {
         return Response.ok().build();
     }
 
+    @PUT
+    @Path("{uuid}/role/remove/{role}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "Edit a user his role")
+    public Response removeRole(@PathParam("uuid") String uuid, @PathParam("role") String role) {
+        userService.removeRole(uuid, role);
+        return Response.ok().build();
+    }
+
     @DELETE
     @Path("{uuid}")
     @ApiOperation(value = "Delete a user by uuid")
