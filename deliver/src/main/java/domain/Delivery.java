@@ -63,4 +63,15 @@ public class Delivery {
     public void removeRoute(Route route){
         this.routes.remove(route);
     }
+
+    public void startDeliverySim(Delivery delivery){
+        int i = 0;
+        for (Route r:delivery.getRoutes()) {
+            i++;
+            String coordinates = r.toString();
+            String firstCoord = Double.toString(r.getStartLocation().getLongitude());
+            String name = "Route"+ Integer.toString(i);
+            Simulation s = new Simulation(name,coordinates,firstCoord);
+        }
+    }
 }

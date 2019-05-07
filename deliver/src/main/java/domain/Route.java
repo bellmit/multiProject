@@ -1,6 +1,7 @@
 package domain;
 
 import javax.persistence.*;
+import javax.print.attribute.standard.MediaSizeName;
 
 @Embeddable
 public class Route {
@@ -37,5 +38,14 @@ public class Route {
 
     public void setEndLocation(Location endLocation) {
         this.endLocation = endLocation;
+    }
+
+    @Override
+    public String toString() {
+        String startLon = Double.toString(getStartLocation().getLongitude());
+        String startLat = Double.toString((getStartLocation().getLatitude()));
+        String endLon = Double.toString(getEndLocation().getLongitude());
+        String endLat = Double.toString(getEndLocation().getLongitude());
+        return "("+startLon+","+startLat+"),("+endLon+","+endLat+")";
     }
 }
