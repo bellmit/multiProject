@@ -1,7 +1,6 @@
 package rest;
 
 import domain.Role;
-import exceptions.RoleNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import service.RoleService;
@@ -13,7 +12,7 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 
 @Api("Role")
-@Path("role")
+@Path("roles")
 @Produces(MediaType.APPLICATION_JSON)
 public class RoleResource {
 
@@ -24,11 +23,14 @@ public class RoleResource {
     @Path("{uuid}")
     @ApiOperation(value = "Find a role by uuid")
     public Response find(@PathParam("uuid") String uuid) {
-        try {
-            return Response.ok(roleService.find(uuid)).build();
-        } catch (RoleNotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
-        }
+        return Response.ok(roleService.find(uuid)).build();
+    }
+
+    @GET
+    @Path("all")
+    @ApiOperation(value = "Find al roles")
+    public Response find() {
+        return Response.ok(roleService.getAll()).build();
     }
 
     @POST
@@ -51,11 +53,7 @@ public class RoleResource {
     @Path("{uuid}")
     @ApiOperation(value = "Delete a role by uuid")
     public Response delete(@PathParam("uuid") String uuid) {
-        try {
-            roleService.delete(uuid);
-            return Response.ok().build();
-        } catch (RoleNotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
-        }
+        roleService.delete(uuid);
+        return Response.ok().build();
     }
 }
