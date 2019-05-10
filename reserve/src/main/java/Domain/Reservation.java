@@ -23,6 +23,7 @@ public class Reservation implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
+    @Enumerated(EnumType.STRING)
     private DinnerType type;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -44,6 +45,7 @@ public class Reservation implements Serializable {
     }
 
     public Reservation() {
+        this.uuid = UUID.randomUUID().toString();
     }
 
     public String getId() {

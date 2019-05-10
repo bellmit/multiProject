@@ -1,6 +1,7 @@
 package Service;
 
 import DAO.Interfaces.ReservationDAO;
+import Domain.DinnerType;
 import Domain.Reservation;
 
 import javax.ejb.Stateless;
@@ -15,14 +16,19 @@ public class ReservationService {
     private ReservationDAO reservationDAO;
 
     public void addReservation(Reservation reservation) {
-        if(reservation == null){
+        if (reservation == null) {
             throw new javax.ws.rs.NotFoundException();
+        }
+        if (reservation.getTimeSlots().size() == 1) {
+            reservation.setType(DinnerType.Singlecourse);
+        } else if (reservation.getTimeSlots().size() > 1) {
+            reservation.setType(DinnerType.Multicourse);
         }
         reservationDAO.create(reservation);
     }
 
     public void removeReservation(Reservation reservation) {
-        if(reservation == null){
+        if (reservation == null) {
             throw new javax.ws.rs.NotFoundException();
         }
         reservationDAO.delete(reservation);
@@ -30,7 +36,7 @@ public class ReservationService {
 
     public ArrayList<Reservation> getReservations() {
         ArrayList<Reservation> reservations = reservationDAO.getReservations();
-        if(reservations==null){
+        if (reservations == null) {
             throw new javax.ws.rs.NotFoundException();
         }
         return reservations;
@@ -38,18 +44,19 @@ public class ReservationService {
 
     public Reservation findById(String id) {
         Reservation r = reservationDAO.find(id);
-        if(r == null){
+        if (r == null) {
             throw new javax.ws.rs.NotFoundException();
         }
         return r;
     }
 
-    public void editReservation(Reservation reservation){
-        if(reservation == null){
+    public void editReservation(Reservation reservation) {
+        if (reservation == null) {
             throw new javax.ws.rs.NotFoundException();
         }
         reservationDAO.edit(reservation);
     }
+
     public ReservationService() {
     }
 }

@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public class TimeSlotService {
 
     @Inject
-    private TimeSlotDAOJPA tsDAO;
+    private TimeSlotDAO tsDAO;
 
     public void addTimeSlot(TimeSlot ts) {
         if(ts == null){

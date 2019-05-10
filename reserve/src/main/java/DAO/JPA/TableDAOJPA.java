@@ -29,6 +29,7 @@ public class TableDAOJPA extends BaseDAOJPA<DinningTable> implements TableDAO {
     }
 
 
+    @Override
     public ArrayList<DinningTable> getAllAvailable(){
         List<DinningTable> allDinningTables = getTables();
         ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();

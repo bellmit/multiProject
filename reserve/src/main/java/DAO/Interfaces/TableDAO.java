@@ -8,5 +8,5 @@ import java.util.ArrayList;
 public interface TableDAO extends BaseDAO<DinningTable>  {
 
     ArrayList<DinningTable> getTables();
-
+    ArrayList<DinningTable>  getAllAvailable();
 }
