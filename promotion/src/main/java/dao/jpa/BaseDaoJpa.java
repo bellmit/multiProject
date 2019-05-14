@@ -4,7 +4,6 @@ import dao.interfaces.BaseDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.UUID;
 
 public abstract class BaseDaoJpa<T> implements BaseDao<T> {
     @PersistenceContext

@@ -2,5 +2,5 @@ package util;
 
 public enum CouponType {
     PERCENTAGE,
-    Flat
+    FLAT
 }

@@ -3,14 +3,16 @@ package domain;
 import util.CouponType;
 import util.LocalDateTimeConverter;
 
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "coupon.GetAll", query = "SELECT c FROM Coupon c")
+})
 public class Coupon implements Serializable {
 
     @Id

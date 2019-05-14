@@ -8,6 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.UUID;
 
 @Path("coupon")
@@ -20,56 +21,39 @@ public class CouponResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/new")
     public Response newCoupon(Coupon coupon) {
-        try {
             cS.create(coupon);
             return Response.status(Response.Status.OK).entity("Success").build();
-        } catch (NotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
-        } catch(Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Something went wrong").build();
-        }
-
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response getCouponById(@PathParam("id") String id) {
-        try {
             Coupon c = cS.find(id);
             return Response.status(Response.Status.OK).entity(new GenericEntity<Coupon>(c) {}).build();
-        } catch (NotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
-        } catch(Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Something went wrong").build();
-        }
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/edit")
     public Response edit(Coupon coupon) {
-        try {
             cS.edit(coupon);
             return Response.status(Response.Status.OK).entity("Success").build();
-        } catch (NotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
-        } catch(Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Something went wrong").build();
-        }
     }
 
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/delete")
-    public Response delete(Coupon coupon) {
-        try {
-            cS.delete(coupon);
+    public Response delete(String id) {
+            cS.delete(id);
             return Response.status(Response.Status.OK).entity("Success").build();
-        } catch (NotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
-        } catch(Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Something went wrong").build();
-        }
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/getall")
+    public Response getCouponById() {
+        List<Coupon> coupons = cS.getAllCoupons();
+        return Response.status(Response.Status.OK).entity(new GenericEntity<List<Coupon>>(coupons) {}).build();
     }
 }
