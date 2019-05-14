@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'war'
 }
 
 group 'com.proftaak'
@@ -14,6 +14,9 @@ repositories {
 dependencies {
     compile 'javax:javaee-api:8.0.1-b5'
     compile 'org.robolectric:junit:4.3-alpha-1'
+    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0'
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
+    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.2'
     compile 'io.swagger:swagger-jaxrs:1.5.22'
     compile 'io.swagger.core.v3:swagger-annotations:2.0.7'
     compile group: 'org.eclipse.persistence', name: 'eclipselink', version: '2.5.1'
