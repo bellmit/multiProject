@@ -2,10 +2,7 @@ package domain;
 
 import util.OrderType;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
@@ -25,6 +22,8 @@ public class Product implements Serializable {
     private double price;
     @Positive
     private double vat;
+    @ManyToOne
+    private Category category;
 
     public Product() {
         this.id = UUID.randomUUID().toString();
@@ -77,5 +76,13 @@ public class Product implements Serializable {
 
     public void setVat(double vat) {
         this.vat = vat;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

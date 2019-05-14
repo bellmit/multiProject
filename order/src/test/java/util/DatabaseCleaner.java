@@ -13,7 +13,8 @@ public class DatabaseCleaner {
             DeliveryOrder.class,
             LocalOrder.class,
             OrderStatus.class,
-            Product.class
+            Product.class,
+            Category.class
     };
     private final EntityManager em;
 
