@@ -30,12 +30,13 @@ public class TimeSlot implements Serializable {
     }
 
     public TimeSlot() {
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {
         return id;
     }
-    
+
     public String getName() {
         return name;
     }
