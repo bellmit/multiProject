@@ -1,36 +1,38 @@
 package domain;
 
 import util.CouponType;
-import util.LocalDateTimeConverter;
 
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
 
+
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "coupon.GetAll", query = "SELECT c FROM Coupon c"),
+        @NamedQuery(name = "coupon.findByCode", query = "SELECT c FROM Coupon c WHERE c.code = :code")
+})
 public class Coupon implements Serializable {
 
     @Id
     private String id;
     private String userId;
-    private double flatRate;
+    private double rate;
+    @Enumerated(EnumType.STRING)
     private CouponType type;
     private String code;
-    @Convert(converter = LocalDateTimeConverter.class)
-    private LocalDateTime expDate;
+    private Date expDate;
     private int maxUses;
 
     public Coupon() {
         this.id = UUID.randomUUID().toString();
     }
 
-    public Coupon(String userId, double flatRate, CouponType type, String code, LocalDateTime expDate, int maxUses) {
+    public Coupon(String userId, double rate, CouponType type, String code, Date expDate, int maxUses) {
         this.id = UUID.randomUUID().toString();
         this.userId = userId;
-        this.flatRate = flatRate;
+        this.rate = rate;
         this.type = type;
         this.code = code;
         this.expDate = expDate;
@@ -53,12 +55,12 @@ public class Coupon implements Serializable {
         this.userId = userId;
     }
 
-    public double getFlatRate() {
-        return flatRate;
+    public double getRate() {
+        return rate;
     }
 
-    public void setFlatRate(double flatRate) {
-        this.flatRate = flatRate;
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 
     public CouponType getType() {
@@ -77,11 +79,11 @@ public class Coupon implements Serializable {
         this.code = code;
     }
 
-    public LocalDateTime getExpDate() {
+    public Date getExpDate() {
         return expDate;
     }
 
-    public void setExpDate(LocalDateTime expDate) {
+    public void setExpDate(Date expDate) {
         this.expDate = expDate;
     }
 

@@ -32,3 +32,8 @@ dependencies {
 task buildAll(type: GradleBuild) {
     tasks = [ 'build' ]
 }
+
+test {
+    exclude '**/RoleDaoJpaTest.class'
+    exclude '**/UserDaoJpaTest.class'
+}
