@@ -10,8 +10,11 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
+import java.awt.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Startup
 @Singleton
@@ -22,58 +25,67 @@ public class InitData {
     @Inject
     CategoryService cs;
 
+    private final int priceMin = 0;
+    private final int priceMax = 20;
+    private DecimalFormat df = new DecimalFormat(".##");
+
+    private String[] categories = {
+            "Broodjes",
+            "Schotel",
+            "Drinks",
+    };
+
+    private String[] broodjes = {
+            "Doner Kebab",
+            "Durum",
+            "Kapsalon"
+    };
+
+    private String[] schotels = {
+            "Eend kebab schotel lmfao",
+            "Shit schotel",
+            "Mix schotel"
+    };
+
+    private String[] drinks = {
+            "Fanta",
+            "Cola",
+            "Bier",
+            "Koffie",
+            "Cassis"
+    };
+
+    private List<OrderType> types;
+    private List<String[]> cats;
+
     @PostConstruct
     public void init(){
-        String[] categories = {
-                "Oon",
-                "Twee",
-                "Blabla",
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8"
-        };
-
-        String[] products = {
-                "bla"
-        };
-
-        List<OrderType> types = new ArrayList<>();
+        types = new ArrayList<>();
         types.add(OrderType.DELIVERY);
         types.add(OrderType.LOCAL);
 
-        Product p = new Product("nibba", types, 10.0, 7.0);
-        ps.create(p);
+        cats = new ArrayList<>();
+        cats.add(broodjes);
+        cats.add(schotels);
+        cats.add(drinks);
 
         //create categories
-        Category c = new Category();
-        c.setName("Drinks");
-        cs.create(c);
+        for (String category : categories) {
+            Category c = new Category();
+            c.setName(category);
+            cs.create(c);
+        }
 
-        Category c1 = new Category();
-        c1.setName("Broodjes");
-        cs.create(c1);
+        //add products for each category
+        for(int i = 0; i < cats.size(); i++){
+            addProducts(cats.get(i), i);
+        }
+    }
 
-
-        //test list persistence
-        List<Category> cats = new ArrayList<>();
-
-        System.out.println("catsize: " + categories.length);
-
-        for(int i = 0; i < categories.length; i++){
-
-            Category c3 = new Category();
-            //c3.setName("cat"+i);
-            c3.setName(categories[i]);
-
-
-            cats.add(c3);
-            cs.create(cats.get(i));
-
+    private void addProducts(String[] products, int cat){
+        for (String product : products) {
+            Product p = new Product(product, cs.find(categories[cat]), types, Double.valueOf(df.format(ThreadLocalRandom.current().nextDouble(priceMin, priceMax))), 9.0);
+            ps.create(p);
         }
     }
 }

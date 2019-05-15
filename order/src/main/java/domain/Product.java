@@ -30,9 +30,10 @@ public class Product implements Serializable {
         type = new ArrayList<>();
     }
 
-    public Product(String name, Collection<OrderType> type, double price, double vat) {
+    public Product(String name, Category category, Collection<OrderType> type, double price, double vat) {
         this();
         this.name = name;
+        this.category = category;
         this.type = type;
         this.price = price;
         this.vat = vat;
