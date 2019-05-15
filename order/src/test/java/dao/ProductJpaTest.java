@@ -59,5 +59,5 @@ public class ProductJpaTest {
 
         Assert.assertNull(ad.find(a.getId()));
     }
-    *//
+    */
 }
