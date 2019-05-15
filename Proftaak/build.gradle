@@ -1,0 +1,10 @@
+plugins{
+    id 'java'
+    id 'idea'
+    id 'war'
+}
+
+
+task buildAll {
+    dependsOn gradle.includedBuilds*.task(':buildAll')
+}
