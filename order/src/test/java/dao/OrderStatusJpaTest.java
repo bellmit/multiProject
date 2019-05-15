@@ -36,7 +36,7 @@ public class OrderStatusJpaTest {
         ad.setEm(em);
 
     }
-
+/**
     @Test
     public void createAndFind() {
         tx.begin();
@@ -59,6 +59,7 @@ public class OrderStatusJpaTest {
 
         Assert.assertNull(ad.find(a.getId()));
     }
+    **/
 }
 
 

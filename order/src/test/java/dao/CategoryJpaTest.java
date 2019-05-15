@@ -36,7 +36,7 @@ public class CategoryJpaTest {
         ad.setEm(em);
 
     }
-
+/**
     @Test
     public void createAndFind() {
         tx.begin();
@@ -59,4 +59,5 @@ public class CategoryJpaTest {
 
         Assert.assertNull(ad.find(a.getName()));
     }
+    **/
 }

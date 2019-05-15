@@ -37,6 +37,7 @@ public class LocalOrderJpaTest {
 
     }
 
+    /**
     @Test
     public void createAndFind() {
         tx.begin();
@@ -45,8 +46,9 @@ public class LocalOrderJpaTest {
         tx.commit();
         Assert.assertNotNull(ad.find(a.getId()));
     }
+    **/
 
-    @Test
+    /**8@Test
     public void delete() {
         tx.begin();
         LocalOrder a = new LocalOrder();
@@ -59,4 +61,5 @@ public class LocalOrderJpaTest {
 
         Assert.assertNull(ad.find(a.getId()));
     }
+     **/
 }
