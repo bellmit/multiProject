@@ -1,7 +1,6 @@
 package rest;
 
 import domain.Coupon;
-import rest.auth.Secured;
 import service.CouponService;
 
 import javax.inject.Inject;
