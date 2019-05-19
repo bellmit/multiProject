@@ -20,7 +20,7 @@ import javax.ejb.TimerConfig;
 @Singleton
 public class Scheduler {
 
-    Reservation reser = null;
+    Reservation reser = new Reservation();
 
     @Resource
     TimerService timerService;
@@ -29,9 +29,17 @@ public class Scheduler {
     public void initialize() {
         ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
         ArrayList<Reservation> reservations = reservationDAOJPA.getReservations();
-        for (Reservation r:reservations) {
-            this.setNewScheduler(r);
+        try {
+            if(reservations.size()!=0){
+                for (Reservation r:reservations) {
+                    this.setNewScheduler(r);
+                }
+            }
+        }  catch (Exception e){
+
         }
+
+
     }
 
     public void setNewScheduler(Reservation r){
