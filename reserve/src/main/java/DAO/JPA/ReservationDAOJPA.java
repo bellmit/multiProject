@@ -6,6 +6,7 @@ import Domain.DinnerType;
 import Domain.DinningTable;
 import Domain.Reservation;
 import Domain.TimeSlot;
+import dao.jpa.BaseDaoJpa;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-public class ReservationDAOJPA extends BaseDAOJPA<Reservation> implements ReservationDAO {
+public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements ReservationDAO {
 
     @PersistenceContext
     private EntityManager em;

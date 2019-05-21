@@ -1,28 +1,40 @@
 package data;
 
+import dao.jpa.BaseDaoJpa;
 import data.interfaces.DeliveryDao;
 import domain.Delivery;
+import domain.Role;
 
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
-public class DeliveryDaoJPA extends BaseDaoJPA<Delivery> implements data.interfaces.DeliveryDao {
+public class DeliveryDaoJPA extends BaseDaoJpa<Delivery> implements DeliveryDao {
+
+    @PersistenceContext
+    private EntityManager em;
 
     public DeliveryDaoJPA() {
         super(Delivery.class);
     }
 
     @Override
+    protected EntityManager getEntityManager() {
+        return this.em;
+    }
+
+    @Override
     public List<Delivery> getByEmployeeId(String employeeId) {
-        return getEm().createQuery("SELECT d FROM Delivery d WHERE d.employeeId = :employeeId", Delivery.class)
+        return getEntityManager().createQuery("SELECT d FROM Delivery d WHERE d.employeeId = :employeeId", Delivery.class)
                 .setParameter("employeeId", employeeId)
                 .getResultList();
     }
 
     @Override
     public List<Delivery> getAllDeliveries(){
-        return getEm().createQuery("SELECT d FROM Delivery d", Delivery.class)
+        return getEntityManager().createQuery("SELECT d FROM Delivery d", Delivery.class)
                 .getResultList();
     }
 

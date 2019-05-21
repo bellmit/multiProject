@@ -3,6 +3,7 @@ package DAO.JPA;
 
 import DAO.Interfaces.TimeSlotDAO;
 import Domain.TimeSlot;
+import dao.jpa.BaseDaoJpa;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,7 +13,7 @@ import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 
 @Stateless
-public class TimeSlotDAOJPA extends BaseDAOJPA<TimeSlot> implements TimeSlotDAO {
+public class TimeSlotDAOJPA extends BaseDaoJpa<TimeSlot> implements TimeSlotDAO {
 
     @PersistenceContext
     private EntityManager em;

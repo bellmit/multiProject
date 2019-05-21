@@ -4,6 +4,7 @@ package DAO.JPA;
 import DAO.Interfaces.TableDAO;
 import Domain.DinningTable;
 import Domain.Reservation;
+import dao.jpa.BaseDaoJpa;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-public class TableDAOJPA extends BaseDAOJPA<DinningTable> implements TableDAO {
+public class TableDAOJPA extends BaseDaoJpa<DinningTable> implements TableDAO {
 
     @PersistenceContext
     private EntityManager em;
