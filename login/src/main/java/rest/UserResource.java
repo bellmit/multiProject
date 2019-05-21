@@ -30,7 +30,7 @@ public class UserResource {
 
 
     @GET
-    @Path("/all")
+    @Path("all")
     @ApiOperation(value = "Find all users")
     public Response getAll() {
         return Response.ok(userService.getAll()).build();
@@ -38,7 +38,7 @@ public class UserResource {
 
 
     @GET
-    @Path("/email/{email}")
+    @Path("email/{email}")
     @ApiOperation(value = "Find a user by email")
     public Response findByEmail(@PathParam("email") String email) {
         return Response.ok(userService.findByEmail(email)).build();

@@ -36,7 +36,7 @@ public class AuthService {
         }
 
         List<String> userRoles = RoleConverter.roleArrayToStringArray(foundUser.getRoles());
-        return jwtHelper.generatePrivateKey(foundUser.getEmail(), userRoles);
+        return jwtHelper.generatePrivateKey(foundUser.getId(), foundUser.getEmail(), userRoles);
     }
 
     private void createNewUser(JSONObject facebookResponse) {
