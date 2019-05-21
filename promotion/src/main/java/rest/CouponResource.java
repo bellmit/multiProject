@@ -1,6 +1,7 @@
 package rest;
 
 import domain.Coupon;
+import rest.auth.Secured;
 import service.CouponService;
 
 import javax.inject.Inject;
@@ -10,12 +11,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("coupon")
+@Secured
 public class CouponResource {
 
     @Inject
     private CouponService cS;
 
     @POST
+    @Secured("admin")
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/new")
     public Response newCoupon(Coupon coupon) {

@@ -24,5 +24,9 @@ war {
 }
 
 task buildAll(type: GradleBuild) {
-    tasks = [ 'war' ]
+    tasks = [ 'build' ]
+}
+
+test {
+    exclude '**/DeliveryServiceIT.class'
 }

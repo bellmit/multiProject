@@ -28,3 +28,9 @@ dependencies {
 task buildAll(type: GradleBuild) {
     tasks = [ 'build' ]
 }
+
+test {
+    exclude '**/DinningTableDaoJpaTest.class'
+    exclude '**/ReservationDaoJpaTest.class'
+    exclude '**/TimeSlotDaoJpaTest.class'
+}
