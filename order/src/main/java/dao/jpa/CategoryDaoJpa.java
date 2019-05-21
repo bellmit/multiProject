@@ -25,6 +25,10 @@ public class CategoryDaoJpa extends BaseDaoJpa<Category> implements CategoryDao 
         return this.em;
     }
 
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
     @Override
     public List<Category> getAll() {
         Query q = getEntityManager().createNativeQuery("select * from category", Category.class);

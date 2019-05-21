@@ -24,6 +24,10 @@ public class DeliveryOrderDaoJpa extends BaseDaoJpa<DeliveryOrder> implements De
         return this.em;
     }
 
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
     public List<DeliveryOrder> getAll(String userId){
         Query q = getEntityManager().createNativeQuery("select * from deliveryorder d where d.userid = '" + userId + "'", DeliveryOrder.class);
         return q.getResultList();

@@ -21,4 +21,8 @@ public class AddressDaoJpa extends BaseDaoJpa<Address> implements AddressDao {
     protected EntityManager getEntityManager() {
         return this.em;
     }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
 }

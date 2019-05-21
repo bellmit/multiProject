@@ -25,6 +25,10 @@ public class LocalOrderDaoJpa extends BaseDaoJpa<LocalOrder> implements LocalOrd
         return this.em;
     }
 
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
     public List<LocalOrder> getAll(String userId){
         Query q = getEntityManager().createNativeQuery("select * from localorder d where d.userid = '" + userId + "'", DeliveryOrder.class);
         return q.getResultList();

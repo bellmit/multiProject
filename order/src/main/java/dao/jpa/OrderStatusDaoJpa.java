@@ -20,4 +20,8 @@ public class OrderStatusDaoJpa extends BaseDaoJpa<OrderStatus> implements OrderS
     protected EntityManager getEntityManager() {
         return this.em;
     }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
 }

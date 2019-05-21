@@ -20,4 +20,8 @@ public class ProductDaoJpa extends BaseDaoJpa<Product> implements ProductDao {
     protected EntityManager getEntityManager() {
         return this.em;
     }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
 }

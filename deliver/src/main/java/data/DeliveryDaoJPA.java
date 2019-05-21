@@ -3,7 +3,6 @@ package data;
 import dao.jpa.BaseDaoJpa;
 import data.interfaces.DeliveryDao;
 import domain.Delivery;
-import domain.Role;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,6 +24,10 @@ public class DeliveryDaoJPA extends BaseDaoJpa<Delivery> implements DeliveryDao 
         return this.em;
     }
 
+    public void setEntityManager(EntityManager em) {
+        this.em = em;
+    }
+
     @Override
     public List<Delivery> getByEmployeeId(String employeeId) {
         return getEntityManager().createQuery("SELECT d FROM Delivery d WHERE d.employeeId = :employeeId", Delivery.class)
@@ -33,7 +36,7 @@ public class DeliveryDaoJPA extends BaseDaoJpa<Delivery> implements DeliveryDao 
     }
 
     @Override
-    public List<Delivery> getAllDeliveries(){
+    public List<Delivery> getAllDeliveries() {
         return getEntityManager().createQuery("SELECT d FROM Delivery d", Delivery.class)
                 .getResultList();
     }

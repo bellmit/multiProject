@@ -28,7 +28,7 @@ public class DeliveryService implements service.interfaces.DeliveryService {
     public Delivery addRoute(String deliveryId, Route route) {
         Delivery delivery = deliveryDao.find(deliveryId);
         delivery.addRoute(route);
-        return deliveryDao.merge(delivery);
+        return deliveryDao.edit(delivery);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class DeliveryService implements service.interfaces.DeliveryService {
     public Delivery assignEmployee(String deliveryId, String employeeId) {
         Delivery delivery = deliveryDao.find(deliveryId);
         delivery.setEmployeeId(employeeId);
-        return deliveryDao.merge(delivery);
+        return deliveryDao.edit(delivery);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class DeliveryService implements service.interfaces.DeliveryService {
     public Delivery editDelivery(String deliveryId, Set<String> orderList) {
         Delivery delivery = deliveryDao.find(deliveryId);
         delivery.setOrderIdList(orderList);
-        return deliveryDao.merge(delivery);
+        return deliveryDao.edit(delivery);
     }
 
     @Override
@@ -76,6 +76,6 @@ public class DeliveryService implements service.interfaces.DeliveryService {
     @Override
     public Delivery addDelivery(Set<String> orderList) {
         Delivery delivery = new Delivery(orderList);
-        return deliveryDao.persist(delivery);
+        return deliveryDao.create(delivery);
     }
 }
