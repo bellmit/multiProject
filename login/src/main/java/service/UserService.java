@@ -49,7 +49,7 @@ public class UserService {
     public User findByEmail(String email) {
         User user = userDao.findByEmail(email);
         if (user == null) {
-            throw new NotFoundException("User not found");
+            throw new NotFoundException("User with email " + email + " not found");
         }
         return user;
     }
