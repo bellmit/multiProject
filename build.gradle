@@ -10,6 +10,11 @@ subprojects {
     }
 }
 
+project(':login') {
+    dependencies {
+    }
+}
+
 project(':promotion') {
     dependencies {
         implementation project(':login')
@@ -50,8 +55,4 @@ project(':reserve') {
     dependencies {
         implementation project(':login')
     }
-}
-
-task buildAll {
-    dependsOn gradle.includedBuilds*.task(':buildAll')
 }
