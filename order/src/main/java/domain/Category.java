@@ -9,10 +9,6 @@ public class Category implements Serializable {
     @Id
     private String name;
 
-    public Category(){
-
-    }
-
     public String getName() {
         return name;
     }

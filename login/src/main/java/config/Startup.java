@@ -18,9 +18,6 @@ public class Startup {
     @Inject
     RoleDao roleDao;
 
-    public Startup() {
-    }
-
     @PostConstruct
     private void intData() {
         User user = new User();

@@ -40,10 +40,4 @@ public class AddressResource {
         as.delete(a);
     }
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/all")
-//    public List<Address> getAll(){
-//        return as.getAll();
-//    }
 }

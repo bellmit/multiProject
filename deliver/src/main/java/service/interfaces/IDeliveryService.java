@@ -6,7 +6,7 @@ import domain.Route;
 import java.util.List;
 import java.util.Set;
 
-public interface DeliveryService {
+public interface IDeliveryService {
     Delivery getById(String id);
 
     List<Delivery> getByEmployeeId(String employeeId);

@@ -15,6 +15,7 @@ import java.util.List;
 
 @Stateless
 public class UserService {
+    private static final String USER_NOT_FOUND_ERROR = "User not found";
 
     @Inject
     UserDao userDao;
@@ -29,7 +30,7 @@ public class UserService {
     public void delete(String uuid) {
         User user = userDao.find(uuid);
         if (user == null) {
-            throw new NotFoundException("User not found");
+            throw new NotFoundException(USER_NOT_FOUND_ERROR);
         }
         userDao.delete(user);
     }
@@ -37,7 +38,7 @@ public class UserService {
     public User find(String uuid) {
         User user = userDao.find(uuid);
         if (user == null) {
-            throw new NotFoundException("User not found");
+            throw new NotFoundException(USER_NOT_FOUND_ERROR);
         }
         return user;
     }
@@ -49,7 +50,7 @@ public class UserService {
     public User findByEmail(String email) {
         User user = userDao.findByEmail(email);
         if (user == null) {
-            throw new NotFoundException("User with email " + email + " not found");
+            throw new NotFoundException(USER_NOT_FOUND_ERROR);
         }
         return user;
     }
@@ -93,7 +94,7 @@ public class UserService {
     private User findUser(String uuid) {
         User foundUser = userDao.find(uuid);
         if (foundUser == null) {
-            throw new NotFoundException("User not found");
+            throw new NotFoundException(USER_NOT_FOUND_ERROR);
         }
         return foundUser;
     }

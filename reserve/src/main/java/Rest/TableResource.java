@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 
 @Path("table")
 public class TableResource {
@@ -26,31 +25,27 @@ public class TableResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response find() {
-        ArrayList<DinningTable> dinningTables = ts.getTables();
-        return Response.ok(dinningTables).build();
+        return Response.ok(ts.getTables()).build();
     }
 
     @GET
     @Path("get/available")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAvailable(){
-        ArrayList<DinningTable> availableDinningTables = ts.getAvailableTables();
-        return Response.ok(availableDinningTables).build();
+    public Response findAvailable() {
+        return Response.ok(ts.getAvailableTables()).build();
     }
 
     @GET
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("uuid") String uuid) {
-        DinningTable foundDinningTable = ts.findById(uuid);
-        return Response.ok(foundDinningTable).build();
+        return Response.ok(ts.findById(uuid)).build();
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response edit(DinningTable dinningTable) {
-        DinningTable foundDinningTable = ts.findById(dinningTable.getId());
         ts.edit(dinningTable);
         return Response.ok().build();
     }

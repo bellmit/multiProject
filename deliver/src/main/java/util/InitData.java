@@ -1,11 +1,11 @@
 package util;
 
-import service.interfaces.DeliveryService;
+import service.interfaces.IDeliveryService;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
-import javax.ejb.Singleton;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,10 +14,10 @@ import java.util.Set;
 @Startup
 public class InitData {
     @Inject
-    private DeliveryService deliveryService;
+    private IDeliveryService deliveryService;
 
     @PostConstruct
-    public void initTestDeliveries(){
+    public void initTestDeliveries() {
         String string = "Dit zijn slechts test strings die als orderId worden gebruikt, normaal zijn dit UUIDs";
         String[] list1 = string.split(" ");
 

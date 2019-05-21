@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 public abstract class BaseDaoJpa<T> implements BaseDao<T> {
 
-    public Class<T> entityClass;
+    private Class<T> entityClass;
 
     public BaseDaoJpa(Class<T> type) {
         this.entityClass = type;

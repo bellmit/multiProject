@@ -65,6 +65,6 @@ public class DinningTableDaoJpaTest {
             tableDAOJPA.delete(t);
             tx.commit();
         }
-        Assert.assertEquals(tableDAOJPA.getTables().size(),0);
+        Assert.assertEquals(0, tableDAOJPA.getTables().size());
     }
 }

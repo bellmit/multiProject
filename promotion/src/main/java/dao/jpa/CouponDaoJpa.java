@@ -30,7 +30,7 @@ public class CouponDaoJpa extends BaseDaoJpa<Coupon> implements CouponDao {
     }
 
     @Override
-    public ArrayList<Coupon> getCoupons() {
+    public List<Coupon> getCoupons() {
         TypedQuery<Coupon> query = em.createNamedQuery("coupon.GetAll", Coupon.class);
         return new ArrayList<>(query.getResultList());
     }

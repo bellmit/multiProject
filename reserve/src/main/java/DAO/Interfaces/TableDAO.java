@@ -4,9 +4,10 @@ package DAO.Interfaces;
 import Domain.DinningTable;
 import dao.interfaces.BaseDao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface TableDAO extends BaseDao<DinningTable> {
-    ArrayList<DinningTable> getTables();
-    ArrayList<DinningTable>  getAllAvailable();
+    List<DinningTable> getTables();
+
+    List<DinningTable> getAllAvailable();
 }

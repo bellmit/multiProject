@@ -12,7 +12,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +26,12 @@ public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements Reserv
     }
 
     @Override
-    public ArrayList<Reservation> getReservations() {
+    public List<Reservation> getReservations() {
         Query q = em.createQuery("SELECT r from Reservation r");
-        return  new ArrayList<>(q.getResultList());
+        return new ArrayList<>(q.getResultList());
     }
 
-    public Reservation addTable(Reservation r, DinningTable t){
+    public Reservation addTable(Reservation r, DinningTable t) {
         List<DinningTable> dinningTables = r.getDinningTables();
         dinningTables.add(t);
         r.setDinningTables(dinningTables);
@@ -40,7 +39,7 @@ public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements Reserv
         return r;
     }
 
-    public Reservation removeTable(Reservation r, DinningTable t){
+    public Reservation removeTable(Reservation r, DinningTable t) {
         List<DinningTable> dinningTables = r.getDinningTables();
         dinningTables.remove(t);
         r.setDinningTables(dinningTables);
@@ -48,7 +47,7 @@ public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements Reserv
         return r;
     }
 
-    public Reservation addTimeSlots(Reservation r, TimeSlot ts){
+    public Reservation addTimeSlots(Reservation r, TimeSlot ts) {
         List<TimeSlot> timeSlots = r.getTimeSlots();
         timeSlots.add(ts);
         r.setTimeSlots(timeSlots);
@@ -56,15 +55,15 @@ public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements Reserv
         return r;
     }
 
-    public Reservation removeTimeSlots(Reservation r, TimeSlot ts){
+    public Reservation removeTimeSlots(Reservation r, TimeSlot ts) {
         List<TimeSlot> timeSlots = r.getTimeSlots();
         timeSlots.remove(ts);
         r.setTimeSlots(timeSlots);
         em.persist(r);
-        return  r;
+        return r;
     }
 
-    public Reservation changeDinnerType(Reservation r, DinnerType dt){
+    public Reservation changeDinnerType(Reservation r, DinnerType dt) {
         r.setType(dt);
         em.persist(r);
         return r;

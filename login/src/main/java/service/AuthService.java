@@ -8,13 +8,15 @@ import util.RoleConverter;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.NotFoundException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Stateless
 public class AuthService {
@@ -52,7 +54,7 @@ public class AuthService {
     }
 
     private String retrieveUserFromFacebook(String token) {
-        StringBuffer content = null;
+        StringBuilder content = null;
         try {
             URL url = new URL("https://graph.facebook.com/v3.2/me?access_token=" + token + "&debug=all&fields=id,name,email&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -60,15 +62,17 @@ public class AuthService {
 
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
-            content = new StringBuffer();
+            content = new StringBuilder();
             while ((inputLine = in.readLine()) != null) {
                 content.append(inputLine);
             }
             in.close();
-        } catch (ProtocolException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(AuthService.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+        }
+
+        if (content == null) {
+            throw new NotFoundException("No user found");
         }
         return content.toString();
     }

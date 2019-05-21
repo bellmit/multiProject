@@ -6,7 +6,7 @@ import Domain.Reservation;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.ArrayList;
+import java.util.List;
 
 
 @Stateless
@@ -20,9 +20,9 @@ public class ReservationService {
             throw new javax.ws.rs.NotFoundException();
         }
         if (reservation.getTimeSlots().size() == 1) {
-            reservation.setType(DinnerType.Singlecourse);
+            reservation.setType(DinnerType.SINGLECOURSE);
         } else if (reservation.getTimeSlots().size() > 1) {
-            reservation.setType(DinnerType.Multicourse);
+            reservation.setType(DinnerType.MULTICOURSE);
         }
         reservationDAO.create(reservation);
     }
@@ -34,8 +34,8 @@ public class ReservationService {
         reservationDAO.delete(reservation);
     }
 
-    public ArrayList<Reservation> getReservations() {
-        ArrayList<Reservation> reservations = reservationDAO.getReservations();
+    public List<Reservation> getReservations() {
+        List<Reservation> reservations = reservationDAO.getReservations();
         if (reservations == null) {
             throw new javax.ws.rs.NotFoundException();
         }
@@ -57,6 +57,4 @@ public class ReservationService {
         reservationDAO.edit(reservation);
     }
 
-    public ReservationService() {
-    }
 }

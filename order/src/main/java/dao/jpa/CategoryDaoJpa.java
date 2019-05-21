@@ -1,7 +1,6 @@
 package dao.jpa;
 
 import dao.interfaces.CategoryDao;
-import domain.Address;
 import domain.Category;
 
 import javax.ejb.Stateless;
@@ -16,7 +15,7 @@ public class CategoryDaoJpa extends BaseDaoJpa<Category> implements CategoryDao 
     @PersistenceContext
     private EntityManager em;
 
-    public CategoryDaoJpa(){
+    public CategoryDaoJpa() {
         super(Category.class);
     }
 

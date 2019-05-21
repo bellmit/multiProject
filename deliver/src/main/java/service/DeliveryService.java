@@ -3,6 +3,7 @@ package service;
 import data.interfaces.DeliveryDao;
 import domain.Delivery;
 import domain.Route;
+import service.interfaces.IDeliveryService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Stateless
-public class DeliveryService implements service.interfaces.DeliveryService {
+public class DeliveryService implements IDeliveryService {
 
     private DeliveryDao deliveryDao;
 

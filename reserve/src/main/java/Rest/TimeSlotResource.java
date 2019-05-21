@@ -1,7 +1,6 @@
 package Rest;
 
 
-
 import Domain.TimeSlot;
 import Service.TimeSlotService;
 
@@ -9,8 +8,6 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.UUID;
 
 @Path("timeslot")
 public class TimeSlotResource {
@@ -29,7 +26,6 @@ public class TimeSlotResource {
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("uuid") String uuid) {
-        TimeSlot ts = tss.findById(uuid);
         return Response.ok(tss.findById(uuid)).build();
     }
 
@@ -37,8 +33,7 @@ public class TimeSlotResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response find() {
-        ArrayList<TimeSlot> timeSlots = tss.getTimeSlots();
-        return Response.ok(timeSlots).build();
+        return Response.ok(tss.getTimeSlots()).build();
     }
 
     @PUT

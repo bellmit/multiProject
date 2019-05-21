@@ -24,14 +24,14 @@ public class TableDAOJPA extends BaseDaoJpa<DinningTable> implements TableDAO {
     }
 
     @Override
-    public ArrayList<DinningTable> getTables() {
+    public List<DinningTable> getTables() {
         Query q = em.createQuery("SELECT t from DinningTable t");
         return  new ArrayList<>(q.getResultList());
     }
 
 
     @Override
-    public ArrayList<DinningTable> getAllAvailable(){
+    public List<DinningTable> getAllAvailable(){
         List<DinningTable> allDinningTables = getTables();
         ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
         List<Reservation> reservations = reservationDAOJPA.getReservations();

@@ -2,13 +2,13 @@ package service;
 
 import dao.interfaces.CouponDao;
 import domain.Coupon;
-import util.CouponType;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class CouponService {
@@ -42,7 +42,7 @@ public class CouponService {
         cd.delete(coupon);
     }
 
-    public ArrayList<Coupon> getAllCoupons() {
+    public List<Coupon> getAllCoupons() {
         return cd.getCoupons();
     }
 }

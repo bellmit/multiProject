@@ -1,6 +1,6 @@
 package Domain;
 
 public enum DinnerType {
-    Multicourse,
-    Singlecourse
+    MULTICOURSE,
+    SINGLECOURSE
 }

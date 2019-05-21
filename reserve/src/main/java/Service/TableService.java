@@ -6,7 +6,7 @@ import Domain.DinningTable;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.ArrayList;
+import java.util.List;
 
 
 @Stateless
@@ -29,8 +29,8 @@ public class TableService {
         tableDAO.delete(dinningTable);
     }
 
-    public ArrayList<DinningTable> getTables() {
-        ArrayList<DinningTable> dinningTables = tableDAO.getTables();
+    public List<DinningTable> getTables() {
+        List<DinningTable> dinningTables = tableDAO.getTables();
         if (dinningTables == null) {
             throw new javax.ws.rs.NotFoundException();
         }
@@ -52,11 +52,8 @@ public class TableService {
         tableDAO.edit(dinningTable);
     }
 
-    public TableService() {
-    }
-
-    public ArrayList<DinningTable> getAvailableTables() {
-        ArrayList<DinningTable> availableDinningTables = tableDAO.getAllAvailable();
+    public List<DinningTable> getAvailableTables() {
+        List<DinningTable> availableDinningTables = tableDAO.getAllAvailable();
         if (availableDinningTables == null) {
             throw new javax.ws.rs.NotFoundException();
         }

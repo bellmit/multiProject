@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.ejb.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Startup
@@ -24,7 +25,7 @@ public class Scheduler {
     public void initialize() {
         ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
         try {
-            ArrayList<Reservation> reservations = reservationDAOJPA.getReservations();
+            List<Reservation> reservations = reservationDAOJPA.getReservations();
             for (Reservation r : reservations) {
                 this.setNewScheduler(r);
             }
