@@ -18,7 +18,7 @@ import java.util.List;
 @Stateless
 public class ReservationDAOJPA extends BaseDAOJPA<Reservation> implements ReservationDAO {
 
-    @PersistenceContext(unitName = "nldPU")
+    @PersistenceContext
     private EntityManager em;
 
     public ReservationDAOJPA() {

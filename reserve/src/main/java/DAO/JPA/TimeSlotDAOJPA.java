@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @Stateless
 public class TimeSlotDAOJPA extends BaseDAOJPA<TimeSlot> implements TimeSlotDAO {
 
-    @PersistenceContext(unitName = "nldPU")
+    @PersistenceContext
     private EntityManager em;
 
     public TimeSlotDAOJPA() {

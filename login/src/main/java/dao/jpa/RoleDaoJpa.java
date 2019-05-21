@@ -12,7 +12,7 @@ import java.util.List;
 @Stateless
 public class RoleDaoJpa extends BaseDaoJpa<Role> implements RoleDao {
 
-    @PersistenceContext(unitName = "nldPU")
+    @PersistenceContext
     private EntityManager em;
 
     public RoleDaoJpa() {

@@ -14,7 +14,7 @@ import java.util.List;
 @Stateless
 public class CouponDaoJpa extends BaseDaoJpa<Coupon> implements CouponDao {
 
-    @PersistenceContext(unitName = "nldPU")
+    @PersistenceContext
     private EntityManager em;
 
     public CouponDaoJpa() {
