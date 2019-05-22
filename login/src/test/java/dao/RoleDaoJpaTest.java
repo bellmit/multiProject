@@ -1,9 +1,7 @@
 package dao;
 
-import dao.interfaces.RoleDao;
 import dao.jpa.RoleDaoJpa;
 import domain.Role;
-import domain.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,25 +11,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class RoleDaoJpaTest {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("nldTestPU");
-    private EntityManager em;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("nldTestPU");
     private EntityTransaction tx;
     private RoleDaoJpa roleDao;
 
     @Before
     public void setUp() {
-        try {
-            new DatabaseCleaner(emf.createEntityManager()).clean();
-        } catch (SQLException ex) {
-            Logger.getLogger(RoleDaoJpaTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        em = emf.createEntityManager();
+        new DatabaseCleaner(emf.createEntityManager()).clean();
+        EntityManager em = emf.createEntityManager();
         tx = em.getTransaction();
 
         roleDao = new RoleDaoJpa();

@@ -19,7 +19,7 @@ public class DatabaseCleaner {
         em = entityManager;
     }
 
-    public void clean() throws SQLException {
+    public void clean() {
         em.getTransaction().begin();
 
         for (Class<?> entityType : ENTITY_TYPES) {

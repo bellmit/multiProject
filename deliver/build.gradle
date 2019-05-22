@@ -22,11 +22,3 @@ dependencies {
 war {
     archiveName = 'delivery.war'
 }
-
-task buildAll(type: GradleBuild) {
-    tasks = [ 'build' ]
-}
-
-test {
-    exclude '**/DeliveryServiceIT.class'
-}

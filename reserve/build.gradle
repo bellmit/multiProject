@@ -24,13 +24,3 @@ dependencies {
     compile group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.4.2.Final'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-
-task buildAll(type: GradleBuild) {
-    tasks = [ 'build' ]
-}
-
-test {
-    exclude '**/DinningTableDaoJpaTest.class'
-    exclude '**/ReservationDaoJpaTest.class'
-    exclude '**/TimeSlotDaoJpaTest.class'
-}
