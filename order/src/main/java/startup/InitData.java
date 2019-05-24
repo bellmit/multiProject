@@ -1,9 +1,7 @@
 package startup;
 
-import domain.Category;
-import domain.Product;
-import service.CategoryService;
-import service.ProductService;
+import domain.*;
+import service.*;
 import util.OrderType;
 
 import javax.annotation.PostConstruct;
@@ -25,6 +23,19 @@ public class InitData {
     @Inject
     CategoryService cs;
 
+    @Inject
+    OrderStatusService oss;
+
+    @Inject
+    LocalOrderService los;
+
+    @Inject
+    DeliveryOrderService dos;
+
+    @Inject
+    AddressService as;
+
+
     private final int priceMin = 0;
     private final int priceMax = 20;
     private DecimalFormat df = new DecimalFormat(".##");
@@ -42,7 +53,7 @@ public class InitData {
     };
 
     private String[] schotels = {
-            "Eend kebab schotel lmfao",
+            "Eend kebab schotel",
             "Shit schotel",
             "Mix schotel"
     };
@@ -53,6 +64,14 @@ public class InitData {
             "Bier",
             "Koffie",
             "Cassis"
+    };
+
+    private String[] orderStatus = {
+            "Paid",
+            "Is being made",
+            "Waiting for deliverer",
+            "Is being delivered",
+            "Done"
     };
 
     private List<OrderType> types;
@@ -80,6 +99,19 @@ public class InitData {
         for(int i = 0; i < cats.size(); i++){
             addProducts(cats.get(i), i);
         }
+
+
+        //create orderstatusses
+        createOrderStatus(orderStatus);
+
+        //create addresses
+        Address address = new Address("Rachelmodel", "456A", "Eindhoven", "9191OP");
+
+        //create localOrder
+
+
+        //create deliveryOrder
+
     }
 
     private void addProducts(String[] products, int cat){
@@ -88,4 +120,15 @@ public class InitData {
             ps.create(p);
         }
     }
+
+    private void createOrderStatus(String[] orderStatusses){
+        for(String orderStatus : orderStatusses){
+            OrderStatus os = new OrderStatus(orderStatus);
+            oss.create(os);
+        }
+    }
+
+
+
+
 }

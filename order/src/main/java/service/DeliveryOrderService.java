@@ -12,16 +12,16 @@ public class DeliveryOrderService {
     @Inject
     private DeliveryOrderDao dd;
 
-    public void create(DeliveryOrder a){
-        dd.create(a);
+    public DeliveryOrder create(DeliveryOrder a){
+        return dd.create(a);
     }
 
     public DeliveryOrder find(String id){
         return dd.find(id);
     }
 
-    public void edit(DeliveryOrder a){
-        dd.edit(a);
+    public DeliveryOrder edit(DeliveryOrder a){
+        return dd.edit(a);
     }
 
     public void delete(DeliveryOrder a){

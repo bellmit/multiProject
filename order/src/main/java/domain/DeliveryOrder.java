@@ -10,6 +10,11 @@ public class DeliveryOrder extends Order{
     @OneToOne
     private Address address;
 
+    public DeliveryOrder(Address address) {
+        super();
+        this.address = address;
+    }
+
     public DeliveryOrder(){
         super();
         setId(UUID.randomUUID().toString());
@@ -21,11 +26,6 @@ public class DeliveryOrder extends Order{
     }
 
     public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public DeliveryOrder(Address address) {
-        super();
         this.address = address;
     }
 }
