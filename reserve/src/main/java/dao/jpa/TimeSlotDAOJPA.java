@@ -1,9 +1,8 @@
-package DAO.JPA;
+package dao.jpa;
 
 
-import DAO.Interfaces.TimeSlotDAO;
-import Domain.TimeSlot;
-import dao.jpa.BaseDaoJpa;
+import dao.Interfaces.TimeSlotDAO;
+import domain.TimeSlot;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

@@ -1,8 +1,8 @@
 package util;
 
-import Domain.Reservation;
-import Domain.DinningTable;
-import Domain.TimeSlot;
+import domain.Reservation;
+import domain.DinningTable;
+import domain.TimeSlot;
 
 import javax.persistence.*;
 import javax.persistence.metamodel.*;

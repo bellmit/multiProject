@@ -1,4 +1,4 @@
-package Rest;
+package rest;
 
 import io.swagger.jaxrs.config.BeanConfig;
 

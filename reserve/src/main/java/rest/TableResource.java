@@ -1,8 +1,8 @@
-package Rest;
+package rest;
 
 
-import Domain.DinningTable;
-import Service.TableService;
+import domain.DinningTable;
+import service.TableService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;

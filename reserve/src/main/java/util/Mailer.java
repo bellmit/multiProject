@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 import javax.annotation.Resource;
 import javax.mail.Message;

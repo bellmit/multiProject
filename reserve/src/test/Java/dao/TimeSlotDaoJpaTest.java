@@ -1,7 +1,7 @@
 package dao;
 
-import DAO.JPA.TimeSlotDAOJPA;
-import Domain.TimeSlot;
+import dao.jpa.TimeSlotDAOJPA;
+import domain.TimeSlot;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,8 +1,8 @@
-package Service;
+package service;
 
 
-import DAO.Interfaces.TableDAO;
-import Domain.DinningTable;
+import dao.Interfaces.TableDAO;
+import domain.DinningTable;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

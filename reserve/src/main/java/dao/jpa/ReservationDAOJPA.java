@@ -1,12 +1,11 @@
-package DAO.JPA;
+package dao.jpa;
 
 
-import DAO.Interfaces.ReservationDAO;
-import Domain.DinnerType;
-import Domain.DinningTable;
-import Domain.Reservation;
-import Domain.TimeSlot;
-import dao.jpa.BaseDaoJpa;
+import dao.Interfaces.ReservationDAO;
+import domain.DinnerType;
+import domain.DinningTable;
+import domain.Reservation;
+import domain.TimeSlot;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

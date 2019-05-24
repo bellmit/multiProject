@@ -1,13 +1,12 @@
-package Util;
+package util;
 
-import DAO.JPA.ReservationDAOJPA;
-import Domain.Reservation;
+import dao.jpa.ReservationDAOJPA;
+import domain.Reservation;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

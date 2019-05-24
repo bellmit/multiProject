@@ -1,8 +1,8 @@
-package Service;
+package service;
 
-import DAO.Interfaces.ReservationDAO;
-import Domain.DinnerType;
-import Domain.Reservation;
+import dao.Interfaces.ReservationDAO;
+import domain.DinnerType;
+import domain.Reservation;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

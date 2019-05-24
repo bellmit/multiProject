@@ -1,8 +1,8 @@
 package dao;
 
-import DAO.JPA.TableDAOJPA;
-import DAO.JPA.TimeSlotDAOJPA;
-import Domain.DinningTable;
+import dao.jpa.TableDAOJPA;
+import dao.jpa.TimeSlotDAOJPA;
+import domain.DinningTable;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

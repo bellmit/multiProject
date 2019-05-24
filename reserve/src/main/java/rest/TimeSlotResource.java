@@ -1,46 +1,46 @@
-package Rest;
+package rest;
 
-import Domain.Reservation;
-import Service.ReservationService;
+
+import domain.TimeSlot;
+import service.TimeSlotService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("reservation")
-public class ReservationResource {
-
+@Path("timeslot")
+public class TimeSlotResource {
     @Inject
-    private ReservationService rs;
+    private TimeSlotService tss;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void addReservation(Reservation r) {
-        rs.addReservation(r);
+    public void addTimeSlot(TimeSlot ts) {
+        tss.addTimeSlot(ts);
     }
 
     @GET
     @Path("get/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("uuid") String uuid) {
-        Reservation r = rs.findById(uuid);
-        return Response.ok(r).build();
+        return Response.ok(tss.findById(uuid)).build();
     }
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response find() {
-        return Response.ok(rs.getReservations()).build();
+        return Response.ok(tss.getTimeSlots()).build();
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response edit(Reservation reservation) {
-        rs.editReservation(reservation);
+    public Response edit(TimeSlot ts) {
+        tss.edit(ts);
         return Response.ok().build();
     }
 
@@ -48,10 +48,8 @@ public class ReservationResource {
     @Path("remove/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("uuid") String uuid) {
-        Reservation r = rs.findById(uuid);
-        rs.removeReservation(r);
+        TimeSlot ts = tss.findById(uuid);
+        tss.removeTimeSlot(ts);
         return Response.noContent().build();
     }
-
 }
-

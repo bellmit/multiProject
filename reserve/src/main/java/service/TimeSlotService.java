@@ -1,11 +1,10 @@
-package Service;
+package service;
 
-import DAO.Interfaces.TimeSlotDAO;
-import Domain.TimeSlot;
+import dao.Interfaces.TimeSlotDAO;
+import domain.TimeSlot;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 
 
