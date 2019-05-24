@@ -1,6 +1,6 @@
 package domain;
 
-public enum Components {
+public enum Component {
     login,
     monitoring,
     order,
