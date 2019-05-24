@@ -16,8 +16,8 @@ public class DeliveryOrderResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void newDeliveryOrder(DeliveryOrder a) {
-        as.create(a);
+    public DeliveryOrder newDeliveryOrder(DeliveryOrder a) {
+        return as.create(a);
     }
 
     @GET
@@ -30,8 +30,8 @@ public class DeliveryOrderResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/edit")
-    public void edit(DeliveryOrder a) {
-        as.edit(a);
+    public DeliveryOrder edit(DeliveryOrder a) {
+        return as.edit(a);
     }
 
     @DELETE

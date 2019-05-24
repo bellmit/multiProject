@@ -16,6 +16,11 @@ public class OrderStatus {
         this.id = UUID.randomUUID().toString();
     }
 
+    public OrderStatus(String status){
+        this();
+        this.status = status;
+    }
+
     public String getId() {
         return id;
     }

@@ -11,16 +11,16 @@ public class OrderStatusService {
     @Inject
     private OrderStatusDao od;
 
-    public void create(OrderStatus a) {
-        od.create(a);
+    public OrderStatus create(OrderStatus a) {
+        return od.create(a);
     }
 
     public OrderStatus find(String id) {
         return od.find(id);
     }
 
-    public void edit(OrderStatus a) {
-        od.edit(a);
+    public OrderStatus edit(OrderStatus a) {
+        return od.edit(a);
     }
 
     public void delete(OrderStatus a) {
