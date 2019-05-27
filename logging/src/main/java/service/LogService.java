@@ -15,7 +15,7 @@ public class LogService {
     @Inject
     LogDao logDao;
 
-    public NLDLog addLog(Component component, String message, Level level){
+    public NLDLog addLog(Component component, Class className, String message, Level level){
         NLDLog log = new NLDLog();
         log.setComponent(component);
         log.setMessage(message);
@@ -41,6 +41,7 @@ public class LogService {
 
     private NLDLog log(NLDLog log){
         Logger.getLogger(log.getComponent().toString()).log(log.getLevel(), log.getMessage());
+        Logger.getLogger(log.getComponent().toString() +"."+ log.getClassName()).log(log.getLevel(), log.getMessage());
         return logDao.create(log);
     }
 
