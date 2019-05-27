@@ -10,6 +10,7 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 import java.awt.*;
 import java.text.DecimalFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -76,6 +77,7 @@ public class InitData {
 
     private List<OrderType> types;
     private List<String[]> cats;
+    private List<Product> productsList = new ArrayList<>();;
 
     @PostConstruct
     public void init(){
@@ -105,19 +107,27 @@ public class InitData {
         createOrderStatus(orderStatus);
 
         //create addresses
-        Address address = new Address("Rachelmodel", "456A", "Eindhoven", "9191OP");
+        Address address = as.create(new Address("Rachelmodel", "456A", "Eindhoven", "9191OP"));
+        Address address2 = as.create(new Address("Banananlaan","69","OpenPov", "1234AB"));
+        as.create(address);
+        as.create(address2);
+
 
         //create localOrder
-
+        //los.create(new LocalOrder("login1", LocalDateTime.now(), 10.0, 11.0, oss.find("Paid"), productsList,1));
+        //los.create(new LocalOrder("login2", LocalDateTime.now(), 25.5, 11.0, oss.find("Paid"), productsList, 2));
 
         //create deliveryOrder
+        dos.create(new DeliveryOrder("login2", LocalDateTime.now(), 25.5, 11.0, oss.find("Paid"), productsList, address));
+        dos.create(new DeliveryOrder("login2", LocalDateTime.now(), 15.5, 11.0, oss.find("Paid"), productsList, address));
+        dos.create(new DeliveryOrder("login1", LocalDateTime.now(), 22.5, 11.0, oss.find("Paid"), productsList, address2));
 
     }
 
     private void addProducts(String[] products, int cat){
         for (String product : products) {
             Product p = new Product(product, cs.find(categories[cat]), types, Double.valueOf(df.format(ThreadLocalRandom.current().nextDouble(priceMin, priceMax))), 9.0);
-            ps.create(p);
+            productsList.add(ps.create(p));
         }
     }
 
