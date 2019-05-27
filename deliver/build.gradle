@@ -1,6 +1,9 @@
-
 plugins {
     id 'war'
+}
+
+war {
+    archiveName 'deliver.war'
 }
 
 group 'com.proftaak'

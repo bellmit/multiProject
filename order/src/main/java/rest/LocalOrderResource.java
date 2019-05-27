@@ -1,6 +1,5 @@
 package rest;
 
-import domain.DeliveryOrder;
 import domain.LocalOrder;
 import service.LocalOrderService;
 

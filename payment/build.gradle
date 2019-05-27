@@ -2,6 +2,10 @@ plugins {
     id 'war'
 }
 
+war {
+    archiveName 'payment.war'
+}
+
 group 'com.proftaak'
 version '1.0-SNAPSHOT'
 

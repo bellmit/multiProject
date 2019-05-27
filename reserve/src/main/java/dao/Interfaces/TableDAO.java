@@ -1,8 +1,8 @@
 package dao.Interfaces;
 
 
-import domain.DinningTable;
 import dao.interfaces.BaseDao;
+import domain.DinningTable;
 
 import java.util.List;
 

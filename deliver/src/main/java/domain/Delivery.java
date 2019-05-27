@@ -1,6 +1,9 @@
 package domain;
 
-import javax.persistence.*;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
