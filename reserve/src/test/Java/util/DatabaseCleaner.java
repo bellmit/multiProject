@@ -1,7 +1,7 @@
 package util;
 
-import domain.Reservation;
 import domain.DinningTable;
+import domain.Reservation;
 import domain.TimeSlot;
 
 import javax.persistence.*;
