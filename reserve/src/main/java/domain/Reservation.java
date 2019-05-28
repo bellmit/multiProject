@@ -8,9 +8,6 @@ import java.util.UUID;
 
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "reservation.findById", query = "SELECT r FROM Reservation r where  r.uuid = :id")
-})
 public class Reservation implements Serializable {
 
     @Id

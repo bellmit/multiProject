@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@NamedQuery(name = "timeslot.findById", query = "SELECT ts FROM TimeSlot ts where  ts.id = :id")
 public class TimeSlot implements Serializable {
 
     @Id
