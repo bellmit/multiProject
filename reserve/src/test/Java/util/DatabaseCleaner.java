@@ -1,6 +1,6 @@
 package util;
 
-import domain.DinningTable;
+import domain.DiningTable;
 import domain.Reservation;
 import domain.TimeSlot;
 
@@ -12,7 +12,7 @@ public class DatabaseCleaner {
 
     private static final Class<?>[] ENTITY_TYPES = {
             Reservation.class,
-            DinningTable.class,
+            DiningTable.class,
             TimeSlot.class
     };
     private final EntityManager em;

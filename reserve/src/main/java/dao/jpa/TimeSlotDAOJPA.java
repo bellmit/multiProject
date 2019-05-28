@@ -1,7 +1,7 @@
 package dao.jpa;
 
 
-import dao.Interfaces.TimeSlotDAO;
+import dao.interfaces.TimeSlotDAO;
 import domain.TimeSlot;
 
 import javax.ejb.Stateless;

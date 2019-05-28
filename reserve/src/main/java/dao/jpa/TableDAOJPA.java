@@ -1,8 +1,8 @@
 package dao.jpa;
 
 
-import dao.Interfaces.TableDAO;
-import domain.DinningTable;
+import dao.interfaces.TableDAO;
+import domain.DiningTable;
 import domain.Reservation;
 
 import javax.ejb.Stateless;
@@ -13,40 +13,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-public class TableDAOJPA extends BaseDaoJpa<DinningTable> implements TableDAO {
+public class TableDAOJPA extends BaseDaoJpa<DiningTable> implements TableDAO {
 
     @PersistenceContext
     private EntityManager em;
 
     public TableDAOJPA() {
-        super(DinningTable.class);
+        super(DiningTable.class);
     }
 
     @Override
-    public List<DinningTable> getTables() {
+    public List<DiningTable> getTables() {
         Query q = em.createQuery("SELECT t from DinningTable t");
-        return  new ArrayList<>(q.getResultList());
+        return new ArrayList<>(q.getResultList());
     }
 
 
     @Override
-    public List<DinningTable> getAllAvailable(){
-        List<DinningTable> allDinningTables = getTables();
+    public List<DiningTable> getAllAvailable() {
+        List<DiningTable> allDiningTables = getTables();
         ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
         List<Reservation> reservations = reservationDAOJPA.getReservations();
-        ArrayList<DinningTable> nonReservedDinningTables = new ArrayList<>();
-        for (DinningTable t : allDinningTables) {
+        ArrayList<DiningTable> nonReservedDiningTables = new ArrayList<>();
+        for (DiningTable t : allDiningTables) {
             int count = 0;
-            for (Reservation r: reservations) {
-               if(!r.getDinningTables().contains(t)){
-                   count++;
-               }
+            for (Reservation r : reservations) {
+                if (!r.getDiningTables().contains(t)) {
+                    count++;
+                }
             }
-            if(count==reservations.size()){
-                nonReservedDinningTables.add(t);
+            if (count == reservations.size()) {
+                nonReservedDiningTables.add(t);
             }
         }
-        return nonReservedDinningTables;
+        return nonReservedDiningTables;
     }
 
     public void setEm(EntityManager em) {

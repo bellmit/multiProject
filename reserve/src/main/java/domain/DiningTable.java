@@ -3,14 +3,12 @@ package domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "dinningtable")
-@NamedQuery(name = "table.findById", query = "SELECT t FROM dinningtable t where  t.id = :id")
-public class DinningTable implements Serializable {
+@NamedQuery(name = "diningTable.findById", query = "SELECT t FROM DiningTable t where t.id = :id")
+public class DiningTable implements Serializable {
 
     @Id
     private String id;
@@ -19,13 +17,13 @@ public class DinningTable implements Serializable {
 
     private int nrofSeats;
 
-    public DinningTable(int tableNumber, int nrofSeats) {
+    public DiningTable(int tableNumber, int nrofSeats) {
         this.id = UUID.randomUUID().toString();
         this.tableNumber = tableNumber;
         this.nrofSeats = nrofSeats;
     }
 
-    public DinningTable() {
+    public DiningTable() {
     }
 
     public String getId() {
