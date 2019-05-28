@@ -19,7 +19,8 @@ public class LogDaoJPA extends BaseDaoJpa<NLDLog> implements LogDao {
 
     @Override
     public List<NLDLog> getAll() {
-        return null;
+        return getEntityManager().createQuery("SELECT L FROM NLDLog L", NLDLog.class)
+                .getResultList();
     }
 
     @Override

@@ -15,10 +15,11 @@ public class LogService {
     @Inject
     LogDao logDao;
 
-    public NLDLog addLog(Component component, Class className, String message, Level level){
+    public NLDLog addLog(Component component, String className, String message, Level level){
         NLDLog log = new NLDLog();
         log.setComponent(component);
         log.setMessage(message);
+        log.setClassName(className);
         log.setLevel(level);
         return log(log);
     }

@@ -2,7 +2,6 @@ package domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.lang.reflect.Type;
 import java.util.UUID;
 import java.util.logging.Level;
 
@@ -11,7 +10,7 @@ public class NLDLog {
     @Id
     private String uuid = UUID.randomUUID().toString();
     private Component component;
-    private Class className;
+    private String className;
     private String message;
     private Level level;
 
@@ -26,15 +25,15 @@ public class NLDLog {
     public NLDLog() {
     }
 
-    public Class getClassName() {
+    public String getClassName() {
         return className;
     }
 
-    public void setClassName(Class className) {
+    public void setClassName(String className) {
         this.className = className;
     }
 
-    public NLDLog(Component component, Class className, String message, Level level) {
+    public NLDLog(Component component, String className, String message, Level level) {
         this.className = className;
         this.component = component;
         this.message = message;
