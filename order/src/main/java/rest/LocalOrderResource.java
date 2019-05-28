@@ -1,6 +1,5 @@
 package rest;
 
-import domain.DeliveryOrder;
 import domain.LocalOrder;
 import service.LocalOrderService;
 
@@ -17,8 +16,8 @@ public class LocalOrderResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void newLocalOrder(LocalOrder a) {
-        as.create(a);
+    public LocalOrder newLocalOrder(LocalOrder a) {
+        return as.create(a);
     }
 
     @GET
@@ -31,8 +30,8 @@ public class LocalOrderResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/edit")
-    public void edit(LocalOrder a) {
-        as.edit(a);
+    public LocalOrder edit(LocalOrder a) {
+        return as.edit(a);
     }
 
     @DELETE

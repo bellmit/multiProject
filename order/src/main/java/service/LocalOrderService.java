@@ -12,16 +12,16 @@ public class LocalOrderService {
     @Inject
     private LocalOrderDao ld;
 
-    public void create(LocalOrder a) {
-        ld.create(a);
+    public LocalOrder create(LocalOrder a) {
+        return ld.create(a);
     }
 
     public LocalOrder find(String id) {
         return ld.find(id);
     }
 
-    public void edit(LocalOrder a) {
-        ld.edit(a);
+    public LocalOrder edit(LocalOrder a) {
+        return ld.edit(a);
     }
 
     public void delete(LocalOrder a) {

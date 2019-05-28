@@ -3,14 +3,12 @@ package domain;
 import util.LocalDateTimeConverter;
 import util.OrderType;
 
-import javax.persistence.Convert;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @MappedSuperclass
 public abstract class Order implements Serializable {
@@ -20,8 +18,6 @@ public abstract class Order implements Serializable {
     private String userId;
     @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime date;
-    @NotNull
-    private OrderType type;
     @Positive
     private double totalPrice;
     @Positive
@@ -30,6 +26,8 @@ public abstract class Order implements Serializable {
     @ManyToOne
     private OrderStatus status;
     private String couponId;
+    @OneToMany
+    private List<Product> products;
 
     public String getId() {
         return id;
@@ -53,14 +51,6 @@ public abstract class Order implements Serializable {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
-    }
-
-    public OrderType getType() {
-        return type;
-    }
-
-    public void setType(OrderType type) {
-        this.type = type;
     }
 
     public double getTotalPrice() {
@@ -101,5 +91,13 @@ public abstract class Order implements Serializable {
 
     public void setCouponId(String couponId) {
         this.couponId = couponId;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

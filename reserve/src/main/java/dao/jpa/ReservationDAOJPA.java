@@ -1,9 +1,9 @@
 package dao.jpa;
 
 
-import dao.Interfaces.ReservationDAO;
+import dao.interfaces.ReservationDAO;
 import domain.DinnerType;
-import domain.DinningTable;
+import domain.DiningTable;
 import domain.Reservation;
 import domain.TimeSlot;
 
@@ -30,18 +30,18 @@ public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements Reserv
         return new ArrayList<>(q.getResultList());
     }
 
-    public Reservation addTable(Reservation r, DinningTable t) {
-        List<DinningTable> dinningTables = r.getDinningTables();
-        dinningTables.add(t);
-        r.setDinningTables(dinningTables);
+    public Reservation addTable(Reservation r, DiningTable t) {
+        List<DiningTable> diningTables = r.getDiningTables();
+        diningTables.add(t);
+        r.setDiningTables(diningTables);
         em.persist(r);
         return r;
     }
 
-    public Reservation removeTable(Reservation r, DinningTable t) {
-        List<DinningTable> dinningTables = r.getDinningTables();
-        dinningTables.remove(t);
-        r.setDinningTables(dinningTables);
+    public Reservation removeTable(Reservation r, DiningTable t) {
+        List<DiningTable> diningTables = r.getDiningTables();
+        diningTables.remove(t);
+        r.setDiningTables(diningTables);
         em.persist(r);
         return r;
     }
