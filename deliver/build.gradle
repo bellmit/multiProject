@@ -21,7 +21,3 @@ dependencies {
     testCompile 'org.hibernate:hibernate-core:5.4.2.Final'
     testCompile "org.postgresql:postgresql:42.2.5"
 }
-
-war {
-    archiveName = 'delivery.war'
-}
