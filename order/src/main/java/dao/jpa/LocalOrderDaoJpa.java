@@ -13,7 +13,7 @@ import java.util.List;
 @Stateless
 public class LocalOrderDaoJpa extends BaseDaoJpa<LocalOrder> implements LocalOrderDao {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "orderPU")
     private EntityManager em;
 
     public LocalOrderDaoJpa() {
@@ -30,7 +30,7 @@ public class LocalOrderDaoJpa extends BaseDaoJpa<LocalOrder> implements LocalOrd
     }
 
     public List<LocalOrder> getAll(String userId){
-        Query q = getEntityManager().createNativeQuery("select * from localorder d where d.userid = '" + userId + "'", DeliveryOrder.class);
+        Query q = getEntityManager().createQuery("select d from LocalOrder d where d.userId = '" + userId + "'", LocalOrder.class);
         return q.getResultList();
     }
 }

@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class AddressDaoJpa extends BaseDaoJpa<Address> implements AddressDao {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "orderPU")
     private EntityManager em;
 
     public AddressDaoJpa() {

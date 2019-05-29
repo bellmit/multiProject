@@ -1,9 +1,9 @@
 package dao.jpa;
 
 
-import dao.Interfaces.ReservationDAO;
+import dao.interfaces.ReservationDAO;
 import domain.DinnerType;
-import domain.DinningTable;
+import domain.DiningTable;
 import domain.Reservation;
 import domain.TimeSlot;
 
@@ -17,7 +17,7 @@ import java.util.List;
 @Stateless
 public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements ReservationDAO {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "reservePU")
     private EntityManager em;
 
     public ReservationDAOJPA() {

@@ -26,7 +26,7 @@ public abstract class Order implements Serializable {
     @ManyToOne
     private OrderStatus status;
     private String couponId;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Product> products;
 
     public String getId() {

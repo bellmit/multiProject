@@ -1,8 +1,8 @@
 package dao.jpa;
 
 
-import dao.Interfaces.TableDAO;
-import domain.DinningTable;
+import dao.interfaces.TableDAO;
+import domain.DiningTable;
 import domain.Reservation;
 
 import javax.ejb.Stateless;
@@ -13,19 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-public class TableDAOJPA extends BaseDaoJpa<DinningTable> implements TableDAO {
+public class TableDAOJPA extends BaseDaoJpa<DiningTable> implements TableDAO {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "reservePU")
     private EntityManager em;
 
     public TableDAOJPA() {
-        super(DinningTable.class);
+        super(DiningTable.class);
     }
 
     @Override
-    public List<DinningTable> getTables() {
+    public List<DiningTable> getTables() {
         Query q = em.createQuery("SELECT t from DinningTable t");
-        return  new ArrayList<>(q.getResultList());
+        return new ArrayList<>(q.getResultList());
     }
 
 

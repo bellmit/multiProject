@@ -24,6 +24,9 @@ public class Scheduler {
     @Resource
     TimerService timerService;
 
+    @Inject
+    ReservationDAOJPA reservationDAOJPA;
+
     @PostConstruct
     public void initialize() {
 

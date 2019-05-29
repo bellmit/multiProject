@@ -3,7 +3,7 @@ package dao;
 import dao.jpa.ReservationDAOJPA;
 import dao.jpa.TimeSlotDAOJPA;
 import domain.DinnerType;
-import domain.DinningTable;
+import domain.DiningTable;
 import domain.Reservation;
 import domain.TimeSlot;
 import org.junit.Assert;
@@ -46,13 +46,13 @@ public class ReservationDaoJpaTest {
     @Test
     public void editandCreateTest() {
         tx.begin();
-        DinningTable dinningTable = new DinningTable(1, 6);
+        DiningTable diningTable = new DiningTable(1, 6);
         TimeSlot ts = new TimeSlot("test", new Date(), new Date());
-        List<DinningTable> dinningTables = new ArrayList<>();
+        List<DiningTable> diningTables = new ArrayList<>();
         List<TimeSlot> timeSlots = new ArrayList<>();
         timeSlots.add(ts);
-        dinningTables.add(dinningTable);
-        Reservation reservation = new Reservation(1, 3, new Date(), DinnerType.SINGLECOURSE, timeSlots, dinningTables);
+        diningTables.add(diningTable);
+        Reservation reservation = new Reservation(1, 3, new Date(), DinnerType.SINGLECOURSE, timeSlots, diningTables);
         reservationDAOJPA.create(reservation);
         tx.commit();
         Reservation dbReservation = null;
@@ -70,12 +70,12 @@ public class ReservationDaoJpaTest {
     @Test
     public void removeTest() {
         tx.begin();
-        DinningTable dinningTable2 = new DinningTable(1, 6);
+        DiningTable diningTable2 = new DiningTable(1, 6);
         TimeSlot ts2 = new TimeSlot("test", new Date(), new Date());
-        List<DinningTable> tables2 = new ArrayList<>();
+        List<DiningTable> tables2 = new ArrayList<>();
         List<TimeSlot> timeSlots2 = new ArrayList<>();
         timeSlots2.add(ts2);
-        tables2.add(dinningTable2);
+        tables2.add(diningTable2);
         Reservation reservation2 = new Reservation(1, 3, new Date(), DinnerType.SINGLECOURSE, timeSlots2, tables2);
         reservationDAOJPA.create(reservation2);
         tx.commit();

@@ -12,7 +12,7 @@ import java.util.List;
 @Stateless
 public class DeliveryOrderDaoJpa extends BaseDaoJpa<DeliveryOrder> implements DeliveryOrderDao {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "orderPU")
     private EntityManager em;
 
     public DeliveryOrderDaoJpa(){
@@ -29,7 +29,7 @@ public class DeliveryOrderDaoJpa extends BaseDaoJpa<DeliveryOrder> implements De
     }
 
     public List<DeliveryOrder> getAll(String userId){
-        Query q = getEntityManager().createNativeQuery("select * from deliveryorder d where d.userid = '" + userId + "'", DeliveryOrder.class);
+        Query q = getEntityManager().createQuery("select d from DeliveryOrder d where d.userId = '" + userId + "'", DeliveryOrder.class);
         return q.getResultList();
     }
 }

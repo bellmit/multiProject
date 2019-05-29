@@ -2,7 +2,7 @@ package dao;
 
 import dao.jpa.TableDAOJPA;
 import dao.jpa.TimeSlotDAOJPA;
-import domain.DinningTable;
+import domain.DiningTable;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DinningTableDaoJpaTest {
+public class DiningTableDaoJpaTest {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("nldTestPU");
     private EntityManager em;
@@ -40,27 +40,27 @@ public class DinningTableDaoJpaTest {
     @Test
     public void editandCreateTest(){
         tx.begin();
-        DinningTable dinningTable = new DinningTable(1,6);
-        tableDAOJPA.create(dinningTable);
+        DiningTable diningTable = new DiningTable(1,6);
+        tableDAOJPA.create(diningTable);
         tx.commit();
         tx.begin();
-        DinningTable dbDinningTable = tableDAOJPA.find(dinningTable.getId());
-        Assert.assertEquals(dinningTable, dbDinningTable);
-        dinningTable.setNrofSeats(12);
-        tableDAOJPA.edit(dinningTable);
+        DiningTable dbDiningTable = tableDAOJPA.find(diningTable.getId());
+        Assert.assertEquals(diningTable, dbDiningTable);
+        diningTable.setNrofSeats(12);
+        tableDAOJPA.edit(diningTable);
         tx.commit();
-        dbDinningTable = tableDAOJPA.find(dinningTable.getId());
-        Assert.assertEquals(12, dbDinningTable.getNrofSeats());
+        dbDiningTable = tableDAOJPA.find(diningTable.getId());
+        Assert.assertEquals(12, dbDiningTable.getNrofSeats());
 
     }
 
     @Test
     public void removeTest(){
         tx.begin();
-        DinningTable dinningTable2 = new DinningTable(2,4);
-        tableDAOJPA.create(dinningTable2);
+        DiningTable diningTable2 = new DiningTable(2,4);
+        tableDAOJPA.create(diningTable2);
         tx.commit();
-        for (DinningTable t: tableDAOJPA.getTables()) {
+        for (DiningTable t: tableDAOJPA.getTables()) {
             tx.begin();
             tableDAOJPA.delete(t);
             tx.commit();

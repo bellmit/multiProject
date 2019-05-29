@@ -1,7 +1,6 @@
-package dao.Interfaces;
+package dao.interfaces;
 
 
-import dao.interfaces.BaseDao;
 import domain.TimeSlot;
 
 import java.util.List;

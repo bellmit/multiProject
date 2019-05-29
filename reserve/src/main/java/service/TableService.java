@@ -1,8 +1,8 @@
 package service;
 
 
-import dao.Interfaces.TableDAO;
-import domain.DinningTable;
+import dao.interfaces.TableDAO;
+import domain.DiningTable;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -15,41 +15,41 @@ public class TableService {
     @Inject
     private TableDAO tableDAO;
 
-    public void addTable(DinningTable dinningTable) {
-        if (dinningTable == null) {
+    public void addTable(DiningTable diningTable) {
+        if (diningTable == null) {
             throw new javax.ws.rs.NotFoundException();
         }
-        tableDAO.create(dinningTable);
+        tableDAO.create(diningTable);
     }
 
-    public void removeTable(DinningTable dinningTable) {
-        if (dinningTable == null) {
+    public void removeTable(DiningTable diningTable) {
+        if (diningTable == null) {
             throw new javax.ws.rs.NotFoundException();
         }
-        tableDAO.delete(dinningTable);
+        tableDAO.delete(diningTable);
     }
 
-    public List<DinningTable> getTables() {
-        List<DinningTable> dinningTables = tableDAO.getTables();
-        if (dinningTables == null) {
+    public List<DiningTable> getTables() {
+        List<DiningTable> diningTables = tableDAO.getTables();
+        if (diningTables == null) {
             throw new javax.ws.rs.NotFoundException();
         }
-        return dinningTables;
+        return diningTables;
     }
 
-    public DinningTable findById(String id) {
-        DinningTable table = tableDAO.find(id);
+    public DiningTable findById(String id) {
+        DiningTable table = tableDAO.find(id);
         if (table == null) {
             throw new javax.ws.rs.NotFoundException();
         }
         return table;
     }
 
-    public void edit(DinningTable dinningTable) {
-        if (dinningTable == null) {
+    public void edit(DiningTable diningTable) {
+        if (diningTable == null) {
             throw new javax.ws.rs.NotFoundException();
         }
-        tableDAO.edit(dinningTable);
+        tableDAO.edit(diningTable);
     }
 
 }

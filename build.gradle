@@ -17,42 +17,55 @@ project(':login') {
 
 project(':order') {
     dependencies {
-        implementation project(':login')
+        implementation project(':login') {
+        }
     }
 }
 
 project(':promotion') {
     dependencies {
-        implementation project(':login')
+        implementation project(':login'){
+
+        }
     }
 }
 
 project(':deliver') {
     dependencies {
-        implementation project(':login')
+        implementation project(':login') {
+
+        }
     }
 }
 
 project(':logging') {
     dependencies {
-        implementation project(':login')
+        implementation project(':login') {
+
+        }
     }
 }
 
 project(':monitoring') {
     dependencies {
-        implementation project(':login')
+        implementation project(':login') {
+
+        }
     }
 }
 
 project(':payment') {
     dependencies {
-        implementation project(':login')
+        implementation project(':login') {
+
+        }
     }
 }
 
 project(':reserve') {
     dependencies {
-        implementation project(':login')
+        implementation project(':login') {
+
+        }
     }
 }
