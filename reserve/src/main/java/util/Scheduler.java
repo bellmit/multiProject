@@ -20,9 +20,11 @@ public class Scheduler {
     @Resource
     TimerService timerService;
 
+    @Inject
+    ReservationDAOJPA reservationDAOJPA;
+
     @PostConstruct
     public void initialize() {
-        ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
         try {
             List<Reservation> reservations = reservationDAOJPA.getReservations();
             for (Reservation r : reservations) {
