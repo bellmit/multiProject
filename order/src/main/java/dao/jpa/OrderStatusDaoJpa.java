@@ -9,7 +9,8 @@ import javax.persistence.PersistenceContext;
 
 @Stateless
 public class OrderStatusDaoJpa extends BaseDaoJpa<OrderStatus> implements OrderStatusDao {
-    @PersistenceContext
+
+    @PersistenceContext(unitName = "orderPU")
     private EntityManager em;
 
     public OrderStatusDaoJpa() {

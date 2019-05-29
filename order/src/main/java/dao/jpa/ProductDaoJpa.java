@@ -11,7 +11,8 @@ import java.util.List;
 
 @Stateless
 public class ProductDaoJpa extends BaseDaoJpa<Product> implements ProductDao {
-    @PersistenceContext
+
+    @PersistenceContext(unitName = "orderPU")
     private EntityManager em;
 
     public ProductDaoJpa() {
