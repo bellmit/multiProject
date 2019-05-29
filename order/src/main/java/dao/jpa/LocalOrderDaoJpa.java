@@ -13,7 +13,7 @@ import java.util.List;
 @Stateless
 public class LocalOrderDaoJpa extends BaseDaoJpa<LocalOrder> implements LocalOrderDao {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "orderPU")
     private EntityManager em;
 
     public LocalOrderDaoJpa() {

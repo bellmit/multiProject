@@ -15,7 +15,7 @@ import java.util.List;
 @Stateless
 public class TableDAOJPA extends BaseDaoJpa<DiningTable> implements TableDAO {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "reservePU")
     private EntityManager em;
 
     public TableDAOJPA() {
