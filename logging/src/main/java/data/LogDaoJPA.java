@@ -14,7 +14,7 @@ import java.util.logging.Level;
 @Stateless
 public class LogDaoJPA extends BaseDaoJpa<NldLog> implements LogDao {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "nldPU")
     private EntityManager em;
 
     @Override
