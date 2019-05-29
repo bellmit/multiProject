@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.*;
+import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 
