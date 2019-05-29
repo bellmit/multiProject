@@ -10,6 +10,8 @@ public class OrderStatus {
     @Id
     private String status;
 
+    public OrderStatus() { }
+
     public OrderStatus(String status){
         this.status = status;
     }

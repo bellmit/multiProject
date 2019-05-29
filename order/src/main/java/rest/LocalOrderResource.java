@@ -45,8 +45,6 @@ public class LocalOrderResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/all/{id}")
     public List<LocalOrder> getAll(@PathParam("id") String userId){
-        //todo remove
-        System.out.println("banana");
         return as.getAll(userId);
     }
 }
