@@ -1,7 +1,6 @@
 package service;
 
 import data.DeliveryDaoJPA;
-import data.interfaces.DeliveryDao;
 import domain.Delivery;
 import domain.Location;
 import domain.Route;
@@ -18,7 +17,6 @@ import javax.persistence.Persistence;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class DeliveryServiceIT {
 

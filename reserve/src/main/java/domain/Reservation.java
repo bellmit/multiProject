@@ -8,9 +8,6 @@ import java.util.UUID;
 
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "reservation.findById", query = "SELECT r FROM Reservation r where  r.uuid = :id")
-})
 public class Reservation implements Serializable {
 
     @Id
@@ -32,16 +29,16 @@ public class Reservation implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "reservation_id")
-    private List<DinningTable> dinningTables;
+    private List<DiningTable> diningTables;
 
-    public Reservation(int userID, int nrofPeople, Date date, DinnerType type, List<TimeSlot> timeSlots, List<DinningTable> dinningTables) {
+    public Reservation(int userID, int nrofPeople, Date date, DinnerType type, List<TimeSlot> timeSlots, List<DiningTable> diningTables) {
         this.uuid = UUID.randomUUID().toString();
         this.userID = userID;
         this.nrofPeople = nrofPeople;
         this.date = date;
         this.type = type;
         this.timeSlots = timeSlots;
-        this.dinningTables = dinningTables;
+        this.diningTables = diningTables;
     }
 
     public Reservation() {
@@ -93,12 +90,12 @@ public class Reservation implements Serializable {
         this.timeSlots = timeSlots;
     }
 
-    public List<DinningTable> getDinningTables() {
-        return dinningTables;
+    public List<DiningTable> getDiningTables() {
+        return diningTables;
     }
 
-    public void setDinningTables(List<DinningTable> dinningTables) {
-        this.dinningTables = dinningTables;
+    public void setDiningTables(List<DiningTable> diningTables) {
+        this.diningTables = diningTables;
     }
 
     public void Notify(Reservation r){

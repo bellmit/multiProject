@@ -1,21 +1,7 @@
 package dao;
 
-import dao.jpa.CouponDaoJpa;
-import domain.Coupon;
 import org.junit.Before;
 import org.junit.Test;
-import util.DatabaseCleaner;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 
 public class CouponDaoJpaTest {
 

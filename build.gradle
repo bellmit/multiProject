@@ -15,16 +15,24 @@ project(':login') {
     }
 }
 
-project(':promotion') {
+project(':order') {
     dependencies {
         implementation project(':login') {
         }
     }
 }
 
-project(':deliver') {
+project(':promotion') {
     dependencies {
         implementation project(':login'){
+
+        }
+    }
+}
+
+project(':deliver') {
+    dependencies {
+        implementation project(':login') {
 
         }
     }
@@ -39,14 +47,6 @@ project(':logging') {
 }
 
 project(':monitoring') {
-    dependencies {
-        implementation project(':login') {
-
-        }
-    }
-}
-
-project(':order') {
     dependencies {
         implementation project(':login') {
 

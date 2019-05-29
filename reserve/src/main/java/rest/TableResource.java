@@ -1,7 +1,7 @@
 package rest;
 
 
-import domain.DinningTable;
+import domain.DiningTable;
 import service.TableService;
 
 import javax.inject.Inject;
@@ -18,7 +18,7 @@ public class TableResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void addTable(DinningTable t) {
+    public void addTable(DiningTable t) {
         ts.addTable(t);
     }
 
@@ -45,8 +45,8 @@ public class TableResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response edit(DinningTable dinningTable) {
-        ts.edit(dinningTable);
+    public Response edit(DiningTable diningTable) {
+        ts.edit(diningTable);
         return Response.ok().build();
     }
 
@@ -54,7 +54,7 @@ public class TableResource {
     @Path("remove/{uuid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("uuid") String uuid) {
-        DinningTable t = ts.findById(uuid);
+        DiningTable t = ts.findById(uuid);
         ts.removeTable(t);
         return Response.noContent().build();
     }
