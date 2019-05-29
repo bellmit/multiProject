@@ -24,49 +24,6 @@ public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements Reserv
         super(Reservation.class);
     }
 
-    @Override
-    public List<Reservation> getReservations() {
-        Query q = em.createQuery("SELECT r from Reservation r");
-        return new ArrayList<>(q.getResultList());
-    }
-
-    public Reservation addTable(Reservation r, DinningTable t) {
-        List<DinningTable> dinningTables = r.getDinningTables();
-        dinningTables.add(t);
-        r.setDinningTables(dinningTables);
-        em.persist(r);
-        return r;
-    }
-
-    public Reservation removeTable(Reservation r, DinningTable t) {
-        List<DinningTable> dinningTables = r.getDinningTables();
-        dinningTables.remove(t);
-        r.setDinningTables(dinningTables);
-        em.persist(r);
-        return r;
-    }
-
-    public Reservation addTimeSlots(Reservation r, TimeSlot ts) {
-        List<TimeSlot> timeSlots = r.getTimeSlots();
-        timeSlots.add(ts);
-        r.setTimeSlots(timeSlots);
-        em.persist(r);
-        return r;
-    }
-
-    public Reservation removeTimeSlots(Reservation r, TimeSlot ts) {
-        List<TimeSlot> timeSlots = r.getTimeSlots();
-        timeSlots.remove(ts);
-        r.setTimeSlots(timeSlots);
-        em.persist(r);
-        return r;
-    }
-
-    public Reservation changeDinnerType(Reservation r, DinnerType dt) {
-        r.setType(dt);
-        em.persist(r);
-        return r;
-    }
 
     public void setEm(EntityManager em) {
         this.em = em;
@@ -75,5 +32,13 @@ public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements Reserv
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+
+    @Override
+    public List<Reservation> getAll() {
+        Query q = em.createQuery("SELECT rs from Reservation rs");
+        List<Reservation> reservations = new ArrayList<>();
+        reservations.addAll(q.getResultList());
+        return reservations;
     }
 }

@@ -8,8 +8,8 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "dinningtable")
-@NamedQuery(name = "table.findById", query = "SELECT t FROM dinningtable t where  t.id = :id")
+@Table
+@NamedQuery(name = "table.findById", query = "SELECT t FROM DinningTable t where  t.id = :id")
 public class DinningTable implements Serializable {
 
     @Id

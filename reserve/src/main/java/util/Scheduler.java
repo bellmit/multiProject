@@ -2,34 +2,37 @@ package util;
 
 import dao.jpa.ReservationDAOJPA;
 import domain.Reservation;
+import service.ReservationService;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.*;
+import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 
 
-@Startup
 @Singleton
 public class Scheduler {
 
     Reservation reser = new Reservation();
+
+    @Inject
+    ReservationService rs;
 
     @Resource
     TimerService timerService;
 
     @PostConstruct
     public void initialize() {
-        ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
-        try {
-            List<Reservation> reservations = reservationDAOJPA.getReservations();
-            for (Reservation r : reservations) {
-                this.setNewScheduler(r);
+
+            List<Reservation> reservations = rs.getReservations();
+            if(!reservations.isEmpty()) {
+                for (Reservation r : reservations) {
+                    this.setNewScheduler(r);
+                }
             }
-        } catch (Exception e) {
-        }
     }
 
     public void setNewScheduler(Reservation r) {

@@ -29,26 +29,6 @@ public class TableDAOJPA extends BaseDaoJpa<DinningTable> implements TableDAO {
     }
 
 
-    @Override
-    public List<DinningTable> getAllAvailable(){
-        List<DinningTable> allDinningTables = getTables();
-        ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
-        List<Reservation> reservations = reservationDAOJPA.getReservations();
-        ArrayList<DinningTable> nonReservedDinningTables = new ArrayList<>();
-        for (DinningTable t : allDinningTables) {
-            int count = 0;
-            for (Reservation r: reservations) {
-               if(!r.getDinningTables().contains(t)){
-                   count++;
-               }
-            }
-            if(count==reservations.size()){
-                nonReservedDinningTables.add(t);
-            }
-        }
-        return nonReservedDinningTables;
-    }
-
     public void setEm(EntityManager em) {
         this.em = em;
     }

@@ -52,11 +52,4 @@ public class TableService {
         tableDAO.edit(dinningTable);
     }
 
-    public List<DinningTable> getAvailableTables() {
-        List<DinningTable> availableDinningTables = tableDAO.getAllAvailable();
-        if (availableDinningTables == null) {
-            throw new javax.ws.rs.NotFoundException();
-        }
-        return availableDinningTables;
-    }
 }
