@@ -19,7 +19,7 @@ public class initData {
 
     @PostConstruct
     public void init(){
-        initLogs();
+        // initLogs();
     }
 
     private void initLogs(){
