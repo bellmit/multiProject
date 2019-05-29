@@ -2,13 +2,15 @@ package domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
 @Table
-@NamedQuery(name = "table.findById", query = "SELECT t FROM DinningTable t where  t.id = :id")
-public class DinningTable implements Serializable {
+//@NamedQuery(name = "table.findById", query = "SELECT t FROM DinningTable t where  t.id = :id")
+public class DiningTable implements Serializable {
 
     @Id
     private String id;

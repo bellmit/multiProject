@@ -1,6 +1,6 @@
 package service;
 
-import dao.interfaces.ReservationDAO;
+import dao.Interfaces.ReservationDAO;
 import domain.DinnerType;
 import domain.Reservation;
 

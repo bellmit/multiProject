@@ -1,7 +1,7 @@
 package dao.jpa;
 
 
-import dao.interfaces.ReservationDAO;
+import dao.Interfaces.ReservationDAO;
 import domain.DinnerType;
 import domain.DiningTable;
 import domain.Reservation;

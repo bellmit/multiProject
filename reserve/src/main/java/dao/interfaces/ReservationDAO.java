@@ -1,5 +1,6 @@
-package dao.interfaces;
+package dao.Interfaces;
 
+import dao.interfaces.BaseDao;
 import domain.Reservation;
 
 import java.util.List;
