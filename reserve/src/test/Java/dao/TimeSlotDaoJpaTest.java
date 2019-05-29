@@ -1,16 +1,20 @@
 package dao;
 
-import DAO.JPA.TimeSlotDAOJPA;
-import Domain.TimeSlot;
+import dao.jpa.TimeSlotDAOJPA;
+import domain.TimeSlot;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import util.DatabaseCleaner;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.logging.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TimeSlotDaoJpaTest {
 
@@ -34,33 +38,33 @@ public class TimeSlotDaoJpaTest {
     }
 
     @Test
-    public void editandCreateTest(){
+    public void editandCreateTest() {
         tx.begin();
-        TimeSlot ts = new TimeSlot("tets",new Date(),new Date());
+        TimeSlot ts = new TimeSlot("tets", new Date(), new Date());
         timeSlotDAOJPA.create(ts);
         tx.commit();
         TimeSlot dbtimeslot = timeSlotDAOJPA.find(ts.getId());
-        Assert.assertEquals(dbtimeslot,ts);
+        Assert.assertEquals(dbtimeslot, ts);
         tx.begin();
         ts.setName("newname");
         timeSlotDAOJPA.edit(ts);
         tx.commit();
         dbtimeslot = timeSlotDAOJPA.find(ts.getId());
-        Assert.assertEquals("newname",dbtimeslot.getName());
+        Assert.assertEquals("newname", dbtimeslot.getName());
 
     }
 
     @Test
-    public void removeTest(){
+    public void removeTest() {
         tx.begin();
-        TimeSlot ts = new TimeSlot("test2",new Date(),new Date());
+        TimeSlot ts = new TimeSlot("test2", new Date(), new Date());
         timeSlotDAOJPA.create(ts);
         tx.commit();
-        for (TimeSlot t: timeSlotDAOJPA.getTimeSlots()) {
+        for (TimeSlot t : timeSlotDAOJPA.getTimeSlots()) {
             tx.begin();
             timeSlotDAOJPA.delete(t);
             tx.commit();
         }
-        Assert.assertEquals(timeSlotDAOJPA.getTimeSlots().size(),0);
+        Assert.assertEquals(0, timeSlotDAOJPA.getTimeSlots().size());
     }
 }

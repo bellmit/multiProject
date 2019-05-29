@@ -1,7 +1,6 @@
 package dao.interfaces;
 
 import domain.Category;
-import domain.DeliveryOrder;
 
 import java.util.List;
 

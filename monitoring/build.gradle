@@ -1,5 +1,9 @@
 plugins {
-    id 'java'
+    id 'war'
+}
+
+war {
+    archiveName 'monitoring.war'
 }
 
 group 'com.proftaak'
@@ -13,8 +17,4 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-
-task buildAll(type: GradleBuild) {
-    tasks = [ 'build' ]
 }

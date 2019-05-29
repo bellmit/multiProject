@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "user.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")})
+@NamedQuery(name = "user.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
 public class User {
 
     @Id

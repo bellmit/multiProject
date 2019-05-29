@@ -5,7 +5,6 @@ import domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.metamodel.EntityType;
-import java.sql.SQLException;
 
 public class DatabaseCleaner {
 
@@ -19,7 +18,7 @@ public class DatabaseCleaner {
         em = entityManager;
     }
 
-    public void clean() throws SQLException {
+    public void clean() {
         em.getTransaction().begin();
 
         for (Class<?> entityType : ENTITY_TYPES) {

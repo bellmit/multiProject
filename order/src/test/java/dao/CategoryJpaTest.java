@@ -2,10 +2,7 @@ package dao;
 
 import config.props;
 import dao.jpa.CategoryDaoJpa;
-import domain.Category;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import util.DatabaseCleaner;
 
 import javax.persistence.EntityManager;

@@ -1,47 +1,34 @@
 package dao.jpa;
 
-import config.props;
 import dao.interfaces.BaseDao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 public abstract class BaseDaoJpa<T> implements BaseDao<T> {
 
-    private Class<T> type;
+    private Class<T> entityClass;
 
-    public BaseDaoJpa(Class<T> type){
-        this.type = type;
+    public BaseDaoJpa(Class<T> type) {
+        this.entityClass = type;
     }
 
-    @PersistenceContext(unitName = props.livePU)
-    private EntityManager em;
-
-    public EntityManager getEntityManager() {
-        return this.em;
-    }
-
-    public void setEm(EntityManager em) {
-        this.em = em;
-    }
+    protected abstract EntityManager getEntityManager();
 
     @Override
-    public void create(T object) {
+    public T create(T object) {
         getEntityManager().persist(object);
+        return object;
     }
 
     @Override
     public T find(String id) {
-        try {
-            return getEntityManager().find(type, id);
-        } catch (Exception ex) {
-            return null;
-        }
+        return getEntityManager().find(entityClass, id);
     }
 
     @Override
-    public void edit(T object) {
+    public T edit(T object) {
         getEntityManager().merge(object);
+        return object;
     }
 
     @Override

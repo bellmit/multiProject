@@ -15,8 +15,8 @@ public class AddressResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void newAddress(Address a) {
-        as.create(a);
+    public Address newAddress(Address a) {
+        return as.create(a);
     }
 
     @GET
@@ -29,8 +29,8 @@ public class AddressResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/edit")
-    public void edit(Address a) {
-        as.edit(a);
+    public Address edit(Address a) {
+        return as.edit(a);
     }
 
     @DELETE
@@ -40,10 +40,4 @@ public class AddressResource {
         as.delete(a);
     }
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/all")
-//    public List<Address> getAll(){
-//        return as.getAll();
-//    }
 }

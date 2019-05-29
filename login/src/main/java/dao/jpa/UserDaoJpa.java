@@ -12,7 +12,7 @@ import java.util.List;
 @Stateless
 public class UserDaoJpa extends BaseDaoJpa<User> implements UserDao {
 
-    @PersistenceContext(unitName = "nldPU")
+    @PersistenceContext(unitName = "loginPU")
     private EntityManager em;
 
     public UserDaoJpa() {

@@ -15,8 +15,8 @@ public class OrderStatusResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void newOrderStatus(OrderStatus a) {
-        as.create(a);
+    public OrderStatus newOrderStatus(OrderStatus a) {
+        return as.create(a);
     }
 
     @GET
@@ -29,8 +29,8 @@ public class OrderStatusResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/edit")
-    public void edit(OrderStatus a) {
-        as.edit(a);
+    public OrderStatus edit(OrderStatus a) {
+        return as.edit(a);
     }
 
     @DELETE
