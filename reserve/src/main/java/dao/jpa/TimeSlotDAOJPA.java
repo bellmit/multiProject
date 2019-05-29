@@ -1,7 +1,7 @@
 package dao.jpa;
 
 
-import dao.interfaces.TimeSlotDAO;
+import dao.Interfaces.TimeSlotDAO;
 import domain.TimeSlot;
 
 import javax.ejb.Stateless;
@@ -14,7 +14,7 @@ import java.util.List;
 @Stateless
 public class TimeSlotDAOJPA extends BaseDaoJpa<TimeSlot> implements TimeSlotDAO {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "reservePU")
     private EntityManager em;
 
     public TimeSlotDAOJPA() {

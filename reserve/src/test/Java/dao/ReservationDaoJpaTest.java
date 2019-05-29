@@ -79,12 +79,12 @@ public class ReservationDaoJpaTest {
         Reservation reservation2 = new Reservation(1, 3, new Date(), DinnerType.SINGLECOURSE, timeSlots2, tables2);
         reservationDAOJPA.create(reservation2);
         tx.commit();
-        for (Reservation r : reservationDAOJPA.getReservations()) {
+        for (Reservation r : reservationDAOJPA.getAll()) {
             tx.begin();
             reservationDAOJPA.delete(r);
             tx.commit();
         }
-        Assert.assertEquals(0, reservationDAOJPA.getReservations().size());
+        Assert.assertEquals(0, reservationDAOJPA.getAll().size());
     }
 
 }

@@ -1,7 +1,7 @@
 package dao.jpa;
 
 
-import dao.interfaces.ReservationDAO;
+import dao.Interfaces.ReservationDAO;
 import domain.DinnerType;
 import domain.DiningTable;
 import domain.Reservation;
@@ -17,56 +17,13 @@ import java.util.List;
 @Stateless
 public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements ReservationDAO {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "reservePU")
     private EntityManager em;
 
     public ReservationDAOJPA() {
         super(Reservation.class);
     }
 
-    @Override
-    public List<Reservation> getReservations() {
-        Query q = em.createQuery("SELECT r from Reservation r");
-        return new ArrayList<>(q.getResultList());
-    }
-
-    public Reservation addTable(Reservation r, DiningTable t) {
-        List<DiningTable> diningTables = r.getDiningTables();
-        diningTables.add(t);
-        r.setDiningTables(diningTables);
-        em.persist(r);
-        return r;
-    }
-
-    public Reservation removeTable(Reservation r, DiningTable t) {
-        List<DiningTable> diningTables = r.getDiningTables();
-        diningTables.remove(t);
-        r.setDiningTables(diningTables);
-        em.persist(r);
-        return r;
-    }
-
-    public Reservation addTimeSlots(Reservation r, TimeSlot ts) {
-        List<TimeSlot> timeSlots = r.getTimeSlots();
-        timeSlots.add(ts);
-        r.setTimeSlots(timeSlots);
-        em.persist(r);
-        return r;
-    }
-
-    public Reservation removeTimeSlots(Reservation r, TimeSlot ts) {
-        List<TimeSlot> timeSlots = r.getTimeSlots();
-        timeSlots.remove(ts);
-        r.setTimeSlots(timeSlots);
-        em.persist(r);
-        return r;
-    }
-
-    public Reservation changeDinnerType(Reservation r, DinnerType dt) {
-        r.setType(dt);
-        em.persist(r);
-        return r;
-    }
 
     public void setEm(EntityManager em) {
         this.em = em;
@@ -75,5 +32,13 @@ public class ReservationDAOJPA extends BaseDaoJpa<Reservation> implements Reserv
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+
+    @Override
+    public List<Reservation> getAll() {
+        Query q = em.createQuery("SELECT rs from Reservation rs");
+        List<Reservation> reservations = new ArrayList<>();
+        reservations.addAll(q.getResultList());
+        return reservations;
     }
 }

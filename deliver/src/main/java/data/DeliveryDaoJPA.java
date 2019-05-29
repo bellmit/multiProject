@@ -12,7 +12,7 @@ import java.util.List;
 @Stateless
 public class DeliveryDaoJPA extends BaseDaoJpa<Delivery> implements DeliveryDao {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "deliverPU")
     private EntityManager em;
 
     public DeliveryDaoJPA() {
