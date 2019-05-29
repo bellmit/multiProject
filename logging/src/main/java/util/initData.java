@@ -1,7 +1,6 @@
 package util;
 
 import domain.Component;
-import domain.NLDLog;
 import service.LogService;
 
 import javax.annotation.PostConstruct;

@@ -41,7 +41,7 @@ project(':deliver') {
 project(':logging') {
     dependencies {
         implementation project(':login') {
-
+            
         }
     }
 }
@@ -49,7 +49,7 @@ project(':logging') {
 project(':monitoring') {
     dependencies {
         implementation project(':login') {
-
+            
         }
     }
 }
@@ -57,7 +57,7 @@ project(':monitoring') {
 project(':payment') {
     dependencies {
         implementation project(':login') {
-
+            
         }
     }
 }
@@ -65,7 +65,7 @@ project(':payment') {
 project(':reserve') {
     dependencies {
         implementation project(':login') {
-
+            
         }
     }
 }
