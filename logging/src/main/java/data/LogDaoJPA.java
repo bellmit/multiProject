@@ -25,17 +25,24 @@ public class LogDaoJPA extends BaseDaoJpa<NLDLog> implements LogDao {
 
     @Override
     public List<NLDLog> getForComponent(Component component) {
-        return null;
+        return getEntityManager().createQuery("SELECT L FROM NLDLog L WHERE l.component = :component", NLDLog.class)
+                .setParameter("component", component)
+                .getResultList();
     }
 
     @Override
     public List<NLDLog> getWithLevel(Level level) {
-        return null;
+        return getEntityManager().createQuery("SELECT L FROM NLDLog L WHERE l.level = :level", NLDLog.class)
+                .setParameter("level", level)
+                .getResultList();
     }
 
     @Override
     public List<NLDLog> getForComponentWithLevel(Component component, Level level) {
-        return null;
+        return getEntityManager().createQuery("SELECT L FROM NLDLog L WHERE l.component = :component AND l.level = :level", NLDLog.class)
+                .setParameter("component", component)
+                .setParameter("level", level)
+                .getResultList();
     }
 
     @Override
