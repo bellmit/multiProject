@@ -3,6 +3,8 @@ import dao.interfaces.CouponDao;
 import dao.jpa.BaseDaoJpa;
 import dao.jpa.CouponDaoJpa;
 import domain.Coupon;
+import org.jboss.arquillian.container.test.api.RunAsClient;
+import org.jboss.arquillian.extension.rest.client.ArquillianResteasyResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -18,6 +20,10 @@ import util.CouponType;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.transaction.UserTransaction;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @RunWith(Arquillian.class)
 public class CouponIT {
@@ -43,6 +49,16 @@ public class CouponIT {
     @Test
     public void SimpleTest(){
         Assert.assertEquals("","");
+    }
+
+    @Test
+    @RunAsClient
+    public void getAllTest(@ArquillianResteasyResource final WebTarget webTarget){
+        final Response response = webTarget.path("coupon/new")
+                .request(MediaType.APPLICATION_JSON)
+                .get();
+        int status = response.getStatus();
+        Assert.assertNotEquals("",status);
     }
 
 }
