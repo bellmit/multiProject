@@ -54,7 +54,7 @@ public class CouponIT {
     @Test
     @RunAsClient
     public void getAllTest(@ArquillianResteasyResource final WebTarget webTarget){
-        final Response response = webTarget.path("coupon/new")
+        final Response response = webTarget.path("coupon/getall")
                 .request(MediaType.APPLICATION_JSON)
                 .get();
         int status = response.getStatus();
