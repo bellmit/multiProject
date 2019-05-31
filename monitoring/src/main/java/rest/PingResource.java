@@ -15,7 +15,7 @@ public class PingResource {
 
     @GET
     public Response ping() {
-        return Response.ok(pingService.hasDatabaseConnection()).build();
+        return Response.ok(pingService.ping()).build();
     }
 
 }
