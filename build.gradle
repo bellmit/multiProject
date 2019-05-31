@@ -12,6 +12,7 @@ subprojects {
 
 project(':login') {
     dependencies {
+        implementation project(':monitoring')
     }
 }
 
@@ -45,9 +46,6 @@ project(':logging') {
 
 project(':monitoring') {
     dependencies {
-        implementation project(':login') {
-
-        }
     }
 }
 
