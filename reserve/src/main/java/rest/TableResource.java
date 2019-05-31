@@ -28,12 +28,6 @@ public class TableResource {
         return Response.ok(ts.getTables()).build();
     }
 
-    @GET
-    @Path("get/available")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response findAvailable() {
-        return Response.ok(ts.getAvailableTables()).build();
-    }
 
     @GET
     @Path("get/{uuid}")

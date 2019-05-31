@@ -1,6 +1,6 @@
 package service;
 
-import dao.interfaces.ReservationDAO;
+import dao.Interfaces.ReservationDAO;
 import domain.DinnerType;
 import domain.Reservation;
 
@@ -35,10 +35,7 @@ public class ReservationService {
     }
 
     public List<Reservation> getReservations() {
-        List<Reservation> reservations = reservationDAO.getReservations();
-        if (reservations == null) {
-            throw new javax.ws.rs.NotFoundException();
-        }
+        List<Reservation> reservations = reservationDAO.getAll();
         return reservations;
     }
 

@@ -1,7 +1,7 @@
 package dao.jpa;
 
 
-import dao.interfaces.TableDAO;
+import dao.Interfaces.TableDAO;
 import domain.DiningTable;
 import domain.Reservation;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @Stateless
 public class TableDAOJPA extends BaseDaoJpa<DiningTable> implements TableDAO {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "reservePU")
     private EntityManager em;
 
     public TableDAOJPA() {
@@ -28,26 +28,6 @@ public class TableDAOJPA extends BaseDaoJpa<DiningTable> implements TableDAO {
         return new ArrayList<>(q.getResultList());
     }
 
-
-    @Override
-    public List<DiningTable> getAllAvailable() {
-        List<DiningTable> allDiningTables = getTables();
-        ReservationDAOJPA reservationDAOJPA = new ReservationDAOJPA();
-        List<Reservation> reservations = reservationDAOJPA.getReservations();
-        ArrayList<DiningTable> nonReservedDiningTables = new ArrayList<>();
-        for (DiningTable t : allDiningTables) {
-            int count = 0;
-            for (Reservation r : reservations) {
-                if (!r.getDiningTables().contains(t)) {
-                    count++;
-                }
-            }
-            if (count == reservations.size()) {
-                nonReservedDiningTables.add(t);
-            }
-        }
-        return nonReservedDiningTables;
-    }
 
     public void setEm(EntityManager em) {
         this.em = em;

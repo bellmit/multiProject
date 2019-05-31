@@ -30,7 +30,7 @@ public class CategoryDaoJpa extends BaseDaoJpa<Category> implements CategoryDao 
 
     @Override
     public List<Category> getAll() {
-        Query q = getEntityManager().createNativeQuery("select * from category", Category.class);
+        Query q = getEntityManager().createQuery("select c from Category c", Category.class);
         return q.getResultList();
     }
 }

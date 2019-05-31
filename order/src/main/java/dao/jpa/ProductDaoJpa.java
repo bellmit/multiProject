@@ -11,7 +11,8 @@ import java.util.List;
 
 @Stateless
 public class ProductDaoJpa extends BaseDaoJpa<Product> implements ProductDao {
-    @PersistenceContext
+
+    @PersistenceContext(unitName = "orderPU")
     private EntityManager em;
 
     public ProductDaoJpa() {
@@ -29,7 +30,7 @@ public class ProductDaoJpa extends BaseDaoJpa<Product> implements ProductDao {
 
     @Override
     public List<Product> getAll(){
-        Query q = getEntityManager().createNativeQuery("select * from product p");
+        Query q = getEntityManager().createQuery("SELECT p FROM Product p");
         return q.getResultList();
     }
 }

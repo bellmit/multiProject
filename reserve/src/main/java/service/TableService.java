@@ -1,7 +1,7 @@
 package service;
 
 
-import dao.interfaces.TableDAO;
+import dao.Interfaces.TableDAO;
 import domain.DiningTable;
 
 import javax.ejb.Stateless;
@@ -52,11 +52,4 @@ public class TableService {
         tableDAO.edit(diningTable);
     }
 
-    public List<DiningTable> getAvailableTables() {
-        List<DiningTable> availableDiningTables = tableDAO.getAllAvailable();
-        if (availableDiningTables == null) {
-            throw new javax.ws.rs.NotFoundException();
-        }
-        return availableDiningTables;
-    }
 }
