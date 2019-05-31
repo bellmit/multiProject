@@ -1,4 +1,6 @@
+import dao.interfaces.BaseDao;
 import dao.interfaces.CouponDao;
+import dao.jpa.BaseDaoJpa;
 import dao.jpa.CouponDaoJpa;
 import domain.Coupon;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -32,6 +34,8 @@ public class CouponIT {
                 .addClass(CouponDao.class)
                 .addClass(CouponDaoJpa.class)
                 .addClass(CouponType.class)
+                .addClass(BaseDao.class)
+                .addClass(BaseDaoJpa.class)
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }

@@ -9,8 +9,10 @@ import java.util.UUID;
 
 
 @Entity
-@NamedQuery(name = "coupon.GetAll", query = "SELECT c FROM Coupon c")
-@NamedQuery(name = "coupon.findByCode", query = "SELECT c FROM Coupon c WHERE c.code = :code")
+@NamedQueries({
+        @NamedQuery(name = "coupon.GetAll", query = "SELECT c FROM Coupon c"),
+        @NamedQuery(name = "coupon.findByCode", query = "SELECT c FROM Coupon c WHERE c.code = :code")
+})
 public class Coupon implements Serializable {
 
     @Id
