@@ -1,8 +1,8 @@
 import domain.Coupon;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import org.jboss.arquillian.container.test.api.BeforeDeployment;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -13,7 +13,7 @@ public class CouponRestAssuredIT {
     Coupon coupon;
     public CouponRestAssuredIT() {
     }
-    @BeforeDeployment
+    @BeforeClass
     public void globalSetUp(){
         coupon = new Coupon();
     }

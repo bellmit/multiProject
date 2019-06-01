@@ -1,4 +1,4 @@
-import domain.Delivery;
+import domain.User;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -13,40 +13,38 @@ import java.util.Set;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
-
-public class DeliveryRestAssuredIT {
-    Delivery delivery ;
+public class LoginRestAssuredIT {
+    User user ;
 
     String deliveryId = "";
-    public DeliveryRestAssuredIT() {
+    public LoginRestAssuredIT() {
     }
     @BeforeClass
     public void globalSetUp(){
-        delivery = new Delivery();
+        user = new User();
     }
     @Before
     public void setUp() {
         RestAssured.port = 8080;
         RestAssured.baseURI = "http://localhost";
-        RestAssured.basePath = "/delivery/api/";
+        RestAssured.basePath = "/login/api/";
     }
 
     @Test
     public void testGetAll(){
-        given().when().get("").then().statusCode(200);
+        given().when().get("/users/all").then().statusCode(200);
     }
-
+    /*
     @Test
     public void testAddDelivery(){
-        Set<String> orderList = new HashSet<>();
-        orderList.add("test");
+
         deliveryId = given().contentType("application/json")
                 .body(orderList).
-                when().
-                post("/add").
-                then().
-                extract().
-                path("deliveryId");
+                        when().
+                        post("/add").
+                        then().
+                        extract().
+                        path("deliveryId");
         Assert.assertNotEquals("",deliveryId);
 
     }
@@ -82,4 +80,6 @@ public class DeliveryRestAssuredIT {
                 then().
                 statusCode(500);
     }
+    */
 }
+
