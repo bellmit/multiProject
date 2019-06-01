@@ -1,61 +1,69 @@
-import domain.Coupon;
+import domain.Delivery;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.jboss.arquillian.container.test.api.BeforeDeployment;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 
-import static io.restassured.RestAssured.given;
+public class DeliveryRestAssuredIT {
+    Delivery delivery ;
 
-public class CouponRestAssuredIT {
-    Coupon coupon;
-    public CouponRestAssuredIT() {
+    String deliveryId = "";
+    public DeliveryRestAssuredIT() {
     }
     @BeforeDeployment
     public void globalSetUp(){
-        coupon = new Coupon();
+        delivery = new Delivery();
     }
     @Before
     public void setUp() {
         RestAssured.port = 8080;
         RestAssured.baseURI = "http://localhost";
-        RestAssured.basePath = "/promotion/api/";
+        RestAssured.basePath = "/delivery/api/";
     }
 
     @Test
     public void testGetAll(){
-        given().when().get("/getall").then().statusCode(200);
+        given().when().get("").then().statusCode(200);
     }
 
     @Test
-    public void testAddCoupon(){
-        String token = "";
-        given().contentType("application/json")
-                .header("Authorization","Bearer "+ token)
-                .body(coupon).
+    public void testAddDelivery(){
+        Set<String> orderList = new HashSet<>();
+        orderList.add("test");
+        deliveryId = given().contentType("application/json")
+                .body(orderList).
                 when().
-                post("/new").
+                post("/add").
                 then().
-                statusCode(200);
+                extract().
+                path("deliveryId");
+        Assert.assertNotEquals("",deliveryId);
 
     }
     @Test
-    public void testGetCouponWithId(){
-        String id = coupon.getId();
+    public void testGetDeliveryWithId(){
         given().
                 accept(ContentType.JSON).
-                pathParam("id",id).
+                pathParam("id",deliveryId).
                 when().
                 get("/{id}").
                 then().
                 statusCode(200).
-                body("id", is(id));
+                body("id", is(deliveryId));
 
     }
     @Test
-    public void testGetCouponWithWrongId(){
+    public void testGetDeliveryWithWrongId(){
         String id = "doesnt exists";
         given().
                 accept(ContentType.JSON).
@@ -66,14 +74,12 @@ public class CouponRestAssuredIT {
                 statusCode(500);
     }
     @Test
-    public void testDeleteCoupon(){
+    public void testDeleteDelivery(){
         given().
-                contentType("application/json").
-                body(coupon.getId()).
+                pathParam("id", deliveryId).
                 when().
-                delete("/delete").
+                delete("/{id}").
                 then().
                 statusCode(500);
     }
-
 }
