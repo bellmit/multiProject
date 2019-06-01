@@ -17,6 +17,7 @@ repositories {
 
 dependencies {
     compile 'org.jboss.arquillian:arquillian-bom:1.4.1.Final'
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.0'
     compile "org.jboss.arquillian.junit:arquillian-junit-container:1.4.1.Final"
     compile "org.jboss.arquillian.protocol:arquillian-protocol-servlet:1.4.1.Final"
     compile group: 'org.jboss.arquillian.extension', name: 'arquillian-rest-client-impl-jersey', version: '1.0.0.Alpha3'
