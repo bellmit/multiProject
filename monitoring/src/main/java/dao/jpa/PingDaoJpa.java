@@ -20,8 +20,8 @@ public class PingDaoJpa implements PingDao {
     }
 
     @Override
-    public int testConnection() {
-        return (int) getEntityManager().createNativeQuery("SELECT 1 FROM dual").getSingleResult();
+    public Integer testConnection() {
+        return (Integer) getEntityManager().createNativeQuery("SELECT 1 FROM dual").getSingleResult();
     }
 
 
