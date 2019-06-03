@@ -21,9 +21,8 @@ public class PingDaoJpa implements PingDao {
     }
 
     @Override
-    public Ping create(Ping object) {
-        getEntityManager().persist(object);
-        return object;
+    public Integer testConnection() {
+        return (Integer) getEntityManager().createNativeQuery("SELECT 1 FROM dual").getSingleResult();
     }
 
     @Override
