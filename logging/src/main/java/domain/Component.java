@@ -7,5 +7,6 @@ public enum Component {
     payment,
     promotion,
     reserve,
-    deliver
+    deliver,
+    logging
 }
