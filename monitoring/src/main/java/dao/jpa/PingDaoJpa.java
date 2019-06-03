@@ -1,7 +1,6 @@
 package dao.jpa;
 
 import dao.interfaces.PingDao;
-import domain.Ping;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -21,14 +20,9 @@ public class PingDaoJpa implements PingDao {
     }
 
     @Override
-    public Ping create(Ping object) {
-        getEntityManager().persist(object);
-        return object;
+    public int testConnection() {
+        return (int) getEntityManager().createNativeQuery("SELECT 1 FROM dual").getSingleResult();
     }
 
-    @Override
-    public void delete(Ping object) {
-        getEntityManager().remove(object);
-    }
 
 }
