@@ -112,6 +112,5 @@
 
 
 login/src/main/resources/META-INF/persistence.xml
-login/src/main/resources/META-INF/persistence.xml
-login/src/main/resources/META-INF/persistence.xml
 reserve/src/main/resources/META-INF/persistence.xml
+*/login/src/main/resources/META-INF/persistence.xml

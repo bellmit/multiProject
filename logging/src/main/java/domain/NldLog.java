@@ -6,7 +6,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 
 @Entity
-public class NLDLog {
+public class NldLog {
     @Id
     private String uuid = UUID.randomUUID().toString();
     private Component component;
@@ -22,7 +22,7 @@ public class NLDLog {
         this.level = level;
     }
 
-    public NLDLog() {
+    public NldLog() {
     }
 
     public String getClassName() {
@@ -33,7 +33,7 @@ public class NLDLog {
         this.className = className;
     }
 
-    public NLDLog(Component component, String className, String message, Level level) {
+    public NldLog(Component component, String className, String message, Level level) {
         this.className = className;
         this.component = component;
         this.message = message;

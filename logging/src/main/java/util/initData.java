@@ -1,7 +1,6 @@
 package util;
 
 import domain.Component;
-import domain.NLDLog;
 import service.LogService;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +18,7 @@ public class initData {
 
     @PostConstruct
     public void init(){
-        initLogs();
+        // initLogs();
     }
 
     private void initLogs(){
