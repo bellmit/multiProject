@@ -10,7 +10,7 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="nldTestPU">
+    <persistence-unit name="loginTestPU">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>domain.User</class>
         <class>domain.Role</class>
