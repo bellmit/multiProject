@@ -15,6 +15,15 @@ public class LogService {
     @Inject
     LogDao logDao;
 
+    /***
+     * This adds a log to the central logging system
+     * USAGE:
+     * @param component An enum with all the components in the system, choose the one you are logging from.
+     * @param className The classname of where to log is comming from, use "this.class.getName()"
+     * @param message The message you want to log, choose whatever you want.
+     * @param level The importance of the log, from java.util.logging
+     * @return The log created
+     */
     public NldLog addLog(Component component, String className, String message, Level level){
         NldLog log = new NldLog();
         log.setComponent(component);
@@ -47,5 +56,9 @@ public class LogService {
 
     public NldLog addTestLog(String message) {
         return this.log(new NldLog(Component.logging, this.getClass().getName(), "The test log says: "+message, Level.ALL));
+    }
+
+    public NldLog addTestLog(String message, String level) {
+        return this.log(new NldLog(Component.logging, this.getClass().getName(), "The test log says: "+message, Level.parse(level)));
     }
 }
