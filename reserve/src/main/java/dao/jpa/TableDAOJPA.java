@@ -1,7 +1,7 @@
 package dao.jpa;
 
 
-import dao.Interfaces.TableDAO;
+import dao.interfaces.TableDAO;
 import domain.DiningTable;
 
 import javax.ejb.Stateless;
@@ -21,8 +21,8 @@ public class TableDAOJPA extends BaseDaoJpa<DiningTable> implements TableDAO {
     }
 
     @Override
-    public List getTables() {
-        Query q = em.createQuery("SELECT t from DinningTable t",DiningTable.class);
+    public List<DiningTable> getTables() {
+        Query q = em.createQuery("SELECT t from DiningTable t",DiningTable.class);
         return q.getResultList();
     }
 

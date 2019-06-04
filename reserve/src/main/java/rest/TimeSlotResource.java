@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 
 @Path("timeslot")
 public class TimeSlotResource {
+
     @Inject
     private TimeSlotService tss;
 
@@ -52,4 +53,5 @@ public class TimeSlotResource {
         tss.removeTimeSlot(ts);
         return Response.noContent().build();
     }
+
 }
