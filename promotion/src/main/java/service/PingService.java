@@ -1,7 +1,7 @@
 package service;
 
-import dao.interfaces.PingDao;
-import domain.Ping;
+import dao.interfaces.CouponDao;
+import domain.Coupon;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -10,10 +10,10 @@ import javax.inject.Inject;
 public class PingService {
 
     @Inject
-    PingDao pingDao;
+    CouponDao couponDao;
 
     public boolean ping() {
-        pingDao.delete(pingDao.create(new Ping()));
+        couponDao.delete(couponDao.find(couponDao.create(new Coupon()).getId()));
         return true;
     }
 }
