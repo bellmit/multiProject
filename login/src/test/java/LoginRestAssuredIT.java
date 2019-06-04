@@ -14,19 +14,19 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 public class LoginRestAssuredIT {
-    User user ;
+    static User user ;
 
     String deliveryId = "";
     public LoginRestAssuredIT() {
     }
     @BeforeClass
-    public void globalSetUp(){
+    public static void globalSetUp(){
         user = new User();
     }
     @Before
     public void setUp() {
-        RestAssured.port = 8080;
-        RestAssured.baseURI = "http://localhost";
+        RestAssured.port = 8083;
+        RestAssured.baseURI = "http://192.168.24.110";
         RestAssured.basePath = "/login/api/";
     }
 

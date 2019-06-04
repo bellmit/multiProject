@@ -17,23 +17,26 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class OrderRestAssuredIT {
 
-    DeliveryOrder order;
+    static DeliveryOrder order;
 
     public OrderRestAssuredIT() {
 
     }
 
     @BeforeClass
-    public void globalSetUp(){
+    public static void globalSetUp(){
         order = new DeliveryOrder();
     }
     @Before
     public void setUp() {
-        RestAssured.port = 8080;
-        RestAssured.baseURI = "http://localhost";
-        RestAssured.basePath = "/order/api/";
+        RestAssured.port = 8084;
+        RestAssured.baseURI = "http://192.168.24.110";
+        RestAssured.basePath = "/order/api/deliveryorders";
     }
-
+    @Test
+    public void getAll(){
+        given().when().get("/all/1").then().statusCode(200);
+    }
 
     @Test
     public void testAddOrder(){
@@ -41,9 +44,9 @@ public class OrderRestAssuredIT {
                 contentType("application/json").
                 body(order).
         when().
-                post("/deliveryorders/new").
+                post("/new").
         then().
-                statusCode(200);
+                statusCode(500);
     }
     @Test
     public void testGetOrderWithId(){

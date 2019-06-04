@@ -2,6 +2,7 @@ import domain.Delivery;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -15,28 +16,34 @@ import static org.hamcrest.CoreMatchers.is;
 
 
 public class DeliveryRestAssuredIT {
-    Delivery delivery ;
 
     String deliveryId = "";
     public DeliveryRestAssuredIT() {
     }
     @BeforeClass
-    public void globalSetUp(){
-        delivery = new Delivery();
+    public static void globalSetUp(){
     }
     @Before
     public void setUp() {
-        RestAssured.port = 8080;
-        RestAssured.baseURI = "http://localhost";
-        RestAssured.basePath = "/delivery/api/";
+        RestAssured.port = 8088;
+        RestAssured.baseURI = "http://192.168.24.110";
+        RestAssured.basePath = "/deliver/api/deliveries";
     }
 
     @Test
+    public void mainTest(){
+        testGetAll();
+        testAddDelivery();
+        testGetDeliveryWithId();
+        testGetDeliveryWithWrongId();
+        testDeleteDelivery();
+    }
+
     public void testGetAll(){
         given().when().get("").then().statusCode(200);
     }
 
-    @Test
+
     public void testAddDelivery(){
         Set<String> orderList = new HashSet<>();
         orderList.add("test");
@@ -50,7 +57,7 @@ public class DeliveryRestAssuredIT {
         Assert.assertNotEquals("",deliveryId);
 
     }
-    @Test
+
     public void testGetDeliveryWithId(){
         given().
                 accept(ContentType.JSON).
@@ -59,27 +66,30 @@ public class DeliveryRestAssuredIT {
                 get("/{id}").
                 then().
                 statusCode(200).
-                body("id", is(deliveryId));
+                body("deliveryId", is(deliveryId));
 
     }
-    @Test
+
+
     public void testGetDeliveryWithWrongId(){
         String id = "doesnt exists";
-        given().
+        Response testRepsone = (Response) given().
                 accept(ContentType.JSON).
                 pathParam("id",id).
                 when().
                 get("/{id}").
                 then().
-                statusCode(500);
+                extract();
+        String testRepsonestring = testRepsone.getContentType().toString();
+        Assert.assertEquals("",testRepsonestring);
     }
-    @Test
+
     public void testDeleteDelivery(){
         given().
                 pathParam("id", deliveryId).
                 when().
                 delete("/{id}").
                 then().
-                statusCode(500);
+                statusCode(200);
     }
 }
