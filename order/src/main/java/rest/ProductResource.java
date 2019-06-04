@@ -17,6 +17,7 @@ public class ProductResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
     public Product newProduct(Product a) {
         return as.create(a);
