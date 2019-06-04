@@ -21,6 +21,7 @@ public class LogResource {
     }
 
     @GET
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll(){
         return Response.ok(logService.getAllLogs()).build();
@@ -28,20 +29,20 @@ public class LogResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getByComponent(@HeaderParam("component") String component) {
+    public Response getByComponent(@QueryParam("component") String component) {
         return Response.ok(logService.getLogsForComponent(Component.valueOf(component))).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getByLevel(@HeaderParam("level") String level) {
+    public Response getByLevel(@QueryParam("level") String level) {
         return Response.ok(logService.getLogsWithLevel(Level.parse(level))).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getByComponentWithLevel(@HeaderParam("component") String component,
-                                            @HeaderParam("level") String level) {
+    public Response getByComponentWithLevel(@QueryParam("component") String component,
+                                            @QueryParam("level") String level) {
         return Response.ok(logService.getLogsForComponentWithLevel(Component.valueOf(component), Level.parse(level))).build();
     }
 
