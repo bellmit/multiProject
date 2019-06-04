@@ -8,6 +8,7 @@ import util.RoleConverter;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.NotFoundException;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,23 +28,31 @@ public class AuthService {
     @Inject
     UserDao userDao;
 
+
     @Inject
     JWTHelper jwtHelper;
 
     public String login(String token, String provider) {
-        JSONObject response = null;
+        JSONObject response;
         if (provider.equals(PROVIDER_FACEBOOK)) {
-            String url = "https://graph.facebook.com/v3.2/me?access_token=" + token + "&debug=all&fields=id,name,email&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors";
-            response = new JSONObject(retrieveUserFromProvider(token, url));
+            String url = "https://graph.facebook.com/v3.2/me?access_token=" + token + "&debug=all&fields=id,name,email,first_name,last_name&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors";
+            response = new JSONObject(retrieveUserFromProvider(url));
         } else if (provider.equals(PROVIDER_GOOGLE)) {
             String url = "https://oauth2.googleapis.com/tokeninfo?id_token=" + token;
-            response = new JSONObject(retrieveUserFromProvider(token, url));
+            response = new JSONObject(retrieveUserFromProvider(url));
+        } else {
+            throw new BadRequestException("Bad social media provider");
         }
 
-        String email = (String) response.get("email");
+        String email;
+        email = (String) response.get("email");
         User foundUser = userDao.findByEmail(email);
         if (foundUser == null) {
-            createNewUser(response);
+            if (provider.equals(PROVIDER_FACEBOOK)) {
+                createNewFacebookUser(response);
+            } else {
+                createNewGoogleUser(response);
+            }
             foundUser = userDao.findByEmail(email);
         }
 
@@ -51,19 +60,38 @@ public class AuthService {
         return jwtHelper.generatePrivateKey(foundUser.getId(), foundUser.getEmail(), userRoles);
     }
 
-    private void createNewUser(JSONObject facebookResponse) {
+    private void createNewFacebookUser(JSONObject facebookResponse) {
         String email = (String) facebookResponse.get("email");
-        String firstName = (String) facebookResponse.get("name");
+        String firstName = (String) facebookResponse.get("first_name");
+        String lastName = (String) facebookResponse.get("last_name");
 
+        User user = initUser(firstName, lastName);
+        user.setEmail(email);
+        userDao.create(user);
+    }
+
+    private void createNewGoogleUser(JSONObject googleResponse) {
+        String email = (String) googleResponse.get("email");
+        String firstName = (String) googleResponse.get("given_name");
+        String lastName = (String) googleResponse.get("family_name");
+
+        User user = initUser(firstName, lastName);
+        user.setEmail(email);
+        userDao.create(user);
+    }
+
+    private User initUser(String firstName, String lastName) {
         User newUser = new User();
-        newUser.setEmail(email);
         if (!firstName.equals("")) {
             newUser.setFirstName(firstName);
         }
-        userDao.create(newUser);
+        if (!lastName.equals("")) {
+            newUser.setLastName(lastName);
+        }
+        return newUser;
     }
 
-    private String retrieveUserFromProvider(String token, String uri) {
+    private String retrieveUserFromProvider(String uri) {
         String content = null;
         try {
             URL url = new URL(uri);
@@ -78,8 +106,8 @@ public class AuthService {
         return content;
     }
 
-    String sendRequest(URL url) throws IOException {
-        StringBuilder content = null;
+    private String sendRequest(URL url) throws IOException {
+        StringBuilder content;
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
