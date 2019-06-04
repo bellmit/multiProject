@@ -1,15 +1,13 @@
 package resource;
 
+import domain.Component;
 import service.LogService;
-
+import java.util.logging.Level;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.awt.*;
 
 @Stateless
 @Path("logs")
@@ -23,8 +21,34 @@ public class LogResource {
     }
 
     @GET
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll(){
         return Response.ok(logService.getAllLogs()).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByComponent(@QueryParam("component") String component) {
+        return Response.ok(logService.getLogsForComponent(Component.valueOf(component))).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByLevel(@QueryParam("level") String level) {
+        return Response.ok(logService.getLogsWithLevel(Level.parse(level))).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByComponentWithLevel(@QueryParam("component") String component,
+                                            @QueryParam("level") String level) {
+        return Response.ok(logService.getLogsForComponentWithLevel(Component.valueOf(component), Level.parse(level))).build();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addTestLog(@HeaderParam("message") String message) {
+        return Response.ok(logService.addTestLog(message)).build();
     }
 }

@@ -41,9 +41,11 @@ public class LogService {
     }
 
     private NldLog log(NldLog log){
-        Logger.getLogger(log.getComponent().toString()).log(log.getLevel(), log.getMessage());
         Logger.getLogger(log.getComponent().toString() +"."+ log.getClassName()).log(log.getLevel(), log.getMessage());
         return logDao.create(log);
     }
 
+    public NldLog addTestLog(String message) {
+        return this.log(new NldLog(Component.logging, this.getClass().getName(), "The test log says: "+message, Level.ALL));
+    }
 }
