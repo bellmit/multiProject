@@ -13,7 +13,7 @@ public class Mailer {
     @Resource(name = "java:jboss/mail/gmail")
     private Session session;
 
-    public String send() {
+    public String send(String msg) {
 
         final String username = "nextleveldining@gmail.com";
         final String password = "Nextlevelpassword!";
@@ -37,11 +37,11 @@ public class Mailer {
             message.setFrom(new InternetAddress("nextleveldining@gmail.com"));
             message.setRecipients(
                     Message.RecipientType.TO,
-                    InternetAddress.parse("nextleveldining@gmail.com, ldamhuis@hotmail.com")
+                    InternetAddress.parse("nextleveldining@gmail.com, "+msg)
             );
             message.setSubject("Reservation NLD");
             message.setText("Dear Sir or Madam,"
-                    + "\n\n We'd like to remember you that your reservation will start in three hours!");
+                    + "\n\n We'd like to remember you that your reservation will start in three hours!\n\n" +msg);
 
             Transport.send(message);
 

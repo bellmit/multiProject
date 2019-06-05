@@ -1,15 +1,18 @@
 package util;
 
 import dao.jpa.ReservationDAOJPA;
+import domain.DinnerType;
 import domain.Reservation;
 import domain.TimeSlot;
 import service.ReservationService;
+import service.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.*;
 import javax.inject.Inject;
+import java.lang.reflect.Executable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,6 +31,9 @@ public class Scheduler {
     @Resource
     TimerService timerService;
 
+    @Inject
+    UserService us;
+
     @PostConstruct
     public void initialize() {
             List<Reservation> reservations = rs.getReservations();
@@ -37,6 +43,7 @@ public class Scheduler {
                 }
             }
             Reservation r = new Reservation();
+            r.setType(DinnerType.SINGLECOURSE);
             List<TimeSlot> timeSlots = new ArrayList<>();
             Date reserdate = new Date();
             Calendar calendar = Calendar.getInstance();
@@ -46,12 +53,16 @@ public class Scheduler {
             Date time = calendar.getTime();
             timeSlots.add(new TimeSlot("test",time,new Date()));
             r.setTimeSlots(timeSlots);
+            r.setUserID("this should pass");
             setNewScheduler(r);
     }
 
     public void setNewScheduler(Reservation r) {
+        String email;
+        email = "luc@holland2stay.com";
         TimerConfig timerConfig = new TimerConfig();
-        timerConfig.setInfo("MailTimer");
+        //timerConfig.setInfo("ldamhuis@hotmail.com");
+        timerConfig.setInfo(email);
         Date now = new Date();
         Date reservationtime = r.getTimeSlots().get(0).getStartTime();
         long difference = reservationtime.getTime() - now.getTime();
@@ -61,9 +72,10 @@ public class Scheduler {
     }
 
     @Timeout
-    public void afterTimeOut() {
+    public void afterTimeOut(Timer timer) {
+        String email = (String) timer.getInfo();
         Mailer m = new Mailer();
-        m.send();
+        m.send(email);
     }
 
     @PreDestroy
