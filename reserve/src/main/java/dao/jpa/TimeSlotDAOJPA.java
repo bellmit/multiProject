@@ -1,7 +1,7 @@
 package dao.jpa;
 
 
-import dao.Interfaces.TimeSlotDAO;
+import dao.interfaces.TimeSlotDAO;
 import domain.TimeSlot;
 
 import javax.ejb.Stateless;
@@ -23,8 +23,8 @@ public class TimeSlotDAOJPA extends BaseDaoJpa<TimeSlot> implements TimeSlotDAO 
 
     @Override
     public List<TimeSlot> getTimeSlots() {
-        Query q = em.createQuery("SELECT ts from TimeSlot ts");
-        return new ArrayList<>(q.getResultList());
+        Query q = em.createQuery("SELECT ts from TimeSlot ts",TimeSlot.class);
+        return q.getResultList();
     }
 
     public void setEm(EntityManager em) {

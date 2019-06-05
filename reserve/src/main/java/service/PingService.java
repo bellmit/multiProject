@@ -1,6 +1,6 @@
 package service;
 
-import dao.Interfaces.ReservationDAO;
+import dao.interfaces.ReservationDAO;
 import domain.Reservation;
 
 import javax.ejb.Stateless;

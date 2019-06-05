@@ -2,6 +2,7 @@ package util;
 
 import dao.jpa.ReservationDAOJPA;
 import domain.Reservation;
+import domain.TimeSlot;
 import service.ReservationService;
 
 import javax.annotation.PostConstruct;
@@ -9,11 +10,14 @@ import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.*;
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 
 @Singleton
+@Startup
 public class Scheduler {
 
     Reservation reser = new Reservation();
@@ -26,13 +30,23 @@ public class Scheduler {
 
     @PostConstruct
     public void initialize() {
-
             List<Reservation> reservations = rs.getReservations();
             if(!reservations.isEmpty()) {
                 for (Reservation r : reservations) {
                     this.setNewScheduler(r);
                 }
             }
+            Reservation r = new Reservation();
+            List<TimeSlot> timeSlots = new ArrayList<>();
+            Date reserdate = new Date();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(reserdate);
+            calendar.add(Calendar.SECOND,30);
+            calendar.add(Calendar.HOUR_OF_DAY,3);
+            Date time = calendar.getTime();
+            timeSlots.add(new TimeSlot("test",time,new Date()));
+            r.setTimeSlots(timeSlots);
+            setNewScheduler(r);
     }
 
     public void setNewScheduler(Reservation r) {
@@ -49,8 +63,7 @@ public class Scheduler {
     @Timeout
     public void afterTimeOut() {
         Mailer m = new Mailer();
-        m.send(String.valueOf(reser.getUserID()), "Reservation Notification",
-                "Dear sir or madam we'd like to inform you that your reservation will start in 3 hours at " + reser.getTimeSlots().get(0).getStartTime().toString());
+        m.send();
     }
 
     @PreDestroy
