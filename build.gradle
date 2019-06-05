@@ -39,11 +39,6 @@ project(':logging') {
     }
 }
 
-project(':monitoring') {
-    dependencies {
-    }
-}
-
 project(':payment') {
     dependencies {
         implementation project(':login')

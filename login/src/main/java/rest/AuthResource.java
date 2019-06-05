@@ -27,7 +27,7 @@ public class AuthResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "Log a user in")
     public Response login(JsonObject credential) {
-        String token = authService.login(credential.getString("token"));
+        String token = authService.login(credential.getString("token"), credential.getString("provider"));
         return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
     }
 }

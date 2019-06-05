@@ -2,17 +2,17 @@ package data.interfaces;
 
 import dao.interfaces.BaseDao;
 import domain.Component;
-import domain.NLDLog;
+import domain.NldLog;
 
 import java.util.List;
 import java.util.logging.Level;
 
-public interface LogDao extends BaseDao<NLDLog> {
-    List<NLDLog> getAll();
+public interface LogDao extends BaseDao<NldLog> {
+    List<NldLog> getAll();
 
-    List<NLDLog> getForComponent(Component component);
+    List<NldLog> getForComponent(Component component);
 
-    List<NLDLog> getWithLevel(Level level);
+    List<NldLog> getWithLevel(Level level);
 
-    List<NLDLog> getForComponentWithLevel(Component component, Level level);
+    List<NldLog> getForComponentWithLevel(Component component, Level level);
 }

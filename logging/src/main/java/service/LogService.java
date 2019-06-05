@@ -2,7 +2,7 @@ package service;
 
 import data.interfaces.LogDao;
 import domain.Component;
-import domain.NLDLog;
+import domain.NldLog;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -15,8 +15,17 @@ public class LogService {
     @Inject
     LogDao logDao;
 
-    public NLDLog addLog(Component component, String className, String message, Level level){
-        NLDLog log = new NLDLog();
+    /***
+     * This adds a log to the central logging system
+     * USAGE:
+     * @param component An enum with all the components in the system, choose the one you are logging from.
+     * @param className The classname of where to log is comming from, use "this.class.getName()"
+     * @param message The message you want to log, choose whatever you want.
+     * @param level The importance of the log, from java.util.logging
+     * @return The log created
+     */
+    public NldLog addLog(Component component, String className, String message, Level level){
+        NldLog log = new NldLog();
         log.setComponent(component);
         log.setMessage(message);
         log.setClassName(className);
@@ -24,26 +33,32 @@ public class LogService {
         return log(log);
     }
 
-    public List<NLDLog> getAllLogs(){
+    public List<NldLog> getAllLogs(){
         return logDao.getAll();
     }
 
-    public List<NLDLog> getLogsForComponent(Component component){
+    public List<NldLog> getLogsForComponent(Component component){
         return logDao.getForComponent(component);
     }
 
-    public List<NLDLog> getLogsWithLevel(Level level) {
+    public List<NldLog> getLogsWithLevel(Level level) {
         return logDao.getWithLevel(level);
     }
 
-    public List<NLDLog> getLogsForComponentWithLevel(Component component, Level level){
+    public List<NldLog> getLogsForComponentWithLevel(Component component, Level level){
         return logDao.getForComponentWithLevel(component, level);
     }
 
-    private NLDLog log(NLDLog log){
-        Logger.getLogger(log.getComponent().toString()).log(log.getLevel(), log.getMessage());
+    private NldLog log(NldLog log){
         Logger.getLogger(log.getComponent().toString() +"."+ log.getClassName()).log(log.getLevel(), log.getMessage());
         return logDao.create(log);
     }
 
+    public NldLog addTestLog(String message) {
+        return this.log(new NldLog(Component.logging, this.getClass().getName(), "The test log says: "+message, Level.ALL));
+    }
+
+    public NldLog addTestLog(String message, String level) {
+        return this.log(new NldLog(Component.logging, this.getClass().getName(), "The test log says: "+message, Level.parse(level)));
+    }
 }
