@@ -7,4 +7,17 @@
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
+  
+<persistence-unit name="nldTestPU">
+        <class>domain.User</class>
+        <class>domain.Role</class>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="javax.persistence.jdbc.password" value="password"/>
+            <property name="javax.persistence.jdbc.user" value="databaseuser"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.24.111:3306/testDB?serverTimezone=Europe/Amsterdam"/>
+            <property name="javax.persistence.logging.level" value="INFO"/>
+        </properties>
+    </persistence-unit>
 </persistence>
