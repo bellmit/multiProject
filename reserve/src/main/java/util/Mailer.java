@@ -16,7 +16,7 @@ public class Mailer {
     public String send() {
 
         final String username = "nextleveldining@gmail.com";
-        final String password = "password";
+        final String password = "Nextlevelpassword!";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
