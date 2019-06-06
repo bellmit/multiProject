@@ -4,6 +4,7 @@ import dao.interfaces.UserDao;
 import domain.User;
 import org.json.JSONObject;
 import rest.auth.JWTHelper;
+import util.PasswordHash;
 import util.RoleConverter;
 
 import javax.ejb.Stateless;
@@ -32,8 +33,34 @@ public class AuthService {
     @Inject
     JWTHelper jwtHelper;
 
-    public String login(String token, String provider) {
-        JSONObject response;
+    @Inject
+    PasswordHash passwordHash;
+
+    public String login(String email, String password) {
+        User foundUser = userDao.findByEmail(email);
+        if (foundUser == null) {
+            throw new NotFoundException();
+        }
+        if (passwordHash.authenticate(password.toCharArray(), foundUser.getPassword())) {
+            List<String> userRoles = RoleConverter.roleArrayToStringArray(foundUser.getRoles());
+            return jwtHelper.generatePrivateKey(foundUser.getId(), foundUser.getEmail(), userRoles);
+        } else {
+            throw new BadRequestException("Wrong username password combination");
+        }
+    }
+
+    public void addUser(User user) {
+        if (user.getPassword() == null || user.getPassword().equals("") ||
+                user.getEmail() == null || user.getEmail().equals("")) {
+            throw new BadRequestException("User need to contain a password and email");
+        } else {
+            user.setPassword(passwordHash.hash(user.getPassword().toCharArray()));
+            userDao.create(user);
+        }
+    }
+
+    public String socialLogin(String token, String provider) {
+        JSONObject response = null;
         if (provider.equals(PROVIDER_FACEBOOK)) {
             String url = "https://graph.facebook.com/v3.2/me?access_token=" + token + "&debug=all&fields=id,name,email,first_name,last_name&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors";
             response = new JSONObject(retrieveUserFromProvider(url));
