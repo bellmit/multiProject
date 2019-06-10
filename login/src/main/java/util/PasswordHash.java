@@ -1,5 +1,7 @@
 package util;
 
+import qualifiers.CustomHash;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.ejb.Stateless;
@@ -21,7 +23,7 @@ import java.util.regex.Pattern;
  * @author erickson
  * @see <a href="http://stackoverflow.com/a/2861125/3474">StackOverflow</a>
  */
-@Default
+@CustomHash
 @Stateless
 public class PasswordHash {
 

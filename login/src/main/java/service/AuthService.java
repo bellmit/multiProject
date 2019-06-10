@@ -3,6 +3,7 @@ package service;
 import dao.interfaces.UserDao;
 import domain.User;
 import org.json.JSONObject;
+import qualifiers.CustomHash;
 import rest.auth.JWTHelper;
 import util.PasswordHash;
 import util.RoleConverter;
@@ -33,6 +34,7 @@ public class AuthService {
     JWTHelper jwtHelper;
 
     @Inject
+    @CustomHash
     PasswordHash passwordHash;
 
     public String login(String email, String password) {
