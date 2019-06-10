@@ -29,7 +29,6 @@ public class AuthService {
     @Inject
     UserDao userDao;
 
-
     @Inject
     JWTHelper jwtHelper;
 
