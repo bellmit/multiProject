@@ -39,8 +39,6 @@ public class CategoryResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/delete")
     public void delete(Category a) {
-        // todo remove
-        System.out.println("Category: " + a.getName());
         as.delete(a);
     }
 
