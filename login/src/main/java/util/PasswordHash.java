@@ -3,6 +3,7 @@ package util;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Default;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -20,8 +21,9 @@ import java.util.regex.Pattern;
  * @author erickson
  * @see <a href="http://stackoverflow.com/a/2861125/3474">StackOverflow</a>
  */
+@Default
 @Stateless
-public final class PasswordHash {
+public class PasswordHash {
 
     /**
      * Each token produced by this class uses this identifier as a prefix.
