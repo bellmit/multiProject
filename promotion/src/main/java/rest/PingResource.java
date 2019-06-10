@@ -1,6 +1,7 @@
 package rest;
 
 import io.swagger.annotations.ApiOperation;
+import service.PingService;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
