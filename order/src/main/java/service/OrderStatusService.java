@@ -24,6 +24,7 @@ public class OrderStatusService {
     }
 
     public void delete(OrderStatus a) {
-        od.delete(a);
+        OrderStatus b = od.find(a.getStatus());
+        od.delete(b);
     }
 }

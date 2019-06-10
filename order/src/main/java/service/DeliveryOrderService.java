@@ -25,6 +25,7 @@ public class DeliveryOrderService {
     }
 
     public void delete(DeliveryOrder a){
+        DeliveryOrder b = dd.find(a.getId());
         dd.delete(a);
     }
 

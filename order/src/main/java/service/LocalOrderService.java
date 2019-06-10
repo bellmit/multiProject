@@ -25,6 +25,7 @@ public class LocalOrderService {
     }
 
     public void delete(LocalOrder a) {
+        LocalOrder b = ld.find(a.getId());
         ld.delete(a);
     }
 

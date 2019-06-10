@@ -15,6 +15,7 @@ public class DeliveryOrderResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
     public DeliveryOrder newDeliveryOrder(DeliveryOrder a) {
         return as.create(a);
