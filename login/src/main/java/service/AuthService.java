@@ -21,19 +21,29 @@ import java.util.logging.Logger;
 @Stateless
 public class AuthService {
 
+    private static final String PROVIDER_GOOGLE = "Google";
+    private static final String PROVIDER_FACEBOOK = "Facebook";
+
     @Inject
     UserDao userDao;
 
     @Inject
     JWTHelper jwtHelper;
 
-    public String login(String token) {
-        JSONObject facebookResponse = new JSONObject(retrieveUserFromFacebook(token));
-        String email = (String) facebookResponse.get("email");
+    public String login(String token, String provider) {
+        JSONObject response = null;
+        if (provider.equals(PROVIDER_FACEBOOK)) {
+            String url = "https://graph.facebook.com/v3.2/me?access_token=" + token + "&debug=all&fields=id,name,email&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors";
+            response = new JSONObject(retrieveUserFromProvider(token, url));
+        } else if (provider.equals(PROVIDER_GOOGLE)) {
+            String url = "https://oauth2.googleapis.com/tokeninfo?id_token=" + token;
+            response = new JSONObject(retrieveUserFromProvider(token, url));
+        }
 
+        String email = (String) response.get("email");
         User foundUser = userDao.findByEmail(email);
         if (foundUser == null) {
-            createNewUser(facebookResponse);
+            createNewUser(response);
             foundUser = userDao.findByEmail(email);
         }
 
@@ -53,20 +63,11 @@ public class AuthService {
         userDao.create(newUser);
     }
 
-    private String retrieveUserFromFacebook(String token) {
-        StringBuilder content = null;
+    private String retrieveUserFromProvider(String token, String uri) {
+        String content = null;
         try {
-            URL url = new URL("https://graph.facebook.com/v3.2/me?access_token=" + token + "&debug=all&fields=id,name,email&format=json&method=get&pretty=0&suppress_http_code=1&transport=cors");
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            content = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
-            }
-            in.close();
+            URL url = new URL(uri);
+            content = sendRequest(url);
         } catch (IOException e) {
             Logger.getLogger(AuthService.class.getName()).log(Level.SEVERE, e.getMessage(), e);
         }
@@ -74,6 +75,21 @@ public class AuthService {
         if (content == null) {
             throw new NotFoundException("No user found");
         }
-        return content.toString();
+        return content;
+    }
+
+    String sendRequest(URL url) throws IOException {
+        StringBuilder content = null;
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        content = new StringBuilder();
+        while ((inputLine = in.readLine()) != null) {
+            content.append(inputLine);
+        }
+        in.close();
+        return String.valueOf(content);
     }
 }

@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
 
 public class UserDaoJpaTest {
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("nldTestPU");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("loginTestPU");
     private EntityTransaction tx;
     private UserDaoJpa userDao;
 
