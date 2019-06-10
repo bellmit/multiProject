@@ -39,7 +39,6 @@ project(':deliver') {
 
 project(':logging') {
     dependencies {
-        implementation project(':login')
     }
 }
 

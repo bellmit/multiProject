@@ -23,7 +23,7 @@ public class LogResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@QueryParam("component") String component,
-                                            @QueryParam("level") String level) {
+                        @QueryParam("level") String level) {
         if(component != null && level != null){
             return Response.ok(logService.getLogsForComponentWithLevel(Component.valueOf(component), Level.parse(level))).build();
         } else if (level != null) {
