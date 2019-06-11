@@ -11,25 +11,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class UserDaoJpaTest {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("nldTestPU");
-    private EntityManager em;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("loginTestPU");
     private EntityTransaction tx;
     private UserDaoJpa userDao;
 
     @Before
     public void setUp() {
-        try {
-            new DatabaseCleaner(emf.createEntityManager()).clean();
-        } catch (SQLException ex) {
-            Logger.getLogger(RoleDaoJpaTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        em = emf.createEntityManager();
+        new DatabaseCleaner(emf.createEntityManager()).clean();
+        EntityManager em = emf.createEntityManager();
         tx = em.getTransaction();
 
         userDao = new UserDaoJpa();

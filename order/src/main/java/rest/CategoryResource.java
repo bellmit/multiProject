@@ -15,9 +15,10 @@ public class CategoryResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void newCategory(Category a) {
-        as.create(a);
+    public Category newCategory(Category a) {
+        return as.create(a);
     }
 
     @GET
@@ -30,8 +31,8 @@ public class CategoryResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/edit")
-    public void edit(Category a) {
-        as.edit(a);
+    public Category edit(Category a) {
+        return as.edit(a);
     }
 
     @DELETE

@@ -7,6 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("products")
 @RequestScoped
@@ -16,11 +17,10 @@ public class ProductResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
-    public void newProduct(Product a) {
-        as.create(a);
-        //todo remove
-        System.out.println("hoi");
+    public Product newProduct(Product a) {
+        return as.create(a);
     }
 
     @GET
@@ -33,8 +33,8 @@ public class ProductResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/edit")
-    public void edit(Product a) {
-        as.edit(a);
+    public Product edit(Product a) {
+        return as.edit(a);
     }
 
     @DELETE
@@ -44,10 +44,10 @@ public class ProductResource {
         as.delete(a);
     }
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/all")
-//    public List<Product> getAll(){
-//        return as.getAll();
-//    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/all")
+    public List<Product> getAll(){
+        return as.getAll();
+    }
 }

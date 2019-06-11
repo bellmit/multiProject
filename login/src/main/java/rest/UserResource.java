@@ -3,15 +3,12 @@ package rest;
 import domain.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import rest.auth.Secured;
 import service.UserService;
 
-import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.net.URI;
 
 @Api("User")
 @Path("users")
@@ -30,7 +27,7 @@ public class UserResource {
 
 
     @GET
-    @Path("/all")
+    @Path("all")
     @ApiOperation(value = "Find all users")
     public Response getAll() {
         return Response.ok(userService.getAll()).build();
@@ -38,7 +35,7 @@ public class UserResource {
 
 
     @GET
-    @Path("/email/{email}")
+    @Path("email/{email}")
     @ApiOperation(value = "Find a user by email")
     public Response findByEmail(@PathParam("email") String email) {
         return Response.ok(userService.findByEmail(email)).build();

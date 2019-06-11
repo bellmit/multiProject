@@ -1,5 +1,6 @@
 package data.interfaces;
 
+import dao.interfaces.BaseDao;
 import domain.Delivery;
 
 import java.util.List;
