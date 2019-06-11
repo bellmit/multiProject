@@ -1,3 +1,4 @@
+/*
 package service;
 
 import data.DeliveryDaoJPA;
@@ -178,3 +179,4 @@ public class DeliveryServiceIT {
     }
 
 }
+*/
