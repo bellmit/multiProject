@@ -25,7 +25,8 @@ public class ProductService {
     }
 
     public void delete(Product a){
-        pd.delete(a);
+        Product b = pd.find(a.getId());
+        pd.delete(b);
     }
 
     public List<Product> getAll(){

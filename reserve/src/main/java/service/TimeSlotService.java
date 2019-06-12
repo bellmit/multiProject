@@ -1,6 +1,6 @@
 package service;
 
-import dao.Interfaces.TimeSlotDAO;
+import dao.interfaces.TimeSlotDAO;
 import domain.TimeSlot;
 
 import javax.ejb.Stateless;
@@ -50,4 +50,5 @@ public class TimeSlotService {
         }
         tsDAO.edit(ts);
     }
+
 }

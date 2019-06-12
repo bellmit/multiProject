@@ -1,7 +1,7 @@
 package service;
 
-import data.interfaces.LogDao;
-import domain.NldLog;
+import dao.interfaces.ProductDao;
+import domain.Product;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -10,10 +10,10 @@ import javax.inject.Inject;
 public class PingService {
 
     @Inject
-    LogDao logDao;
+    ProductDao productDao;
 
     public boolean ping() {
-        logDao.delete(logDao.find(logDao.create(new NldLog()).getUuid()));
+        productDao.delete(productDao.find(productDao.create(new Product()).getId()));
         return true;
     }
 }

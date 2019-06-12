@@ -1,4 +1,4 @@
-package resource;
+package rest;
 
 import io.swagger.annotations.ApiOperation;
 import service.PingService;
@@ -15,7 +15,7 @@ public class PingResource {
     PingService pingService;
 
     @GET
-    @ApiOperation(value = "Test the database connection")
+    @ApiOperation(value = "Test if the backend is available")
     public Response ping() {
         return Response.ok(pingService.ping()).build();
     }

@@ -14,6 +14,7 @@ public class OrderStatusResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
     public OrderStatus newOrderStatus(OrderStatus a) {
         return as.create(a);

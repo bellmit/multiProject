@@ -25,7 +25,8 @@ public class CategoryService {
     }
 
     public void delete(Category c){
-        cd.delete(c);
+        Category b = cd.find(c.getName());
+        cd.delete(b);
     }
 
     public List<Category> getAll(){
