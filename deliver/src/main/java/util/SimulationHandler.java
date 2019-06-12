@@ -79,7 +79,7 @@ public class SimulationHandler {
         String finalcoord = coordsSplit[3].replace(")","");
         SimulationEvent simulationEvent = new SimulationEvent("","",orderId);
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+        factory.setHost("192.168.24.110");
         final Connection connection = factory.newConnection();
         final Channel channel = connection.createChannel();
         channel.queueDeclare("simulation_queue"+finalcoord, true, false, false, null);
@@ -95,7 +95,6 @@ public class SimulationHandler {
                 simulationEvent.setLon("stop");
                 socket.sendUpdateSimulation(simulationEvent);
                 System.out.println("Stopped");
-
             }
             String[] splitMessage = message.split(",");
             String msg1 =  splitMessage[2].replace("[","");
