@@ -1,14 +1,18 @@
 package resource;
 
+import event.SimulationReceiver;
 import domain.Location;
 import domain.Route;
 import service.interfaces.IDeliveryService;
+import util.SimulationHandler;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 import java.util.Set;
+import java.util.concurrent.TimeoutException;
 
 @Path("deliveries")
 public class DeliveryResource {
@@ -28,6 +32,28 @@ public class DeliveryResource {
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
+    }
+    @POST
+    @Path("/simulation")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void startSimulation(SimulationReceiver simulationReceiver){
+        SimulationHandler simulationHandler = new SimulationHandler();
+        try {
+            simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @GET
+    @Path("/testsim")
+    public Response testSimulation() throws IOException, TimeoutException {
+        SimulationHandler simulationHandler = new SimulationHandler();
+        SimulationReceiver simulationReceiver = new SimulationReceiver("1","(5.482373,51.438115),(5.476627,51.45932)");
+        simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId());
+        return Response.ok(true).build();
     }
 
     @GET
