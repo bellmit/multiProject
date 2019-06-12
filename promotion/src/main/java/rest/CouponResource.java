@@ -39,7 +39,7 @@ public class CouponResource {
     @Secured()
     public Response exists(@PathParam("code") String code, @HeaderParam("Authorization") String token) {
         Map<String, String> map = jwtHelper.claimKey(token.substring(7));
-        return Response.ok(couponService.findByCode(code, map.get("id"))).build();
+        return Response.ok(couponService.mayUseCode(code, map.get("id"))).build();
     }
 
     @PUT
@@ -51,7 +51,6 @@ public class CouponResource {
         couponUsageService.useCoupon(code, map.get("id"));
         return Response.ok().build();
     }
-
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

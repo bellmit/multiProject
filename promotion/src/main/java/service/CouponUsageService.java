@@ -17,7 +17,7 @@ public class CouponUsageService {
     private CouponUsageDao cud;
 
     public void useCoupon(String code, String id) {
-        if (!couponService.findByCode(code, id)) {
+        if (!couponService.mayUseCode(code, id)) {
             throw new BadRequestException("You are not allowed to use this coupon");
         }
         CouponUsage couponUsage = new CouponUsage();

@@ -49,7 +49,7 @@ public class CouponService {
         return couponDao.getCoupons();
     }
 
-    public boolean findByCode(String code, String userId) {
+    public boolean mayUseCode(String code, String userId) {
         Coupon coupon = couponDao.findByCode(code);
         if (coupon == null) {
             return false;
