@@ -12,29 +12,38 @@ import com.rabbitmq.client.MessageProperties;
 import com.rabbitmq.client.DeliverCallback;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SimulationHandler {
 
-    boolean keeprunning = true;
+    private boolean keeprunning = true;
 
-    public void startSimulation(String coords,String oderId) throws IOException, TimeoutException {
+    private static final Logger LOGGER = Logger.getLogger(SimulationHandler.class.getName());
 
-        String host = "192.168.24.110";
+    private static final String HOST = "192.168.24.110";
+
+
+    public void startSimulation(String coords,String oderId)  {
+
+
+
         String user = "root";
-        String password = "root";
+        String ssh = "root";
         String command = " python3 /home/python/simulation.py";
         try{
             Properties config = new Properties();
             config.put("StrictHostKeyChecking","no");
             JSch jsch = new JSch();
-            Session session = jsch.getSession(user,host,8022);
-            session.setPassword(password);
+            Session session = jsch.getSession(user, HOST,8022);
+            session.setPassword(ssh);
             session.setConfig(config);
             session.connect();
-            System.out.println("Connected");
+            LOGGER.log(Level.INFO,"Connected");
 
             ChannelExec channel = (ChannelExec) session.openChannel("exec");
             channel.setCommand(command);
@@ -42,44 +51,35 @@ public class SimulationHandler {
             channel.connect();
             TimeUnit.SECONDS.sleep(5);
             sendCoords(coords);
-            ReceiveCoords(coords,oderId);
+            receiveCoords(coords,oderId);
         }catch(Exception e){
-            String ex = e.toString();
+           LOGGER.log(Level.SEVERE,e.getMessage());
         }
-       /* Process p = Runtime.getRuntime().exec(command);
-        try {
-            TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        sendCoords(coords);
-        ReceiveCoords(coords,oderId);
-        */
+
     }
 
-    public void sendCoords(String coords) throws IOException, TimeoutException {
+    public void sendCoords(String coords)  {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("192.168.24.110");
-         Connection connection = factory.newConnection();
-             Channel channel = connection.createChannel();
+        factory.setHost(HOST);
+        try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
             channel.queueDeclare("coordinates_receiver4", true, false, false, null);
-
-            String message = coords;
 
             channel.basicPublish("", "coordinates_receiver4",
                     MessageProperties.PERSISTENT_TEXT_PLAIN,
-                    message.getBytes("UTF-8"));
-            System.out.println(" [x] Sent '" + message + "'");
-            connection.close();
+                    coords.getBytes(StandardCharsets.UTF_8));
+            System.out.println(" [x] Sent '" + coords + "'");
+        } catch (TimeoutException | IOException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
     }
 
-    public void ReceiveCoords(String coords,String orderId) throws IOException, TimeoutException {
+    private void receiveCoords(String coords, String orderId) throws IOException, TimeoutException {
         String[] coordsSplit = coords.split(",");
         SimulationSocket socket = new SimulationSocket();
         String finalcoord = coordsSplit[3].replace(")","");
         SimulationEvent simulationEvent = new SimulationEvent("","",orderId);
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("192.168.24.110");
+        factory.setHost(HOST);
         final Connection connection = factory.newConnection();
         final Channel channel = connection.createChannel();
         channel.queueDeclare("simulation_queue"+finalcoord, true, false, false, null);
@@ -88,7 +88,7 @@ public class SimulationHandler {
         channel.basicQos(1);
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), "UTF-8");
+            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
             if(message.contains("stops")){
                 keeprunning = false;
                 simulationEvent.setLat("stop");

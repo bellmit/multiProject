@@ -10,9 +10,8 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
 import java.util.Set;
-import java.util.concurrent.TimeoutException;
+
 
 @Path("deliveries")
 public class DeliveryResource {
@@ -38,18 +37,13 @@ public class DeliveryResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void startSimulation(SimulationReceiver simulationReceiver){
         SimulationHandler simulationHandler = new SimulationHandler();
-        try {
-            simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
+        simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId());
+
     }
 
     @GET
     @Path("/testsim")
-    public Response testSimulation() throws IOException, TimeoutException {
+    public Response testSimulation() {
         SimulationHandler simulationHandler = new SimulationHandler();
         SimulationReceiver simulationReceiver = new SimulationReceiver("1","(5.482373,51.438115),(5.476627,51.45932)");
         simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId());

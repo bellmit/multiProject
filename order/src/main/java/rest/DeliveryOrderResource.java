@@ -5,11 +5,9 @@ import service.DeliveryOrderService;
 import socket.OrderWebsocket;
 
 import javax.inject.Inject;
-import javax.websocket.EncodeException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
 import java.util.List;
 
 @Path("deliveryorders")
@@ -37,14 +35,7 @@ public class DeliveryOrderResource {
     @Path("/startdelivery")
     public Response startDelivery(DeliveryOrder d){
         OrderWebsocket orderWebsocket = new OrderWebsocket();
-        try {
-            return Response.ok(orderWebsocket.updateOrders(d)).build();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (EncodeException e) {
-            e.printStackTrace();
-        }
-        return Response.ok(false).build();
+        return Response.ok(orderWebsocket.updateOrders(d)).build();
     }
 
     @POST

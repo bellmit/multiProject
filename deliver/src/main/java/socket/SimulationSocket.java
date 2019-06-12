@@ -20,6 +20,7 @@ public class SimulationSocket {
     private static final Map<String, Set<Session>> sessions = Collections.synchronizedMap(new HashMap<>());
 
     public SimulationSocket() {
+        //we need an empty constructor to gain access
     }
 
     @OnOpen
@@ -52,7 +53,7 @@ public class SimulationSocket {
 
     @OnMessage
     public void onMessage(String message,Session session){
-
+        //we dont need this for this instance
     }
 
     public void sendUpdateSimulation(SimulationEvent simulationEvent){
