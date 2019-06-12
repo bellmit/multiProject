@@ -12,41 +12,53 @@ subprojects {
 
 project(':login') {
     dependencies {
+        implementation project(':logging')
     }
 }
 
 project(':order') {
     dependencies {
         implementation project(':login')
+        implementation project(':logging')
     }
 }
 
 project(':promotion') {
     dependencies {
         implementation project(':login')
+        implementation project(':logging')
     }
 }
 
 project(':deliver') {
     dependencies {
         implementation project(':login')
+        implementation project(':logging')
     }
 }
 
 project(':logging') {
     dependencies {
-        implementation project(':login')
     }
 }
 
 project(':payment') {
     dependencies {
         implementation project(':login')
+        implementation project(':logging')
     }
 }
 
 project(':reserve') {
     dependencies {
         implementation project(':login')
+        implementation project(':logging')
+    }
+}
+
+project(':kitchen') {
+    dependencies {
+        implementation project(':login')
+        implementation project(':logging')
     }
 }

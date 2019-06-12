@@ -11,18 +11,22 @@ import java.util.List;
 
 @Stateless
 public class CouponService {
+
     @Inject
-    private CouponDao cd;
+    private CouponDao couponDao;
+
+    @Inject
+    private CouponUsageService couponUsageService;
 
     public void create(Coupon coupon) {
-        if (cd.findByCode(coupon.getCode()) != null) {
+        if (couponDao.findByCode(coupon.getCode()) != null) {
             throw new BadRequestException("Code already exists");
         }
-        cd.create(coupon);
+        couponDao.create(coupon);
     }
 
     public Coupon find(String id) {
-        Coupon coupon = cd.find(id);
+        Coupon coupon = couponDao.find(id);
         if (coupon == null) {
             throw new NotFoundException("Coupon not found");
         }
@@ -30,18 +34,32 @@ public class CouponService {
     }
 
     public void edit(Coupon coupon) {
-        cd.edit(coupon);
+        couponDao.edit(coupon);
     }
 
     public void delete(String id) {
-        Coupon coupon = cd.find(id);
+        Coupon coupon = couponDao.find(id);
         if (coupon == null) {
             throw new NotFoundException("Coupon not found");
         }
-        cd.delete(coupon);
+        couponDao.delete(coupon);
     }
 
     public List<Coupon> getAllCoupons() {
-        return cd.getCoupons();
+        return couponDao.getCoupons();
     }
+
+    public boolean mayUseCode(String code, String userId) {
+        Coupon coupon = couponDao.findByCode(code);
+        if (coupon == null) {
+            return false;
+        }
+        if (coupon.getUserId() == null || (!userId.equals("") && coupon.getUserId().equals(userId))) {
+            int uses = couponUsageService.getUsages(code);
+            return coupon.getMaxUses() > uses;
+        }
+        return false;
+    }
+
+
 }
