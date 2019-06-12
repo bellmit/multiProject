@@ -55,3 +55,10 @@ project(':reserve') {
         implementation project(':logging')
     }
 }
+
+project(':kitchen') {
+    dependencies {
+        implementation project(':login')
+        implementation project(':logging')
+    }
+}
