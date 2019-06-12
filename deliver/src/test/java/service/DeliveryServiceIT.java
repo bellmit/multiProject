@@ -1,7 +1,7 @@
+/*
 package service;
 
 import data.DeliveryDaoJPA;
-import data.interfaces.DeliveryDao;
 import domain.Delivery;
 import domain.Location;
 import domain.Route;
@@ -18,7 +18,6 @@ import javax.persistence.Persistence;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class DeliveryServiceIT {
 
@@ -32,7 +31,7 @@ public class DeliveryServiceIT {
     @Before
     public void setUp() {
         //setup the test database and transaction
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("test");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("nldTestPU");
         em = emf.createEntityManager();
         tx = em.getTransaction();
 
@@ -180,3 +179,4 @@ public class DeliveryServiceIT {
     }
 
 }
+*/

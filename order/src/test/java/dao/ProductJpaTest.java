@@ -2,10 +2,7 @@ package dao;
 
 import config.props;
 import dao.jpa.ProductDaoJpa;
-import domain.Product;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import util.DatabaseCleaner;
 
 import javax.persistence.EntityManager;
@@ -36,7 +33,7 @@ public class ProductJpaTest {
         ad.setEm(em);
 
     }
-
+/**
     @Test
     public void createAndFind() {
         tx.begin();
@@ -59,4 +56,5 @@ public class ProductJpaTest {
 
         Assert.assertNull(ad.find(a.getId()));
     }
+    */
 }

@@ -1,8 +1,8 @@
 package util;
 
-import Domain.Reservation;
-import Domain.DinningTable;
-import Domain.TimeSlot;
+import domain.DiningTable;
+import domain.Reservation;
+import domain.TimeSlot;
 
 import javax.persistence.*;
 import javax.persistence.metamodel.*;
@@ -12,7 +12,7 @@ public class DatabaseCleaner {
 
     private static final Class<?>[] ENTITY_TYPES = {
             Reservation.class,
-            DinningTable.class,
+            DiningTable.class,
             TimeSlot.class
     };
     private final EntityManager em;

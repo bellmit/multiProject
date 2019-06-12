@@ -25,6 +25,7 @@ public class CouponResource {
     private JWTHelper jwtHelper;
 
     @POST
+    @Secured("admin")
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/new")
     public Response newCoupon(Coupon coupon) {

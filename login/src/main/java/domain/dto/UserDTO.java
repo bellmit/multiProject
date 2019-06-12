@@ -1,10 +1,8 @@
 package domain.dto;
 
-import domain.Role;
 import domain.User;
 import util.RoleConverter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDTO {

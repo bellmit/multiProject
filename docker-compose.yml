@@ -1,28 +1,123 @@
-version: '3'
+version: '2'
 
 volumes:
   jenkins_home:
-  warfolder:
-  
+  reserve:
+  logging:
+  login:
+  order:
+  payment:
+  promotion:
+  deliver:
+  sonar:
+  angularfiles:
+  kitchen:
 
 services:
   jenkins:
-    image: jenkins/jenkins
+    image: thomasfontys/jenkins
     ports: 
       - "8081:8080"
       - "50000:50000" 
     volumes:
-      - warfolder:/warfolder
+      - reserve:/dockervolumes/reserve
+      - logging:/dockervolumes/logging
+      - login:/dockervolumes/login
+      - order:/dockervolumes/order
+      - payment:/dockervolumes/payment
+      - promotion:/dockervolumes/promotion
+      - deliver:/dockervolumes/deliver
+      - kitchen:/dockervolumes/kitchen
       - jenkins_home:/var/jenkins_home
+      - angularfiles:/dockervolumes/angularfiles
+    logging:
+       driver: "json-file"
+       options:
+            max-size: "50m"
   sonarqube:
-    image: sonarqube
+    image: thomasfontys/sonarqube
     ports:
       - "9000:9000"
-  wildfly:
-    image: jboss/wildfly
+    volumes:
+      - sonar:/opt/sonarqube/data
+  reserve:
+    image: thomasfontys/nld-wildfly
     ports:
       - "8080:8080"
+      - "9990:9990"
     volumes:
-      - warfolder:/opt/jboss/wildfly/standalone/deployments
+      - reserve:/opt/jboss/wildfly/standalone/deployments
+  logging:
+    image: thomasfontys/nld-wildfly
+    ports:
+      - "8082:8080"
+      - "9991:9990"
+    volumes:
+      - logging:/opt/jboss/wildfly/standalone/deployments
+  login:
+    image: thomasfontys/nld-wildfly
+    ports:
+      - "8083:8080"
+      - "9992:9990"
+    volumes:
+      - login:/opt/jboss/wildfly/standalone/deployments
+  order:
+    image: thomasfontys/nld-wildfly
+    ports:
+      - "8084:8080"
+      - "9993:9990"
+    volumes:
+      - order:/opt/jboss/wildfly/standalone/deployments
+  payment:
+    image: thomasfontys/nld-wildfly
+    ports:
+      - "8085:8080"
+      - "9994:9990"
+    volumes:
+      - payment:/opt/jboss/wildfly/standalone/deployments
+  promotion:
+    image: thomasfontys/nld-wildfly
+    ports:
+      - "8086:8080"
+      - "9995:9990"
+    volumes:
+      - promotion:/opt/jboss/wildfly/standalone/deployments
+  kitchen:
+    image: thomasfontys/nld-wildfly
+    ports:
+      - "8087:8080"
+      - "9996:9990"
+    volumes:
+      - kitchen:/opt/jboss/wildfly/standalone/deployments
+  deliver:
+    image: thomasfontys/nld-wildfly
+    ports:
+      - "8088:8080"
+      - "9997:9990"
+    volumes:
+      - deliver:/opt/jboss/wildfly/standalone/deployments
+  frontend:
+    image: thomasfontys/nginx
+    ports:
+      - "80:80"
+    volumes:
+      - angularfiles:/usr/share/nginx/html/
+  rabbitmq:
+     image: thomasfontys/rabbitmq
+     ports:
+      - "15672:15672"
+      - "5672:5672"
+ 
+
+
+
+
+
+
+
+
+
+
+
    
       

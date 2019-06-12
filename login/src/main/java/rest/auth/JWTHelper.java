@@ -26,13 +26,14 @@ public class JWTHelper {
     /***
      * generates a json web token with the parameters as payload.
      */
-    public String generatePrivateKey(String email, List<String> roles) {
-        Map<String, Object> groups = new HashMap<>();
-        groups.put("roles", roles);
+    public String generatePrivateKey(String id, String email, List<String> roles) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("roles", roles);
+        claims.put("id", id);
         return Jwts
                 .builder()
                 .setSubject(email)
-                .addClaims(groups)
+                .addClaims(claims)
                 .setExpiration(calcExpirationDate())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .signWith(SignatureAlgorithm.HS256, signingKey)

@@ -2,10 +2,7 @@ package dao;
 
 import config.props;
 import dao.jpa.OrderStatusDaoJpa;
-import domain.OrderStatus;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import util.DatabaseCleaner;
 
 import javax.persistence.EntityManager;
@@ -36,7 +33,7 @@ public class OrderStatusJpaTest {
         ad.setEm(em);
 
     }
-
+/**
     @Test
     public void createAndFind() {
         tx.begin();
@@ -59,6 +56,7 @@ public class OrderStatusJpaTest {
 
         Assert.assertNull(ad.find(a.getId()));
     }
+    **/
 }
 
 

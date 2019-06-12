@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 public abstract class BaseDaoJpa<T> implements BaseDao<T> {
 
-    public Class<T> entityClass;
+    private Class<T> entityClass;
 
     public BaseDaoJpa(Class<T> type) {
         this.entityClass = type;
@@ -15,8 +15,9 @@ public abstract class BaseDaoJpa<T> implements BaseDao<T> {
     protected abstract EntityManager getEntityManager();
 
     @Override
-    public void create(T object) {
+    public T create(T object) {
         getEntityManager().persist(object);
+        return object;
     }
 
     @Override
@@ -25,8 +26,9 @@ public abstract class BaseDaoJpa<T> implements BaseDao<T> {
     }
 
     @Override
-    public void edit(T object) {
+    public T edit(T object) {
         getEntityManager().merge(object);
+        return object;
     }
 
     @Override

@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "role.findByName", query = "SELECT r FROM Role r WHERE r.name = :name")})
+@NamedQuery(name = "role.findByName", query = "SELECT r FROM Role r WHERE r.name = :name")
 public class Role {
 
     @Id

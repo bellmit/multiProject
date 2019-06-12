@@ -2,10 +2,7 @@ package dao;
 
 import config.props;
 import dao.jpa.LocalOrderDaoJpa;
-import domain.LocalOrder;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import util.DatabaseCleaner;
 
 import javax.persistence.EntityManager;
@@ -37,6 +34,7 @@ public class LocalOrderJpaTest {
 
     }
 
+    /**
     @Test
     public void createAndFind() {
         tx.begin();
@@ -45,8 +43,9 @@ public class LocalOrderJpaTest {
         tx.commit();
         Assert.assertNotNull(ad.find(a.getId()));
     }
+    **/
 
-    @Test
+    /**8@Test
     public void delete() {
         tx.begin();
         LocalOrder a = new LocalOrder();
@@ -59,4 +58,5 @@ public class LocalOrderJpaTest {
 
         Assert.assertNull(ad.find(a.getId()));
     }
+     **/
 }
