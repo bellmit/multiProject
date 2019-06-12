@@ -13,7 +13,7 @@ public class Reservation implements Serializable {
     @Id
     private String uuid;
 
-    private int userID;
+    private String userID;
 
     private int nrofPeople;
 
@@ -31,7 +31,7 @@ public class Reservation implements Serializable {
     @JoinColumn(name = "reservation_id")
     private List<DiningTable> diningTables;
 
-    public Reservation(int userID, int nrofPeople, Date date, DinnerType type, List<TimeSlot> timeSlots, List<DiningTable> diningTables) {
+    public Reservation(String userID, int nrofPeople, Date date, DinnerType type, List<TimeSlot> timeSlots, List<DiningTable> diningTables) {
         this.uuid = UUID.randomUUID().toString();
         this.userID = userID;
         this.nrofPeople = nrofPeople;
@@ -50,11 +50,11 @@ public class Reservation implements Serializable {
     }
 
 
-    public int getUserID() {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 

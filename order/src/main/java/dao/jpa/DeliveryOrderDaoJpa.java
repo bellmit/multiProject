@@ -2,6 +2,7 @@ package dao.jpa;
 
 import dao.interfaces.DeliveryOrderDao;
 import domain.DeliveryOrder;
+import domain.OrderStatus;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,6 +31,16 @@ public class DeliveryOrderDaoJpa extends BaseDaoJpa<DeliveryOrder> implements De
 
     public List<DeliveryOrder> getAll(String userId){
         Query q = getEntityManager().createQuery("select d from DeliveryOrder d where d.userId = '" + userId + "'", DeliveryOrder.class);
+        return q.getResultList();
+    }
+
+    public List<DeliveryOrder> getAllDeliveryOrders(){
+        Query q = getEntityManager().createQuery("select d from DeliveryOrder d",DeliveryOrder.class);
+        return q.getResultList();
+    }
+
+    public List<DeliveryOrder> getAllOrdersByStatus(String status){
+        Query q = getEntityManager().createQuery("select d from DeliveryOrder d where d.status = '" + status + "'",DeliveryOrder.class);
         return q.getResultList();
     }
 }
