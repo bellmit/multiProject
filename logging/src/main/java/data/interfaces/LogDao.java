@@ -1,13 +1,12 @@
 package data.interfaces;
 
-import dao.interfaces.BaseDao;
 import domain.Component;
 import domain.NldLog;
 
 import java.util.List;
 import java.util.logging.Level;
 
-public interface LogDao extends BaseDao<NldLog> {
+public interface LogDao extends GenericDao<NldLog> {
     List<NldLog> getAll();
 
     List<NldLog> getForComponent(Component component);

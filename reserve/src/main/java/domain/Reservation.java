@@ -1,6 +1,8 @@
 package domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -13,16 +15,20 @@ public class Reservation implements Serializable {
     @Id
     private String uuid;
 
+    @NotNull
     private String userID;
 
+    @Positive
     private int nrofPeople;
 
+    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
     @Enumerated(EnumType.STRING)
     private DinnerType type;
 
+    @NotNull
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "reservation_id")
     private List<TimeSlot> timeSlots;
@@ -98,14 +104,14 @@ public class Reservation implements Serializable {
         this.diningTables = diningTables;
     }
 
-    public void Notify(Reservation r){
+    public void Notify(Reservation r) {
         Date startTime = new Date();
-        if(r.getDate().getYear()==new Date().getYear()&&r.getDate().getMonth()==new Date().getMonth()&&
-                r.getDate().getDay()== new Date().getDay()){
-            for (TimeSlot ts: r.getTimeSlots()) {
+        if (r.getDate().getYear() == new Date().getYear() && r.getDate().getMonth() == new Date().getMonth() &&
+                r.getDate().getDay() == new Date().getDay()) {
+            for (TimeSlot ts : r.getTimeSlots()) {
                 long difference = ts.getStartTime().getHours() - new Date().getHours();
                 long diffHours = difference / (60 * 60 * 1000) % 24;
-                if(difference>=3){
+                if (difference >= 3) {
                     //Send notification
                 }
             }

@@ -114,14 +114,13 @@ public class InitData {
 
 
         //create localOrder
-        //los.create(new LocalOrder("login1", LocalDateTime.now(), 10.0, 11.0, oss.find("Paid"), productsList,1));
+        los.create(new LocalOrder("login1", LocalDateTime.now(), 10.0, 11.0, oss.find("Paid"), productsList,1));
         //los.create(new LocalOrder("login2", LocalDateTime.now(), 25.5, 11.0, oss.find("Paid"), productsList, 2));
 
         //create deliveryOrder
-        dos.create(new DeliveryOrder("login2", LocalDateTime.now(), 25.5, 11.0, oss.find("Paid"), productsList, address));
-        dos.create(new DeliveryOrder("login2", LocalDateTime.now(), 15.5, 11.0, oss.find("Paid"), productsList, address));
-        dos.create(new DeliveryOrder("login1", LocalDateTime.now(), 22.5, 11.0, oss.find("Paid"), productsList, address2));
-
+        dos.create(new DeliveryOrder("login1", LocalDateTime.now(), 25.5, 11.0, oss.find("Paid"), productsList, address));
+        //dos.create(new DeliveryOrder("login2", LocalDateTime.now(), 15.5, 11.0, oss.find("Paid"), productsList, address));
+        //dos.create(new DeliveryOrder("login1", LocalDateTime.now(), 22.5, 11.0, oss.find("Paid"), productsList, address2));
     }
 
     private void addProducts(String[] products, int cat){
@@ -137,8 +136,4 @@ public class InitData {
             oss.create(os);
         }
     }
-
-
-
-
 }

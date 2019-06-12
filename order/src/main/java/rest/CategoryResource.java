@@ -15,6 +15,7 @@ public class CategoryResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/new")
     public Category newCategory(Category a) {
         return as.create(a);

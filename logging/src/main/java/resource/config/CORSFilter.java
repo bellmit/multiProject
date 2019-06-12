@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package filter;
+package resource.config;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -27,6 +27,7 @@ public class CORSFilter implements ContainerRequestFilter, ContainerResponseFilt
         // response filter method below.
         if (isPreflightRequest(request)) {
             request.abortWith(Response.ok().build());
+            return;
         }
     }
 
@@ -39,20 +40,20 @@ public class CORSFilter implements ContainerRequestFilter, ContainerResponseFilt
     }
 
     @Override
-    public void filter(final ContainerRequestContext requestContext,
-            final ContainerResponseContext cres) throws IOException {
-
-        cres.getHeaders().add(
+    public void filter(ContainerRequestContext requestContext,
+                       ContainerResponseContext responseContext) throws IOException {
+        responseContext.getHeaders().add(
                 "Access-Control-Allow-Origin", "*");
-        cres.getHeaders().add(
+        responseContext.getHeaders().add(
                 "Access-Control-Allow-Credentials", "true");
-        cres.getHeaders().add(
+        responseContext.getHeaders().add(
                 "Access-Control-Allow-Headers",
                 "origin, content-type, accept, authorization");
-        cres.getHeaders().add(
+        responseContext.getHeaders().add(
                 "Access-Control-Allow-Methods",
                 "GET, POST, PUT, DELETE, OPTIONS, HEAD");
-        cres.getHeaders().add("Access-Control-Expose-Headers", "Authorization");
+        responseContext.getHeaders().add("Access-Control-Expose-Headers",
+                "authorization");
     }
 
 }

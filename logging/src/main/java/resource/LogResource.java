@@ -21,29 +21,18 @@ public class LogResource {
     }
 
     @GET
-    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll(){
-        return Response.ok(logService.getAllLogs()).build();
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getByComponent(@QueryParam("component") String component) {
-        return Response.ok(logService.getLogsForComponent(Component.valueOf(component))).build();
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getByLevel(@QueryParam("level") String level) {
-        return Response.ok(logService.getLogsWithLevel(Level.parse(level))).build();
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getByComponentWithLevel(@QueryParam("component") String component,
-                                            @QueryParam("level") String level) {
-        return Response.ok(logService.getLogsForComponentWithLevel(Component.valueOf(component), Level.parse(level))).build();
+    public Response get(@QueryParam("component") String component,
+                        @QueryParam("level") String level) {
+        if(component != null && level != null){
+            return Response.ok(logService.getLogsForComponentWithLevel(Component.valueOf(component), Level.parse(level))).build();
+        } else if (level != null) {
+            return Response.ok(logService.getLogsWithLevel(Level.parse(level))).build();
+        } else if (component != null) {
+            return Response.ok(logService.getLogsForComponent(Component.valueOf(component))).build();
+        } else {
+            return Response.ok(logService.getAllLogs()).build();
+        }
     }
 
     @POST
