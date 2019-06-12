@@ -44,6 +44,7 @@ public class JWTHelper {
         Claims claims = (Claims) jwt.getBody();
         Map hashMap = new HashMap();
         hashMap.put("email", claims.getSubject());
+        hashMap.put("id", claims.get("id"));
         hashMap.put("roles", claims.get("roles"));
         return hashMap;
     }
