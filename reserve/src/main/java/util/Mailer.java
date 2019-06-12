@@ -38,7 +38,7 @@ public class Mailer {
             );
             message.setSubject("Reservation NLD");
             message.setText("Dear Sir or Madam,"
-                    + "\n\n We'd like to remember you that your reservation will start in three hours!\n\n" +msg);
+                    + "\n\n We'd like to remember you that your reservation will start in three hours!\n\n");
 
             Transport.send(message);
         } catch (MessagingException e) {
