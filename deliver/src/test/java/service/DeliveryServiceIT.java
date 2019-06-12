@@ -178,5 +178,4 @@ public class DeliveryServiceIT {
         Assert.assertEquals(toTest.get(0).getDeliveryId(), delivery.getDeliveryId());
     }
 
-}
 */
