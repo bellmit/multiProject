@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Startup
+@Startup
 @Singleton
 public class InitData2 {
 
@@ -58,28 +58,32 @@ public class InitData2 {
         u.setEmail("admin@fontys.nl");
         u.setPassword("admin");
         u.setRoles(roles);
-        us.create(u);
+        //us.create(u);
+        as.addUser(u);
 
         //create testUser
         User u2 = new User();
         u2.setEmail("table@fontys.nl");
         u2.setPassword("table");
         u2.setRoles(roles2);
-        us.create(u2);
+        //us.create(u2);
+        as.addUser(u2);
 
         //create testUser
         User u3 = new User();
         u3.setEmail("emp@fontys.nl");
         u3.setPassword("emp");
         u3.setRoles(roles3);
-        us.create(u3);
+        //us.create(u3);
+        as.addUser(u3);
 
         //create testUser
         User u4 = new User();
         u4.setEmail("user@fontys.nl");
         u4.setPassword("user");
         u4.setRoles(roles4);
-        us.create(u4);
+        //us.create(u4);
+        as.addUser(u4);
     }
 
 }
