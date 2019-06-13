@@ -13,6 +13,10 @@ public class PingService {
     ProductDao productDao;
 
     public boolean ping() {
+        Product product = new Product();
+        product.setName("test");
+        product.setPrice(1);
+        product.setVat(1);
         productDao.delete(productDao.find(productDao.create(new Product()).getId()));
         return true;
     }
