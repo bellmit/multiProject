@@ -37,8 +37,8 @@ public class LogResource {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addTestLog(@HeaderParam("message") String message,
-                               @HeaderParam("level") String level) {
+    public Response addTestLog(@QueryParam("message") String message,
+                               @QueryParam("level") String level) {
         if(message !=null && level !=null){
             return Response.ok(logService.addTestLog(message, level)).build();
         }else if(message != null){
