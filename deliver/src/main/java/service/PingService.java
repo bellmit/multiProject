@@ -2,7 +2,6 @@ package service;
 
 import data.interfaces.DeliveryDao;
 import domain.Delivery;
-import domain.User;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
-import java.awt.*;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 //@Startup
-@Singleton
+//@Singleton
 public class InitData {
     @Inject
     ProductService ps;

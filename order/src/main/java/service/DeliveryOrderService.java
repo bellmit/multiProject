@@ -32,4 +32,6 @@ public class DeliveryOrderService {
     public List<DeliveryOrder> getAll(String userId){
         return dd.getAll(userId);
     }
+
+    public List<DeliveryOrder> getAllDeliveryOrders() { return  dd.getAllDeliveryOrders();}
 }
