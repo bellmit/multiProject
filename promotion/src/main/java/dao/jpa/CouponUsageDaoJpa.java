@@ -1,7 +1,6 @@
 package dao.jpa;
 
 import dao.interfaces.CouponUsageDao;
-import domain.Coupon;
 import domain.CouponUsage;
 
 import javax.ejb.Stateless;

@@ -1,7 +1,7 @@
 package socket;
 
-import event.SimulationEvent;
 import com.google.gson.Gson;
+import event.SimulationEvent;
 
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
@@ -23,11 +23,11 @@ public class SimulationDecoder implements Decoder.Text<SimulationEvent> {
 
     @Override
     public void init(EndpointConfig config) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void destroy() {
-
+        throw new UnsupportedOperationException();
     }
 }

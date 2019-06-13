@@ -1,8 +1,8 @@
 package resource;
 
-import event.SimulationReceiver;
 import domain.Location;
 import domain.Route;
+import event.SimulationReceiver;
 import service.interfaces.IDeliveryService;
 import util.SimulationHandler;
 

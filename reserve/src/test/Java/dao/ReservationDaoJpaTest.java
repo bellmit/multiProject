@@ -2,8 +2,8 @@ package dao;
 
 import dao.jpa.ReservationDAOJPA;
 import dao.jpa.TimeSlotDAOJPA;
-import domain.DinnerType;
 import domain.DiningTable;
+import domain.DinnerType;
 import domain.Reservation;
 import domain.TimeSlot;
 import org.junit.Assert;

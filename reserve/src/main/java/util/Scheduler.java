@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import javax.ejb.*;
 import javax.inject.Inject;
 import java.util.Date;
-import java.util.List;
 
 @Stateless
 @ReservationScheduler

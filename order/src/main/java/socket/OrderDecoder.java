@@ -1,7 +1,6 @@
 package socket;
 
 import com.google.gson.Gson;
-import domain.DeliveryOrder;
 
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
