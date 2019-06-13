@@ -39,7 +39,7 @@ public class SimulationHandler {
             Properties config = new Properties();
             config.put("StrictHostKeyChecking","no");
             JSch jsch = new JSch();
-            Session session = jsch.getSession(user, HOST,8022);
+            Session session = jsch.getSession(user, HOST,22);
             session.setPassword(ssh);
             session.setConfig(config);
             session.connect();
@@ -53,7 +53,7 @@ public class SimulationHandler {
             sendCoords(coords);
             receiveCoords(coords,oderId);
         }catch(Exception e){
-           LOGGER.log(Level.SEVERE,e.getMessage());
+           LOGGER.log(Level.SEVERE,e.getMessage()+" ssh");
         }
 
     }
@@ -69,23 +69,24 @@ public class SimulationHandler {
                     coords.getBytes(StandardCharsets.UTF_8));
             System.out.println(" [x] Sent '" + coords + "'");
         } catch (TimeoutException | IOException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
+            LOGGER.log(Level.SEVERE, e.getMessage()+ " rabbit");
         }
     }
 
-    private void receiveCoords(String coords, String orderId) throws IOException, TimeoutException {
+    private void receiveCoords(String coords, String orderId) {
         String[] coordsSplit = coords.split(",");
         SimulationSocket socket = new SimulationSocket();
         String finalcoord = coordsSplit[3].replace(")","");
         SimulationEvent simulationEvent = new SimulationEvent("","",orderId);
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(HOST);
-        final Connection connection = factory.newConnection();
-        final Channel channel = connection.createChannel();
-        channel.queueDeclare("simulation_queue"+finalcoord, true, false, false, null);
-        System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
+        try {
+            final Connection connection = factory.newConnection();
+            final Channel channel = connection.createChannel();
+            channel.queueDeclare("simulation_queue" + finalcoord, true, false, false, null);
+            System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
-        channel.basicQos(1);
+            channel.basicQos(1);
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
@@ -106,12 +107,17 @@ public class SimulationHandler {
                 System.out.println(" [x] Done");
                 channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
 
+
+
         };
         while (keeprunning) {
             channel.basicConsume("simulation_queue" + finalcoord, false, deliverCallback, consumerTag -> {
             });
         }
         connection.close();
+        } catch (TimeoutException | IOException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage()+ " rabbit");
+        }
     }
 
 }
