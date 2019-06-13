@@ -2,7 +2,6 @@ package dao.jpa;
 
 import dao.interfaces.DeliveryOrderDao;
 import domain.DeliveryOrder;
-import domain.OrderStatus;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

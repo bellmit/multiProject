@@ -1,7 +1,6 @@
 package dao.jpa;
 
 import dao.interfaces.LocalOrderDao;
-import domain.DeliveryOrder;
 import domain.LocalOrder;
 
 import javax.ejb.Stateless;

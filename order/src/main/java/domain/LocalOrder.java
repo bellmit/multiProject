@@ -1,10 +1,7 @@
 package domain;
 
-import util.OrderType;
-
 import javax.persistence.Entity;
 import javax.validation.constraints.Positive;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;

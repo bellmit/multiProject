@@ -2,12 +2,13 @@ package resource;
 
 import domain.Component;
 import service.LogService;
-import java.util.logging.Level;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.logging.Level;
 
 @Stateless
 @Path("logs")

@@ -3,13 +3,9 @@ package util;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
+import com.rabbitmq.client.*;
 import event.SimulationEvent;
 import socket.SimulationSocket;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.MessageProperties;
-import com.rabbitmq.client.DeliverCallback;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -67,7 +63,7 @@ public class SimulationHandler {
             channel.basicPublish("", "coordinates_receiver4",
                     MessageProperties.PERSISTENT_TEXT_PLAIN,
                     coords.getBytes(StandardCharsets.UTF_8));
-            System.out.println(" [x] Sent '" + coords + "'");
+            LOGGER.log(Level.INFO, " [x] Sent '" + coords + "'");
         } catch (TimeoutException | IOException e) {
             LOGGER.log(Level.SEVERE, e.getMessage()+ " rabbit");
         }
@@ -95,7 +91,7 @@ public class SimulationHandler {
                 simulationEvent.setLat("stop");
                 simulationEvent.setLon("stop");
                 socket.sendUpdateSimulation(simulationEvent);
-                System.out.println("Stopped");
+                LOGGER.log(Level.INFO, "Stopped");
             }
             String[] splitMessage = message.split(",");
             String msg1 =  splitMessage[2].replace("[","");
@@ -103,8 +99,8 @@ public class SimulationHandler {
             simulationEvent.setLat(msg1);
             simulationEvent.setLon(msg2);
             socket.sendUpdateSimulation(simulationEvent);
-            System.out.println(" [x] Received ' Lat: " + msg1 + "Lon: "+msg2+"'" +message);
-                System.out.println(" [x] Done");
+            LOGGER.log(Level.INFO, " [x] Received ' Lat: " + msg1 + "Lon: "+msg2+"'" +message);
+                LOGGER.log(Level.INFO, " [x] Done");
                 channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
 
 
