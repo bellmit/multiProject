@@ -17,7 +17,7 @@ public class PingService {
         product.setName("test");
         product.setPrice(1);
         product.setVat(1);
-        productDao.delete(productDao.find(productDao.create(new Product()).getId()));
+        productDao.delete(productDao.find(productDao.create(product).getId()));
         return true;
     }
 }

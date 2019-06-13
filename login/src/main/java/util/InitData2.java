@@ -13,8 +13,8 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-@Startup
-@Singleton
+//@Startup
+//@Singleton
 public class InitData2 {
 
     @Inject
