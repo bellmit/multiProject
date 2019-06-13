@@ -23,9 +23,9 @@ public class initData {
 
     private void initLogs(){
         System.out.println("initializing Logs: ");
-        logService.addLog(Component.deliver, this.getClass().getName(), "this is a test log from deliver.initData", Level.FINE);
-        logService.addLog(Component.login, this.getClass().getName(), "this is test log from login.initData", Level.WARNING);
-        logService.addLog(Component.order, this.getClass().getName(), "this is a test log from order.initData", Level.INFO);
+        logService.addLog(Component.DELIVER, this.getClass().getName(), "this is a test log from DELIVER.initData", Level.FINE);
+        logService.addLog(Component.LOGIN, this.getClass().getName(), "this is test log from LOGIN.initData", Level.WARNING);
+        logService.addLog(Component.ORDER, this.getClass().getName(), "this is a test log from ORDER.initData", Level.INFO);
     }
 
 }

@@ -63,7 +63,7 @@ public class SimulationHandler {
             channel.basicPublish("", "coordinates_receiver4",
                     MessageProperties.PERSISTENT_TEXT_PLAIN,
                     coords.getBytes(StandardCharsets.UTF_8));
-            System.out.println(" [x] Sent '" + coords + "'");
+            LOGGER.log(Level.INFO, " [x] Sent '" + coords + "'");
         } catch (TimeoutException | IOException e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
         }

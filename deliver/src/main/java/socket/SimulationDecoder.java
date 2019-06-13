@@ -6,10 +6,14 @@ import event.SimulationEvent;
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SimulationDecoder implements Decoder.Text<SimulationEvent> {
 
     Gson gson = new Gson();
+
+    private static final Logger LOGGER = Logger.getLogger(SimulationDecoder.class.getName());
 
     @Override
     public SimulationEvent decode(String s) throws DecodeException {
@@ -23,11 +27,11 @@ public class SimulationDecoder implements Decoder.Text<SimulationEvent> {
 
     @Override
     public void init(EndpointConfig config) {
-        throw new UnsupportedOperationException();
+        LOGGER.log(Level.INFO, "Init called");
     }
 
     @Override
     public void destroy() {
-        throw new UnsupportedOperationException();
+        LOGGER.log(Level.INFO, "Destroy called");
     }
 }
