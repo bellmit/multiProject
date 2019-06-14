@@ -1,7 +1,6 @@
 package domain;
 
 import util.LocalDateTimeConverter;
-import util.OrderType;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

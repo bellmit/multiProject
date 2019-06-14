@@ -2,13 +2,16 @@ package resource;
 
 import domain.Location;
 import domain.Route;
+import event.SimulationReceiver;
 import service.interfaces.IDeliveryService;
+import util.SimulationHandler;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Set;
+
 
 @Path("deliveries")
 public class DeliveryResource {
@@ -28,6 +31,23 @@ public class DeliveryResource {
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
+    }
+    @POST
+    @Path("/simulation")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void startSimulation(SimulationReceiver simulationReceiver){
+        SimulationHandler simulationHandler = new SimulationHandler();
+        simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId());
+
+    }
+
+    @GET
+    @Path("/testsim")
+    public Response testSimulation() {
+        SimulationHandler simulationHandler = new SimulationHandler();
+        SimulationReceiver simulationReceiver = new SimulationReceiver("1","(5.482373,51.438115),(5.476627,51.45932)");
+        simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId());
+        return Response.ok(true).build();
     }
 
     @GET

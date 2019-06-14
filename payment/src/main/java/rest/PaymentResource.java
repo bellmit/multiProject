@@ -1,13 +1,11 @@
 package rest;
 
 import com.stripe.exception.StripeException;
-import com.stripe.model.Charge;
 import io.swagger.annotations.ApiOperation;
 import service.PaymentService;
 
 import javax.inject.Inject;
 import javax.json.JsonObject;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;

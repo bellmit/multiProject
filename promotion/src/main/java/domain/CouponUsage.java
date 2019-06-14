@@ -3,7 +3,6 @@ package domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import java.util.UUID;
 
 @Entity

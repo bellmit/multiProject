@@ -1,7 +1,7 @@
 package service;
 
-import dao.interfaces.ProductDao;
-import domain.Product;
+import dao.interfaces.AddressDao;
+import domain.Address;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -10,10 +10,10 @@ import javax.inject.Inject;
 public class PingService {
 
     @Inject
-    ProductDao productDao;
+    AddressDao addressDao;
 
     public boolean ping() {
-        productDao.delete(productDao.find(productDao.create(new Product()).getId()));
+        addressDao.delete(addressDao.find(addressDao.create(new Address()).getId()));
         return true;
     }
 }

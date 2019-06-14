@@ -107,6 +107,10 @@ services:
      ports:
       - "15672:15672"
       - "5672:5672"
+  simulation:
+    image: thomasfontys/simulationpython
+    ports:
+      - "22:22"  
  
 
 
