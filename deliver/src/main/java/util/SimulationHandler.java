@@ -3,6 +3,8 @@ package util;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
+
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -16,7 +18,7 @@ public class SimulationHandler {
     private static final String HOST = "192.168.24.110";
 
 
-    public void startSimulation(String coords, String oderId) {
+    public void startSimulation(String coords, List<String> oderIds) {
 
 
         String user = "root";
@@ -40,7 +42,7 @@ public class SimulationHandler {
             SimulationMessageSender simulationMessageSender = new SimulationMessageSender();
             simulationMessageSender.sendCoords(coords, HOST);
             SimulationMessageReceiver simulationMessageReceiver = new SimulationMessageReceiver();
-            simulationMessageReceiver.receiveCoords(coords, oderId, HOST);
+            simulationMessageReceiver.receiveCoords(coords, oderIds, HOST);
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, e.getMessage() + " ssh");
         }

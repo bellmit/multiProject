@@ -1,14 +1,16 @@
 package event;
 
-        public class SimulationEvent {
+import java.util.List;
+
+public class SimulationEvent {
 
     String lat ;
 
     String lon;
 
-    String orderid;
+    List<String> orderid;
 
-    public SimulationEvent(String lat, String lon, String orderid) {
+    public SimulationEvent(String lat, String lon, List<String> orderid) {
         this.lat = lat;
         this.lon = lon;
         this.orderid = orderid;
@@ -30,11 +32,11 @@ package event;
         this.lon = lon;
     }
 
-    public String getOrderid() {
+    public List<String> getOrderid() {
         return orderid;
     }
 
-    public void setOrderid(String orderid) {
+    public void setOrderid(List<String> orderid) {
         this.orderid = orderid;
     }
 

@@ -10,6 +10,7 @@ import socket.SimulationSocket;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
@@ -23,7 +24,7 @@ public class SimulationMessageReceiver {
         //empty constructor
     }
 
-    public void receiveCoords(String coords, String orderId, String HOST) {
+    public void receiveCoords(String coords, List<String> orderId, String HOST) {
         String[] coordsSplit = coords.split(",");
         SimulationSocket socket = new SimulationSocket();
         String finalcoord = coordsSplit[3].replace(")","");
