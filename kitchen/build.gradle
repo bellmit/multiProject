@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    compile 'com.rabbitmq:amqp-client:5.7.1'
     providedCompile 'javax:javaee-api:8.0.1-b5'
     providedCompile 'org.hibernate:hibernate-core:5.4.2.Final'
     testCompile group: 'junit', name: 'junit', version: '4.12'

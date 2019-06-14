@@ -5,7 +5,7 @@ import io.swagger.jaxrs.config.BeanConfig;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("api")
+@ApplicationPath("/api")
 public class JAXRSConfiguration extends Application {
 
     public JAXRSConfiguration() {
