@@ -2,6 +2,7 @@ package service;
 
 import dao.interfaces.CouponDao;
 import domain.Coupon;
+import org.json.JSONObject;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -62,4 +63,15 @@ public class CouponService {
     }
 
 
+    public JSONObject couponValid(String code, String id) {
+        if (mayUseCode(code, id)) {
+            Coupon coupon = couponDao.findByCode(code);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("rate", coupon.getRate());
+            jsonObject.put("type", coupon.getType());
+            return jsonObject;
+        } else {
+            throw new BadRequestException("Coupon not valid");
+        }
+    }
 }
