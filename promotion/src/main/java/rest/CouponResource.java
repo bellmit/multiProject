@@ -39,7 +39,7 @@ public class CouponResource {
     @Secured()
     public Response exists(@PathParam("code") String code, @HeaderParam("Authorization") String token) {
         Map<String, String> map = jwtHelper.claimKey(token.substring(7));
-        return Response.ok(couponService.mayUseCode(code, map.get("id"))).build();
+        return Response.ok(couponService.couponValid(code, map.get("id"))).build();
     }
 
     @PUT
