@@ -1,7 +1,7 @@
 package service;
 
 
-import dao.Interfaces.TableDAO;
+import dao.interfaces.TableDAO;
 import domain.DiningTable;
 
 import javax.ejb.Stateless;

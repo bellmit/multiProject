@@ -55,10 +55,10 @@ public class LogService {
     }
 
     public NldLog addTestLog(String message) {
-        return this.log(new NldLog(Component.logging, this.getClass().getName(), "The test log says: "+message, Level.ALL));
+        return this.log(new NldLog(Component.LOGGING, this.getClass().getName(), "The test log says: "+message, Level.ALL));
     }
 
     public NldLog addTestLog(String message, String level) {
-        return this.log(new NldLog(Component.logging, this.getClass().getName(), "The test log says: "+message, Level.parse(level)));
+        return this.log(new NldLog(Component.LOGGING, this.getClass().getName(), "The test log says: "+message, Level.parse(level)));
     }
 }

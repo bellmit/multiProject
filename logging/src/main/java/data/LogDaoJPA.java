@@ -1,6 +1,5 @@
 package data;
 
-import dao.jpa.BaseDaoJpa;
 import data.interfaces.LogDao;
 import domain.Component;
 import domain.NldLog;
@@ -12,7 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 
 @Stateless
-public class LogDaoJPA extends BaseDaoJpa<NldLog> implements LogDao {
+public class LogDaoJPA extends GenericDaoJpa<NldLog> implements LogDao {
 
     @PersistenceContext(unitName = "nldPU")
     private EntityManager em;

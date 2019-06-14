@@ -1,6 +1,6 @@
 package util;
 
-import domain.Delivery;
+import domain.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.metamodel.EntityType;
@@ -9,7 +9,11 @@ public class DatabaseCleaner {
 
     private final EntityManager em;
     private static final Class<?>[] ENTITY_TYPES = {
-            Delivery.class
+            Delivery.class,
+            Location.class,
+            Route.class,
+            User.class,
+            Role.class
     };
 
     public DatabaseCleaner(EntityManager entityManager) {

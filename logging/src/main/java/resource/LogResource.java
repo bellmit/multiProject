@@ -2,12 +2,13 @@ package resource;
 
 import domain.Component;
 import service.LogService;
-import java.util.logging.Level;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.logging.Level;
 
 @Stateless
 @Path("logs")
@@ -21,35 +22,24 @@ public class LogResource {
     }
 
     @GET
-    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll(){
-        return Response.ok(logService.getAllLogs()).build();
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getByComponent(@QueryParam("component") String component) {
-        return Response.ok(logService.getLogsForComponent(Component.valueOf(component))).build();
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getByLevel(@QueryParam("level") String level) {
-        return Response.ok(logService.getLogsWithLevel(Level.parse(level))).build();
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getByComponentWithLevel(@QueryParam("component") String component,
-                                            @QueryParam("level") String level) {
-        return Response.ok(logService.getLogsForComponentWithLevel(Component.valueOf(component), Level.parse(level))).build();
+    public Response get(@QueryParam("component") String component,
+                        @QueryParam("level") String level) {
+        if(component != null && level != null){
+            return Response.ok(logService.getLogsForComponentWithLevel(Component.valueOf(component), Level.parse(level))).build();
+        } else if (level != null) {
+            return Response.ok(logService.getLogsWithLevel(Level.parse(level))).build();
+        } else if (component != null) {
+            return Response.ok(logService.getLogsForComponent(Component.valueOf(component))).build();
+        } else {
+            return Response.ok(logService.getAllLogs()).build();
+        }
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addTestLog(@HeaderParam("message") String message,
-                               @HeaderParam("level") String level) {
+    public Response addTestLog(@QueryParam("message") String message,
+                               @QueryParam("level") String level) {
         if(message !=null && level !=null){
             return Response.ok(logService.addTestLog(message, level)).build();
         }else if(message != null){

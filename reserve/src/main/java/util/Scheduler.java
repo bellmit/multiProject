@@ -1,61 +1,43 @@
 package util;
 
-import dao.jpa.ReservationDAOJPA;
 import domain.Reservation;
-import service.ReservationService;
+import qualifiers.ReservationScheduler;
+import service.UserService;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.*;
 import javax.inject.Inject;
 import java.util.Date;
-import java.util.List;
 
-
-@Singleton
+@Stateless
+@ReservationScheduler
 public class Scheduler {
 
-    Reservation reser = new Reservation();
+    @Inject
+    private UserService userService;
 
     @Inject
-    ReservationService rs;
+    private Mailer mailer;
 
     @Resource
-    TimerService timerService;
-
-    @PostConstruct
-    public void initialize() {
-
-            List<Reservation> reservations = rs.getReservations();
-            if(!reservations.isEmpty()) {
-                for (Reservation r : reservations) {
-                    this.setNewScheduler(r);
-                }
-            }
-    }
-
-    public void setNewScheduler(Reservation r) {
-        TimerConfig timerConfig = new TimerConfig();
-        timerConfig.setInfo("MailTimer");
-        Date now = new Date();
-        Date reservationtime = r.getTimeSlots().get(0).getStartTime();
-        long difference = reservationtime.getTime() - now.getTime();
-        long x = difference - (10800 * 1000);
-        reser = r;
-        timerService.createSingleActionTimer(x, timerConfig);
-    }
+    private TimerService timerService;
 
     @Timeout
-    public void afterTimeOut() {
-        Mailer m = new Mailer();
-        m.send(String.valueOf(reser.getUserID()), "Reservation Notification",
-                "Dear sir or madam we'd like to inform you that your reservation will start in 3 hours at " + reser.getTimeSlots().get(0).getStartTime().toString());
+    public void afterTimeOut(Timer timer) {
+        Reservation reservation = (Reservation) timer.getInfo();
+        mailer.send(userService.find(reservation.getUserID()).getEmail());
     }
 
-    @PreDestroy
-    public void clearTimers() {
-
+    public void setNewScheduler(Reservation reservation) {
+        TimerConfig timerConfig = new TimerConfig();
+        timerConfig.setInfo(reservation);
+        Date now = new Date();
+        Date reservationTime = reservation.getTimeSlots().get(0).getStartTime();
+        long untilReservation = reservationTime.getTime() - now.getTime();
+        long threeHoursBeforeReservation = untilReservation - (10800 * 1000);
+        if(threeHoursBeforeReservation > 0) {
+            timerService.createSingleActionTimer(threeHoursBeforeReservation, timerConfig);
+        }
     }
 
 }

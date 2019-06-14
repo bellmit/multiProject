@@ -2,8 +2,8 @@ package dao;
 
 import dao.jpa.ReservationDAOJPA;
 import dao.jpa.TimeSlotDAOJPA;
-import domain.DinnerType;
 import domain.DiningTable;
+import domain.DinnerType;
 import domain.Reservation;
 import domain.TimeSlot;
 import org.junit.Assert;
@@ -52,7 +52,7 @@ public class ReservationDaoJpaTest {
         List<TimeSlot> timeSlots = new ArrayList<>();
         timeSlots.add(ts);
         diningTables.add(diningTable);
-        Reservation reservation = new Reservation(1, 3, new Date(), DinnerType.SINGLECOURSE, timeSlots, diningTables);
+        Reservation reservation = new Reservation("1", 3, new Date(), DinnerType.SINGLECOURSE, timeSlots, diningTables);
         reservationDAOJPA.create(reservation);
         tx.commit();
         Reservation dbReservation = null;
@@ -76,7 +76,7 @@ public class ReservationDaoJpaTest {
         List<TimeSlot> timeSlots2 = new ArrayList<>();
         timeSlots2.add(ts2);
         tables2.add(diningTable2);
-        Reservation reservation2 = new Reservation(1, 3, new Date(), DinnerType.SINGLECOURSE, timeSlots2, tables2);
+        Reservation reservation2 = new Reservation("1", 3, new Date(), DinnerType.SINGLECOURSE, timeSlots2, tables2);
         reservationDAOJPA.create(reservation2);
         tx.commit();
         for (Reservation r : reservationDAOJPA.getAll()) {
