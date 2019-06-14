@@ -7,6 +7,7 @@ import service.UserService;
 import javax.annotation.Resource;
 import javax.ejb.*;
 import javax.inject.Inject;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Stateless
@@ -25,7 +26,9 @@ public class Scheduler {
     @Timeout
     public void afterTimeOut(Timer timer) {
         Reservation reservation = (Reservation) timer.getInfo();
-        mailer.send(userService.find(reservation.getUserID()).getEmail());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        String reservationDateTime = formatter.format(reservation.getTimeSlots().get(0).getStartTime());
+        mailer.send(userService.find(reservation.getUserID()).getEmail(),reservationDateTime);
     }
 
     public void setNewScheduler(Reservation reservation) {

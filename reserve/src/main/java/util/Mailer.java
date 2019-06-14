@@ -14,7 +14,7 @@ public class Mailer {
     private static final String USERNAME = "nextleveldining@gmail.com";
     private static final String PASSWORD = "Nextlevelpassword!";
 
-    public void send(String receiver) {
+    public void send(String receiver, String reservationDateTime) {
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");
@@ -38,7 +38,7 @@ public class Mailer {
             );
             message.setSubject("Reservation NLD");
             message.setText("Dear Sir or Madam,"
-                    + "\n\n We'd like to remember you that your reservation will start in three hours!\n\n");
+                    + "\n\n We'd like to remember you that your reservation will start in three hours at "+ reservationDateTime +"!\n\n");
 
             Transport.send(message);
         } catch (MessagingException e) {
