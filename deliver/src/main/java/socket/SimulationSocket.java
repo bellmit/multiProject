@@ -35,7 +35,9 @@ public class SimulationSocket {
                 set.add(session);
                 sessions.put(orderid,set);
             }
-            SimulationEvent simulationEvent = new SimulationEvent("5.47499478","51.43968412",orderid);
+            List<String> orderids = new ArrayList<>();
+            orderids.add(orderid);
+            SimulationEvent simulationEvent = new SimulationEvent("5.47499478","51.43968412",orderids);
             session.getBasicRemote().sendObject(simulationEvent);
         }
     }
@@ -56,13 +58,15 @@ public class SimulationSocket {
         //we dont need this for this instance
     }
 
-    public void sendUpdateSimulation(SimulationEvent simulationEvent){
-        if(sessions.containsKey(simulationEvent.getOrderid())){
-            for(Session session : sessions.get(simulationEvent.getOrderid())){
-                try{
-                    session.getBasicRemote().sendObject(simulationEvent);
-                } catch (IOException | EncodeException ex) {
-                    Logger.getLogger(SimulationSocket.class.getName()).log(Level.SEVERE, null, ex);
+    public void sendUpdateSimulation(SimulationEvent simulationEvent) {
+        for (String id : simulationEvent.getOrderid()) {
+            if (sessions.containsKey(id)) {
+                for (Session session : sessions.get(id)) {
+                    try {
+                        session.getBasicRemote().sendObject(simulationEvent);
+                    } catch (IOException | EncodeException ex) {
+                        Logger.getLogger(SimulationSocket.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         }

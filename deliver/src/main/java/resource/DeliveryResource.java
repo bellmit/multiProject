@@ -10,6 +10,8 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 
@@ -37,7 +39,9 @@ public class DeliveryResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void startSimulation(SimulationReceiver simulationReceiver){
         SimulationHandler simulationHandler = new SimulationHandler();
-        simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId());
+        for (String coord : simulationReceiver.getCoords()) {
+            simulationHandler.startSimulation(coord,simulationReceiver.getOrderId());
+        }
 
     }
 
@@ -45,8 +49,19 @@ public class DeliveryResource {
     @Path("/testsim")
     public Response testSimulation() {
         SimulationHandler simulationHandler = new SimulationHandler();
-        SimulationReceiver simulationReceiver = new SimulationReceiver("1","(5.482373,51.438115),(5.476627,51.45932)");
-        simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId());
+        List<String> coords = new ArrayList<>();
+        coords.add("(5.482373,51.438115),(5.48734,51.438601)");
+        coords.add("(5.48734,51.438601),(5.48761,51.441029");
+        List<String> orderids = new ArrayList<>();
+        orderids.add("1");
+        orderids.add("2");
+        SimulationReceiver simulationReceiver = new SimulationReceiver(orderids,coords);
+        for (String coord : simulationReceiver.getCoords()) {
+            simulationHandler.startSimulation(coord,simulationReceiver.getOrderId());
+            List<String> ids = simulationReceiver.getOrderId();
+            ids.remove(0);
+            simulationReceiver.setOrderId(ids);
+        }
         return Response.ok(true).build();
     }
 
