@@ -54,7 +54,7 @@ public class SimulationMessageReceiver {
                     orderId.remove(currentid);
                     coords.remove(0);
                     SimulationHandler simulationHandler = new SimulationHandler();
-                    if (orderId.isEmpty()) {
+                    if (!orderId.isEmpty()) {
                         SimulationMessageFormater.FormatMessage(simulationEvent, message, socket);
                         simulationHandler.startSimulation(coords, orderId, orderId.get(0));}
                 } else {

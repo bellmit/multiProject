@@ -57,7 +57,7 @@ public class DeliveryResource {
         orderids.add("2");
         orderids.add("3");
         SimulationReceiver simulationReceiver = new SimulationReceiver(orderids,coords);
-        simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId(),orderids.get(0));
+        simulationHandler.startSimulation(  simulationReceiver.getCoords(),simulationReceiver.getOrderId(),orderids.get(0));
         return Response.ok(true).build();
     }
 
