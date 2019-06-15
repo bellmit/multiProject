@@ -33,7 +33,7 @@ public class DeliveryOrderResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/startdelivery")
-    public Response startDelivery(DeliveryOrder d){
+    public Response startDelivery(String d){
         OrderWebsocket orderWebsocket = new OrderWebsocket();
         return Response.ok(orderWebsocket.updateOrders(d)).build();
     }

@@ -67,9 +67,9 @@ public class OrderWebsocket {
         //we dont need to do anything here
     }
 
-    public boolean updateOrders(DeliveryOrder deliveryOrder) {
+    public boolean updateOrders(String deliveryOrderid) {
         // service get all open orders implement
-        deliveryOrder = dos.find(deliveryOrder.getId());
+        DeliveryOrder deliveryOrder = dos.find(deliveryOrderid);
         String id = "Is being delivered";
         List<DeliveryOrder> deliveryOrders = dos.getAllDeliveryOrdersByStatus("Waiting for deliverer");
         for (DeliveryOrder d : deliveryOrders) {
