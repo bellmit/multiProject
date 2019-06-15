@@ -32,10 +32,11 @@ public class DeliveryOrderResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/startdelivery")
-    public Response startDelivery(String d){
+    @Path("/startdelivery/{id}")
+    public Response startDelivery(@PathParam("id") String  d){
         OrderWebsocket orderWebsocket = new OrderWebsocket();
-        return Response.ok(orderWebsocket.updateOrders(d)).build();
+        DeliveryOrder deliveryOrder = as.find(d);
+        return Response.ok(orderWebsocket.updateOrders(deliveryOrder)).build();
     }
 
     @POST
