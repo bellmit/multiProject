@@ -58,4 +58,9 @@ public class DeliveryOrderResource {
     public List<DeliveryOrder> getAll(@PathParam("id") String userId){
         return as.getAll(userId);
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/all/status/{status}")
+    public Response getAllWithStatus(@PathParam("status") String status) {return  Response.ok(as.getAllDeliveryOrdersByStatus(status)).build();}
 }

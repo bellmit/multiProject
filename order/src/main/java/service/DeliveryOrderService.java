@@ -34,4 +34,6 @@ public class DeliveryOrderService {
     }
 
     public List<DeliveryOrder> getAllDeliveryOrders() { return  dd.getAllDeliveryOrders();}
+
+    public List<DeliveryOrder> getAllDeliveryOrdersByStatus(String status) { return dd.getAllOrdersByStatus(status) ;}
 }
