@@ -10,7 +10,10 @@ import javax.inject.Inject;
 public class PingService {
 
     @Inject
-    DeliveryDao deliveryDao;
+    private LogService logService;
+
+    @Inject
+    private DeliveryDao deliveryDao;
 
     public boolean ping() {
         deliveryDao.delete(deliveryDao.find(deliveryDao.create(new Delivery()).getDeliveryId()));

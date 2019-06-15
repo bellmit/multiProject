@@ -1,3 +1,2 @@
-include 'login', 'promotion', 'deliver', 'logging', 'monitoring', 'order', 'payment', 'reserve'
-include 'kitchen'
+include 'login', 'promotion', 'deliver', 'logging', 'monitoring', 'order', 'payment', 'reserve', 'kitchen'
 
