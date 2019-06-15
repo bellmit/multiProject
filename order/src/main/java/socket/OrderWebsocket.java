@@ -46,14 +46,7 @@ public class OrderWebsocket {
                 sessions.put(delivererId, set);
             }
         }
-        List<DeliveryOrder> openOrders = new ArrayList<>();
-        List<DeliveryOrder> deliveryOrders = dos.getAllDeliveryOrders();
-        for (DeliveryOrder deliveryOrder : deliveryOrders) {
-            if (deliveryOrder.getStatus().getStatus().equalsIgnoreCase("open")) {
-                openOrders.add(deliveryOrder);
-            }
-        }
-        OrderEvent orderEvent = new OrderEvent(openOrders);
+        OrderEvent orderEvent = new OrderEvent(dos.getAllDeliveryOrdersByStatus("Waiting for deliverer"));
         session.getBasicRemote().sendObject(orderEvent);
 
     }
@@ -76,9 +69,8 @@ public class OrderWebsocket {
 
     public boolean updateOrders(DeliveryOrder deliveryOrder) {
         // service get all open orders implement
-        String id = "delivering";
-        List<DeliveryOrder> deliveryOrders = dos.getAllDeliveryOrders();
-        List<DeliveryOrder> openOrders = new ArrayList<>();
+        String id = "Is being delivered";
+        List<DeliveryOrder> deliveryOrders = dos.getAllDeliveryOrdersByStatus("Waiting for deliverer");
         for (DeliveryOrder d : deliveryOrders) {
             if (d.getId().equals(deliveryOrder.getId())) {
                 if (oss.find(id) != null) {
@@ -91,13 +83,9 @@ public class OrderWebsocket {
                     d.setStatus(os);
                     dos.edit(d);
                 }
-            } else {
-                if (d.getStatus().getStatus().equalsIgnoreCase("open")) {
-                    openOrders.add(d);
-                }
             }
-        }
-        return sendOrderEvent(openOrders);
+            }
+        return sendOrderEvent(dos.getAllDeliveryOrdersByStatus("Waiting for deliverer"));
     }
 
     private boolean sendOrderEvent(List<DeliveryOrder> openOrders){
