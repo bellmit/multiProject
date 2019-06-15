@@ -30,7 +30,7 @@ public class DeliveryOrderResource {
         return as.find(id);
     }
 
-    @POST
+    @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/startdelivery/{id}")
     public Response startDelivery(@PathParam("id") String  d){
