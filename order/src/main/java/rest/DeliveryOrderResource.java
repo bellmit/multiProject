@@ -1,6 +1,7 @@
 package rest;
 
 import domain.DeliveryOrder;
+import jdk.management.resource.internal.ResourceNatives;
 import service.DeliveryOrderService;
 import socket.OrderWebsocket;
 
@@ -36,6 +37,9 @@ public class DeliveryOrderResource {
     public Response startDelivery(@PathParam("id") String  d){
         OrderWebsocket orderWebsocket = new OrderWebsocket();
         DeliveryOrder deliveryOrder = as.find(d);
+        if(deliveryOrder==null){
+            return Response.ok(false).build();
+        }
         return Response.ok(orderWebsocket.updateOrders(deliveryOrder)).build();
     }
 

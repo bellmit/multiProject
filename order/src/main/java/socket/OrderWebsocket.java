@@ -70,6 +70,7 @@ public class OrderWebsocket {
     public boolean updateOrders(DeliveryOrder deliveryOrder) {
         // service get all open orders implement
         String id = "Is being delivered";
+        LOGGER.log(Level.INFO,"DELIVERY ID HERE "+deliveryOrder.getId());
         List<DeliveryOrder> deliveryOrders = dos.getAllDeliveryOrdersByStatus("Waiting for deliverer");
         for (DeliveryOrder d : deliveryOrders) {
             if (d.getId().equals(deliveryOrder.getId())) {
