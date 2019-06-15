@@ -6,6 +6,7 @@ subprojects {
         mavenCentral()
     }
     dependencies {
+        compile 'com.rabbitmq:amqp-client:5.7.1'
         testImplementation "junit:junit:4.12"
     }
 }
