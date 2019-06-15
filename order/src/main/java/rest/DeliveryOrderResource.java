@@ -1,6 +1,7 @@
 package rest;
 
 import domain.DeliveryOrder;
+import jdk.management.resource.internal.ResourceNatives;
 import service.DeliveryOrderService;
 import socket.OrderWebsocket;
 
@@ -30,12 +31,16 @@ public class DeliveryOrderResource {
         return as.find(id);
     }
 
-    @POST
+    @GET
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/startdelivery")
-    public Response startDelivery(DeliveryOrder d){
+    @Path("/startdelivery/{id}")
+    public Response startDelivery(@PathParam("id") String  d){
         OrderWebsocket orderWebsocket = new OrderWebsocket();
-        return Response.ok(orderWebsocket.updateOrders(d)).build();
+        DeliveryOrder deliveryOrder = as.find(d);
+        if(deliveryOrder==null){
+            return Response.ok(false).build();
+        }
+        return Response.ok(orderWebsocket.updateOrders(deliveryOrder)).build();
     }
 
     @POST
@@ -58,4 +63,9 @@ public class DeliveryOrderResource {
     public List<DeliveryOrder> getAll(@PathParam("id") String userId){
         return as.getAll(userId);
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/all/status/{status}")
+    public Response getAllWithStatus(@PathParam("status") String status) {return  Response.ok(as.getAllDeliveryOrdersByStatus(status)).build();}
 }

@@ -1,6 +1,7 @@
 package service;
 
 import dao.interfaces.CouponUsageDao;
+import domain.Coupon;
 import domain.CouponUsage;
 
 import javax.ejb.Stateless;
@@ -24,6 +25,10 @@ public class CouponUsageService {
         couponUsage.setCode(code);
         couponUsage.setUser(id);
         cud.create(couponUsage);
+
+        Coupon coupon = couponService.findByCode(code);
+        coupon.setUses(coupon.getUses() + 1);
+        couponService.edit(coupon);
     }
 
     public int getUsages(String code) {

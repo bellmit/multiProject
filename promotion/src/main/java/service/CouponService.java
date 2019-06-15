@@ -34,6 +34,11 @@ public class CouponService {
         return coupon;
     }
 
+    public Coupon findByCode(String code) {
+        return couponDao.findByCode(code);
+    }
+
+
     public void edit(Coupon coupon) {
         couponDao.edit(coupon);
     }

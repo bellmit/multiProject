@@ -1,29 +1,31 @@
 package event;
 
+import java.util.List;
+
 public class SimulationReceiver{
 
-    String orderId;
+    List<String> orderId;
 
-    String coords;
+    List<String> coords;
 
-    public SimulationReceiver(String orderId, String coords) {
+    public SimulationReceiver(List<String> orderId, List<String> coords) {
         this.orderId = orderId;
         this.coords = coords;
     }
 
-    public String getOrderId() {
+    public List<String> getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(List<String> orderId) {
         this.orderId = orderId;
     }
 
-    public String getCoords() {
+    public List<String> getCoords() {
         return coords;
     }
 
-    public void setCoords(String coords) {
+    public void setCoords(List<String> coords) {
         this.coords = coords;
     }
 }
