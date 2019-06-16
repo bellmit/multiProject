@@ -4,12 +4,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 
 @Entity
+@NamedQuery(name = "reservation.findByDate", query = "SELECT r FROM Reservation r WHERE r.date = :date")
 public class Reservation implements Serializable {
 
     @Id
@@ -22,7 +24,7 @@ public class Reservation implements Serializable {
     private int nrofPeople;
 
     @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date date;
 
     @Enumerated(EnumType.STRING)
@@ -31,11 +33,11 @@ public class Reservation implements Serializable {
     @NotNull
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "reservation_id")
-    private List<TimeSlot> timeSlots;
+    private List<TimeSlot> timeSlots = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "reservation_id")
-    private List<DiningTable> diningTables;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "reservation_tables")
+    private List<DiningTable> diningTables = new ArrayList<>();
 
     public Reservation(String userID, int nrofPeople, Date date, DinnerType type, List<TimeSlot> timeSlots, List<DiningTable> diningTables) {
         this.uuid = UUID.randomUUID().toString();
@@ -104,17 +106,4 @@ public class Reservation implements Serializable {
         this.diningTables = diningTables;
     }
 
-    public void Notify(Reservation r) {
-        Date startTime = new Date();
-        if (r.getDate().getYear() == new Date().getYear() && r.getDate().getMonth() == new Date().getMonth() &&
-                r.getDate().getDay() == new Date().getDay()) {
-            for (TimeSlot ts : r.getTimeSlots()) {
-                long difference = ts.getStartTime().getHours() - new Date().getHours();
-                long diffHours = difference / (60 * 60 * 1000) % 24;
-                if (difference >= 3) {
-                    //Send notification
-                }
-            }
-        }
-    }
 }
