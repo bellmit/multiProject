@@ -1,7 +1,9 @@
 package service;
 
 import dao.interfaces.DeliveryOrderDao;
+import dao.interfaces.OrderStatusDao;
 import domain.DeliveryOrder;
+import domain.OrderStatus;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -12,12 +14,23 @@ public class DeliveryOrderService {
     @Inject
     private DeliveryOrderDao dd;
 
+    @Inject
+    private OrderStatusDao osd;
+
     public DeliveryOrder create(DeliveryOrder a){
         return dd.create(a);
     }
 
     public DeliveryOrder find(String id){
         return dd.find(id);
+    }
+
+    public List<DeliveryOrder> startDelivery(String id){
+        DeliveryOrder deliveryOrder =  find(id);
+        OrderStatus status = osd.find("Is being delivered");
+        deliveryOrder.setStatus(status);
+        edit(deliveryOrder);
+        return getAllDeliveryOrdersByStatus("Waiting for deliverer");
     }
 
     public DeliveryOrder edit(DeliveryOrder a){

@@ -35,8 +35,8 @@ public class DeliveryOrderResource {
     @Path("/startdelivery/{id}")
     public Response startDelivery(@PathParam("id") String  d){
         OrderWebsocket orderWebsocket = new OrderWebsocket();
-        DeliveryOrder deliveryOrder = as.find(d);
-        return Response.ok(orderWebsocket.updateOrders(deliveryOrder)).build();
+        List<DeliveryOrder> deliveryOrders = as.startDelivery(d);
+        return Response.ok(orderWebsocket.updateOrders(deliveryOrders)).build();
     }
 
     @POST

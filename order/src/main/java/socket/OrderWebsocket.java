@@ -67,25 +67,9 @@ public class OrderWebsocket {
         //we dont need to do anything here
     }
 
-    public boolean updateOrders(DeliveryOrder deliveryOrder) {
+    public boolean updateOrders(List<DeliveryOrder> deliveryOrders) {
         // service get all open orders implement
-        String id = "Is being delivered";
-        List<DeliveryOrder> deliveryOrders = dos.getAllDeliveryOrdersByStatus("Waiting for deliverer");
-        for (DeliveryOrder d : deliveryOrders) {
-            if (d.getId().equals(deliveryOrder.getId())) {
-                if (oss.find(id) != null) {
-                    OrderStatus os = oss.find(id);
-                    d.setStatus(os);
-                    dos.edit(d);
-                } else {
-                    oss.create(new OrderStatus(id));
-                    OrderStatus os = oss.find(id);
-                    d.setStatus(os);
-                    dos.edit(d);
-                }
-            }
-            }
-        return sendOrderEvent(dos.getAllDeliveryOrdersByStatus("Waiting for deliverer"));
+        return sendOrderEvent(deliveryOrders);
     }
 
     private boolean sendOrderEvent(List<DeliveryOrder> openOrders){

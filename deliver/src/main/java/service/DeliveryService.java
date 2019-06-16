@@ -79,4 +79,9 @@ public class DeliveryService implements IDeliveryService {
         Delivery delivery = new Delivery(orderList);
         return deliveryDao.create(delivery);
     }
+
+    @Override
+    public Delivery createDelivery(Delivery delivery) {
+       return deliveryDao.create(delivery);
+    }
 }

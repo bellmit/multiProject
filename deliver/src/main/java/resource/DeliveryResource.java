@@ -1,5 +1,6 @@
 package resource;
 
+import domain.Delivery;
 import domain.Location;
 import domain.Route;
 import event.SimulationReceiver;
@@ -37,9 +38,18 @@ public class DeliveryResource {
     @POST
     @Path("/simulation")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response startSimulation(SimulationReceiver simulationReceiver){
+    public Response startSimulation(Delivery delivery){
         SimulationHandler simulationHandler = new SimulationHandler();
-        simulationHandler.startSimulation(simulationReceiver.getCoords(),simulationReceiver.getOrderId(),simulationReceiver.getOrderId().get(0));
+        List<String> coords = new ArrayList<>();
+        List<String> orderIds = new ArrayList<>();
+        for (Route r :delivery.getRoutes()) {
+            coords.add("("+ r.getStartLocation().getLongitude()+"," + r.getStartLocation().getLatitude()
+                    + "),("+ r.getEndLocation().getLongitude()+","+r.getEndLocation().getLatitude()+")");
+        }
+        for (String s : delivery.getOrderIdList()) {
+            orderIds.add(s);
+        }
+        simulationHandler.startSimulation(coords,orderIds,orderIds.get(0));
         return Response.ok(true).build();
 
     }
@@ -102,6 +112,18 @@ public class DeliveryResource {
             return Response.ok(deliveryService.addDelivery(orderList)).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createnew(Delivery delivery){
+        try{
+            return Response.ok(deliveryService.createDelivery(delivery)).build();}
+        catch (Exception e){
+            return  Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 
