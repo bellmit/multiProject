@@ -7,6 +7,7 @@ import domain.Reservation;
 import domain.dto.ReservationDTO;
 import domain.dto.UserDTO;
 import qualifiers.ReservationScheduler;
+import util.ReservationComparer;
 import util.Scheduler;
 
 import javax.ejb.Stateless;
@@ -77,6 +78,7 @@ public class ReservationService {
     }
 
     private boolean assignTables(int peopleWhoNeedSeats, Reservation reservation, Map<Integer, List<DiningTable>> tables) {
+       int peopleSeated = 0;
         for (int i = peopleWhoNeedSeats; i > 0; i--) {
             List<DiningTable> diningTables = tables.get(i);
             if (diningTables != null) {
@@ -84,9 +86,10 @@ public class ReservationService {
                 diningTables.remove(0);
                 tables.put(i, diningTables);
                 peopleWhoNeedSeats -= i;
+                peopleSeated += i;
             }
         }
-        return !reservation.getDiningTables().isEmpty();
+        return !reservation.getDiningTables().isEmpty() && peopleSeated == peopleWhoNeedSeats;
     }
 
     private Map<Integer, List<DiningTable>> createSeatsTablesHashMap(List<DiningTable> availableTables) {
@@ -124,7 +127,9 @@ public class ReservationService {
 
     public List<ReservationDTO> getReservationsForDate(String date) {
         List<ReservationDTO> reservationsDTO = new ArrayList<>();
-        for (Reservation reservation : reservationDAO.getReservationsForDate(getDateFromString(date))) {
+        List<Reservation> reservations = reservationDAO.getReservationsForDate(getDateFromString(date));
+        reservations.sort(new ReservationComparer());
+        for (Reservation reservation : reservations) {
             ReservationDTO reservationDTO = new ReservationDTO(reservation);
             reservationDTO.setUser(new UserDTO(userService.find(reservation.getUserID())));
             reservationsDTO.add(reservationDTO);
