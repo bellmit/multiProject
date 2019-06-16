@@ -24,11 +24,11 @@ public class SimulationMessageReceiver {
         //empty constructor
     }
 
-    public void receiveCoords(List<String> coords, List<String> orderId, String HOST, String currentid) {
+    public void receiveCoords(List<String> coords, List<String> orderId, String HOST, String currentid, String delivererId) {
         String[] coordsSplit = coords.get(0).split(",");
         SimulationSocket socket = new SimulationSocket();
         String finalcoord = coordsSplit[3].replace(")", "");
-        SimulationEvent simulationEvent = new SimulationEvent("", "", orderId);
+        SimulationEvent simulationEvent = new SimulationEvent("", "", orderId,delivererId);
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(HOST);
         try {
@@ -56,7 +56,7 @@ public class SimulationMessageReceiver {
                     SimulationHandler simulationHandler = new SimulationHandler();
                     if (!orderId.isEmpty()) {
                         SimulationMessageFormater.FormatMessage(simulationEvent, message, socket);
-                        simulationHandler.startSimulation(coords, orderId, orderId.get(0));}
+                        simulationHandler.startSimulation(coords, orderId, orderId.get(0),delivererId);}
                 } else {
                     SimulationMessageFormater.FormatMessage(simulationEvent, message, socket);
                     if(connection.isOpen()){

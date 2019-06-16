@@ -49,7 +49,7 @@ public class DeliveryResource {
         for (String s : delivery.getOrderIdList()) {
             orderIds.add(s);
         }
-        simulationHandler.startSimulation(coords,orderIds,orderIds.get(0));
+        simulationHandler.startSimulation(coords,orderIds,orderIds.get(0),delivery.getEmployeeId());
         return Response.ok(true).build();
 
     }
@@ -67,7 +67,7 @@ public class DeliveryResource {
         orderids.add("2");
         orderids.add("3");
         SimulationReceiver simulationReceiver = new SimulationReceiver(orderids,coords);
-        simulationHandler.startSimulation(  simulationReceiver.getCoords(),simulationReceiver.getOrderId(),orderids.get(0));
+       // simulationHandler.startSimulation(  simulationReceiver.getCoords(),simulationReceiver.getOrderId(),orderids.get(0));
         return Response.ok(true).build();
     }
 
@@ -121,7 +121,7 @@ public class DeliveryResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response createnew(Delivery delivery){
         try{
-            return Response.ok(deliveryService.createDelivery(delivery)).build();}
+             return Response.ok(deliveryService.createDelivery(delivery)).build();}
         catch (Exception e){
             return  Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }

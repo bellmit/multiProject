@@ -15,7 +15,7 @@ public class SimulationHandler {
     private static final Logger LOGGER = Logger.getLogger(SimulationHandler.class.getName());
     private static final String HOST = "192.168.24.110";
 
-    public void startSimulation(List<String> coords, List<String> oderIds,String currentid) {
+    public void startSimulation(List<String> coords, List<String> oderIds,String currentid, String deliverId) {
         String user = "root";
         String ssh = "root";
         String command = " python3 /home/python/simulation.py";
@@ -37,7 +37,7 @@ public class SimulationHandler {
             SimulationMessageSender simulationMessageSender = new SimulationMessageSender();
             simulationMessageSender.sendCoords(coords.get(0), HOST);
             SimulationMessageReceiver simulationMessageReceiver = new SimulationMessageReceiver();
-            simulationMessageReceiver.receiveCoords(coords, oderIds, HOST, currentid);
+            simulationMessageReceiver.receiveCoords(coords, oderIds, HOST, currentid,deliverId);
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, e.getMessage() + " ssh");
         }

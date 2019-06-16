@@ -33,9 +33,9 @@ public class DeliveryOrderResource {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/startdelivery/{id}")
-    public Response startDelivery(@PathParam("id") String  d){
+    public Response startDelivery(@PathParam("id") String  d) throws InterruptedException {
         OrderWebsocket orderWebsocket = new OrderWebsocket();
-        List<DeliveryOrder> deliveryOrders = as.startDelivery(d);
+            List<DeliveryOrder> deliveryOrders = as.startDelivery(d);
         return Response.ok(orderWebsocket.updateOrders(deliveryOrders)).build();
     }
 

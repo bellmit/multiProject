@@ -8,6 +8,7 @@ import domain.OrderStatus;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Stateless
 public class DeliveryOrderService {
@@ -25,11 +26,12 @@ public class DeliveryOrderService {
         return dd.find(id);
     }
 
-    public List<DeliveryOrder> startDelivery(String id){
+    public List<DeliveryOrder> startDelivery(String id) throws InterruptedException {
         DeliveryOrder deliveryOrder =  find(id);
         OrderStatus status = osd.find("Is being delivered");
         deliveryOrder.setStatus(status);
         edit(deliveryOrder);
+        TimeUnit.SECONDS.sleep(1);
         return getAllDeliveryOrdersByStatus("Waiting for deliverer");
     }
 
