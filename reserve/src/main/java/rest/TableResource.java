@@ -2,6 +2,7 @@ package rest;
 
 
 import domain.DiningTable;
+import rest.auth.Secured;
 import service.TableService;
 
 import javax.inject.Inject;
@@ -15,9 +16,10 @@ public class TableResource {
     private TableService ts;
 
     @POST
+    @Path("/new")
+    @Secured({"admin", "employee"})
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/new")
     public void addTable(DiningTable t) {
         ts.addTable(t);
     }
@@ -37,6 +39,7 @@ public class TableResource {
     }
 
     @PUT
+    @Secured({"admin", "employee"})
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response edit(DiningTable diningTable) {
@@ -46,6 +49,7 @@ public class TableResource {
 
     @DELETE
     @Path("remove/{uuid}")
+    @Secured({"admin", "employee"})
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("uuid") String uuid) {
         DiningTable t = ts.findById(uuid);

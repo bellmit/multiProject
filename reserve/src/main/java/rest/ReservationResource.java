@@ -1,6 +1,7 @@
 package rest;
 
 import domain.Reservation;
+import rest.auth.Secured;
 import service.ReservationService;
 
 import javax.inject.Inject;
@@ -31,9 +32,11 @@ public class ReservationResource {
     }
 
     @GET
+    @Path("{date}")
+    @Secured({"admin", "employee"})
     @Produces(MediaType.APPLICATION_JSON)
-    public Response find() {
-        return Response.ok(rs.getReservations()).build();
+    public Response findByDate(@PathParam("date") String date) {
+        return Response.ok(rs.getReservationsForDate(date)).build();
     }
 
     @PUT

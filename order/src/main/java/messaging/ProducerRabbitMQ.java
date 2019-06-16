@@ -13,7 +13,7 @@ public class ProducerRabbitMQ {
     private static final Logger ProducerRabbitMQ_Logger = Logger.getLogger(ProducerRabbitMQ.class.getName());
 
     @Inject
-    ConnectionFactoryProvider cfp;
+    private ConnectionFactoryProvider cfp;
 
     public void sendMsg (String message, String queueName){
         try {
