@@ -9,8 +9,10 @@ import java.util.UUID;
 
 
 @Entity
-@NamedQuery(name = "coupon.GetAll", query = "SELECT c FROM Coupon c")
-@NamedQuery(name = "coupon.findByCode", query = "SELECT c FROM Coupon c WHERE c.code = :code")
+@NamedQueries({
+        @NamedQuery(name = "coupon.GetAll", query = "SELECT c FROM Coupon c"),
+        @NamedQuery(name = "coupon.findByCode", query = "SELECT c FROM Coupon c WHERE c.code = :code")
+})
 public class Coupon implements Serializable {
 
     @Id
@@ -22,6 +24,7 @@ public class Coupon implements Serializable {
     private String code;
     private Date expDate;
     private int maxUses;
+    private int uses = 0;
 
     public Coupon() {
         this.id = UUID.randomUUID().toString();
@@ -91,5 +94,13 @@ public class Coupon implements Serializable {
 
     public void setMaxUses(int maxUses) {
         this.maxUses = maxUses;
+    }
+
+    public int getUses() {
+        return uses;
+    }
+
+    public void setUses(int uses) {
+        this.uses = uses;
     }
 }

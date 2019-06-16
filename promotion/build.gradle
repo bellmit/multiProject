@@ -16,6 +16,8 @@ repositories {
 }
 
 dependencies {
+    compile 'org.jboss.arquillian:arquillian-bom:1.4.1.Final'
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.0'
     compile 'javax:javaee-api:8.0.1-b5'
     compile 'org.robolectric:junit:4.3-alpha-1'
     compile 'io.swagger:swagger-jaxrs:1.5.22'

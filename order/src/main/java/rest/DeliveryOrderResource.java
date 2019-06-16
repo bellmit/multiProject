@@ -2,10 +2,12 @@ package rest;
 
 import domain.DeliveryOrder;
 import service.DeliveryOrderService;
+import socket.OrderWebsocket;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("deliveryorders")
@@ -28,6 +30,15 @@ public class DeliveryOrderResource {
         return as.find(id);
     }
 
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/startdelivery/{id}")
+    public Response startDelivery(@PathParam("id") String  d){
+        OrderWebsocket orderWebsocket = new OrderWebsocket();
+        DeliveryOrder deliveryOrder = as.find(d);
+        return Response.ok(orderWebsocket.updateOrders(deliveryOrder)).build();
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/edit")
@@ -48,4 +59,9 @@ public class DeliveryOrderResource {
     public List<DeliveryOrder> getAll(@PathParam("id") String userId){
         return as.getAll(userId);
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/all/status/{status}")
+    public Response getAllWithStatus(@PathParam("status") String status) {return  Response.ok(as.getAllDeliveryOrdersByStatus(status)).build();}
 }

@@ -1,12 +1,12 @@
 package domain;
 
 public enum Component {
-    login,
-    monitoring,
-    order,
-    payment,
-    promotion,
-    reserve,
-    deliver,
-    logging
+    LOGIN,
+    MONITORING,
+    ORDER,
+    PAYMENT,
+    PROMOTION,
+    RESERVE,
+    DELIVER,
+    LOGGING
 }

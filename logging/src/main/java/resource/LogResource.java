@@ -2,12 +2,13 @@ package resource;
 
 import domain.Component;
 import service.LogService;
-import java.util.logging.Level;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.logging.Level;
 
 @Stateless
 @Path("logs")
@@ -37,8 +38,8 @@ public class LogResource {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addTestLog(@HeaderParam("message") String message,
-                               @HeaderParam("level") String level) {
+    public Response addTestLog(@QueryParam("message") String message,
+                               @QueryParam("level") String level) {
         if(message !=null && level !=null){
             return Response.ok(logService.addTestLog(message, level)).build();
         }else if(message != null){

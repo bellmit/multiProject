@@ -2,7 +2,6 @@ package service;
 
 import data.interfaces.DeliveryDao;
 import domain.Delivery;
-import domain.User;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -11,7 +10,10 @@ import javax.inject.Inject;
 public class PingService {
 
     @Inject
-    DeliveryDao deliveryDao;
+    private LogService logService;
+
+    @Inject
+    private DeliveryDao deliveryDao;
 
     public boolean ping() {
         deliveryDao.delete(deliveryDao.find(deliveryDao.create(new Delivery()).getDeliveryId()));

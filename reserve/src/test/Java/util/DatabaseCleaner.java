@@ -4,9 +4,9 @@ import domain.DiningTable;
 import domain.Reservation;
 import domain.TimeSlot;
 
-import javax.persistence.*;
-import javax.persistence.metamodel.*;
-import java.sql.*;
+import javax.persistence.EntityManager;
+import javax.persistence.metamodel.EntityType;
+import java.sql.SQLException;
 
 public class DatabaseCleaner {
 

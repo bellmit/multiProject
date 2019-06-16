@@ -32,4 +32,14 @@ public class DeliveryOrderDaoJpa extends BaseDaoJpa<DeliveryOrder> implements De
         Query q = getEntityManager().createQuery("select d from DeliveryOrder d where d.userId = '" + userId + "'", DeliveryOrder.class);
         return q.getResultList();
     }
+
+    public List<DeliveryOrder> getAllDeliveryOrders(){
+        Query q = getEntityManager().createQuery("select d from DeliveryOrder d",DeliveryOrder.class);
+        return q.getResultList();
+    }
+
+    public List<DeliveryOrder> getAllOrdersByStatus(String status){
+        Query q = getEntityManager().createQuery("select d from DeliveryOrder d where d.status = '" + status + "'",DeliveryOrder.class);
+        return q.getResultList();
+    }
 }
