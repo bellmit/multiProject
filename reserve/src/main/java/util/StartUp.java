@@ -23,7 +23,7 @@ public class StartUp {
 
     @PostConstruct
     public void initialize() {
-        List<Reservation> reservations = reservationService.getReservations();
+        List<Reservation> reservations = reservationService.getAll();
         for (Reservation r : reservations) {
             scheduler.setNewScheduler(r);
         }

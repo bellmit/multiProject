@@ -26,7 +26,7 @@ public class Scheduler {
     @Timeout
     public void afterTimeOut(Timer timer) {
         Reservation reservation = (Reservation) timer.getInfo();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String reservationDateTime = formatter.format(reservation.getTimeSlots().get(0).getStartTime());
         mailer.send(userService.find(reservation.getUserID()).getEmail(),reservationDateTime);
     }
