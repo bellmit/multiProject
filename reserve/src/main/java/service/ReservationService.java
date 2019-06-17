@@ -4,6 +4,7 @@ import dao.interfaces.ReservationDAO;
 import domain.DiningTable;
 import domain.DinnerType;
 import domain.Reservation;
+import domain.User;
 import domain.dto.ReservationDTO;
 import domain.dto.UserDTO;
 import qualifiers.ReservationScheduler;
@@ -29,9 +30,6 @@ public class ReservationService {
 
     @Inject
     private TableService tableService;
-
-    @Inject
-    private UserService userService;
 
     @Inject
     @ReservationScheduler
@@ -130,9 +128,7 @@ public class ReservationService {
         List<Reservation> reservations = reservationDAO.getReservationsForDate(getDateFromString(date));
         reservations.sort(new ReservationComparer());
         for (Reservation reservation : reservations) {
-            ReservationDTO reservationDTO = new ReservationDTO(reservation);
-            reservationDTO.setUser(new UserDTO(userService.find(reservation.getUserID())));
-            reservationsDTO.add(reservationDTO);
+            reservationsDTO.add(new ReservationDTO(reservation));
         }
         return reservationsDTO;
     }

@@ -53,6 +53,7 @@ project(':payment') {
 project(':reserve') {
     dependencies {
         implementation project(':login')
+        implementation project(':logging')
     }
 }
 
