@@ -36,11 +36,7 @@ public class UserService {
     }
 
     public User find(String uuid) {
-        User user = userDao.find(uuid);
-        if (user == null) {
-            throw new NotFoundException(USER_NOT_FOUND_ERROR);
-        }
-        return user;
+        return userDao.find(uuid);
     }
 
     public void edit(User user) {
