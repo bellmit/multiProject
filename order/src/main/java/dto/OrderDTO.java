@@ -1,5 +1,7 @@
 package dto;
 
+import domain.DeliveryOrder;
+import domain.LocalOrder;
 import domain.OrderStatus;
 import util.OrderType;
 
@@ -9,6 +11,18 @@ public class OrderDTO {
     private OrderStatus status;
 
     public OrderDTO() {
+    }
+
+    public OrderDTO(LocalOrder localOrder) {
+        this.id = localOrder.getId();
+        this.type = OrderType.LOCAL;
+        this.status = localOrder.getStatus();
+    }
+
+    public OrderDTO(DeliveryOrder deliveryOrder) {
+        this.id = deliveryOrder.getId();
+        this.type = OrderType.DELIVERY;
+        this.status = deliveryOrder.getStatus();
     }
 
     public OrderDTO(String id, OrderType type, OrderStatus status) {

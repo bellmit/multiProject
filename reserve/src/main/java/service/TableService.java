@@ -30,11 +30,7 @@ public class TableService {
     }
 
     public List<DiningTable> getTables() {
-        List<DiningTable> diningTables = tableDAO.getTables();
-        if (diningTables == null) {
-            throw new javax.ws.rs.NotFoundException();
-        }
-        return diningTables;
+        return tableDAO.getTables();
     }
 
     public DiningTable findById(String id) {

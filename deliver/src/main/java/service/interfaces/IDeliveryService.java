@@ -1,5 +1,6 @@
 package service.interfaces;
 
+import com.rabbitmq.client.DeliverCallback;
 import domain.Delivery;
 import domain.Route;
 
@@ -12,6 +13,8 @@ public interface IDeliveryService {
     List<Delivery> getByEmployeeId(String employeeId);
 
     Delivery addDelivery(Set<String> orderList);
+
+    Delivery createDelivery(Delivery delivery);
 
     Delivery assignEmployee(String deliveryId, String employeeId);
 

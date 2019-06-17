@@ -10,5 +10,5 @@ import static java.lang.annotation.ElementType.*;
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
 @Target({FIELD, METHOD, TYPE, PARAMETER})
-public @interface OrderHandlerQ {
+public @interface LocalOrderHandlerQ {
 }

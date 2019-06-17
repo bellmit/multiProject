@@ -6,6 +6,7 @@ import util.OrderType;
 import java.io.Serializable;
 
 public class OrderDTO implements Serializable {
+
     private String id;
     private OrderType type;
     private OrderStatus status;

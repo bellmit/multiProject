@@ -18,10 +18,13 @@ public class SimulationEvent {
 
     String endLat;
 
-    public SimulationEvent(String lat, String lon, List<String> orderid) {
+    String employeeId;
+
+    public SimulationEvent(String lat, String lon, List<String> orderid, String employeeId) {
         this.lat = lat;
         this.lon = lon;
         this.orderid = orderid;
+        this.employeeId  = employeeId;
     }
 
     public String getLat() {

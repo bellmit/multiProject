@@ -53,7 +53,7 @@ public class ReservationService {
     public void addReservation(Reservation reservation) {
         if (reservation == null || reservation.getUserID() == null || reservation.getDate() == null ||
                 reservation.getTimeSlots() == null || reservation.getNrofPeople() <= 0 ||
-                reservation.getDate().before(getTodaysDate()) || userService.find(reservation.getUserID()) == null) {
+                reservation.getDate().before(getTodaysDate())) {
             throw new javax.ws.rs.BadRequestException("Invalid reservation");
         }
         if (reservation.getTimeSlots().size() == 1) {
@@ -61,35 +61,36 @@ public class ReservationService {
         } else if (reservation.getTimeSlots().size() > 1) {
             reservation.setType(DinnerType.MULTICOURSE);
         }
-        List<DiningTable> availableTables = getAvailableTables(reservation);
-        if (availableTables.isEmpty()) {
-            throw new javax.ws.rs.BadRequestException("No table available");
-        }
-        setDiningTables(reservation, availableTables);
+//        TODO: Uncomment, for now check if works without table check
+//        List<DiningTable> availableTables = getAvailableTables(reservation);
+//        if (availableTables.isEmpty()) {
+//            throw new javax.ws.rs.BadRequestException("No table available");
+//        }
+//        setDiningTables(reservation, availableTables);
         scheduler.setNewScheduler(reservation);
         reservationDAO.create(reservation);
     }
 
     private void setDiningTables(Reservation reservation, List<DiningTable> availableTables) {
         Map<Integer, List<DiningTable>> tables = createSeatsTablesHashMap(availableTables);
-        if (!assignTables(reservation.getNrofPeople(), reservation, tables)) {
+        if (!assignTables(reservation, tables)) {
             throw new BadRequestException("No tables available");
         }
     }
 
-    private boolean assignTables(int peopleWhoNeedSeats, Reservation reservation, Map<Integer, List<DiningTable>> tables) {
-       int peopleSeated = 0;
-        for (int i = peopleWhoNeedSeats; i > 0; i--) {
+    private boolean assignTables(Reservation reservation, Map<Integer, List<DiningTable>> tables) {
+        int peopleSeated = 0;
+        for (int i = reservation.getNrofPeople(); i > 0; i--) {
             List<DiningTable> diningTables = tables.get(i);
             if (diningTables != null) {
                 reservation.getDiningTables().add(diningTables.get(0));
                 diningTables.remove(0);
                 tables.put(i, diningTables);
-                peopleWhoNeedSeats -= i;
                 peopleSeated += i;
+                i = reservation.getNrofPeople() - peopleSeated + 1;
             }
         }
-        return !reservation.getDiningTables().isEmpty() && peopleSeated == peopleWhoNeedSeats;
+        return !reservation.getDiningTables().isEmpty() && peopleSeated == reservation.getNrofPeople();
     }
 
     private Map<Integer, List<DiningTable>> createSeatsTablesHashMap(List<DiningTable> availableTables) {

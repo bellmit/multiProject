@@ -9,8 +9,8 @@ import javax.inject.Inject;
 @Stateless
 public class PingService {
 
-    @Inject
-    private LogService logService;
+    //@Inject
+    //private LogService logService;
 
     @Inject
     private DeliveryDao deliveryDao;
