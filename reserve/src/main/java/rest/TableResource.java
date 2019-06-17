@@ -62,5 +62,4 @@ public class TableResource {
     public Response demo() {
         return Response.ok("Demo worked!").build();
     }
-
 }
