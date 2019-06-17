@@ -29,14 +29,12 @@ public class DeliveryOrderHandler implements ICanHandleIt{
                 deliveryOrder.setStatus(orderDTO.getStatus());
                 dos.edit(deliveryOrder);
 
-                _deliveryOrderHandlerLogger.log(Level.INFO, "PollHandler manhandled the message");
+                _deliveryOrderHandlerLogger.log(Level.INFO, "DeliveryOrderHandler manhandled the message");
                 return true;
             } else {
-                _deliveryOrderHandlerLogger.log(Level.INFO, "PollHandler couldn't handle the message");
+                _deliveryOrderHandlerLogger.log(Level.INFO, "DeliveryOrderHandler couldn't handle the message");
                 return false;
             }
-            // todo notify delivery app
-
         } catch (Exception ex){
             _deliveryOrderHandlerLogger.log(Level.SEVERE, ex.toString());
             return false;
