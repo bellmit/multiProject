@@ -12,8 +12,6 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
 
-import static messaging.RabbitMQConfig.RABBITMQ_QUEUES;
-
 @Startup
 @Singleton
 public class StartConsumer {

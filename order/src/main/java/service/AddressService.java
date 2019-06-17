@@ -25,6 +25,6 @@ public class AddressService {
 
     public void delete(Address a){
         Address b = ad.find(a.getId());
-        ad.delete(a);
+        ad.delete(b);
     }
 }
