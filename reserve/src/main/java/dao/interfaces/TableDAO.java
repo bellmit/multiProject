@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface TableDAO extends BaseDao<DiningTable> {
     List<DiningTable> getTables();
-
 }
