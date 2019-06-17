@@ -56,11 +56,4 @@ public class TableResource {
         ts.removeTable(t);
         return Response.noContent().build();
     }
-
-    @GET
-    @Path("demo")
-    public Response demo() {
-        return Response.ok("Demo worked!").build();
-    }
-
 }
