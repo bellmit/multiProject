@@ -32,9 +32,6 @@ public class ReservationService {
     private TableService tableService;
 
     @Inject
-    private UserService userService;
-
-    @Inject
     @ReservationScheduler
     private Scheduler scheduler;
 
@@ -131,12 +128,7 @@ public class ReservationService {
         List<Reservation> reservations = reservationDAO.getReservationsForDate(getDateFromString(date));
         reservations.sort(new ReservationComparer());
         for (Reservation reservation : reservations) {
-            ReservationDTO reservationDTO = new ReservationDTO(reservation);
-            User user = userService.find(reservation.getUserID());
-            if (user != null) {
-                reservationDTO.setUser(new UserDTO(user));
-            }
-            reservationsDTO.add(reservationDTO);
+            reservationsDTO.add(new ReservationDTO(reservation));
         }
         return reservationsDTO;
     }
