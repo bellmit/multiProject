@@ -4,12 +4,16 @@ import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
+import service.LogService;
 
+import javax.inject.Inject;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SSHSender {
+    @Inject
+    LogService logService;
     private static final Logger LOGGER = Logger.getLogger(SSHSender.class.getName());
 
 
@@ -25,6 +29,8 @@ public class SSHSender {
             session.connect();
         } catch (JSchException e) {
             LOGGER.log(Level.SEVERE, "Connection with ssh refused");
+        } catch(NullPointerException e){
+            LOGGER.log(Level.SEVERE, "session is null");
         }
         LOGGER.log(Level.INFO, "Connected");
 
@@ -36,6 +42,8 @@ public class SSHSender {
             channel.connect();
         } catch (JSchException e) {
             LOGGER.log(Level.SEVERE, "Something went wrong when trying to open channel: " + e.getMessage());
+        } catch (NullPointerException e){
+            LOGGER.log(Level.SEVERE, "Open channel is null");
         }
 
     }

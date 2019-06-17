@@ -1,6 +1,5 @@
 package messaging;
 
-import com.rabbitmq.client.Channel;
 import event.SimulationEvent;
 import socket.SimulationSocket;
 import util.SimulationHandler;

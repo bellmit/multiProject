@@ -4,21 +4,19 @@ import java.util.List;
 
 public class SimulationEvent {
 
-    String lat ;
+    private String lat ;
 
-    String lon;
+    private String lon;
 
-    List<String> orderid;
+    private List<String> orderid;
 
-    String endlat;
+    private String endlat;
 
-    String endLon;
+    private String endLon;
 
-    String startLat;
+    private String startLat;
 
-    String endLat;
-
-    String employeeId;
+    private String employeeId;
 
     public SimulationEvent(String lat, String lon, List<String> orderid, String employeeId) {
         this.lat = lat;
@@ -73,13 +71,5 @@ public class SimulationEvent {
 
     public void setStartLat(String startLat) {
         this.startLat = startLat;
-    }
-
-    public String getEndLat() {
-        return endLat;
-    }
-
-    public void setEndLat(String endLat) {
-        this.endLat = endLat;
     }
 }

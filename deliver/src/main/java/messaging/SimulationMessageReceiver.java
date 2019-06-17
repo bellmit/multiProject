@@ -8,8 +8,6 @@ import com.rabbitmq.client.DeliverCallback;
 import domain.OrderStatus;
 import dto.OrderDTO;
 import event.SimulationEvent;
-import messaging.SimulationMessageCleanUp;
-import messaging.SimulationMessageFormater;
 import socket.SimulationSocket;
 import util.OrderType;
 import util.SimulationHandler;
@@ -50,7 +48,7 @@ public class SimulationMessageReceiver {
 
             channel.queueDeclare("deadletter" + finalcoord, false, false, false, args);
             channel.queueDeclare("simulation_queue" + finalcoord, true, false, false, null);
-            System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
+            LOGGER.log(Level.INFO, " [*] Waiting for messages. To exit press CTRL+C");
 
             channel.basicQos(1);
 
