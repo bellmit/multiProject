@@ -1,11 +1,16 @@
-package util;
+package messaging;
 
+import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
+import domain.OrderStatus;
+import dto.OrderDTO;
 import event.SimulationEvent;
 import socket.SimulationSocket;
+import util.OrderType;
+import util.SimulationHandler;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -24,13 +29,14 @@ public class SimulationMessageReceiver {
         //empty constructor
     }
 
-    public void receiveCoords(List<String> coords, List<String> orderId, String HOST, String currentid, String delivererId) {
-        String[] coordsSplit = coords.get(0).split(",");
+    public void receiveCoords(List<String> coords, List<String> orderId, String currentid, String delivererId) {
         SimulationSocket socket = new SimulationSocket();
-        String finalcoord = coordsSplit[3].replace(")", "");
         SimulationEvent simulationEvent = new SimulationEvent("", "", orderId,delivererId);
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost(HOST);
+        factory.setHost(RabbitMQConfig.RABBITMQ_IP);
+
+        String finalcoord = getFinalCoord(coords);
+
         try {
             final Connection connection = factory.newConnection();
             final Channel channel = connection.createChannel();
@@ -42,21 +48,21 @@ public class SimulationMessageReceiver {
 
             channel.queueDeclare("deadletter" + finalcoord, false, false, false, args);
             channel.queueDeclare("simulation_queue" + finalcoord, true, false, false, null);
-            System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
+            LOGGER.log(Level.INFO, " [*] Waiting for messages. To exit press CTRL+C");
 
             channel.basicQos(1);
 
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
-                if (message.contains("stops")) {
-                   SimulationMessageFormater.FormatClose(simulationEvent,currentid,socket);
-                   SimulationMessageCleanUp.clean(channel,finalcoord,connection);
+                if (message.contains("stops")&&!orderId.isEmpty()) {
+                    sendOrderDTO(orderId.get(0),"Done");
+                    SimulationMessageFormater.FormatClose(simulationEvent,currentid,socket);
+                    SimulationMessageCleanUp.clean(channel,finalcoord,connection);
                     orderId.remove(currentid);
                     coords.remove(0);
                     SimulationHandler simulationHandler = new SimulationHandler();
-                    if (!orderId.isEmpty()) {
-                        SimulationMessageFormater.FormatMessage(simulationEvent, message, socket);
-                        simulationHandler.startSimulation(coords, orderId, orderId.get(0),delivererId);}
+                    SimulationMessageFormater.FormatMessage(simulationEvent, message, socket);
+                    simulationHandler.startSimulation(coords, orderId, orderId.get(0),delivererId);
                 } else {
                     SimulationMessageFormater.FormatMessage(simulationEvent, message, socket);
                     if(connection.isOpen()){
@@ -79,5 +85,18 @@ public class SimulationMessageReceiver {
         } catch (TimeoutException | IOException e) {
             LOGGER.log(Level.SEVERE, e.getMessage() + " rabbit");
         }
+    }
+
+    public void sendOrderDTO(String orderid,String status){
+        Gson gson = new Gson();
+        OrderStatus orderStatus = new OrderStatus(status);
+        OrderDTO dto = new  OrderDTO(orderid, OrderType.DELIVERY,orderStatus);
+        SimulationMessageSender sms = new SimulationMessageSender();
+        sms.sendStatusUpdate(gson.toJson(dto),"DeliverToOrder");
+    }
+
+    public String getFinalCoord(List<String> coords){
+        String[] coordsSplit = coords.get(0).split(",");
+        return coordsSplit[3].replace(")", "");
     }
 }

@@ -1,5 +1,6 @@
 package domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
@@ -8,7 +9,7 @@ import java.util.UUID;
 
 @Entity
 public class DeliveryOrder extends Order{
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Address address;
 
     public DeliveryOrder(String userId, LocalDateTime date, double totalPrice, double totalVat, OrderStatus orderStatus, List<Product> products, Address address) {

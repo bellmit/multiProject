@@ -5,7 +5,6 @@ import domain.DiningTable;
 import domain.DinnerType;
 import domain.Reservation;
 import domain.dto.ReservationDTO;
-import domain.dto.UserDTO;
 import qualifiers.ReservationScheduler;
 import util.ReservationComparer;
 import util.Scheduler;
@@ -31,9 +30,6 @@ public class ReservationService {
     private TableService tableService;
 
     @Inject
-    private UserService userService;
-
-    @Inject
     @ReservationScheduler
     private Scheduler scheduler;
 
@@ -53,7 +49,7 @@ public class ReservationService {
     public void addReservation(Reservation reservation) {
         if (reservation == null || reservation.getUserID() == null || reservation.getDate() == null ||
                 reservation.getTimeSlots() == null || reservation.getNrofPeople() <= 0 ||
-                reservation.getDate().before(getTodaysDate()) || userService.find(reservation.getUserID()) == null) {
+                reservation.getDate().before(getTodaysDate())) {
             throw new javax.ws.rs.BadRequestException("Invalid reservation");
         }
         if (reservation.getTimeSlots().size() == 1) {
@@ -61,12 +57,11 @@ public class ReservationService {
         } else if (reservation.getTimeSlots().size() > 1) {
             reservation.setType(DinnerType.MULTICOURSE);
         }
-//        TODO: Uncomment, for now check if works without table check
-//        List<DiningTable> availableTables = getAvailableTables(reservation);
-//        if (availableTables.isEmpty()) {
-//            throw new javax.ws.rs.BadRequestException("No table available");
-//        }
-//        setDiningTables(reservation, availableTables);
+        List<DiningTable> availableTables = getAvailableTables(reservation);
+        if (availableTables.isEmpty()) {
+            throw new javax.ws.rs.BadRequestException("No tables available");
+        }
+        setDiningTables(reservation, availableTables);
         scheduler.setNewScheduler(reservation);
         reservationDAO.create(reservation);
     }
@@ -82,7 +77,7 @@ public class ReservationService {
         int peopleSeated = 0;
         for (int i = reservation.getNrofPeople(); i > 0; i--) {
             List<DiningTable> diningTables = tables.get(i);
-            if (diningTables != null) {
+            if (diningTables != null && !diningTables.isEmpty()) {
                 reservation.getDiningTables().add(diningTables.get(0));
                 diningTables.remove(0);
                 tables.put(i, diningTables);
@@ -131,9 +126,7 @@ public class ReservationService {
         List<Reservation> reservations = reservationDAO.getReservationsForDate(getDateFromString(date));
         reservations.sort(new ReservationComparer());
         for (Reservation reservation : reservations) {
-            ReservationDTO reservationDTO = new ReservationDTO(reservation);
-            reservationDTO.setUser(new UserDTO(userService.find(reservation.getUserID())));
-            reservationsDTO.add(reservationDTO);
+            reservationsDTO.add(new ReservationDTO(reservation));
         }
         return reservationsDTO;
     }

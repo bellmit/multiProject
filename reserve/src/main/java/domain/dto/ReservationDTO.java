@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ReservationDTO {
-    private UserDTO user;
+    private String user;
     private int numberOfPeople;
     private Date date;
     private DinnerType type;
@@ -16,6 +16,7 @@ public class ReservationDTO {
     private List<String> diningTables;
 
     public ReservationDTO(Reservation reservation) {
+        this.user = reservation.getUserID();
         this.numberOfPeople = reservation.getNrofPeople();
         this.date = reservation.getDate();
         this.type = reservation.getType();
@@ -23,11 +24,11 @@ public class ReservationDTO {
         this.diningTables = DomainObjectConverter.convertDiningTables(reservation.getDiningTables());
     }
 
-    public UserDTO getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(UserDTO user) {
+    public void setUser(String user) {
         this.user = user;
     }
 

@@ -1,6 +1,5 @@
 package service.interfaces;
 
-import com.rabbitmq.client.DeliverCallback;
 import domain.Delivery;
 import domain.Route;
 

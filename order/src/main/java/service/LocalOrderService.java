@@ -6,6 +6,7 @@ import domain.DeliveryOrder;
 import domain.LocalOrder;
 import dto.OrderDTO;
 import messaging.ProducerRabbitMQ;
+import util.OrderType;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -25,6 +26,7 @@ public class LocalOrderService {
     public LocalOrder create(LocalOrder a) {
         LocalOrder b = ld.create(a);
         OrderDTO orderDTO = new OrderDTO(b);
+        orderDTO.setType(OrderType.LOCAL);
         prm.sendMsg(gson.toJson(orderDTO), "OrderToKitchen");
         return b;
     }

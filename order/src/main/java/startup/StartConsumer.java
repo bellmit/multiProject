@@ -12,9 +12,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
 
-import static messaging.RabbitMQConfig.RABBITMQ_QUEUES;
-
-//@Startup
+@Startup
 @Singleton
 public class StartConsumer {
     @Inject
@@ -40,6 +38,10 @@ public class StartConsumer {
         ConsumerRabbitMQ cr2 = new ConsumerRabbitMQ();
         cr2.addHandlers(deliveryOrderHandler, stringHandler);
         cr2.runConsumer("KitchenToDeliveryOrder");
+
+        ConsumerRabbitMQ cr3 = new ConsumerRabbitMQ();
+        cr3.addHandlers(deliveryOrderHandler, stringHandler);
+        cr3.runConsumer("DeliverToOrder");
 
     }
 }

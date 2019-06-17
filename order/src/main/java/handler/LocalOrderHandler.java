@@ -28,10 +28,10 @@ public class LocalOrderHandler implements ICanHandleIt{
                 LocalOrder localOrder = los.find(orderDTO.getId());
                 localOrder.setStatus(orderDTO.getStatus());
                 los.edit(localOrder);
-                _localOrderHandlerLogger.log(Level.INFO, "PollHandler manhandled the message");
+                _localOrderHandlerLogger.log(Level.INFO, "LocalOrderHandler manhandled the message");
                 return true;
             } else {
-                _localOrderHandlerLogger.log(Level.INFO, "PollHandler couldn't handle the message");
+                _localOrderHandlerLogger.log(Level.INFO, "LocalOrderHandler couldn't handle the message");
                 return false;
             }
         } catch (Exception ex){
