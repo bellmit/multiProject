@@ -53,7 +53,7 @@ public class ReservationService {
     public void addReservation(Reservation reservation) {
         if (reservation == null || reservation.getUserID() == null || reservation.getDate() == null ||
                 reservation.getTimeSlots() == null || reservation.getNrofPeople() <= 0 ||
-                reservation.getDate().before(getTodaysDate()) || userService.find(reservation.getUserID()) == null) {
+                reservation.getDate().before(getTodaysDate())) {
             throw new javax.ws.rs.BadRequestException("Invalid reservation");
         }
         if (reservation.getTimeSlots().size() == 1) {
