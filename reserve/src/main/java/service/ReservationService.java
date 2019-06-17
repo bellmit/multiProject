@@ -4,6 +4,7 @@ import dao.interfaces.ReservationDAO;
 import domain.DiningTable;
 import domain.DinnerType;
 import domain.Reservation;
+import domain.User;
 import domain.dto.ReservationDTO;
 import domain.dto.UserDTO;
 import qualifiers.ReservationScheduler;
@@ -131,7 +132,10 @@ public class ReservationService {
         reservations.sort(new ReservationComparer());
         for (Reservation reservation : reservations) {
             ReservationDTO reservationDTO = new ReservationDTO(reservation);
-            reservationDTO.setUser(new UserDTO(userService.find(reservation.getUserID())));
+            User user = userService.find(reservation.getUserID());
+            if (user != null) {
+                reservationDTO.setUser(new UserDTO(user));
+            }
             reservationsDTO.add(reservationDTO);
         }
         return reservationsDTO;
