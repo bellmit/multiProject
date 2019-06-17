@@ -8,6 +8,7 @@ import dto.OrderDTO;
 import messaging.ProducerRabbitMQ;
 import domain.OrderStatus;
 import socket.OrderWebsocket;
+import util.OrderType;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -33,6 +34,7 @@ public class DeliveryOrderService {
     public DeliveryOrder create(DeliveryOrder a){
         DeliveryOrder b = dd.create(a);
         OrderDTO orderDTO = new OrderDTO(b);
+        orderDTO.setType(OrderType.DELIVERY);
         prm.sendMsg(gson.toJson(orderDTO), "OrderToKitchen");
         return b;
     }
@@ -46,7 +48,6 @@ public class DeliveryOrderService {
         OrderStatus status = osd.find("Is being delivered");
         deliveryOrder.setStatus(status);
         edit(deliveryOrder);
-        TimeUnit.SECONDS.sleep(1);
         return getAllDeliveryOrdersByStatus("Waiting for deliverer");
     }
 
@@ -60,7 +61,7 @@ public class DeliveryOrderService {
 
     public void delete(DeliveryOrder a){
         DeliveryOrder b = dd.find(a.getId());
-        dd.delete(a);
+        dd.delete(b);
     }
 
     public List<DeliveryOrder> getAll(String userId){
