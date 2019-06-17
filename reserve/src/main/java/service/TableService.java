@@ -3,9 +3,11 @@ package service;
 
 import dao.interfaces.TableDAO;
 import domain.DiningTable;
+import domain.dto.DiningTableDTO;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,6 +29,14 @@ public class TableService {
             throw new javax.ws.rs.NotFoundException();
         }
         tableDAO.delete(diningTable);
+    }
+
+    public List<DiningTableDTO> getTablesDTOS() {
+        List<DiningTableDTO> tables = new ArrayList<>();
+        for (DiningTable diningTable : tableDAO.getTables()) {
+            tables.add(new DiningTableDTO(diningTable));
+        }
+        return tables;
     }
 
     public List<DiningTable> getTables() {

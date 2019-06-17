@@ -27,7 +27,7 @@ public class TableResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response find() {
-        return Response.ok(ts.getTables()).build();
+        return Response.ok(ts.getTablesDTOS()).build();
     }
 
 
