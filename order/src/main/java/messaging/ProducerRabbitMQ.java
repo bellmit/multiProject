@@ -5,6 +5,8 @@ import com.rabbitmq.client.Channel;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,6 +20,8 @@ public class ProducerRabbitMQ {
     public void sendMsg (String message, String queueName){
         try {
             Channel channel = cfp.getChannel();
+            Map<String, Object> args = new HashMap<>();
+            args.put("x-dead-letter-exchange", "jms.durable.queues");
             channel.queueDeclare(queueName, true, false, false, null);
 
             channel.basicPublish("", queueName, null, message.getBytes(StandardCharsets.UTF_8));

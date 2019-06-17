@@ -1,7 +1,6 @@
 package socket;
 
 import domain.DeliveryOrder;
-import domain.OrderStatus;
 import service.DeliveryOrderService;
 import service.OrderStatusService;
 
@@ -24,7 +23,6 @@ public class OrderWebsocket {
     private static final Map<String, Set<Session>> sessions = Collections.synchronizedMap(new HashMap<>());
 
     public OrderWebsocket() {
-        //We need an empty constructor
     }
 
     @Inject
@@ -64,11 +62,10 @@ public class OrderWebsocket {
 
     @OnMessage
     public void onMessage(String message, Session session) {
-        //we dont need to do anything here
+        LOGGER.log(Level.INFO, "New OnMessage: {0}", message);
     }
 
     public boolean updateOrders(List<DeliveryOrder> deliveryOrders) {
-        // service get all open orders implement
         return sendOrderEvent(deliveryOrders);
     }
 

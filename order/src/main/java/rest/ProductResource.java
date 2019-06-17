@@ -50,4 +50,18 @@ public class ProductResource {
     public List<Product> getAll(){
         return as.getAll();
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/local")
+    public List<Product> getAllLocalProducts(){
+        return as.getAllLocalProducts();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/deliver")
+    public List<Product> getAllDeliveryProducts(){
+        return as.getAllDeliveryProducts();
+    }
 }

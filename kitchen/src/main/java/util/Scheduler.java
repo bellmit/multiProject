@@ -1,7 +1,6 @@
 package util;
 
 import com.google.gson.Gson;
-import domain.OrderStatus;
 import dto.OrderDTO;
 import messaging.ProducerRabbitMQ;
 
@@ -22,7 +21,6 @@ public class Scheduler {
 
     private final String status = "Waiting for deliverer";
 
-    // todo serializer
     private Gson gson = new Gson();
 
     @Timeout
@@ -34,15 +32,11 @@ public class Scheduler {
         } else {
             prm.sendMsg(gson.toJson(orderDTO), "KitchenToDeliveryOrder");
         }
-        // todo remove
-        System.out.println("Order sent to Order-App");
     }
 
     public void setNewScheduler(OrderDTO orderDTO) {
         TimerConfig timerConfig = new TimerConfig();
         timerConfig.setInfo(orderDTO);
         timerService.createSingleActionTimer(preparationTime, timerConfig);
-        // todo remove
-        System.out.println("Order successfully scheduled");
     }
 }

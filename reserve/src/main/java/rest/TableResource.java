@@ -56,4 +56,5 @@ public class TableResource {
         ts.removeTable(t);
         return Response.noContent().build();
     }
+
 }
