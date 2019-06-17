@@ -3,21 +3,12 @@ package dto;
 import domain.OrderStatus;
 import util.OrderType;
 
-import java.io.Serializable;
-
-public class OrderDTO implements Serializable {
-
+public class OrderDTO {
     private String id;
     private OrderType type;
     private OrderStatus status;
 
     public OrderDTO() {
-    }
-
-    public OrderDTO(OrderDTO orderDTO) {
-        this.id = orderDTO.getId();
-        this.type = orderDTO.getType();
-        this.status = orderDTO.getStatus();
     }
 
     public OrderDTO(String id, OrderType type, OrderStatus status) {

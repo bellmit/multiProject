@@ -43,6 +43,7 @@ public class StartConsumer {
 
         ConsumerRabbitMQ cr3 = new ConsumerRabbitMQ();
         cr3.addHandlers(deliveryOrderHandler, stringHandler);
-        cr3.runConsumer("DeliveryToOrder");
+        cr3.runConsumer("DeliverToOrder");
+
     }
 }

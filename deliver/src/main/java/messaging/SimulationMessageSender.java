@@ -4,7 +4,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.MessageProperties;
-import messaging.RabbitMQConfig;
+import messaging.ConnectionProvider;
 import util.SimulationHandler;
 
 import javax.inject.Inject;
@@ -19,26 +19,27 @@ public class SimulationMessageSender {
     private static final Logger LOGGER = Logger.getLogger(SimulationHandler.class.getName());
 
     @Inject
-    ConnectionFactoryProvider cfp;
+    ConnectionProvider cfp;
 
     public SimulationMessageSender() {
     }
 
-    public void sendCoords(String coords) {
-        try {
-            Channel channel = cfp.getChannel();
-            channel.queueDeclare(RabbitMQConfig.SENDER_QUEUE, true, false, false, null);
+    public void sendCoords(String coords,String HOST)  {
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost(HOST);
+        try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
+            channel.queueDeclare("coordinates_receiver4", true, false, false, null);
 
-            channel.basicPublish("", RabbitMQConfig.SENDER_QUEUE,
+            channel.basicPublish("", "coordinates_receiver4",
                     MessageProperties.PERSISTENT_TEXT_PLAIN,
                     coords.getBytes(StandardCharsets.UTF_8));
             LOGGER.log(Level.INFO, " [x] Sent '" + coords + "'");
-        } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage() + " rabbit");
+        } catch (TimeoutException | IOException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage()+ " rabbit");
         }
     }
 
-    public void sendStatusUpdate(String message, String queueName) {
+    public void sendStatusUpdate (String message, String queueName){
         try {
             Channel channel = cfp.getChannel();
             channel.queueDeclare(queueName, true, false, false, null);

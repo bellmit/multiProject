@@ -9,11 +9,11 @@ import java.util.logging.Logger;
 
 import static messaging.RabbitMQConfig.RABBITMQ_IP;
 
-public class ConnectionFactoryProvider {
+public class ConnectionProvider {
     private Channel channel;
-    private static final Logger ConnectionFactoryProvider_Logger = Logger.getLogger(ConnectionFactoryProvider.class.getName());
+    private static final Logger ConnectionFactoryProvider_Logger = Logger.getLogger(ConnectionProvider.class.getName());
 
-    public ConnectionFactoryProvider() {
+    public ConnectionProvider() {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RABBITMQ_IP);
 

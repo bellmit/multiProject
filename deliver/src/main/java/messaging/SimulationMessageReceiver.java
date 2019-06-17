@@ -8,6 +8,8 @@ import com.rabbitmq.client.DeliverCallback;
 import domain.OrderStatus;
 import dto.OrderDTO;
 import event.SimulationEvent;
+import messaging.SimulationMessageCleanUp;
+import messaging.SimulationMessageFormater;
 import socket.SimulationSocket;
 import util.OrderType;
 import util.SimulationHandler;
@@ -31,15 +33,16 @@ public class SimulationMessageReceiver {
 
     public void receiveCoords(List<String> coords, List<String> orderId, String currentid, String delivererId) {
         SimulationSocket socket = new SimulationSocket();
-        String finalcoord = getFinalCoord(coords);
         SimulationEvent simulationEvent = new SimulationEvent("", "", orderId,delivererId);
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RabbitMQConfig.RABBITMQ_IP);
+
+        String finalcoord = getFinalCoord(coords);
+
         try {
             final Connection connection = factory.newConnection();
             final Channel channel = connection.createChannel();
 
-            //Create Exchange so we can bind deadletter
             channel.exchangeDeclare("nldexchange", "direct");
 
             Map<String, Object> args = new HashMap<String, Object>();
@@ -51,11 +54,10 @@ public class SimulationMessageReceiver {
 
             channel.basicQos(1);
 
-            //Simulation receiver config
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
                 if (message.contains("stops")&&!orderId.isEmpty()) {
-                    sendDone(orderId.get(0),"Done");
+                    sendOrderDTO(orderId.get(0),"Done");
                     SimulationMessageFormater.FormatClose(simulationEvent,currentid,socket);
                     SimulationMessageCleanUp.clean(channel,finalcoord,connection);
                     orderId.remove(currentid);
@@ -69,7 +71,7 @@ public class SimulationMessageReceiver {
                     channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);}
                 }
             };
-            //Deadletter config
+
             DeliverCallback deadletterCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
                 LOGGER.log(Level.INFO, "deadmessage" + message);
@@ -87,17 +89,16 @@ public class SimulationMessageReceiver {
         }
     }
 
-    public String getFinalCoord(List<String> coords){
-        String[] coordsSplit = coords.get(0).split(",");
-        return  coordsSplit[3].replace(")", "");
-    }
-
-    public void sendDone(String orderId ,String status){
+    public void sendOrderDTO(String orderid,String status){
         Gson gson = new Gson();
         OrderStatus orderStatus = new OrderStatus(status);
-        OrderDTO orderDTO = new OrderDTO(orderId, OrderType.DELIVERY, orderStatus );
-        //OrderDTO orderDTO = new OrderDTO(DeliveryOrder);
+        OrderDTO dto = new  OrderDTO(orderid, OrderType.DELIVERY,orderStatus);
         SimulationMessageSender sms = new SimulationMessageSender();
-        sms.sendStatusUpdate(gson.toJson(orderDTO),"DeliveryToOrder");
+        sms.sendStatusUpdate(gson.toJson(dto),"DeliverToOrder");
+    }
+
+    public String getFinalCoord(List<String> coords){
+        String[] coordsSplit = coords.get(0).split(",");
+        return coordsSplit[3].replace(")", "");
     }
 }
