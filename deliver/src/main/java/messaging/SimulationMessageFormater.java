@@ -1,8 +1,9 @@
-package util;
+package messaging;
 
 import com.rabbitmq.client.Channel;
 import event.SimulationEvent;
 import socket.SimulationSocket;
+import util.SimulationHandler;
 
 import java.util.List;
 import java.util.logging.Level;

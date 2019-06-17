@@ -1,11 +1,17 @@
-package util;
+package messaging;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
+import util.SimulationHandler;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SimulationMessageCleanUp {
+
+    private static final Logger LOGGER = Logger.getLogger(SimulationHandler.class.getName());
+
 
     public static void clean(Channel channel, String finalcoord, Connection connection){
         try {
@@ -13,7 +19,7 @@ public class SimulationMessageCleanUp {
             channel.queueDelete("deadletter" + finalcoord);
             connection.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,"Error in cleanup: "+ e.getMessage());
         }
 
     }
