@@ -6,6 +6,7 @@ import util.RoleConverter;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.NotFoundException;
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class RoleService {
     RoleDao roleDao;
 
     public void create(Role role) {
+        if(roleDao.findByName(role.getName()) != null){
+            throw new BadRequestException("Role already exists");
+        }
         roleDao.create(role);
     }
 

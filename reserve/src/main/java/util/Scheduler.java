@@ -14,6 +14,8 @@ import java.util.Date;
 @ReservationScheduler
 public class Scheduler {
 
+    private static final long THREE_HOURS_IN_MILLISECONDS = 60 * 60 * 3 * 1000L;
+
     @Inject
     private UserService userService;
 
@@ -28,7 +30,7 @@ public class Scheduler {
         Reservation reservation = (Reservation) timer.getInfo();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String reservationDateTime = formatter.format(reservation.getTimeSlots().get(0).getStartTime());
-        mailer.send(userService.find(reservation.getUserID()).getEmail(),reservationDateTime);
+        mailer.send(userService.find(reservation.getUserID()).getEmail(), reservationDateTime);
     }
 
     public void setNewScheduler(Reservation reservation) {
@@ -37,8 +39,8 @@ public class Scheduler {
         Date now = new Date();
         Date reservationTime = reservation.getTimeSlots().get(0).getStartTime();
         long untilReservation = reservationTime.getTime() - now.getTime();
-        long threeHoursBeforeReservation = untilReservation - (10800 * 1000);
-        if(threeHoursBeforeReservation > 0) {
+        long threeHoursBeforeReservation = untilReservation - THREE_HOURS_IN_MILLISECONDS;
+        if (threeHoursBeforeReservation > 0) {
             timerService.createSingleActionTimer(threeHoursBeforeReservation, timerConfig);
         }
     }
