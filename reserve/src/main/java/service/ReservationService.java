@@ -4,9 +4,7 @@ import dao.interfaces.ReservationDAO;
 import domain.DiningTable;
 import domain.DinnerType;
 import domain.Reservation;
-import domain.User;
 import domain.dto.ReservationDTO;
-import domain.dto.UserDTO;
 import qualifiers.ReservationScheduler;
 import util.ReservationComparer;
 import util.Scheduler;
@@ -79,7 +77,7 @@ public class ReservationService {
         int peopleSeated = 0;
         for (int i = reservation.getNrofPeople(); i > 0; i--) {
             List<DiningTable> diningTables = tables.get(i);
-            if (diningTables != null) {
+            if (diningTables != null && !diningTables.isEmpty()) {
                 reservation.getDiningTables().add(diningTables.get(0));
                 diningTables.remove(0);
                 tables.put(i, diningTables);
