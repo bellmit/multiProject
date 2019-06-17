@@ -61,11 +61,12 @@ public class ReservationService {
         } else if (reservation.getTimeSlots().size() > 1) {
             reservation.setType(DinnerType.MULTICOURSE);
         }
-        List<DiningTable> availableTables = getAvailableTables(reservation);
-        if (availableTables.isEmpty()) {
-            throw new javax.ws.rs.BadRequestException("No table available");
-        }
-        setDiningTables(reservation, availableTables);
+//        TODO: Uncomment, for now check if works without table check
+//        List<DiningTable> availableTables = getAvailableTables(reservation);
+//        if (availableTables.isEmpty()) {
+//            throw new javax.ws.rs.BadRequestException("No table available");
+//        }
+//        setDiningTables(reservation, availableTables);
         scheduler.setNewScheduler(reservation);
         reservationDAO.create(reservation);
     }
