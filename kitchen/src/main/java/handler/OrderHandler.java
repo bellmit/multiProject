@@ -3,7 +3,7 @@ package handler;
 import com.google.gson.Gson;
 import dto.OrderDTO;
 import qualifiers.OrderHandlerQ;
-import service.KitchenService;
+import util.Scheduler;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -17,18 +17,17 @@ public class OrderHandler implements ICanHandleIt {
     private Gson gson = new Gson();
 
     @Inject
-    KitchenService ks;
+    private Scheduler scheduler;
 
     @Override
     public boolean handleMessage(String message) {
         try {
             OrderDTO orderDTO = gson.fromJson(message, OrderDTO.class);
-
-            // todo send to scheduler
+            scheduler.setNewScheduler(orderDTO);
+            _orderHandlerLogger.log(Level.INFO, "Order sent to scheduler");
 
             return true;
         } catch (Exception ex) {
-            _orderHandlerLogger.log(Level.SEVERE, ex.toString());
             return false;
         }
     }

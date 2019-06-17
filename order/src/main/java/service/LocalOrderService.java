@@ -1,7 +1,11 @@
 package service;
 
+import com.google.gson.Gson;
 import dao.interfaces.LocalOrderDao;
+import domain.DeliveryOrder;
 import domain.LocalOrder;
+import dto.OrderDTO;
+import messaging.ProducerRabbitMQ;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -12,8 +16,17 @@ public class LocalOrderService {
     @Inject
     private LocalOrderDao ld;
 
+    @Inject
+    private ProducerRabbitMQ prm;
+
+    // todo add serializer
+    private final Gson gson = new Gson();
+
     public LocalOrder create(LocalOrder a) {
-        return ld.create(a);
+        LocalOrder b = ld.create(a);
+        OrderDTO orderDTO = new OrderDTO(b);
+        prm.sendMsg(gson.toJson(orderDTO), "OrderToKitchen");
+        return b;
     }
 
     public LocalOrder find(String id) {
@@ -21,7 +34,8 @@ public class LocalOrderService {
     }
 
     public LocalOrder edit(LocalOrder a) {
-        return ld.edit(a);
+        LocalOrder b = ld.edit(a);
+        return b;
     }
 
     public void delete(LocalOrder a) {

@@ -1,11 +1,9 @@
 package handler;
 
 import com.google.gson.Gson;
-import domain.DeliveryOrder;
 import domain.LocalOrder;
 import dto.OrderDTO;
-import qualifiers.OrderHandlerQ;
-import service.DeliveryOrderService;
+import qualifiers.LocalOrderHandlerQ;
 import service.LocalOrderService;
 import util.OrderType;
 
@@ -14,16 +12,13 @@ import javax.inject.Inject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Stateless @OrderHandlerQ
-public class OrderHandler implements ICanHandleIt{
-    private static final Logger _pollHandlerLogger = Logger.getLogger(OrderHandler.class.getName());
+@Stateless @LocalOrderHandlerQ
+public class LocalOrderHandler implements ICanHandleIt{
+    private static final Logger _localOrderHandlerLogger = Logger.getLogger(LocalOrderHandler.class.getName());
     private Gson gson = new Gson();
 
     @Inject
     LocalOrderService los;
-
-    @Inject
-    DeliveryOrderService dos;
 
     @Override
     public boolean handleMessage(String message) {
@@ -33,16 +28,14 @@ public class OrderHandler implements ICanHandleIt{
                 LocalOrder localOrder = los.find(orderDTO.getId());
                 localOrder.setStatus(orderDTO.getStatus());
                 los.edit(localOrder);
+                _localOrderHandlerLogger.log(Level.INFO, "PollHandler manhandled the message");
+                return true;
             } else {
-                DeliveryOrder deliveryOrder = dos.find(orderDTO.getId());
-                deliveryOrder.setStatus(orderDTO.getStatus());
-                dos.edit(deliveryOrder);
+                _localOrderHandlerLogger.log(Level.INFO, "PollHandler couldn't handle the message");
+                return false;
             }
-            // todo notify delivery app
-
-            return true;
         } catch (Exception ex){
-            _pollHandlerLogger.log(Level.SEVERE, ex.toString());
+            _localOrderHandlerLogger.log(Level.SEVERE, ex.toString());
             return false;
         }
     }
