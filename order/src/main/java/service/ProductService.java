@@ -32,4 +32,12 @@ public class ProductService {
     public List<Product> getAll(){
         return pd.getAll();
     }
+
+    public List<Product> getAllLocalProducts() {
+        return pd.getAllLocalProducts();
+    }
+
+    public List<Product> getAllDeliveryProducts() {
+        return pd.getAllDeliveryProducts();
+    }
 }

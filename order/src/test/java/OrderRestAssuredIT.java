@@ -1,23 +1,17 @@
 import domain.DeliveryOrder;
-import domain.Order;
-import domain.User;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 public class OrderRestAssuredIT {
 
-    static DeliveryOrder order;
+    private static DeliveryOrder order;
 
     public OrderRestAssuredIT() {
 

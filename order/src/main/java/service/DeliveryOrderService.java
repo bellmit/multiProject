@@ -13,7 +13,6 @@ import util.OrderType;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 @Stateless
 public class DeliveryOrderService {
@@ -26,8 +25,9 @@ public class DeliveryOrderService {
     @Inject
     private ProducerRabbitMQ prm;
 
-    // todo add serializer
     private final Gson gson = new Gson();
+
+    private final String statusDeliver = "Waiting for deliverer";
 
     private OrderWebsocket orderWebsocket = new OrderWebsocket();
 
@@ -48,13 +48,13 @@ public class DeliveryOrderService {
         OrderStatus status = osd.find("Is being delivered");
         deliveryOrder.setStatus(status);
         edit(deliveryOrder);
-        return getAllDeliveryOrdersByStatus("Waiting for deliverer");
+        return getAllDeliveryOrdersByStatus(statusDeliver);
     }
 
     public DeliveryOrder edit(DeliveryOrder a){
         DeliveryOrder b = dd.edit(a);
-        if(b.getStatus().getStatus().equals("Waiting for deliverer")){
-            orderWebsocket.updateOrders(getAllDeliveryOrdersByStatus("Waiting for deliverer"));
+        if(b.getStatus().getStatus().equals(statusDeliver)){
+            orderWebsocket.updateOrders(getAllDeliveryOrdersByStatus(statusDeliver));
         }
         return b;
     }

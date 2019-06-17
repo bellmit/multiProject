@@ -6,6 +6,7 @@ import service.OrderStatusService;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("orderstatus")
 public class OrderStatusResource {
@@ -40,11 +41,4 @@ public class OrderStatusResource {
     public void delete(OrderStatus a) {
         as.delete(a);
     }
-
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/all")
-//    public List<OrderStatus> getAll(){
-//        return as.getAll();
-//    }
 }

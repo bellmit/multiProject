@@ -2,7 +2,6 @@ package service;
 
 import com.google.gson.Gson;
 import dao.interfaces.LocalOrderDao;
-import domain.DeliveryOrder;
 import domain.LocalOrder;
 import dto.OrderDTO;
 import messaging.ProducerRabbitMQ;
@@ -20,7 +19,6 @@ public class LocalOrderService {
     @Inject
     private ProducerRabbitMQ prm;
 
-    // todo add serializer
     private final Gson gson = new Gson();
 
     public LocalOrder create(LocalOrder a) {
@@ -42,7 +40,7 @@ public class LocalOrderService {
 
     public void delete(LocalOrder a) {
         LocalOrder b = ld.find(a.getId());
-        ld.delete(a);
+        ld.delete(b);
     }
 
     public List<LocalOrder> getAll(String userId) {

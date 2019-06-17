@@ -33,4 +33,16 @@ public class ProductDaoJpa extends BaseDaoJpa<Product> implements ProductDao {
         Query q = getEntityManager().createQuery("SELECT p FROM Product p");
         return q.getResultList();
     }
+
+    @Override
+    public List<Product> getAllLocalProducts() {
+        Query q = getEntityManager().createQuery("SELECT p FROM Product p WHERE p.type = 0");
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Product> getAllDeliveryProducts() {
+        Query q = getEntityManager().createQuery("SELECT p FROM Product p WHERE p.type = 1");
+        return q.getResultList();
+    }
 }
