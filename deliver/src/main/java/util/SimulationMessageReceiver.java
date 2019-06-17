@@ -1,16 +1,11 @@
-package messaging;
+package util;
 
-import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
-import domain.OrderStatus;
-import dto.OrderDTO;
 import event.SimulationEvent;
 import socket.SimulationSocket;
-import util.OrderType;
-import util.SimulationHandler;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -29,17 +24,17 @@ public class SimulationMessageReceiver {
         //empty constructor
     }
 
-    public void receiveCoords(List<String> coords, List<String> orderId, String currentid, String delivererId) {
+    public void receiveCoords(List<String> coords, List<String> orderId, String HOST, String currentid, String delivererId) {
+        String[] coordsSplit = coords.get(0).split(",");
         SimulationSocket socket = new SimulationSocket();
-        String finalcoord = getFinalCoord(coords);
+        String finalcoord = coordsSplit[3].replace(")", "");
         SimulationEvent simulationEvent = new SimulationEvent("", "", orderId,delivererId);
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost(RabbitMQConfig.RABBITMQ_IP);
+        factory.setHost(HOST);
         try {
             final Connection connection = factory.newConnection();
             final Channel channel = connection.createChannel();
 
-            //Create Exchange so we can bind deadletter
             channel.exchangeDeclare("nldexchange", "direct");
 
             Map<String, Object> args = new HashMap<String, Object>();
@@ -51,25 +46,24 @@ public class SimulationMessageReceiver {
 
             channel.basicQos(1);
 
-            //Simulation receiver config
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
-                if (message.contains("stops")&&!orderId.isEmpty()) {
-                    sendDone(orderId.get(0),"Done");
-                    SimulationMessageFormater.FormatClose(simulationEvent,currentid,socket);
-                    SimulationMessageCleanUp.clean(channel,finalcoord,connection);
+                if (message.contains("stops")) {
+                   SimulationMessageFormater.FormatClose(simulationEvent,currentid,socket);
+                   SimulationMessageCleanUp.clean(channel,finalcoord,connection);
                     orderId.remove(currentid);
                     coords.remove(0);
                     SimulationHandler simulationHandler = new SimulationHandler();
-                    SimulationMessageFormater.FormatMessage(simulationEvent, message, socket);
-                    simulationHandler.startSimulation(coords, orderId, orderId.get(0),delivererId);
+                    if (!orderId.isEmpty()) {
+                        SimulationMessageFormater.FormatMessage(simulationEvent, message, socket);
+                        simulationHandler.startSimulation(coords, orderId, orderId.get(0),delivererId);}
                 } else {
                     SimulationMessageFormater.FormatMessage(simulationEvent, message, socket);
                     if(connection.isOpen()){
                     channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);}
                 }
             };
-            //Deadletter config
+
             DeliverCallback deadletterCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
                 LOGGER.log(Level.INFO, "deadmessage" + message);
@@ -85,19 +79,5 @@ public class SimulationMessageReceiver {
         } catch (TimeoutException | IOException e) {
             LOGGER.log(Level.SEVERE, e.getMessage() + " rabbit");
         }
-    }
-
-    public String getFinalCoord(List<String> coords){
-        String[] coordsSplit = coords.get(0).split(",");
-        return  coordsSplit[3].replace(")", "");
-    }
-
-    public void sendDone(String orderId ,String status){
-        Gson gson = new Gson();
-        OrderStatus orderStatus = new OrderStatus(status);
-        OrderDTO orderDTO = new OrderDTO(orderId, OrderType.DELIVERY, orderStatus );
-        //OrderDTO orderDTO = new OrderDTO(DeliveryOrder);
-        SimulationMessageSender sms = new SimulationMessageSender();
-        sms.sendStatusUpdate(gson.toJson(orderDTO),"DeliveryToOrder");
     }
 }
