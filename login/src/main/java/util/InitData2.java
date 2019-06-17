@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@Startup
-//@Singleton
+@Singleton
 public class InitData2 {
 
     @Inject
@@ -63,7 +63,7 @@ public class InitData2 {
 
         //create testUser
         User u2 = new User();
-        u2.setEmail("table@fontys.nl");
+        u2.setEmail("1table@fontys.nl");
         u2.setPassword("table");
         u2.setRoles(roles2);
         //us.create(u2);

@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 import static messaging.RabbitMQConfig.RABBITMQ_QUEUES;
 
-@Startup
+//@Startup
 @Singleton
 public class StartConsumer {
     @Inject
