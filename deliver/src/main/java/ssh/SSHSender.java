@@ -19,8 +19,8 @@ public class SSHSender {
         JSch jsch = new JSch();
         Session session = null;
         try {
-            session = jsch.getSession(SSHconfig.sshusername, SSHconfig.sshHost, 22);
-            session.setPassword(SSHconfig.sshpw);
+            session = jsch.getSession("root", "192.168.24.110", 22);
+            session.setPassword("root");
             session.setConfig(config);
             session.connect();
         } catch (JSchException e) {
@@ -31,7 +31,7 @@ public class SSHSender {
         ChannelExec channel = null;
         try {
             channel = (ChannelExec) session.openChannel("exec");
-            channel.setCommand(SSHconfig.command);
+            channel.setCommand("python3 /home/python/simulation.py");
             channel.setErrStream(System.err);
             channel.connect();
         } catch (JSchException e) {
